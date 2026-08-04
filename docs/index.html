@@ -878,70 +878,103 @@
     }
 
     /* ──────────────────────────────────────────────
-       Labs table
+       Labs cards
        ────────────────────────────────────────────── */
-    .labs-table-wrap {
-      overflow-x: auto;
+    .labs-cards {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .lab-card {
+      background: white;
       border-radius: var(--radius-xl);
+      padding: var(--space-xl);
       box-shadow: var(--shadow-md);
       border: 1px solid var(--color-soil-100);
+      transition: all var(--duration-normal) var(--ease-out);
+      position: relative;
+      overflow: hidden;
     }
 
-    .labs-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      font-size: 0.9rem;
+    .lab-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 4px;
+      transition: width var(--duration-normal) var(--ease-out);
     }
 
-    .labs-table thead {
-      background: var(--color-soil-800);
-      color: var(--text-on-dark);
+    .lab-card:hover { box-shadow: var(--shadow-lg); }
+    .lab-card:hover::before { width: 6px; }
+
+    .lab-card--ready::before  { background: var(--color-plant-500); }
+    .lab-card--partial::before { background: var(--color-accent); }
+    .lab-card--field::before   { background: var(--color-water-500); }
+
+    .lab-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
     }
 
-    .labs-table th {
-      padding: var(--space-md) var(--space-lg);
-      text-align: left;
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
+    .lab-emoji {
+      font-size: 1.75rem;
+      flex-shrink: 0;
+      width: 2.5rem;
+      text-align: center;
     }
 
-    .labs-table td {
-      padding: var(--space-md) var(--space-lg);
-      border-bottom: 1px solid var(--color-soil-100);
+    .lab-card-title h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.15rem;
+      color: var(--color-soil-900);
+    }
+
+    .lab-card-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .lab-card-desc {
+      font-size: 0.88rem;
       color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+      margin-left: 3.2rem;
     }
 
-    .labs-table tbody tr {
-      transition: background var(--duration-fast) var(--ease-out);
+    .lab-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-left: 3.2rem;
     }
 
-    .labs-table tbody tr:hover {
-      background: var(--color-soil-50);
+    .btn-sm {
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      border-radius: var(--radius-md);
     }
 
-    .labs-table tbody tr:last-child td {
-      border-bottom: none;
+    .btn-disabled {
+      background: var(--color-soil-100);
+      color: var(--color-soil-400);
+      border: 1px solid var(--color-soil-200);
+      cursor: not-allowed;
+      opacity: 0.7;
+      pointer-events: none;
     }
 
-    .badge {
-      display: inline-block;
-      padding: 0.15rem 0.6rem;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    .badge--colab {
-      background: #FEF3C7;
-      color: #92400E;
-    }
-
-    .badge--field {
-      background: var(--color-plant-100);
-      color: var(--color-plant-800);
+    @media (max-width: 640px) {
+      .lab-card-desc { margin-left: 0; }
+      .lab-card-actions { margin-left: 0; }
+      .lab-card-actions .btn { flex: 1; justify-content: center; }
     }
 
     /* ──────────────────────────────────────────────
@@ -1583,74 +1616,167 @@
         <span class="tag tag--water">Laboratorios</span>
         <h2>6 Talleres Computacionales</h2>
         <p>
-          Cada laboratorio usa <strong>Google Colab</strong> con <strong>Python</strong>.
-          Los estudiantes trabajan con datos reales de la agricultura chilena sin necesidad de instalar software.
+          Cada laboratorio incluye una <strong>introducción a Python</strong> con los conceptos necesarios
+          y un <strong>notebook en Google Colab</strong> para trabajar con datos reales de la agricultura chilena.
         </p>
       </div>
 
-      <div class="labs-table-wrap">
-        <table class="labs-table">
-          <thead>
-            <tr>
-              <th>Taller</th>
-              <th>Unidad</th>
-              <th>Contenido</th>
-              <th>Ejercicio</th>
-              <th>Plataforma</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Taller 1</strong></td>
-              <td>U1 + U2</td>
-              <td>Huella hídrica, densidad aparente, porosidad, θ<sub>g</sub></td>
-              <td>Ejercicio 1</td>
-              <td><span class="badge badge--colab">Colab</span></td>
-            </tr>
-            <tr>
-              <td><strong>Taller 2</strong></td>
-              <td>U2</td>
-              <td>θ<sub>v</sub>, CC, PMP, ADT, AFA, curva de retención</td>
-              <td>Ejercicio 1</td>
-              <td><span class="badge badge--colab">Colab</span></td>
-            </tr>
-            <tr>
-              <td><strong>Taller 3</strong></td>
-              <td>U3</td>
-              <td>Potencial hídrico, transpiración, eficiencia de uso del agua</td>
-              <td>Ejercicio 2</td>
-              <td><span class="badge badge--colab">Colab</span></td>
-            </tr>
-            <tr>
-              <td><strong>Taller 4</strong></td>
-              <td>U4</td>
-              <td>Penman-Monteith, Hargreaves, coeficientes de cultivo (Kc)</td>
-              <td>Ejercicio 3</td>
-              <td><span class="badge badge--colab">Colab</span></td>
-            </tr>
-            <tr>
-              <td><strong>Taller 5</strong></td>
-              <td>U5</td>
-              <td>Balance hídrico, frecuencia, calendario de riego</td>
-              <td>Ejercicio 4</td>
-              <td><span class="badge badge--colab">Colab</span></td>
-            </tr>
-            <tr>
-              <td><strong>Taller 6</strong></td>
-              <td>U6</td>
-              <td>Plataformas digitales, sensores, telemetría</td>
-              <td>Portafolio</td>
-              <td><span class="badge badge--colab">Colab</span></td>
-            </tr>
-            <tr>
-              <td><strong>Salida a Terreno</strong></td>
-              <td>U2-U3</td>
-              <td>Medición de humedad de suelo, variabilidad espacial</td>
-              <td>Informe</td>
-              <td><span class="badge badge--field">Terreno</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="labs-cards">
+
+        <!-- ── Taller 1 ── -->
+        <div class="lab-card lab-card--ready fade-in">
+          <div class="lab-card-header">
+            <span class="lab-emoji">💧🟫</span>
+            <div class="lab-card-title">
+              <h3>Taller 1 — Huella hídrica y propiedades físicas del suelo</h3>
+              <span class="lab-card-meta">U1 + U2 · Ejercicio 1 · 3 horas</span>
+            </div>
+          </div>
+          <p class="lab-card-desc">
+            Cálculo de huella hídrica agrícola, densidad aparente (Da), porosidad total (P) y contenido gravimétrico de agua (θ<sub>g</sub>).
+          </p>
+          <div class="lab-card-actions">
+            <a href="labs/taller-01/python-intro-01.html" class="btn btn-sm btn-outline">
+              <span>🐍</span> Intro Python
+            </a>
+            <a href="https://colab.research.google.com/github/frzambra/RSPA-TAG-UDLA/blob/main/labs/taller-01/taller-01.ipynb" class="btn btn-sm btn-primary" target="_blank" rel="noopener">
+              <span>🧪</span> Abrir en Colab
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Taller 2 ── -->
+        <div class="lab-card lab-card--ready fade-in">
+          <div class="lab-card-header">
+            <span class="lab-emoji">🟫</span>
+            <div class="lab-card-title">
+              <h3>Taller 2 — Contenido de agua en el suelo</h3>
+              <span class="lab-card-meta">U2 · Ejercicio 1 · 3 horas</span>
+            </div>
+          </div>
+          <p class="lab-card-desc">
+            Conversión θ<sub>g</sub> → θ<sub>v</sub>, curvas de retención hídrica, capacidad de campo (CC), punto de marchitez permanente (PMP), ADT, AFA y procesamiento de datos de campo.
+          </p>
+          <div class="lab-card-actions">
+            <a href="labs/taller-02/python-intro-02.html" class="btn btn-sm btn-outline">
+              <span>🐍</span> Intro Python
+            </a>
+            <a href="https://colab.research.google.com/github/frzambra/RSPA-TAG-UDLA/blob/main/labs/taller-02/taller-02.ipynb" class="btn btn-sm btn-primary" target="_blank" rel="noopener">
+              <span>🧪</span> Abrir en Colab
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Taller 3 ── -->
+        <div class="lab-card lab-card--partial fade-in">
+          <div class="lab-card-header">
+            <span class="lab-emoji">🌱</span>
+            <div class="lab-card-title">
+              <h3>Taller 3 — Potencial hídrico, transpiración y WUE</h3>
+              <span class="lab-card-meta">U3 · Ejercicio 2 · 3 horas</span>
+            </div>
+          </div>
+          <p class="lab-card-desc">
+            Medición e interpretación del potencial hídrico foliar, tasa de transpiración, conductancia estomática y eficiencia de uso del agua (WUE).
+          </p>
+          <div class="lab-card-actions">
+            <a href="labs/taller-03/python-intro-03.html" class="btn btn-sm btn-outline">
+              <span>🐍</span> Intro Python
+            </a>
+            <span class="btn btn-sm btn-disabled" title="Próximamente">
+              <span>🧪</span> Colab próximamente
+            </span>
+          </div>
+        </div>
+
+        <!-- ── Taller 4 ── -->
+        <div class="lab-card lab-card--partial fade-in">
+          <div class="lab-card-header">
+            <span class="lab-emoji">📐</span>
+            <div class="lab-card-title">
+              <h3>Taller 4 — Cálculo de evapotranspiración</h3>
+              <span class="lab-card-meta">U4 · Ejercicio 3 · 3 horas</span>
+            </div>
+          </div>
+          <p class="lab-card-desc">
+            Cálculo de ETo por Penman-Monteith y Hargreaves, coeficientes de cultivo (Kc), ETc y demanda hídrica de la temporada.
+          </p>
+          <div class="lab-card-actions">
+            <a href="labs/taller-04/python-intro-04.html" class="btn btn-sm btn-outline">
+              <span>🐍</span> Intro Python
+            </a>
+            <span class="btn btn-sm btn-disabled" title="Próximamente">
+              <span>🧪</span> Colab próximamente
+            </span>
+          </div>
+        </div>
+
+        <!-- ── Taller 5 ── -->
+        <div class="lab-card lab-card--partial fade-in">
+          <div class="lab-card-header">
+            <span class="lab-emoji">📅</span>
+            <div class="lab-card-title">
+              <h3>Taller 5 — Balance hídrico y calendario de riego</h3>
+              <span class="lab-card-meta">U5 · Ejercicio 4 · 3 horas</span>
+            </div>
+          </div>
+          <p class="lab-card-desc">
+            Balance hídrico diario del suelo, determinación de frecuencia y tiempo de riego, elaboración de calendario de riego por cultivo.
+          </p>
+          <div class="lab-card-actions">
+            <a href="labs/taller-05/python-intro-05.html" class="btn btn-sm btn-outline">
+              <span>🐍</span> Intro Python
+            </a>
+            <span class="btn btn-sm btn-disabled" title="Próximamente">
+              <span>🧪</span> Colab próximamente
+            </span>
+          </div>
+        </div>
+
+        <!-- ── Taller 6 ── -->
+        <div class="lab-card lab-card--partial fade-in">
+          <div class="lab-card-header">
+            <span class="lab-emoji">📡</span>
+            <div class="lab-card-title">
+              <h3>Taller 6 — Plataformas digitales, sensores y telemetría</h3>
+              <span class="lab-card-meta">U6 · Portafolio · 3 horas</span>
+            </div>
+          </div>
+          <p class="lab-card-desc">
+            Interpretación de datos de sensores de humedad FDR, plataformas digitales de monitoreo, construcción de dashboards y automatización del riego.
+          </p>
+          <div class="lab-card-actions">
+            <a href="labs/taller-06/python-intro-06.html" class="btn btn-sm btn-outline">
+              <span>🐍</span> Intro Python
+            </a>
+            <span class="btn btn-sm btn-disabled" title="Próximamente">
+              <span>🧪</span> Colab próximamente
+            </span>
+          </div>
+        </div>
+
+        <!-- ── Salida a Terreno ── -->
+        <div class="lab-card lab-card--field fade-in">
+          <div class="lab-card-header">
+            <span class="lab-emoji">🥾</span>
+            <div class="lab-card-title">
+              <h3>Salida a Terreno — Medición de humedad de suelo</h3>
+              <span class="lab-card-meta">U2-U3 · Informe · 4 horas</span>
+            </div>
+          </div>
+          <p class="lab-card-desc">
+            Medición in situ de humedad de suelo con sensores portátiles FDR, caracterización de variabilidad espacial y muestreo para análisis gravimétrico en laboratorio.
+          </p>
+          <div class="lab-card-actions">
+            <a href="salida-terreno/guia-terreno.html" class="btn btn-sm btn-outline">
+              <span>📋</span> Guía de terreno
+            </a>
+            <span class="btn btn-sm btn-disabled" title="Próximamente">
+              <span>📝</span> Plantilla informe
+            </span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>

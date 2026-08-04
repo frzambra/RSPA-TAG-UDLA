@@ -1,0 +1,291 @@
+---
+title: "Python para Lab 5 — Bucles, diccionarios y balance hídrico"
+subtitle: "Estructuras de control, rolling windows y automatización"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+## Información de la sesión {.center}
+
+::: {style="font-size: 0.9em;"}
+| | |
+|---|---|
+| **Taller asociado** | Taller 5 — Balance hídrico, frecuencia y calendario de riego |
+| **Unidad** | U5 — Programación de riego |
+| **Duración** | ~45 minutos |
+| **Objetivo** | Automatizar cálculos con bucles, diccionarios y lógica condicional |
+:::
+
+---
+
+## Diccionarios — almacenar pares clave-valor
+
+```python
+# Diccionario: {clave: valor}
+cultivo_info = {
+    'Maíz': {
+        'Kc_medio': 0.85,
+        'p': 0.50,           # fracción de agotamiento
+        'Zr_m': 1.0,         # profundidad radical
+        'zona_raices': '60% en 0-60 cm'
+    },
+    'Vid': {
+        'Kc_medio': 0.70,
+        'p': 0.45,
+        'Zr_m': 1.5,
+        'zona_raices': '50% en 0-80 cm'
+    }
+}
+
+# Acceder a valores
+print(cultivo_info['Maíz']['p'])     # 0.50
+print(cultivo_info['Vid']['Zr_m'])   # 1.5
+```
+
+---
+
+## Iterar sobre diccionarios
+
+```python
+# Recorrer todos los cultivos
+for nombre, datos in cultivo_info.items():
+    print(f"{nombre}: Kc={datos['Kc_medio']}, "
+          f"p={datos['p']}, Zr={datos['Zr_m']} m")
+```
+
+```
+Maíz: Kc=0.85, p=0.50, Zr=1.0 m
+Vid: Kc=0.70, p=0.45, Zr=1.5 m
+```
+
+```python
+# Crear DataFrame desde diccionario
+import pandas as pd
+df_cultivos = pd.DataFrame(cultivo_info).T  # .T = transpone
+df_cultivos
+```
+
+---
+
+## Condicionales — `if` / `elif` / `else`
+
+```python
+# Lógica de decisión para riego
+def recomendar_riego(deficit_mm, umbral_mm):
+    if deficit_mm >= umbral_mm:
+        accion = "⚠ REGAR AHORA"
+    elif deficit_mm >= umbral_mm * 0.8:
+        accion = "⏰ Programar riego en 1-2 días"
+    elif deficit_mm >= umbral_mm * 0.5:
+        accion = "📅 Programar riego esta semana"
+    else:
+        accion = "✓ Sin urgencia de riego"
+    return accion
+
+# Probar
+print(recomendar_riego(25, 30))  # ⏰ Programar riego en 1-2 días
+print(recomendar_riego(10, 30))  # ✓ Sin urgencia de riego
+```
+
+---
+
+## Aplicar lógica condicional a un DataFrame
+
+```python
+# np.where(): if-else vectorizado
+import numpy as np
+
+suelo = pd.DataFrame({
+    'Suelo': ['Arenoso', 'Franco', 'Arcilloso'],
+    'ADT_mm': [30, 65, 90]
+})
+
+# Clasificar según capacidad de retención
+suelo['Categoria'] = np.where(
+    suelo['ADT_mm'] < 40, 'Baja retención',
+    np.where(suelo['ADT_mm'] < 70, 'Media retención',
+             'Alta retención')
+)
+
+# También se puede con .apply()
+suelo['Frecuencia_riego'] = suelo['ADT_mm'].apply(
+    lambda adt: 'Alta frecuencia' if adt < 50 else 'Baja frecuencia'
+)
+```
+
+---
+
+## Bucle `for` para cálculos repetitivos
+
+```python
+# Balance hídrico simplificado día a día
+AFA_mm = 65          # agua fácilmente aprovechable
+humedad_inicial = AFA_mm
+humedad = [humedad_inicial]
+ETc_diaria = [4.2, 5.1, 4.8, 5.5, 4.0, 3.8, 4.5]  # mm/día
+riego_aplicado = False
+
+for i, etc in enumerate(ETc_diaria):
+    nuevo_valor = humedad[-1] - etc
+    if nuevo_valor <= 0:
+        nuevo_valor += AFA_mm  # aplicar riego
+        print(f"Día {i+1}: RIEGO aplicado (+{AFA_mm} mm)")
+    humedad.append(nuevo_valor)
+
+# El primer valor era la humedad inicial
+humedad = humedad[1:]
+```
+
+---
+
+## `while` — repetir hasta cumplir condición
+
+```python
+# ¿Cuántos días sin lluvia hasta agotar el AFA?
+dias = 0
+humedad_actual = 65.0  # mm
+etc_diario = 4.5       # mm/día
+
+while humedad_actual > 0:
+    humedad_actual -= etc_diario
+    dias += 1
+
+print(f"Sin riego ni lluvia, el AFA se agota en {dias} días")
+```
+
+```
+Sin riego ni lluvia, el AFA se agota en 15 días
+```
+
+```python
+# while con condición compuesta
+while humedad_actual > 0 and dias < 30:
+    humedad_actual -= etc_diario
+    dias += 1
+```
+
+::: {.callout-warning}
+## Cuidado
+Asegúrate de que la condición del `while` eventualmente sea `False`, o tendrás un **bucle infinito**.
+:::
+
+---
+
+## `rolling()` — ventanas móviles
+
+```python
+# Media móvil de 7 días (suavizado)
+clima['ETo_7d'] = clima['ETo_mm'].rolling(window=7).mean()
+
+# Suma móvil (acumulado semanal)
+clima['ETo_7d_sum'] = clima['ETo_mm'].rolling(window=7).sum()
+
+# Máximo móvil
+clima['Tmax_3d'] = clima['Tmax_C'].rolling(window=3).max()
+```
+
+```python
+fig, ax = plt.subplots(figsize=(12, 5))
+ax.plot(clima.index, clima['ETo_mm'],
+        alpha=0.3, label='ETo diaria')
+ax.plot(clima.index, clima['ETo_7d'],
+        'r-', linewidth=2, label='ETo media 7 días')
+ax.legend()
+plt.show()
+```
+
+---
+
+## `shift()` — desplazar datos en el tiempo
+
+```python
+# Útil para balance hídrico: "lo de ayer determina lo de hoy"
+suelo = pd.DataFrame({'Fecha': pd.date_range('2024-01-01', periods=10),
+                       'ETc_mm': [4.2, 5.1, 4.8, 5.5, 4.0, 3.8, 4.5, 5.0, 4.7, 4.3]})
+
+# Humedad inicial
+suelo.loc[0, 'Humedad_mm'] = 65.0
+
+# Balance: humedad de ayer - ETc de hoy
+for i in range(1, len(suelo)):
+    suelo.loc[i, 'Humedad_mm'] = suelo.loc[i-1, 'Humedad_mm'] - suelo.loc[i, 'ETc_mm']
+
+# Con shift() se puede vectorizar
+suelo['Humedad_ayer'] = suelo['Humedad_mm'].shift(1)
+```
+
+---
+
+## `stackplot()` — gráficos de área apilada
+
+```python
+# Componentes del balance hídrico
+fig, ax = plt.subplots(figsize=(14, 6))
+
+ax.stackplot(fechas,
+             riego_mm,           # primer componente (abajo)
+             precipitacion_mm,   # segundo componente
+             labels=['Riego', 'Precipitación'],
+             colors=['#3498DB', '#2ECC71'],
+             alpha=0.7)
+
+ax.plot(fechas, ETc_acum_mm, 'r-', linewidth=2.5, label='ETc')
+
+ax.set_ylabel('mm')
+ax.set_title('Componentes del balance hídrico acumulado')
+ax.legend(loc='upper left')
+plt.show()
+```
+
+---
+
+## Calendario de riego — automatización
+
+```python
+def generar_calendario(ETc_diario, AFA_mm, fecha_inicio, Ea=0.90):
+    """
+    Genera calendario de riego por balance hídrico diario.
+    Retorna DataFrame con fechas de riego y láminas.
+    """
+    calendario = []
+    humedad = AFA_mm
+    lamina_bruta = AFA_mm / Ea
+
+    for i, etc in enumerate(ETc_diario):
+        humedad -= etc
+        if humedad <= 0:
+            fecha_riego = fecha_inicio + pd.Timedelta(days=i)
+            calendario.append({
+                'Fecha': fecha_riego,
+                'Dia_temporada': i + 1,
+                'Deficit_mm': AFA_mm - humedad,
+                'Lamina_bruta_mm': round(lamina_bruta, 1)
+            })
+            humedad += AFA_mm  # reponer
+
+    return pd.DataFrame(calendario)
+```
+
+---
+
+## Resumen: lo nuevo en el Taller 5
+
+::: {style="font-size: 0.85em;"}
+| Concepto | ¿Para qué? |
+|----------|-----------|
+| `dict` y `.items()` | Almacenar parámetros por cultivo (Kc, p, Zr) |
+| `if / elif / else` | Lógica de decisión (¿regar o no regar?) |
+| `np.where()` | Clasificación vectorizada en columnas |
+| Bucle `for` | Balance hídrico día a día |
+| Bucle `while` | Simular hasta condición (agotamiento, fin de temporada) |
+| `.rolling().mean()` | Suavizar series (ETo media semanal) |
+| `.shift()` | Referenciar valores del día anterior |
+| `ax.stackplot()` | Visualizar componentes del balance hídrico |
+| Funciones de automatización | Generar calendarios de riego completos |
+:::

@@ -1,0 +1,276 @@
+---
+title: "Python para Lab 2 — Pandas avanzado y visualización"
+subtitle: "Filtros, curvas, interpolación y gráficos de dispersión"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+## Información de la sesión {.center}
+
+::: {style="font-size: 0.9em;"}
+| | |
+|---|---|
+| **Taller asociado** | Taller 2 — Contenido de agua en el suelo |
+| **Unidad** | U2 — El agua en el suelo |
+| **Duración** | ~45 minutos |
+| **Objetivo** | Aprender filtrado, escalas logarítmicas, interpolación y mapas de dispersión |
+:::
+
+---
+
+## Recapitulación rápida {.center}
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# DataFrame
+datos = pd.DataFrame({
+    'Suelo': ['Arenoso', 'Franco'],
+    'Da': [1.60, 1.32]
+})
+
+# Nueva columna
+datos['Porosidad'] = (1 - datos['Da'] / 2.65) * 100
+
+# print con f-strings
+print(f"Porosidad arenoso: {datos['Porosidad'][0]:.1f}%")
+```
+
+---
+
+## Filtrar filas en DataFrames
+
+```python
+# Datos de ejemplo
+curvas = pd.DataFrame({
+    'Psi_kPa': [0, 33, 100, 500, 1500],
+    'Arenoso': [0.42, 0.12, 0.07, 0.04, 0.03],
+    'Franco':  [0.48, 0.30, 0.22, 0.14, 0.11]
+})
+
+# Filtrar por valor exacto
+fila_cc = curvas[curvas['Psi_kPa'] == 33]
+
+# Extraer un valor específico
+cc_arenoso = curvas[curvas['Psi_kPa'] == 33]['Arenoso'].values[0]
+print(f"CC arenoso: {cc_arenoso} cm³/cm³")
+```
+
+```
+CC arenoso: 0.12 cm³/cm³
+```
+
+::: notes
+`.values[0]` extrae el valor numérico de la celda, no una Serie.
+:::
+
+---
+
+## Operaciones entre columnas
+
+```python
+suelos = pd.DataFrame({
+    'Suelo': ['Arenoso', 'Franco', 'Arcilloso'],
+    'Theta_g_gg': [0.12, 0.28, 0.38],
+    'Da_g_cm3': [1.60, 1.32, 1.10]
+})
+
+# Operación vectorizada: se aplica a TODA la columna
+suelos['Theta_v_cm3cm3'] = suelos['Theta_g_gg'] * suelos['Da_g_cm3']
+```
+
+| Suelo | θg | Da | θv |
+|-------|-----|----|-----|
+| Arenoso | 0.12 | 1.60 | 0.192 |
+| Franco | 0.28 | 1.32 | 0.370 |
+| Arcilloso | 0.38 | 1.10 | 0.418 |
+
+::: {.callout-tip}
+En pandas las operaciones son **vectorizadas**: no necesitas bucles `for`.
+:::
+
+---
+
+## `numpy.random` — generar datos sintéticos
+
+```python
+np.random.seed(42)       # para resultados reproducibles
+
+# Distribución uniforme: valores entre min y max
+x = np.random.uniform(0, 200, 20)    # 20 valores entre 0 y 200
+
+# Distribución normal: media ± desviación
+theta_v = np.random.normal(0.28, 0.05, 20)  # media=0.28, sd=0.05
+
+# Limitar valores a un rango
+theta_v = theta_v.clip(0.15, 0.40)   # valores fuera de [0.15, 0.40] se recortan
+```
+
+```python
+# Estadística descriptiva con numpy
+media = np.mean(theta_v)
+desviacion = np.std(theta_v)
+minimo = np.min(theta_v)
+maximo = np.max(theta_v)
+```
+
+---
+
+## Escalas logarítmicas — `semilogx()`
+
+Las curvas de retención usan **escala logarítmica** en el eje X porque cubren varios órdenes de magnitud (0 → 1500 kPa):
+
+```python
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# semilogx: eje X logarítmico, eje Y lineal
+ax.semilogx(curvas['Psi_kPa'], curvas['Arenoso'],
+            'o-', linewidth=2, label='Arenoso')
+ax.semilogx(curvas['Psi_kPa'], curvas['Franco'],
+            's-', linewidth=2, label='Franco')
+
+ax.set_xlabel('Potencial mátrico |Ψm| (kPa) — escala log')
+ax.set_ylabel('θv (cm³/cm³)')
+ax.legend()
+ax.grid(True, alpha=0.3)
+plt.show()
+```
+
+---
+
+## Líneas de referencia verticales
+
+```python
+# Líneas verticales para CC y PMP
+ax.axvline(x=33, color='blue', linestyle='--',
+           alpha=0.5, label='CC (-33 kPa)')
+ax.axvline(x=1500, color='red', linestyle='--',
+           alpha=0.5, label='PMP (-1500 kPa)')
+```
+
+::: {style="font-size: 0.85em;"}
+| Función | Uso |
+|---------|-----|
+| `axvline(x)` | Línea vertical en x |
+| `axhline(y)` | Línea horizontal en y |
+| `color=` | Color de la línea |
+| `linestyle='--'` | Línea punteada |
+| `alpha=0.5` | Transparencia (0 = invisible, 1 = opaco) |
+:::
+
+---
+
+## `scipy.interpolate` — interpolar curvas
+
+Cuando tienes puntos discretos y necesitas valores intermedios:
+
+```python
+from scipy.interpolate import interp1d
+
+# Crear función de interpolación
+f_interp = interp1d(curvas['Psi_kPa'], curvas['Arenoso'],
+                     kind='linear')
+
+# Estimar θv a un Ψm que no está en la tabla
+theta_100 = f_interp(100)   # ≈ 0.07
+theta_200 = f_interp(200)   # valor estimado entre 100 y 500
+```
+
+::: {.callout-tip}
+`kind='linear'` interpola linealmente. También existe `kind='cubic'` para curvas más suaves.
+:::
+
+---
+
+## Gráfico de dispersión (scatter plot)
+
+Para visualizar datos espaciales:
+
+```python
+fig, ax = plt.subplots(figsize=(12, 5))
+
+# scatter: puntos coloreados por una tercera variable
+scatter = ax.scatter(
+    datos['X_m'], datos['Y_m'],
+    c=datos['Theta_v'],        # color según θv
+    cmap='Blues',              # paleta de colores
+    s=100,                     # tamaño de punto
+    edgecolors='black'         # borde
+)
+
+# Barra de color
+plt.colorbar(scatter, label='θv (cm³/cm³)')
+
+ax.set_xlabel('Coordenada X (m)')
+ax.set_ylabel('Coordenada Y (m)')
+ax.set_title('Variabilidad espacial de humedad')
+plt.show()
+```
+
+---
+
+## `cmap` — paletas de colores útiles
+
+::: {style="font-size: 0.85em;"}
+| cmap | Tipo | ¿Cuándo usarla? |
+|------|------|----------------|
+| `'Blues'` | Secuencial | Humedad: de seco (claro) a húmedo (oscuro) |
+| `'Reds'` | Secuencial | Temperatura: de frío a caliente |
+| `'YlOrBr'` | Secuencial | Evapotranspiración: bajo → alto |
+| `'RdYlGn'` | Divergente | Déficit/exceso (rojo = déficit, verde = normal) |
+| `'coolwarm'` | Divergente | Anomalías (azul = bajo, rojo = alto) |
+:::
+
+```python
+# En el taller usamos 'Blues' para θv
+scatter = ax.scatter(x, y, c=humedad, cmap='Blues')
+```
+
+---
+
+## Coeficiente de variación (CV)
+
+Evalúa la **variabilidad relativa** de los datos:
+
+$$CV = \frac{\sigma}{\bar{x}} \times 100$$
+
+```python
+media = datos['Theta_v'].mean()
+desviacion = datos['Theta_v'].std()
+cv = (desviacion / media) * 100
+
+print(f"CV: {cv:.1f}%")
+
+# Interpretación agronómica
+if cv < 15:
+    print("Baja variabilidad → manejo uniforme posible")
+elif cv < 35:
+    print("Variabilidad moderada → considerar manejo diferenciado")
+else:
+    print("Alta variabilidad → riego de precisión recomendado")
+```
+
+---
+
+## Resumen: lo nuevo en el Taller 2
+
+::: {style="font-size: 0.85em;"}
+| Concepto | ¿Para qué? |
+|----------|-----------|
+| `df[df['col'] == valor]` | Filtrar filas por condición |
+| Operaciones vectorizadas | Calcular θv = θg × Da para todo el DataFrame |
+| `np.random.normal()` | Generar datos sintéticos de campo |
+| `np.clip()` | Limitar valores a un rango |
+| `ax.semilogx()` | Curvas de retención con eje X logarítmico |
+| `ax.axvline()` | Líneas CC y PMP en el gráfico |
+| `ax.scatter(c=, cmap=)` | Mapa de variabilidad espacial |
+| `interp1d()` | Interpolar valores entre mediciones |
+:::

@@ -1,0 +1,343 @@
+---
+title: "Python para Lab 6 — Datos web, APIs y tableros"
+subtitle: "Carga desde internet, JSON, y visualización de telemetría"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+## Información de la sesión {.center}
+
+::: {style="font-size: 0.9em;"}
+| | |
+|---|---|
+| **Taller asociado** | Taller 6 — Plataformas digitales, sensores y telemetría |
+| **Unidad** | U6 — Tecnologías para monitoreo y control de riego |
+| **Duración** | ~45 minutos |
+| **Objetivo** | Cargar datos desde internet, interpretar telemetría y construir tableros |
+:::
+
+---
+
+## Cargar datos directamente desde internet
+
+```python
+import pandas as pd
+
+# CSV desde URL (GitHub, portales de datos abiertos)
+url_sensores = ('https://raw.githubusercontent.com/'
+                'frzambra/RSPA-TAG-UDLA/main/data/riego/sensores.csv')
+
+df = pd.read_csv(url_sensores, parse_dates=['timestamp'],
+                 index_col='timestamp')
+df.head()
+```
+
+```python
+# Desde API de redmeteo.cl (ejemplo con requests)
+import requests
+response = requests.get(
+    'https://api.redmeteo.cl/v1/estaciones/123/datos',
+    params={'inicio': '2024-01-01', 'fin': '2024-01-31'}
+)
+datos_json = response.json()
+df_meteo = pd.DataFrame(datos_json['data'])
+```
+
+---
+
+## Manejo de errores — `try` / `except`
+
+Cuando trabajas con datos externos, las cosas pueden fallar:
+
+```python
+import requests
+
+url = 'https://api.redmeteo.cl/v1/estaciones/123/datos'
+
+try:
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()  # lanza error si falla
+    datos = response.json()
+    df = pd.DataFrame(datos['data'])
+    print(f"✓ Datos cargados: {len(df)} registros")
+
+except requests.exceptions.Timeout:
+    print("⚠ Error: El servidor no respondió a tiempo")
+except requests.exceptions.ConnectionError:
+    print("⚠ Error: No hay conexión a internet")
+except requests.exceptions.HTTPError as e:
+    print(f"⚠ Error HTTP: {e}")
+except Exception as e:
+    print(f"⚠ Error inesperado: {e}")
+```
+
+---
+
+## JSON — el formato de las APIs
+
+JSON (JavaScript Object Notation) es el estándar para intercambiar datos en internet:
+
+```json
+{
+  "estacion": "Santiago Norte",
+  "lat": -33.45,
+  "lon": -70.65,
+  "sensores": [
+    {"tipo": "humedad_suelo", "profundidad_cm": 30, "valor": 0.28},
+    {"tipo": "humedad_suelo", "profundidad_cm": 60, "valor": 0.32},
+    {"tipo": "temperatura_suelo", "profundidad_cm": 15, "valor": 21.5}
+  ]
+}
+```
+
+```python
+import json
+
+# Leer archivo JSON
+with open('config_sensores.json', 'r') as f:
+    config = json.load(f)
+
+# Convertir JSON anidado a DataFrame
+sensores_df = pd.json_normalize(config, record_path='sensores',
+                                 meta=['estacion', 'lat', 'lon'])
+```
+
+---
+
+## Datos de sensores de humedad de suelo
+
+Formato típico de telemetría:
+
+```python
+# Datos simulados de sensores FDR a 3 profundidades
+import numpy as np
+
+horas = pd.date_range('2024-02-01', periods=48, freq='h')
+
+sensores = pd.DataFrame({
+    'timestamp': horas,
+    'Theta_v_30cm': np.random.normal(0.28, 0.02, 48).clip(0.20, 0.38),
+    'Theta_v_60cm': np.random.normal(0.32, 0.01, 48).clip(0.28, 0.36),
+    'Theta_v_90cm': np.random.normal(0.34, 0.01, 48).clip(0.31, 0.37),
+    'T_suelo_C': np.random.normal(22, 2, 48).clip(15, 30)
+})
+```
+
+---
+
+## Visualizar telemetría de humedad
+
+```python
+import matplotlib.pyplot as plt
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 8),
+                                sharex=True)
+
+# Panel 1: θv por profundidad
+for prof, color in [('Theta_v_30cm', '#1a5276'),
+                     ('Theta_v_60cm', '#2e86c1'),
+                     ('Theta_v_90cm', '#85c1e9')]:
+    ax1.plot(sensores['timestamp'], sensores[prof],
+             '-', linewidth=2, color=color, label=prof.replace('Theta_v_', ''))
+
+ax1.axhline(y=0.12, color='red', linestyle='--', alpha=0.5, label='PMP')
+ax1.axhline(y=0.30, color='green', linestyle='--', alpha=0.5, label='CC')
+ax1.set_ylabel('θv (cm³/cm³)')
+ax1.legend(loc='upper right')
+ax1.grid(True, alpha=0.3)
+
+# Panel 2: Temperatura del suelo
+ax2.plot(sensores['timestamp'], sensores['T_suelo_C'],
+         'sienna', linewidth=2)
+ax2.set_ylabel('Temperatura suelo (°C)')
+ax2.set_xlabel('Fecha/Hora')
+ax2.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Construir un tablero (dashboard) simple
+
+Un "dashboard" es una vista consolidada para monitoreo:
+
+```python
+fig = plt.figure(figsize=(16, 10))
+
+# Crear layout con GridSpec
+gs = fig.add_gridspec(3, 3, hspace=0.3, wspace=0.3)
+
+# Fila 1: indicadores grandes (KPI)
+ax_kpi1 = fig.add_subplot(gs[0, 0])
+ax_kpi1.text(0.5, 0.5, f"{sensores['Theta_v_30cm'].iloc[-1]:.3f}",
+             fontsize=36, ha='center', va='center', fontweight='bold')
+ax_kpi1.text(0.5, 0.2, 'θv @ 30cm (cm³/cm³)',
+             fontsize=11, ha='center', va='center', color='gray')
+ax_kpi1.axis('off')
+
+# Repetir para otros KPIs...
+# Fila 2-3: gráficos de series de tiempo
+ax_ts1 = fig.add_subplot(gs[1:, :])
+ax_ts1.plot(sensores['timestamp'], sensores['Theta_v_30cm'], 'b-', linewidth=2)
+ax_ts1.set_ylabel('θv (cm³/cm³)')
+ax_ts1.grid(True, alpha=0.3)
+
+plt.suptitle('Tablero de monitoreo hídrico — Sector Norte',
+             fontsize=16, fontweight='bold', y=0.98)
+plt.show()
+```
+
+---
+
+## `matplotlib.gridspec` — layouts personalizados
+
+```python
+import matplotlib.gridspec as gridspec
+
+fig = plt.figure(figsize=(16, 10))
+gs = gridspec.GridSpec(3, 3, figure=fig,
+                        hspace=0.4, wspace=0.35)
+
+# KPI row = 3 indicadores
+for i, (titulo, valor, unidad) in enumerate([
+    ('θv 30cm', 0.278, 'cm³/cm³'),
+    ('θv 60cm', 0.315, 'cm³/cm³'),
+    ('T suelo', 22.3, '°C')
+]):
+    ax = fig.add_subplot(gs[0, i])
+    ax.text(0.5, 0.6, f'{valor:.3f}', fontsize=32,
+            ha='center', va='center', fontweight='bold')
+    ax.text(0.5, 0.25, f'{titulo}\n{unidad}', fontsize=10,
+            ha='center', va='center', color='gray')
+    ax.axis('off')
+
+# Gráfico principal ocupa fila 2 y 3 completas
+ax_main = fig.add_subplot(gs[1:, :])
+```
+
+---
+
+## Controlando colores y estilos
+
+```python
+# Colores consistentes para el curso
+COLORES = {
+    'agua': '#2E86C1',
+    'suelo': '#9B7E5A',
+    'planta': '#4CAF50',
+    'riego': '#3498DB',
+    'deficit': '#E74C3C',
+    'umbral': '#F39C12',
+    'lluvia': '#2980B9'
+}
+
+# Aplicar estilo consistente
+plt.rcParams.update({
+    'font.size': 12,
+    'axes.titlesize': 14,
+    'axes.labelsize': 12,
+    'axes.grid': True,
+    'grid.alpha': 0.3,
+    'figure.facecolor': 'white'
+})
+
+fig, ax = plt.subplots(figsize=(12, 5))
+ax.plot(x, y, color=COLORES['agua'], linewidth=2)
+ax.axhline(y=umbral, color=COLORES['umbral'],
+           linestyle='--', linewidth=2)
+```
+
+---
+
+## `pandas.melt()` — reformatear datos "anchos" a "largos"
+
+```python
+# Datos "anchos" (cada profundidad en una columna)
+wide = sensores[['timestamp', 'Theta_v_30cm',
+                  'Theta_v_60cm', 'Theta_v_90cm']].head()
+
+# Convertir a formato "largo" (tidy data)
+long = wide.melt(
+    id_vars=['timestamp'],
+    var_name='Profundidad',
+    value_name='Theta_v'
+)
+
+# Ahora se puede usar seaborn o groupby fácilmente
+import seaborn as sns
+sns.lineplot(data=long, x='timestamp', y='Theta_v',
+             hue='Profundidad')
+```
+
+---
+
+## Exportar resultados para informes
+
+```python
+# Exportar a CSV
+sensores.to_csv('datos_sensores_export.csv', index=False)
+
+# Exportar a Excel (requiere openpyxl)
+sensores.to_excel('datos_sensores.xlsx', sheet_name='Telemetria')
+
+# En Colab: descargar archivo generado
+from google.colab import files
+files.download('datos_sensores_export.csv')
+```
+
+```python
+# Guardar figura de alta resolución para informe
+fig.savefig('tablero_monitoreo.png', dpi=300,
+            bbox_inches='tight', facecolor='white')
+
+# También en PDF (vectorial, ideal para informes)
+fig.savefig('tablero_monitoreo.pdf',
+            bbox_inches='tight')
+```
+
+---
+
+## Resumen: lo nuevo en el Taller 6
+
+::: {style="font-size: 0.85em;"}
+| Concepto | ¿Para qué? |
+|----------|-----------|
+| `pd.read_csv(url)` | Cargar telemetría desde servidor/API |
+| `requests.get()` | Consumir APIs (redmeteo.cl, CNR) |
+| `try / except` | Manejar errores de red o formato |
+| `json.load()` / `.json_normalize()` | Procesar respuestas de API |
+| `gridspec` | Layout personalizado para dashboards |
+| `.melt()` | Reformatear datos para visualización |
+| `sns.lineplot()` | Gráficos rápidos con seaborn |
+| `.to_csv()` / `.to_excel()` | Exportar resultados |
+| `fig.savefig()` | Guardar figuras en PNG/PDF |
+| Estilos consistentes | Comunicar profesionalmente |
+:::
+
+---
+
+## Camino recorrido — de Python 0 a dashboards
+
+::: {style="font-size: 0.9em;"}
+| Taller | Lo nuevo en Python |
+|--------|-------------------|
+| 1 | Variables, print, DataFrame, barh |
+| 2 | Filtros, semilogx, scatter, interp1d |
+| 3 | Subplots, curve_fit, groupby, annotate |
+| 4 | Fechas, twinx, fórmulas, read_csv |
+| 5 | Bucles, diccionarios, balance, rolling |
+| 6 | APIs, JSON, dashboards, gridspec |
+:::
+
+::: {.callout-tip}
+## ¿Y ahora?
+Estas herramientas son las mismas que usan los profesionales en agronomía de precisión, hidrología y gestión de riego. **Lo que aprendiste se aplica directamente en el campo.**
+:::

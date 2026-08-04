@@ -1,0 +1,302 @@
+---
+title: "Python para Lab 1 — Fundamentos"
+subtitle: "Google Colab, variables, pandas, numpy y matplotlib"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+## Información de la sesión {.center}
+
+::: {style="font-size: 0.9em;"}
+| | |
+|---|---|
+| **Taller asociado** | Taller 1 — Huella hídrica y propiedades físicas del suelo |
+| **Unidades** | U1 (El agua en la producción agrícola) + U2 (El agua en el suelo) |
+| **Duración** | ~45 minutos |
+| **Objetivo** | Adquirir los fundamentos de Python para completar el taller |
+:::
+
+---
+
+## ¿Por qué Python? {.center}
+
+::: {style="font-size: 0.9em;"}
+- **Gratuito y de código abierto** — sin licencias
+- **Google Colab** — se ejecuta en el navegador, **cero instalación**
+- **Librerías científicas** — numpy, pandas, matplotlib, scipy
+- **Estándar en ciencia de datos** — usado en investigación, industria y gobierno
+- **Comunidad enorme** — millones de ejemplos, tutoriales y respuestas en línea
+:::
+
+::: notes
+Enfatizar que no necesitan instalar nada. Solo una cuenta de Google.
+:::
+
+---
+
+## Google Colab — Lo esencial {.center}
+
+::: {style="font-size: 0.9em;"}
+| Acción | Cómo hacerlo |
+|--------|-------------|
+| Ejecutar celda | `Shift + Enter` o botón ▶ |
+| Nueva celda de código | Botón `+ Código` |
+| Nueva celda de texto | Botón `+ Texto` |
+| Guardar | `Ctrl + S` o Archivo → Guardar |
+| Descargar .ipynb | Archivo → Descargar → .ipynb |
+| Reiniciar entorno | Entorno de ejecución → Reiniciar |
+:::
+
+::: {.callout-tip}
+## Tip
+Si algo falla, **reinicia el entorno** y vuelve a ejecutar desde la primera celda.
+:::
+
+---
+
+## Celdas de código vs celdas de texto {.center}
+
+:::: {.columns}
+::: {.column width="50%"}
+### Celda de código
+```python
+# Esto es código Python
+x = 5 + 3
+print(x)
+```
+- Se ejecuta con `Shift + Enter`
+- Produce un resultado
+- Tiene un `[ ]` a la izquierda
+:::
+
+::: {.column width="50%"}
+### Celda de texto (Markdown)
+```markdown
+## Título
+**negrita** *cursiva*
+- lista
+- items
+```
+- Formatea texto, títulos, ecuaciones
+- No se "ejecuta"
+- Usa formato **Markdown**
+:::
+::::
+
+---
+
+## Variables y tipos básicos
+
+```python
+# Números
+edad = 25                   # entero (int)
+temperatura = 22.5          # decimal (float)
+es_lluvia = True            # booleano (bool)
+
+# Texto
+cultivo = "Maíz"            # string (str)
+unidad = 'mm/día'           # también con comillas simples
+
+# Operaciones aritméticas
+suma = 10 + 5               # 15
+producto = 3 * 4            # 12
+division = 10 / 3           # 3.333...
+potencia = 2 ** 3           # 8 (2³)
+```
+
+---
+
+## La función `print()`
+
+Muestra información en pantalla:
+
+```python
+nombre = "Maíz"
+etc_mm = 5.2
+
+print("El cultivo es:", nombre)
+print(f"La ETc del {nombre} es {etc_mm} mm/día")
+
+# f-strings: permiten insertar variables con {}
+print(f"{etc_mm:.2f} mm/día")    # formatea a 2 decimales
+```
+
+```
+El cultivo es: Maíz
+La ETc del Maíz es 5.2 mm/día
+5.20 mm/día
+```
+
+::: {.callout-tip}
+## Tip
+Usa **f-strings** (`f"texto {variable}"`) para mensajes claros con unidades.
+:::
+
+---
+
+## Listas — colecciones ordenadas
+
+```python
+# Crear listas
+cultivos = ["Maíz", "Trigo", "Palta", "Vid"]
+temperaturas = [22.5, 18.3, 25.1, 20.0]
+
+# Acceder por índice (empieza en 0)
+cultivos[0]       # "Maíz"
+cultivos[-1]      # "Vid" (último)
+
+# Operaciones con listas
+len(cultivos)     # 4 (cantidad de elementos)
+cultivos.append("Manzana")   # agregar al final
+```
+
+```python
+# Recorrer una lista
+for cultivo in cultivos:
+    print(f"Cultivo: {cultivo}")
+```
+
+---
+
+## Introducción a `numpy`
+
+`numpy` es la librería fundamental para cálculos numéricos en Python:
+
+```python
+import numpy as np          # así se importa
+
+# Arrays: como listas pero optimizadas para matemáticas
+valores = np.array([1, 2, 3, 4, 5])
+
+# Operaciones sobre todo el array
+valores * 2                 # [2, 4, 6, 8, 10]
+valores + 10                # [11, 12, 13, 14, 15]
+valores.mean()              # 3.0 (media)
+valores.std()               # desviación estándar
+
+# Verificar resultados
+np.allclose([1.0, 2.0], [1.001, 1.999], atol=0.01)  # True
+```
+
+::: notes
+np.allclose es clave: aparece en las celdas de validación de los talleres.
+:::
+
+---
+
+## Introducción a `pandas` — DataFrames
+
+`pandas` es la librería para trabajar con **datos tabulares** (filas y columnas):
+
+```python
+import pandas as pd
+
+# Crear un DataFrame — como una planilla Excel en Python
+datos = pd.DataFrame({
+    'Producto': ['Palta', 'Maíz', 'Trigo'],
+    'Rendimiento_ton_ha': [12, 14, 7],
+    'Precio_USD_ton': [2500, 220, 300]
+})
+
+datos
+```
+
+| Producto | Rendimiento_ton_ha | Precio_USD_ton |
+|----------|-------------------|----------------|
+| Palta | 12 | 2500 |
+| Maíz | 14 | 220 |
+| Trigo | 7 | 300 |
+
+---
+
+## Operaciones básicas con `pandas`
+
+```python
+# Acceder a una columna
+datos['Producto']              # Serie (columna)
+datos['Precio_USD_ton']        # valores de precio
+
+# Crear nueva columna
+datos['Ingreso_USD_ha'] = (
+    datos['Rendimiento_ton_ha'] * datos['Precio_USD_ton']
+)
+
+# Filtrar filas por condición
+caros = datos[datos['Precio_USD_ton'] > 1000]
+
+# Estadísticas rápidas
+datos['Rendimiento_ton_ha'].mean()    # media
+datos['Rendimiento_ton_ha'].max()     # máximo
+```
+
+---
+
+## Introducción a `matplotlib`
+
+```python
+import matplotlib.pyplot as plt
+
+# Datos
+cultivos = ['Palta', 'Maíz', 'Trigo']
+huella = [2080, 950, 1370]
+
+# Crear gráfico de barras
+fig, ax = plt.subplots()
+ax.bar(cultivos, huella)
+ax.set_xlabel('Cultivo')
+ax.set_ylabel('Huella hídrica (L/kg)')
+ax.set_title('Huella hídrica por cultivo')
+plt.show()
+```
+
+---
+
+## Gráfico de barras horizontales
+
+```python
+# Ordenar datos para mejor visualización
+datos_ordenados = sorted(zip(huella, cultivos))
+huella_ord = [h for h, c in datos_ordenados]
+cultivos_ord = [c for h, c in datos_ordenados]
+
+# Barras horizontales
+fig, ax = plt.subplots()
+ax.barh(cultivos_ord, huella_ord)
+ax.set_xlabel('Huella hídrica (L/kg)')
+ax.set_title('Huella hídrica por producto')
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-tip}
+## Tip
+`barh()` crea barras horizontales. Usa `tight_layout()` para evitar que se corten las etiquetas.
+:::
+
+---
+
+## Resumen: lo que usarás en el Taller 1
+
+::: {style="font-size: 0.85em;"}
+| Concepto | ¿Para qué? |
+|----------|-----------|
+| `print()` y f-strings | Mostrar resultados con unidades |
+| `pd.DataFrame({...})` | Crear tablas de datos (huella, muestras) |
+| `df['columna']` | Acceder a columnas |
+| `df['nueva'] = ...` | Crear columnas calculadas |
+| `np.allclose()` | Validar tus cálculos |
+| `plt.barh()` | Visualizar huella hídrica |
+| `plt.subplots()` | Crear figura y ejes para gráficos |
+| `.mean()`, `.std()` | Estadística descriptiva |
+:::
+
+::: {.callout-important}
+## Para el taller
+Abre el notebook en Colab con el badge, ejecuta la celda de setup y **completa los `# TODO`**.
+:::

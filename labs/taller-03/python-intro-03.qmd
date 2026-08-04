@@ -1,0 +1,304 @@
+---
+title: "Python para Lab 3 — Subgráficos, ajuste de curvas y funciones"
+subtitle: "Múltiples paneles, curve_fit, groupby y anotaciones"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+## Información de la sesión {.center}
+
+::: {style="font-size: 0.9em;"}
+| | |
+|---|---|
+| **Taller asociado** | Taller 3 — Potencial hídrico, transpiración y WUE |
+| **Unidad** | U3 — El agua en la planta |
+| **Duración** | ~45 minutos |
+| **Objetivo** | Aprender subgráficos, ajuste de curvas y procesamiento por grupos |
+:::
+
+---
+
+## Subgráficos — múltiples paneles
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 2 filas × 2 columnas de gráficos
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+# Acceder a cada panel por índice
+axes[0, 0].plot(x1, y1)    # fila 0, col 0
+axes[0, 0].set_title('Potencial hídrico')
+
+axes[0, 1].bar(x2, y2)     # fila 0, col 1
+axes[0, 1].set_title('Transpiración')
+
+axes[1, 0].scatter(x3, y3) # fila 1, col 0
+axes[1, 0].set_title('WUE vs Rendimiento')
+
+axes[1, 1].hist(data)      # fila 1, col 1
+axes[1, 1].set_title('Distribución')
+
+plt.tight_layout()          # evita solapamiento
+plt.show()
+```
+
+---
+
+## Subgráficos — 1 fila × N columnas
+
+```python
+# 3 gráficos en una fila (útil para comparar)
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(18, 5))
+
+# Potencial hídrico en hoja
+ax1.plot(hora, psi_hoja, 'g-o', linewidth=2)
+ax1.set_ylabel('Ψhoja (MPa)')
+ax1.set_xlabel('Hora del día')
+
+# Transpiración
+ax2.plot(hora, E, 'b-s', linewidth=2)
+ax2.set_ylabel('E (mmol H₂O/m²/s)')
+
+# Conductancia estomática
+ax3.plot(hora, gs, 'r-^', linewidth=2)
+ax3.set_ylabel('gs (mol H₂O/m²/s)')
+
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Añadir anotaciones a gráficos
+
+```python
+fig, ax = plt.subplots()
+ax.plot(psi_suelo, gs, 'o-', linewidth=2)
+
+# Anotar un punto específico
+ax.annotate(
+    'Punto de cierre estomático',
+    xy=(-1.5, 0.05),              # coordenadas del punto
+    xytext=(-1.0, 0.15),          # coordenadas del texto
+    arrowprops=dict(arrowstyle='->', color='red'),
+    fontsize=10, color='red'
+)
+
+# Sombrear una región
+ax.axvspan(-0.5, 0, alpha=0.1, color='blue',
+           label='Rango óptimo de riego')
+
+ax.set_xlabel('Potencial agua del suelo Ψs (MPa)')
+ax.set_ylabel('Conductancia estomática gs (mol/m²/s)')
+ax.legend()
+plt.show()
+```
+
+---
+
+## `scipy.optimize.curve_fit` — ajustar curvas
+
+Cuando tienes datos experimentales y quieres ajustar un modelo:
+
+```python
+from scipy.optimize import curve_fit
+
+# 1. Definir la función del modelo
+def modelo_lineal(x, a, b):
+    return a * x + b
+
+# 2. Datos experimentales
+x_data = np.array([0, 1, 2, 3, 4, 5])
+y_data = np.array([0.1, 1.9, 4.2, 5.8, 8.1, 9.9])
+
+# 3. Ajustar — curve_fit devuelve parámetros óptimos
+params, cov = curve_fit(modelo_lineal, x_data, y_data)
+a, b = params
+print(f"Ecuación: y = {a:.3f}x + {b:.3f}")
+```
+
+```
+Ecuación: y = 1.980x + 0.114
+```
+
+---
+
+## `curve_fit` aplicado a datos agronómicos
+
+::: {style="font-size: 0.9em;"}
+```python
+# Modelo de respuesta de rendimiento al agua (FAO-33)
+def fao33_yield_response(ETa_ETm, Ky):
+    """Ky: factor de respuesta de rendimiento"""
+    return 1 - Ky * (1 - ETa_ETm)
+
+# Datos: fracción ETa/ETm vs rendimiento relativo
+eta_ratio = np.array([1.0, 0.85, 0.70, 0.55, 0.40])
+yield_rel = np.array([1.0, 0.82, 0.60, 0.38, 0.15])
+
+# Ajustar Ky
+params, cov = curve_fit(fao33_yield_response, eta_ratio, yield_rel)
+Ky = params[0]
+print(f"Factor de respuesta Ky = {Ky:.2f}")
+```
+:::
+
+```python
+# Visualizar ajuste
+x_smooth = np.linspace(0.3, 1.0, 100)
+y_fit = fao33_yield_response(x_smooth, Ky)
+
+ax.plot(x_smooth, y_fit, 'r-', label=f'Modelo FAO-33 (Ky={Ky:.2f})')
+ax.scatter(eta_ratio, yield_rel, s=80, label='Datos')
+```
+
+---
+
+## `pandas.groupby()` — análisis por grupos
+
+```python
+# Datos: mediciones de potencial hídrico por especie y hora
+psi = pd.DataFrame({
+    'Especie': ['Maíz', 'Maíz', 'Maíz', 'Vid', 'Vid', 'Vid'],
+    'Hora': ['08:00', '12:00', '16:00', '08:00', '12:00', '16:00'],
+    'Psi_MPa': [-0.4, -1.2, -1.8, -0.3, -0.9, -1.4]
+})
+
+# Agrupar por especie y calcular estadísticas
+psi.groupby('Especie')['Psi_MPa'].agg(['mean', 'min', 'max'])
+```
+
+| Especie | mean | min | max |
+|---------|------|-----|-----|
+| Maíz | -1.13 | -1.8 | -0.4 |
+| Vid | -0.87 | -1.4 | -0.3 |
+
+```python
+# También se puede iterar sobre grupos
+for especie, grupo in psi.groupby('Especie'):
+    print(f"{especie}: Ψ medio = {grupo['Psi_MPa'].mean():.2f} MPa")
+```
+
+---
+
+## Funciones personalizadas con `lambda`
+
+```python
+# lambda: función en una línea
+cuadrado = lambda x: x ** 2
+cuadrado(5)    # 25
+
+# Muy útil con apply()
+datos['T_C'] = [22, 18, 30, 15]
+datos['T_K'] = datos['T_C'].apply(lambda x: x + 273.15)
+```
+
+```python
+# Aplicar una función a cada fila
+def calc_Dpv(T, HR):
+    """Déficit de presión de vapor"""
+    es = 0.6108 * np.exp(17.27 * T / (T + 237.3))
+    ea = es * HR / 100
+    return es - ea
+
+# apply con axis=1 (por fila)
+datos['DPV'] = datos.apply(
+    lambda row: calc_Dpv(row['T_C'], row['HR_pct']),
+    axis=1
+)
+```
+
+---
+
+## Ecuaciones de interés agronómico en Python
+
+```python
+import numpy as np
+
+# Presión de vapor de saturación (Tetens)
+def es(T_C):
+    return 0.6108 * np.exp(17.27 * T_C / (T_C + 237.3))
+
+# Déficit de presión de vapor
+def dpv(T_C, HR_pct):
+    ea = es(T_C) * HR_pct / 100
+    return es(T_C) - ea
+
+# Conductancia estomática relativa
+def gs_rel(psi_leaf, psi_50, slope):
+    """Modelo sigmoide de respuesta estomática"""
+    return 1 / (1 + np.exp(slope * (psi_leaf - psi_50)))
+```
+
+::: {.callout-tip}
+Encapsular fórmulas en **funciones** evita repetir código y reduce errores.
+:::
+
+---
+
+## Histogramas y distribución de datos
+
+```python
+fig, ax = plt.subplots()
+
+# Histograma
+ax.hist(datos['Psi_MPa'], bins=10,
+        color='steelblue', edgecolor='white',
+        alpha=0.7, density=True)
+
+# Línea de media
+ax.axvline(datos['Psi_MPa'].mean(),
+           color='red', linestyle='--',
+           label=f"Media = {datos['Psi_MPa'].mean():.2f}")
+
+ax.set_xlabel('Potencial hídrico foliar (MPa)')
+ax.set_ylabel('Frecuencia relativa')
+ax.legend()
+plt.show()
+```
+
+---
+
+## Guardar figuras de alta calidad
+
+```python
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(x, y, 'o-', linewidth=2)
+
+# Guardar para informe
+fig.savefig('potencial_hidrico.png', dpi=300,
+            bbox_inches='tight', facecolor='white')
+
+# En Colab, también puedes hacer:
+# from google.colab import files
+# files.download('potencial_hidrico.png')
+```
+
+::: {.callout-tip}
+`dpi=300` produce imágenes de calidad para informes. `bbox_inches='tight'` recorta el espacio sobrante.
+:::
+
+---
+
+## Resumen: lo nuevo en el Taller 3
+
+::: {style="font-size: 0.85em;"}
+| Concepto | ¿Para qué? |
+|----------|-----------|
+| `plt.subplots(n, m)` | Múltiples gráficos organizados en panel |
+| `ax.annotate()` | Etiquetar puntos o regiones importantes |
+| `ax.axvspan()` | Sombrear rangos de interés (ej. rango óptimo de riego) |
+| `curve_fit()` | Ajustar modelos a datos (Ky, curvas de respuesta) |
+| `df.groupby().agg()` | Estadísticas por grupo (especie, tratamiento, hora) |
+| `lambda` y `apply()` | Aplicar funciones personalizadas a columnas |
+| `ax.hist()` | Visualizar distribución de mediciones |
+| `fig.savefig()` | Exportar gráficos para informes |
+:::

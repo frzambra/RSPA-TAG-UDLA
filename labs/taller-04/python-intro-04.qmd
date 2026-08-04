@@ -1,0 +1,309 @@
+---
+title: "Python para Lab 4 — Fechas, fórmulas y archivos CSV"
+subtitle: "Manejo de fechas, ecuaciones FAO-56 y carga de datos externos"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+## Información de la sesión {.center}
+
+::: {style="font-size: 0.9em;"}
+| | |
+|---|---|
+| **Taller asociado** | Taller 4 — Penman-Monteith, Hargreaves y Kc |
+| **Unidad** | U4 — Requerimiento hídrico de los cultivos |
+| **Duración** | ~45 minutos |
+| **Objetivo** | Manejar fechas, implementar fórmulas complejas y leer datos climáticos |
+:::
+
+---
+
+## Trabajar con fechas en pandas
+
+```python
+import pandas as pd
+import numpy as np
+
+# Crear un rango de fechas
+fechas = pd.date_range(
+    start='2024-01-01',
+    end='2024-12-31',
+    freq='D'            # D = diario, M = mensual, H = horario
+)
+
+# Crear DataFrame con índice de fechas
+clima = pd.DataFrame({
+    'Tmax_C': np.random.normal(28, 3, len(fechas)),
+    'Tmin_C': np.random.normal(14, 2, len(fechas)),
+    'HR_pct': np.random.normal(65, 10, len(fechas)),
+}, index=fechas)
+
+clima.head()
+```
+
+---
+
+## Acceder a componentes de fecha
+
+```python
+# El índice de fecha se desglosa fácilmente
+clima['mes'] = clima.index.month        # 1 a 12
+clima['dia_juliano'] = clima.index.dayofyear  # 1 a 365
+
+# Filtrar por mes
+enero = clima[clima.index.month == 1]
+verano = clima[clima.index.month.isin([12, 1, 2])]
+
+# Seleccionar un rango de fechas
+febrero_2024 = clima.loc['2024-02-01':'2024-02-29']
+```
+
+```python
+# Agrupar por mes y calcular medias
+clima_mensual = clima.groupby(clima.index.month).agg({
+    'Tmax_C': 'mean',
+    'Tmin_C': 'mean',
+    'HR_pct': 'mean'
+}).round(1)
+```
+
+---
+
+## Calcular variables derivadas
+
+```python
+# Temperatura media
+clima['Tmed_C'] = (clima['Tmax_C'] + clima['Tmin_C']) / 2
+
+# Déficit de presión de vapor
+def calc_es(T_C):
+    """Presión de vapor de saturación (kPa) — ecuación de Tetens"""
+    return 0.6108 * np.exp(17.27 * T_C / (T_C + 237.3))
+
+es_Tmax = calc_es(clima['Tmax_C'])
+es_Tmin = calc_es(clima['Tmin_C'])
+clima['es_kPa'] = (es_Tmax + es_Tmin) / 2
+clima['ea_kPa'] = clima['es_kPa'] * clima['HR_pct'] / 100
+clima['DPV_kPa'] = clima['es_kPa'] - clima['ea_kPa']
+```
+
+---
+
+## Gráficos de series de tiempo
+
+```python
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(14, 5))
+
+# Datos de un mes como ejemplo
+datos_ene = clima.loc['2024-01']
+
+ax.plot(datos_ene.index, datos_ene['Tmax_C'],
+        'r-', linewidth=1.5, label='Tmax')
+ax.plot(datos_ene.index, datos_ene['Tmin_C'],
+        'b-', linewidth=1.5, label='Tmin')
+ax.fill_between(datos_ene.index,
+                datos_ene['Tmin_C'], datos_ene['Tmax_C'],
+                alpha=0.15, color='gray')
+
+ax.set_xlabel('Fecha')
+ax.set_ylabel('Temperatura (°C)')
+ax.set_title('Temperaturas diarias — Enero 2024')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Rotar etiquetas del eje X para legibilidad
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Doble eje Y
+
+Útil para comparar variables con distinta escala (ej. temperatura y ETo):
+
+```python
+fig, ax1 = plt.subplots(figsize=(14, 5))
+
+# Eje Y izquierdo: temperatura
+ax1.plot(fechas, Tmed, 'r-', linewidth=2, label='Tmed (°C)')
+ax1.set_ylabel('Temperatura (°C)', color='red')
+ax1.tick_params(axis='y', labelcolor='red')
+
+# Eje Y derecho: ETo
+ax2 = ax1.twinx()
+ax2.plot(fechas, ETo, 'b-', linewidth=2, label='ETo (mm/día)')
+ax2.set_ylabel('ETo (mm/día)', color='blue')
+ax2.tick_params(axis='y', labelcolor='blue')
+
+# Dos leyendas
+lines1, labels1 = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax1.legend(lines1 + lines2, labels1 + labels2)
+
+plt.title('Temperatura media y evapotranspiración de referencia')
+plt.show()
+```
+
+---
+
+## Ecuación de Hargreaves en Python
+
+$$ETo = 0.0023 \cdot R_a \cdot (T_{med} + 17.8) \cdot \sqrt{T_{max} - T_{min}}$$
+
+```python
+def hargreaves_ETo(Tmax, Tmin, Ra, lat_rad):
+    """
+    Calcula ETo por Hargreaves-Samani.
+    Tmax, Tmin en °C
+    Ra en MJ/m²/día (radiación extraterrestre)
+    Retorna ETo en mm/día
+    """
+    Tmed = (Tmax + Tmin) / 2
+    ETo = 0.0023 * Ra * (Tmed + 17.8) * np.sqrt(Tmax - Tmin)
+    return ETo
+
+# Aplicar a todo el DataFrame
+clima['ETo_Hargreaves_mm'] = hargreaves_ETo(
+    clima['Tmax_C'],
+    clima['Tmin_C'],
+    clima['Ra_MJ_m2'],
+    lat_rad=-0.589  # Santiago ≈ 33.5°S en radianes
+)
+```
+
+---
+
+## Leer y escribir archivos CSV
+
+```python
+# Leer un CSV local (subido a Colab)
+datos_estacion = pd.read_csv('estacion_meteo.csv')
+
+# Leer desde URL (GitHub raw)
+url = ('https://raw.githubusercontent.com/frzambra/'
+       'RSPA-TAG-UDLA/main/data/meteorologia/estacion.csv')
+datos_estacion = pd.read_csv(url)
+
+# Especificar formato de fecha al leer
+datos_estacion = pd.read_csv(
+    url,
+    parse_dates=['fecha'],      # columna a interpretar como fecha
+    index_col='fecha',           # usar como índice
+    encoding='utf-8'
+)
+```
+
+```python
+# Guardar resultados
+resultados.to_csv('eto_calculada.csv', index=False)
+```
+
+---
+
+## Coeficientes de cultivo (Kc)
+
+La ETc se calcula como: $ET_c = K_c \times ETo$
+
+```python
+# Kc por etapa fenológica para maíz (FAO-56)
+kc_maiz = pd.DataFrame({
+    'Etapa': ['Inicial', 'Desarrollo', 'Media', 'Final'],
+    'Dias': [25, 40, 50, 30],
+    'Kc': [0.30, 0.75, 1.20, 0.55]
+})
+
+kc_maiz['Dia_acumulado'] = kc_maiz['Dias'].cumsum()
+
+# Interpolar Kc diario
+dias = np.arange(1, kc_maiz['Dia_acumulado'].iloc[-1] + 1)
+kc_diario = np.interp(dias,
+    kc_maiz['Dia_acumulado'] - kc_maiz['Dias'] + 1,
+    kc_maiz['Kc'])
+
+# Calcular ETc
+clima['Kc'] = kc_diario[clima.index.dayofyear - 1]
+clima['ETc_mm'] = clima['ETo_Hargreaves_mm'] * clima['Kc']
+```
+
+---
+
+## `np.interp()` — interpolación lineal simple
+
+Alternativa más ligera que `scipy.interpolate`:
+
+```python
+import numpy as np
+
+# Puntos conocidos
+x_known = np.array([0, 10, 20, 30])
+y_known = np.array([0.3, 0.7, 1.1, 0.6])
+
+# Interpolar en nuevos puntos
+x_new = np.array([5, 12, 25])
+y_new = np.interp(x_new, x_known, y_known)
+
+print(f"Kc interpolados: {y_new}")
+```
+
+```
+Kc interpolados: [0.5  0.74  0.85]
+```
+
+::: {.callout-tip}
+`np.interp()` es más rápido que `interp1d` para interpolación lineal simple.
+:::
+
+---
+
+## `cumsum()` — sumas acumuladas
+
+```python
+# Calcular días acumulados por etapa
+kc_maiz['Dia_acumulado'] = kc_maiz['Dias'].cumsum()
+
+# Calcular ETo acumulada en la temporada
+clima['ETo_acum_mm'] = clima['ETo_Hargreaves_mm'].cumsum()
+
+# Calcular ETc acumulada
+clima['ETc_acum_mm'] = clima['ETc_mm'].cumsum()
+```
+
+```python
+# Visualizar acumulados
+fig, ax = plt.subplots(figsize=(12, 5))
+ax.plot(clima.index, clima['ETo_acum_mm'],
+        'b-', linewidth=2, label='ETo acumulada')
+ax.plot(clima.index, clima['ETc_acum_mm'],
+        'g-', linewidth=2, label='ETc acumulada')
+ax.set_ylabel('mm acumulados')
+ax.legend()
+plt.show()
+```
+
+---
+
+## Resumen: lo nuevo en el Taller 4
+
+::: {style="font-size: 0.85em;"}
+| Concepto | ¿Para qué? |
+|----------|-----------|
+| `pd.date_range()` | Crear series de tiempo (diarias, mensuales) |
+| `.index.month`, `.dayofyear` | Extraer mes, día juliano de una fecha |
+| `.loc['fecha1':'fecha2']` | Seleccionar rangos de fechas |
+| `pd.read_csv(url)` | Cargar datos climáticos desde archivo o URL |
+| `ax.twinx()` | Doble eje Y (ej. T° y ETo juntos) |
+| `ax.fill_between()` | Sombrear entre dos curvas (Tmin–Tmax) |
+| `np.interp()` | Interpolar Kc diario desde tabla FAO |
+| `.cumsum()` | Sumas acumuladas (ETo, ETc de temporada) |
+| Funciones con fórmulas | Encapsular Penman-Monteith, Hargreaves, etc. |
+:::
