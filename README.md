@@ -27,7 +27,6 @@ El curso aborda las relaciones suelo-agua-planta-atmósfera y la gestión del ri
 ├── data/            # Datos compartidos (.csv) para ejercicios
 ├── docs/            # Programa oficial y programa mejorado
 ├── _quarto.yml      # Configuración Quarto
-├── CLAUDE.md        # Guía para asistentes AI
 └── README.md        # Este archivo
 ```
 
