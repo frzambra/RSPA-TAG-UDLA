@@ -36,17 +36,16 @@ Semestre 202610 · Modalidad Semipresencial Vespertino
 
 ## ¿Quién es tu profesor? {.center .smaller}
 
-<div class="columns">
-
-<div class="column" style="width:40%;">
+:::: {.columns}
+::: {.column width="40%"}
 
 ![](https://francisco-zambrano.cl/img/foto_perfil.jpeg){width="220px" style="border-radius: 50%;"}
 
 **Francisco Zambrano, Dr.**
 
-</div>
+:::
 
-<div class="column" style="width:60%;">
+::: {.column width="60%"}
 
 - **Doctor en Ingeniería Agrícola** — especialización en recursos hídricos y teledetección
 - **Científico de datos espaciales** aplicado a agricultura y agua
@@ -59,9 +58,8 @@ Semestre 202610 · Modalidad Semipresencial Vespertino
 | 🔬 Google Scholar | [Perfil académico](https://scholar.google.com/citations?user=mKQRdOEAAAAJ) |
 | 💻 GitHub | [@frzambra](https://github.com/frzambra) |
 
-</div>
-
-</div>
+:::
+::::
 
 ---
 
@@ -254,39 +252,39 @@ Cada unidad combina **clases teóricas, ejercicios de cálculo y laboratorios co
 
 ## Sistema de evaluación {.center}
 
-<div class="columns">
-
-<div class="column" style="width:33.3%; text-align:center; padding:1em; background:#EBF5FB; border-radius:12px;">
+:::: {.columns}
+::: {.column width="33%"}
 
 ### 🏆 Examen
-## 35%
-Examen final
+**35%**  
+Examen final  
 (Todas las unidades)
 
-</div>
+:::
 
-<div class="column" style="width:33.3%; text-align:center; padding:1em; background:#E8F5E9; border-radius:12px;">
+::: {.column width="33%"}
 
 ### 📝 Cátedras
-## 45%
-C1 (U1-U2)
-C2 (U3-U4)
+**45%**  
+C1 (U1-U2)  
+C2 (U3-U4)  
 C3 (U5-U6)
 
-</div>
+:::
 
-<div class="column" style="width:33.3%; text-align:center; padding:1em; background:#FEF3C7; border-radius:12px;">
+::: {.column width="33%"}
 
 ### 💻 Ejercicios
-## 20%
-E1 (U1-U2)
-E2 (U3)
-E3 (U4)
-E4 (U5)
+**20%**  
+E1 (U1)  
+E2 (U2)  
+E3 (U3)  
+E4 (U4)  
+E5 (U5)  
+E6 (U6)
 
-</div>
-
-</div>
+:::
+::::
 
 ::: {style="font-size: 0.85em; margin-top: 1.5em; text-align: center;"}
 Cada ejercicio está **vinculado a un taller de laboratorio**.
@@ -317,9 +315,8 @@ Cada taller se abre con un **badge de Google Colab**. Solo necesitas un navegado
 
 ## Herramientas del curso {.center}
 
-<div class="columns">
-
-<div class="column" style="width:50%;">
+:::: {.columns}
+::: {.column width="50%"}
 
 ### 📚 Para las clases teóricas
 - **Quarto + reveal.js** → diapositivas interactivas
@@ -333,9 +330,9 @@ Cada taller se abre con un **badge de Google Colab**. Solo necesitas un navegado
 - Datos reales de la agricultura chilena
 - **Cero instalación** — solo navegador web
 
-</div>
+:::
 
-<div class="column" style="width:50%;">
+::: {.column width="50%"}
 
 ### 🌐 Plataformas externas
 - [**redmeteo.cl**](https://redmeteo.cl) — datos meteorológicos en tiempo real
@@ -343,13 +340,12 @@ Cada taller se abre con un **badge de Google Colab**. Solo necesitas un navegado
 - [**FAO-56**](https://www.fao.org/3/x0490s/x0490s00.htm) — estándar de evapotranspiración
 - [**Water Footprint Network**](https://waterfootprint.org) — huella hídrica por cultivo
 
-</div>
-
-</div>
+:::
+::::
 
 ---
 
-## Dinámica de las clases {.center}
+## Dinámica de las clases {.center .smaller}
 
 ::: {style="font-size: 0.9em;"}
 | Momento | Duración | Actividad |
@@ -381,7 +377,7 @@ La modalidad semipresencial requiere **compromiso con el trabajo personal** (108
 
 ---
 
-## Lo que este curso NO es {.center}
+## Lo que este curso NO es {.center .smaller}
 
 ::: {style="font-size: 0.95em;"}
 | ❌ No es... | ✅ Es... |
@@ -400,7 +396,7 @@ La modalidad semipresencial requiere **compromiso con el trabajo personal** (108
 ::: {style="font-size: 0.9em;"}
 | Recurso | ¿Dónde? |
 |---------|---------|
-| 📂 **Repositorio del curso** | [github.com/frzambra/RSPA-TAG-UDLA](https://github.com/frzambra/RSPA-TAG-UDLA) |
+| 📂 **Repositorio del curso** | [francisco-zambrano.cl/RSPA-TAG-UDLA](https://francisco-zambrano.cl/RSPA-TAG-UDLA) |
 | 📚 **Diapositivas** | `clases/` → renderizadas a HTML |
 | 💻 **Laboratorios** | `labs/` → abrir con badge de Colab |
 | 📋 **Programa oficial** | `docs/material/programa-mejorado.html` |
@@ -413,10 +409,10 @@ La modalidad semipresencial requiere **compromiso con el trabajo personal** (108
 ## Antes de la próxima clase... {.center}
 
 ::: {style="font-size: 0.9em;"}
-✅ Revisa el [programa del curso](https://github.com/frzambra/RSPA-TAG-UDLA)
-✅ Asegúrate de tener una **cuenta de Google** (para Colab)
-✅ Navega por el repositorio de GitHub para familiarizarte
-✅ Lee la **lectura complementaria** de la Unidad 1:
+✅ Revisa el [programa del curso](https://github.com/frzambra/RSPA-TAG-UDLA)  
+✅ Asegúrate de tener una **cuenta de Google** (para Colab)  
+✅ Navega por el repositorio de GitHub para familiarizarte  
+✅ Lee la **lectura complementaria** de la Unidad 1:  
   *"Características de la molécula de agua y su importancia en la relación suelo-agua-planta-atmósfera"*
 :::
 
