@@ -1,0 +1,410 @@
+---
+title: "TAG2027 — Relación Suelo Agua Planta"
+subtitle: "Programa de Asignatura — Versión Mejorada"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    lang: es
+    theme: default
+    code-fold: false
+  pdf:
+    toc: true
+    lang: es
+execute:
+  echo: false
+  warning: false
+---
+
+## 1. Identificación de la asignatura
+
+| Campo | Valor |
+|-------|-------|
+| **Código** | TAG2027 |
+| **Nombre** | Relación Suelo Agua Planta |
+| **Facultad** | Medicina Veterinaria y Agronomía |
+| **Carrera** | Técnico de Nivel Superior Agrícola |
+| **Créditos** | 6 SCUDLA |
+| **Modalidad** | Semipresencial Vespertino |
+| **Horas totales** | 162 (36 teóricas + 18 ayudantía + 108 trabajo personal) |
+| **Laboratorios** | 6 talleres computacionales (18 horas) + 1 salida a terreno |
+| **Vigencia** | Desde 202610 (febrero 2026) |
+| **Prerrequisitos** | Ninguno |
+
+## 2. Descripción del curso
+
+La asignatura entrega los fundamentos teóricos y prácticos de la relación suelo-agua-planta-atmósfera, con énfasis en la gestión del riego agrícola. El curso recorre el camino del agua desde su entrada al suelo, pasando por la absorción radical y el transporte en la planta, hasta su salida por transpiración, integrando estos procesos para la programación eficiente del riego.
+
+El enfoque pedagógico combina:
+
+- **Clases expositivas** con diapositivas interactivas (Quarto/revealjs) que integran visualizaciones y ecuaciones
+- **6 talleres de laboratorio computacional** en Google Colab (Python) donde los estudiantes aplican inmediatamente los conceptos teóricos con datos reales de la agricultura chilena
+- **1 salida a terreno** para medición de humedad de suelo y caracterización de variabilidad espacial
+- **Ayudantías** de refuerzo para ejercicios físico-matemáticos
+- **Trabajo personal** con lecturas complementarias y guías de ejercicios
+
+### Plataformas digitales utilizadas
+
+- **Google Colab**: entorno de programación para laboratorios (cero instalación)
+- **redmeteo.cl**: datos meteorológicos en tiempo real de estaciones chilenas
+- **CNR (cnr.gob.cl)**: estadísticas de riego, visor de cultivos, herramientas de fiscalización
+
+## 3. Resultados de Aprendizaje (RAA)
+
+| Código | Descripción |
+|--------|-------------|
+| **RAA1** | Explicar la importancia del agua en la agricultura nacional e internacional, sus propiedades y funciones en el sistema suelo-planta-atmósfera |
+| **RAA2** | Caracterizar el continuo suelo-agua-planta, señalando los principios relacionados al aprovechamiento del agua por las plantas |
+| **RAA3** | Caracterizar todos los factores que afectan el contenido de agua del suelo y desarrollar ejercicios prácticos sobre el tema |
+| **RAA4** | Explicar los elementos asociados a la redistribución del agua en el suelo (saturación, capacidad de campo, punto de marchitez permanente) |
+| **RAA5** | Caracterizar los procesos y componentes asociados al sistema agua-planta-atmósfera (absorción radical, transporte xilemático, transpiración, control estomático) |
+| **RAA6** | Aplicar los procesos relacionados con la evapotranspiración en ejercicios concretos de cálculo de ETo y ETc |
+| **RAA7** | Calcular la frecuencia y duración del riego para múltiples cultivos agrícolas |
+| **RAA8** | Utilizar nuevas tecnologías para monitorear el estado hídrico de cultivos agrícolas |
+| **RAA9** | Caracterizar elementos relacionados con la agrometeorología (estaciones meteorológicas, instrumentos, variables) |
+| **RAA10** | Identificar sistemas informáticos para el registro de láminas de evapotranspiración, dosis de riego y cambios de nivel freático |
+
+## 4. Contenidos por unidad
+
+### Unidad 1: El agua en la producción agrícola
+**RAA:** RAA1 | **Sesiones:** 2 | **Horas teóricas:** 3 | **Trabajo personal:** 12
+
+#### Sesión 1.1 — El agua: propiedades, funciones y contexto agrícola
+- Propiedades físico-químicas del agua relevantes para la agricultura
+- El ciclo hidrológico y el balance hídrico a escala de cuenca
+- Funciones del agua en los agroecosistemas
+- Contexto global: estrés hídrico, agua virtual, huella hídrica
+- El agua en la agricultura chilena: zonas de riego, cultivos principales, desafíos
+
+#### Sesión 1.2 — El continuo suelo-planta-atmósfera
+- Concepto de continuo suelo-planta-atmósfera (SPAC)
+- Gradientes de potencial hídrico como motor del movimiento del agua
+- Introducción al concepto de riego: ¿por qué, cuándo y cuánto regar?
+- Panorama de las próximas unidades
+
+**Lectura complementaria:** Características de la molécula de agua y su importancia en la relación suelo-agua-planta-atmósfera.
+
+**Preguntas de autoevaluación:**
+1. ¿Por qué la molécula de agua es un dipolo y qué implicancias tiene esto para el suelo?
+2. ¿Qué significa el concepto de "agua virtual" y cómo se aplica a las exportaciones agrícolas chilenas?
+3. Dibuje el continuo suelo-planta-atmósfera indicando los valores típicos de potencial hídrico en cada compartimento.
+
+---
+
+### Unidad 2: El agua en el suelo
+**RAA:** RAA2, RAA3, RAA4 | **Sesiones:** 4 | **Horas teóricas:** 6 | **Trabajo personal:** 18
+**Laboratorios asociados:** Taller 1 (parcial), Taller 2 (completo) | **Salida a terreno:** Medición de θv
+
+#### Sesión 2.1 — Propiedades físicas e hidráulicas del suelo
+- Textura y estructura del suelo
+- Propiedades hidráulicas que afectan la retención y movimiento del agua
+- Energía del agua en el suelo: potencial mátrico, osmótico, gravitacional, de presión
+- Curva característica de retención de agua (concepto)
+
+#### Sesión 2.2 — Relaciones masa-volumen
+- Densidad aparente (Da): método del cilindro
+- Densidad real o de partículas (Dr): método del picnómetro
+- Porosidad total: $P = (1 - Da/Dr) \times 100$
+- Relación entre textura, Da y porosidad
+- Ejercicios de cálculo
+
+#### Sesión 2.3 — Contenido de humedad y parámetros hídricos
+- Contenido gravimétrico de agua: $\theta_g = \frac{m_{humedo} - m_{seco}}{m_{seco}}$
+- Contenido volumétrico de agua: $\theta_v = \theta_g \times \frac{Da}{\rho_{agua}}$
+- Punto de saturación (S): todos los poros llenos de agua
+- Capacidad de campo (CC): agua retenida a -33 kPa
+- Punto de marchitez permanente (PMP): agua retenida a -1500 kPa
+- Relación con la textura del suelo
+
+#### Sesión 2.4 — Agua disponible y monitoreo de humedad
+- Agua disponible total: $ADT = CC - PMP$ (por horizonte y perfil completo)
+- Agua fácilmente aprovechable: $AFA = ADT \times p$ (fracción de agotamiento permisible)
+- Lámina de agua en el suelo (mm)
+- Métodos de monitoreo: gravimétrico, TDR, FDR, sonda de neutrones
+- Interpretación de datos de sensores de humedad
+
+**Lectura complementaria:** Repaso de clase teórica y realización de guías de ejercicios.
+
+**Preguntas de autoevaluación:**
+1. Calcule la densidad aparente de un suelo donde un cilindro de 100 cm³ extrajo 135 g de suelo seco.
+2. Un suelo tiene θg = 0.25 g/g, Da = 1.3 g/cm³. Calcule θv.
+3. Dado CC = 0.35 cm³/cm³, PMP = 0.15 cm³/cm³, profundidad = 90 cm, p = 0.5, calcule ADT y AFA en mm.
+4. ¿Por qué un suelo arcilloso retiene más agua que uno arenoso pero no toda está disponible para la planta?
+
+---
+
+### Unidad 3: El agua en la planta
+**RAA:** RAA5 | **Sesiones:** 3 | **Horas teóricas:** 5 | **Trabajo personal:** 18
+**Laboratorio asociado:** Taller 3
+
+#### Sesión 3.1 — Sistema radical: absorción de agua y nutrientes
+- Arquitectura y distribución del sistema radical
+- Zonas de absorción: pelos radicales, banda de Caspary
+- Vías de absorción: apoplasto, simplasto, vía transcelular
+- Factores que afectan la absorción: temperatura, aireación, salinidad, compactación
+- Relación con el contenido de agua del suelo
+
+#### Sesión 3.2 — Sistema conductor xilemático y transporte de agua
+- Estructura del xilema: traqueidas y elementos de vaso
+- Mecanismo de ascenso de la savia: teoría de la cohesión-tensión (Dixon-Joly)
+- Potencial hídrico y sus componentes: $\Psi = \Psi_m + \Psi_o + \Psi_g + \Psi_p$
+- Medición del estado hídrico: cámara de presión Scholander, psicrómetro, porómetro
+
+#### Sesión 3.3 — Transpiración, fotosíntesis y control estomático
+- Proceso de transpiración: flujo de agua hoja → atmósfera
+- Conductancia estomática (gs) y su regulación
+- Relación entre transpiración y fotosíntesis
+- Eficiencia de uso de agua (WUE): $WUE = A/E$
+- Factores ambientales: radiación, VPD, viento, CO₂
+
+**Lectura complementaria:** Principales estructuras de la planta: raíz, xilema, floema y hojas.
+
+**Preguntas de autoevaluación:**
+1. Describa la teoría de cohesión-tensión. ¿Qué papel juega la transpiración?
+2. Calcule el gradiente de potencial hídrico desde el suelo (-0.05 MPa) hasta la atmósfera (-80 MPa) pasando por raíz (-0.3 MPa), xilema (-0.8 MPa) y hoja (-1.5 MPa). ¿Dónde está la mayor resistencia?
+3. Un cultivo tiene A = 20 μmol CO₂ m⁻² s⁻¹ y E = 5 mmol H₂O m⁻² s⁻¹. Calcule la WUE instantánea.
+
+---
+
+### Unidad 4: Requerimiento hídrico de los cultivos
+**RAA:** RAA6 | **Sesiones:** 3 | **Horas teóricas:** 5 | **Trabajo personal:** 18
+**Laboratorio asociado:** Taller 4
+
+#### Sesión 4.1 — Requerimiento hídrico y evapotranspiración
+- Concepto de requerimiento hídrico de las plantas
+- Definición de evapotranspiración (ET): evaporación + transpiración
+- Factores que controlan la ET: energía, viento, humedad, cobertura vegetal
+- Balance de energía en la superficie: $R_n = G + H + \lambda E$
+
+#### Sesión 4.2 — Evapotranspiración potencial y de cultivo
+- Evapotranspiración potencial (ETo): definición y métodos de cálculo
+- Método de Penman-Monteith FAO-56 (ecuación completa)
+- Método de Hargreaves-Samani (datos limitados)
+- Evapotranspiración de cultivo: $ET_c = K_c \times ET_o$
+- Coeficiente de cultivo (Kc): curva de Kc inicial, media y final
+- Uso de variables fisiológicas para el riego
+
+#### Sesión 4.3 — Tecnologías y plataformas para estimar ET
+- Estaciones meteorológicas automáticas (EMA)
+- Variables medidas: T, HR, Rs, velocidad de viento, precipitación
+- Uso de redmeteo.cl para obtener datos de ET en tiempo real
+- Plataformas satelitales (evapotranspiración por teledetección)
+- Introducción a la programación de riego con datos de ET
+
+**Lectura complementaria:** Repaso de clase teórica y realización de guías de ejercicios.
+
+**Preguntas de autoevaluación:**
+1. ¿Cuál es la diferencia entre ETo, ETc y ET real?
+2. ¿Por qué Penman-Monteith requiere más datos que Hargreaves-Samani? ¿Cuándo usaría cada uno?
+3. Para un cultivo de maíz en etapa media con Kc = 1.2 y ETo = 5.6 mm/día, calcule la ETc.
+4. ¿Cómo cambia Kc a lo largo del ciclo de un cultivo anual?
+
+---
+
+### Unidad 5: Programación de riego
+**RAA:** RAA7 | **Sesiones:** 2 | **Horas teóricas:** 3 | **Trabajo personal:** 12
+**Laboratorio asociado:** Taller 5
+
+#### Sesión 5.1 — Frecuencia y tiempo de riego
+- Programación de riego basada en balance hídrico del suelo
+- Lámina neta: $L_n = (CC - PMP) \times p \times Z_r$
+- Lámina bruta: $L_b = L_n / E_a$ (eficiencia de aplicación)
+- Frecuencia de riego: $F_r = L_n / ET_c$ (días entre riegos)
+- Tiempo de riego: $T_r = L_b \times A / Q$ (para un caudal Q y superficie A)
+
+#### Sesión 5.2 — Monitoreo y ajuste del riego
+- Monitoreo del contenido de agua en el suelo como herramienta de decisión
+- Umbrales de riego: ¿cuándo regar?
+- Ajuste estacional de la programación (cambio de Kc, condiciones climáticas)
+- Estrategias de riego deficitario controlado (RDC)
+- Introducción a sistemas de automatización básica
+
+**Preguntas de autoevaluación:**
+1. Para un suelo con ADT = 120 mm, p = 0.5, ETc = 6 mm/día, calcule la frecuencia de riego.
+2. Un sistema de goteo tiene Q = 2.3 L/h por emisor, marco de plantación 3 m × 1.5 m, Lb = 25 mm. Calcule el tiempo de riego.
+3. ¿Qué ajustes haría a la programación de riego durante una ola de calor?
+
+---
+
+### Unidad 6: Tecnologías para el monitoreo y control de riego
+**RAA:** RAA8, RAA9, RAA10 | **Sesiones:** 2 | **Horas teóricas:** 3 | **Trabajo personal:** 12
+**Laboratorio asociado:** Taller 6
+
+#### Sesión 6.1 — Telemetría, telecontrol y sensores
+- Principios de telemetría aplicada al riego
+- Telecontrol de sistemas de riego: electroválvulas, controladores, plataformas web
+- Sensores para monitoreo de riego:
+  - Sensores de humedad de suelo (TDR, FDR, tensiómetros, sonda de neutrones)
+  - Sensores de planta (dendrómetros, sensores de flujo de savia)
+  - Sensores meteorológicos en parcela
+
+#### Sesión 6.2 — Interpretación de datos y plataformas digitales
+- Lectura de gráficas de series temporales de humedad de suelo
+- Identificación de eventos: riego, lluvia, consumo del cultivo, drenaje profundo
+- Uso de plataformas digitales para sistematización de registros de riego
+- CNR: visor de cultivos, estadísticas regionales, fiscalización
+- Integración de datos de múltiples fuentes para la toma de decisiones
+
+**Preguntas de autoevaluación:**
+1. En una serie temporal de humedad de suelo, ¿cómo distingue un evento de riego de un evento de lluvia?
+2. ¿Qué información entrega el visor de cultivos de la CNR que sea relevante para la programación de riego?
+3. ¿Qué ventajas tiene la telemetría sobre la lectura manual de sensores en terreno?
+
+---
+
+## 5. Plan de Laboratorios (6 talleres × 3 horas)
+
+Cada laboratorio se ejecuta en **Google Colab** usando **Python** (`numpy`, `pandas`, `matplotlib`, `scipy`). Los estudiantes abren un notebook `.ipynb` directamente desde GitHub sin instalar software.
+
+| Taller | Unidad(es) | Contenido | Dedicación | Ejercicio |
+|--------|------------|-----------|------------|-----------|
+| **Taller 1** | U1 + inicio U2 | Huella hídrica agrícola; densidad aparente, porosidad, contenido gravimétrico de agua; setup Colab | 3h | Ejercicio 1 |
+| **Taller 2** | U2 completo | Contenido volumétrico; curva de retención (CC, PMP); ADT, AFA; procesamiento de datos de terreno | 3h | Ejercicio 1 |
+| **Taller 3** | U3 | Gradiente de potencial hídrico; transpiración y conductancia estomática; WUE; absorción radical | 3h | Ejercicio 2 |
+| **Taller 4** | U4 | ETo por Hargreaves-Samani; ETo por Penman-Monteith FAO-56 paso a paso; ETc con Kc; comparación de métodos | 3h | Ejercicio 3 |
+| **Taller 5** | U5 | Balance hídrico de temporada; frecuencia y duración de riego; calendario de riego completo; análisis de sensibilidad | 3h | Ejercicio 4 |
+| **Taller 6** | U6 | redmeteo.cl; CNR; interpretación de sensores de humedad; informe integrado con datos reales | 3h | Portafolio |
+
+### Detalle de ejercicios por taller
+
+#### Taller 1: Huella hídrica y propiedades físicas del suelo
+1. Cálculo de huella hídrica de cultivos chilenos (palta, uva, maíz) con datos de Water Footprint Network
+2. Cálculo de densidad aparente por método del cilindro
+3. Cálculo de densidad real por método del picnómetro y porosidad total
+4. Cálculo de contenido gravimétrico de agua (θg) con múltiples muestras
+
+#### Taller 2: Contenido de agua en el suelo
+1. Conversión de θg a θv usando densidad aparente (suelos contrastantes)
+2. Curva de retención de agua: identificación de CC (-33 kPa) y PMP (-1500 kPa)
+3. Cálculo de ADT por horizonte y perfil completo
+4. Cálculo de AFA para distintos cultivos (fracción de agotamiento p)
+5. Procesamiento de datos de la salida a terreno: variabilidad espacial de θv
+6. Ejercicio integrador: lámina total de agua aprovechable (mm)
+
+#### Taller 3: Estado hídrico de la planta
+1. Cálculo del gradiente de potencial hídrico suelo → raíz → xilema → hoja → atmósfera
+2. Cálculo de tasa de transpiración a partir de conductancia estomática y VPD
+3. Cálculo de eficiencia de uso de agua (WUE instantánea e intrínseca)
+4. Estimación de absorción radical desde un perfil de suelo
+
+#### Taller 4: Cálculo de evapotranspiración
+1. ETo por Hargreaves-Samani con datos de estación chilena
+2. ETo por Penman-Monteith FAO-56: implementación completa paso a paso
+3. Aplicación de curva de Kc (inicial, media, final) para obtener ETc
+4. Comparación de métodos: Hargreaves vs. Penman-Monteith
+
+#### Taller 5: Programación de riego
+1. Balance hídrico diario para una temporada completa (120-180 días)
+2. Cálculo de frecuencia de riego por etapa fenológica
+3. Cálculo de duración de riego según sistema (goteo, aspersión, surco)
+4. Calendario de riego integrado para un cultivo en la zona central de Chile
+5. Análisis de sensibilidad: impacto de errores en Kc y eficiencia
+
+#### Taller 6: Plataformas digitales, sensores y telemetría
+1. Descarga y procesamiento de datos de redmeteo.cl
+2. Exploración del visor de cultivos de CNR
+3. Interpretación de series temporales de sensores de humedad de suelo
+4. Informe integrado: conciliar datos de plataformas con programación de riego
+
+### Salida a terreno
+- Medición de contenido volumétrico de agua en suelo con sensor portátil (TDR/FDR)
+- Muestreo en múltiples puntos para caracterizar variabilidad espacial
+- Procesamiento posterior de datos en Taller 2
+- Entrega: informe de variabilidad espacial con estadística descriptiva y mapas
+
+## 6. Evaluación
+
+### 6.1. Ponderaciones
+
+| Componente | Peso | Subcomponente | Peso relativo |
+|------------|------|---------------|---------------|
+| **Examen** | 35% | Examen final | 100% |
+| **Cátedra** | 45% | Cátedra 1 (U1-U2) | 33.33% |
+| | | Cátedra 2 (U3-U4) | 33.33% |
+| | | Cátedra 3 (U5-U6) | 33.33% |
+| **Ejercicios** | 20% | Ejercicio 1 (U1-U2) | 25% |
+| | | Ejercicio 2 (U3) | 25% |
+| | | Ejercicio 3 (U4) | 25% |
+| | | Ejercicio 4 (U5) | 25% |
+
+### 6.2. Matriz de evaluación (alineamiento constructivo)
+
+| Evaluación | RAA evaluados | Unidades | Tipo |
+|------------|---------------|----------|------|
+| Cátedra 1 | RAA1, RAA2, RAA3, RAA4 | 1, 2 | Prueba desarrollo |
+| Cátedra 2 | RAA5, RAA6 | 3, 4 | Prueba desarrollo |
+| Cátedra 3 | RAA7, RAA8, RAA9, RAA10 | 5, 6 | Prueba desarrollo |
+| Ejercicio 1 | RAA1, RAA2, RAA3, RAA4 | 1, 2 | Prueba desarrollo |
+| Ejercicio 2 | RAA5 | 3 | Prueba desarrollo |
+| Ejercicio 3 | RAA6, RAA7 | 4 | Prueba desarrollo |
+| Ejercicio 4 | RAA7, RAA8, RAA10 | 5 | Prueba desarrollo |
+| Examen | RAA1–RAA10 | 1–6 | Prueba desarrollo |
+
+### 6.3. Normativa
+
+- **Asistencia:** 75% mínimo en actividades teóricas; 100% en laboratorios
+- **Aprobación:** Nota final ≥ 4.0
+- **Eximición:** Promedio cátedra + ejercicios ≥ 5.5, todas las cátedras ≥ 4.0, promedio ejercicios ≥ 4.0
+- **Pruebas pendientes:** Máximo 1 cátedra pendiente y 1 control pendiente por justificación
+- **Plagio:** Nota 1.0 según Reglamento del Alumno UDLA (Art. 72)
+
+## 7. Recursos de aprendizaje
+
+### 7.1. Bibliografía básica
+
+| Autor(es) | Año | Título | Editorial |
+|-----------|-----|--------|-----------|
+| Porta Casanellas, J.; López-Acevedo, M. | 2019 | *Edafología: uso y protección del suelo* | Mundi-Prensa |
+| Ferreyra E., R.; Sellés Van Sch., G. | 2013 | *Manual de riego para especies frutales* | INIA La Platina |
+
+### 7.2. Bibliografía complementaria
+
+| Autor(es) | Año | Título | Editorial |
+|-----------|-----|--------|-----------|
+| Azcón-Bieto, J.; Talón, M. | 2008 | *Fundamentos de fisiología vegetal* | McGraw-Hill |
+| Allen, R.G. et al. | 2006 | *FAO Irrigation and Drainage Paper No. 56: Crop Evapotranspiration* | FAO |
+
+### 7.3. Recursos digitales
+
+| Recurso | URL | Uso en el curso |
+|---------|-----|-----------------|
+| Red Meteorológica Abierta | [redmeteo.cl](https://redmeteo.cl/) | Datos de estaciones meteorológicas en tiempo real (Taller 6) |
+| Comisión Nacional de Riego | [cnr.gob.cl](https://www.cnr.gob.cl/) | Estadísticas de riego, visor de cultivos (Taller 6) |
+| Google Colab | [colab.research.google.com](https://colab.research.google.com/) | Plataforma de ejecución de laboratorios |
+| Water Footprint Network | [waterfootprint.org](https://waterfootprint.org/) | Datos de huella hídrica (Taller 1) |
+
+## 8. Calendario de sesiones (referencia)
+
+| Semana | Teoría | Laboratorio / Actividad |
+|--------|--------|------------------------|
+| 1 | U1 S1.1: Propiedades del agua, ciclo hidrológico | — |
+| 2 | U1 S1.2: Continuo suelo-planta-atmósfera | — |
+| 3 | U2 S2.1: Propiedades físicas e hidráulicas | **Taller 1** (U1 + inicio U2) |
+| 4 | U2 S2.2: Relaciones masa-volumen | — |
+| 5 | U2 S2.3: Contenido de humedad, CC, PMP | **Salida a terreno** |
+| 6 | U2 S2.4: ADT, AFA, monitoreo | **Taller 2** (U2 completo) |
+| 7 | U3 S3.1: Sistema radical, absorción | — |
+| 8 | U3 S3.2: Xilema, potencial hídrico | — |
+| 9 | U3 S3.3: Transpiración, fotosíntesis | **Taller 3** (U3) |
+| 10 | **Cátedra 1 (U1-U2)** + U4 S4.1: ET conceptos | — |
+| 11 | U4 S4.2: Penman-Monteith, Hargreaves, Kc | — |
+| 12 | U4 S4.3: Plataformas para ET | **Taller 4** (U4) |
+| 13 | **Cátedra 2 (U3-U4)** + U5 S5.1: Frecuencia, tiempo | — |
+| 14 | U5 S5.2: Monitoreo, ajuste del riego | **Taller 5** (U5) |
+| 15 | U6 S6.1: Telemetría, sensores | — |
+| 16 | U6 S6.2: Plataformas digitales | **Taller 6** (U6) |
+| 17 | **Cátedra 3 (U5-U6)** | Repaso general |
+| 18 | — | **Examen final** |
+
+*Las fechas de ejercicios se intercalan según el calendario académico UDLA.*
+
+## 9. Notas finales
+
+Este programa mejorado mantiene la estructura oficial UDLA (unidades, RAAs, ponderaciones) y agrega:
+
+- **Desglose sesión por sesión** con objetivos específicos
+- **6 laboratorios computacionales** (vs. 4 originales) para cubrir todas las unidades con profundidad adecuada
+- **Integración de plataformas digitales chilenas reales** (redmeteo.cl, CNR)
+- **Preguntas de autoevaluación** por unidad para guiar el estudio personal
+- **Alineamiento explícito** entre cada sesión, laboratorio y RAA
+- **Uso de Google Colab + Python** para eliminar barreras de instalación de software

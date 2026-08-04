@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="unidad-02_sesion-01_files/libs/clipboard/clipboard.min.js"></script>
+<script src="unidad-02_sesion-01_files/libs/quarto-html/tabby.min.js"></script>
+<script src="unidad-02_sesion-01_files/libs/quarto-html/popper.min.js"></script>
+<script src="unidad-02_sesion-01_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="unidad-02_sesion-01_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="unidad-02_sesion-01_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="unidad-02_sesion-01_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <title>Unidad 2 — El agua en el suelo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="unidad-02_sesion-01_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="unidad-02_sesion-01_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="unidad-02_sesion-01_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link href="unidad-02_sesion-01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="unidad-02_sesion-01_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="unidad-02_sesion-01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="unidad-02_sesion-01_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Unidad 2 — El agua en el suelo</h1>
+  <p class="subtitle">Sesión 2.1: Propiedades físicas e hidráulicas del suelo</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="recapitulación-de-la-molécula-al-suelo" class="slide level2 center">
+<h2>Recapitulación: de la molécula al suelo</h2>
+<div style="font-size: 0.85em;">
+<p><strong>Unidad 1 — Ideas fuerza:</strong> - El agua es una molécula polar con propiedades excepcionales - El SPAC describe el camino del agua: Suelo → Planta → Atmósfera - El agua se mueve SIEMPRE de mayor a menor potencial hídrico - Chile central tiene déficit hídrico de ~1,000 mm/año → el riego es esencial</p>
+<p><strong>Ahora:</strong> Vamos al primer compartimento del SPAC — <strong>el suelo</strong>.</p>
+</div>
+</section>
+<section id="información-de-la-sesión" class="slide level2 center">
+<h2>Información de la sesión</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Unidad</strong></td>
+<td>2 — El agua en el suelo</td>
+</tr>
+<tr class="even">
+<td><strong>Sesión</strong></td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td><strong>RAA</strong></td>
+<td>RAA2, RAA3</td>
+</tr>
+<tr class="even">
+<td><strong>Duración</strong></td>
+<td>~90 minutos</td>
+</tr>
+<tr class="odd">
+<td><strong>Contenido</strong></td>
+<td>Propiedades físicas e hidráulicas del suelo, energía del agua en el suelo</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="objetivos-de-aprendizaje" class="slide level2 center">
+<h2>Objetivos de aprendizaje</h2>
+<p>Al finalizar esta sesión, serás capaz de:</p>
+<ol type="1">
+<li>Describir las propiedades físicas del suelo relevantes para la retención de agua</li>
+<li>Explicar el concepto de energía del agua en el suelo (potencial hídrico del suelo)</li>
+<li>Interpretar una curva característica de retención de agua para distintos suelos</li>
+<li>Relacionar textura, estructura y porosidad con la capacidad de retención</li>
+<li>Identificar los factores de manejo que modifican la retención de agua</li>
+</ol>
+</section>
+<section id="el-suelo-como-reservorio-de-agua" class="slide level2 center">
+<h2>El suelo como reservorio de agua</h2>
+<p>El suelo es un sistema <strong>trifásico</strong>:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 19%">
+<col style="width: 36%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fase</th>
+<th>Componente</th>
+<th>% en volumen (ideal)</th>
+<th>Función principal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sólida</td>
+<td>Minerales + MO</td>
+<td>~50%</td>
+<td>Soporte, nutrientes, estructura</td>
+</tr>
+<tr class="even">
+<td>Líquida</td>
+<td>Agua + solutos</td>
+<td>~25%</td>
+<td>Transporte, nutrición, refrigeración</td>
+</tr>
+<tr class="odd">
+<td>Gaseosa</td>
+<td>Aire del suelo</td>
+<td>~25%</td>
+<td>Respiración radical, actividad microbiana</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 1em; text-align: center; font-weight: bold;">
+<p>La fase líquida es la que gestionamos con el riego</p>
+</div>
+</section>
+<section id="qué-determina-cuánta-agua-puede-almacenar-un-suelo" class="slide level2 center">
+<h2>¿Qué determina cuánta agua puede almacenar un suelo?</h2>
+<p><strong>Dos propiedades fundamentales:</strong></p>
+<ol type="1">
+<li><strong>Textura</strong> — distribución de tamaño de partículas (arena, limo, arcilla)
+<ul>
+<li>Determina el área superficial total</li>
+<li>Define la proporción de micro, meso y macroporos</li>
+</ul></li>
+<li><strong>Estructura</strong> — cómo se organizan esas partículas en agregados
+<ul>
+<li>Define la macroporosidad y conductividad hidráulica</li>
+<li>Es modificable por manejo (labranza, MO, compactación)</li>
+</ul></li>
+</ol>
+<div style="margin-top: 1em; font-weight: bold; text-align: center;">
+<p>Textura ≈ lo que heredas | Estructura ≈ lo que manejas</p>
+</div>
+</section>
+<section id="textura-del-suelo" class="slide level2 center">
+<h2>Textura del suelo</h2>
+<p><strong>Definición:</strong> Proporción relativa de arena, limo y arcilla en la fracción mineral (&lt; 2 mm).</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 19%">
+<col style="width: 36%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fracción</th>
+<th>Diámetro (mm)</th>
+<th>Área superficial relativa</th>
+<th>Propiedades hídricas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arena</td>
+<td>2.0 - 0.05</td>
+<td>1× (referencia)</td>
+<td>Baja retención, alta permeabilidad</td>
+</tr>
+<tr class="even">
+<td>Limo</td>
+<td>0.05 - 0.002</td>
+<td>~100×</td>
+<td>Retención media, capilaridad</td>
+</tr>
+<tr class="odd">
+<td>Arcilla</td>
+<td>&lt; 0.002</td>
+<td>~1,000-10,000×</td>
+<td>Alta retención, carga eléctrica, adsorción</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.5em; font-size: 0.85em;">
+<p>La arcilla tiene hasta <strong>10,000 veces más área superficial</strong> que la arena. Cada gramo de arcilla puede tener &gt;700 m² de superficie.</p>
+</div>
+</section>
+<section id="área-superficial-la-clave-de-la-retención" class="slide level2 center">
+<h2>Área superficial: la clave de la retención</h2>
+<div style="font-size: 0.9em;">
+<p>El agua se adhiere a las superficies por <strong>adsorción</strong> (fuerzas electrostáticas).</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Textura</th>
+<th>Área superficial (m²/g)</th>
+<th>Retención</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arena gruesa</td>
+<td>&lt; 0.01</td>
+<td>Casi nula</td>
+</tr>
+<tr class="even">
+<td>Arena fina</td>
+<td>0.1 - 1</td>
+<td>Muy baja</td>
+</tr>
+<tr class="odd">
+<td>Limo</td>
+<td>1 - 10</td>
+<td>Baja-media</td>
+</tr>
+<tr class="even">
+<td>Arcilla caolinita</td>
+<td>10 - 30</td>
+<td>Media-alta</td>
+</tr>
+<tr class="odd">
+<td>Arcilla montmorillonita</td>
+<td>700 - 800</td>
+<td>Muy alta</td>
+</tr>
+<tr class="even">
+<td>Materia orgánica (humus)</td>
+<td>500 - 900</td>
+<td>Muy alta</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.5em; font-weight: bold; text-align: center;">
+<p>Más superficie = más agua adsorbida = más agua retenida (pero no toda disponible)</p>
+</div>
+</div>
+</section>
+<section id="las-cargas-eléctricas-de-las-arcillas" class="slide level2 center">
+<h2>Las cargas eléctricas de las arcillas</h2>
+<p>Las arcillas tienen <strong>carga eléctrica negativa permanente</strong> en su superficie:</p>
+<ul>
+<li><strong>Sustitución isomórfica:</strong> Al³⁺ reemplaza Si⁴⁺ en la capa tetraédrica → carga neta negativa</li>
+<li>Esta carga atrae cationes (Ca²⁺, Mg²⁺, K⁺, Na⁺) y moléculas de agua (dipolos)</li>
+<li>Se forma la <strong>doble capa difusa</strong>: capa de cationes hidratados adsorbidos</li>
+</ul>
+<div style="margin-top: 1em; font-size: 0.85em;">
+<p><strong>Consecuencia para el riego:</strong> El agua cercana a la superficie de arcilla está fuertemente retenida (Ψm muy negativo) y NO está disponible para la planta. Por eso un suelo arcilloso retiene más agua total pero no toda es aprovechable.</p>
+</div>
+</section>
+<section id="triángulo-textural-y-clases-texturales" class="slide level2 center">
+<h2>Triángulo textural y clases texturales</h2>
+<div style="font-size: 0.9em;">
+<p>Las <strong>12 clases texturales</strong> se determinan por % arena, % limo, % arcilla.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Clase textural</th>
+<th>Aptitud para retención de agua</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arenoso / Arenoso-franco</td>
+<td>Muy baja</td>
+</tr>
+<tr class="even">
+<td>Franco-arenoso</td>
+<td>Baja</td>
+</tr>
+<tr class="odd">
+<td>Franco</td>
+<td>Media (ideal agrícola)</td>
+</tr>
+<tr class="even">
+<td>Franco-limoso</td>
+<td>Media-alta</td>
+</tr>
+<tr class="odd">
+<td>Franco-arcilloso</td>
+<td>Alta</td>
+</tr>
+<tr class="even">
+<td>Arcilloso</td>
+<td>Muy alta (pero baja disponibilidad relativa)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="margin-top: 1em;">
+<p><strong>Regla práctica:</strong> Los suelos <strong>francos</strong> tienen el mejor balance retención-disponibilidad.</p>
+</div>
+</section>
+<section id="estructura-del-suelo" class="slide level2 center">
+<h2>Estructura del suelo</h2>
+<p><strong>Definición:</strong> Organización de partículas primarias en agregados (peds) con formas y tamaños definidos.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 26%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo estructural</th>
+<th>Descripción</th>
+<th>Efecto en el agua</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Granular</strong></td>
+<td>Agregados esféricos pequeños (1-10 mm)</td>
+<td>Excelente: buena infiltración y drenaje</td>
+</tr>
+<tr class="even">
+<td><strong>Bloques angulares</strong></td>
+<td>Agregados cúbicos con caras planas</td>
+<td>Buena: infiltración moderada</td>
+</tr>
+<tr class="odd">
+<td><strong>Prismática</strong></td>
+<td>Columnas verticales</td>
+<td>Regular: puede canalizar agua</td>
+</tr>
+<tr class="even">
+<td><strong>Laminar</strong></td>
+<td>Placas horizontales</td>
+<td>Mala: restringe infiltración y raíces</td>
+</tr>
+<tr class="odd">
+<td><strong>Sin estructura</strong></td>
+<td>Masivo, partículas sueltas</td>
+<td>Muy mala: compactación</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tamaño-de-poros-y-función" class="slide level2 center">
+<h2>Tamaño de poros y función</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 22%">
+<col style="width: 14%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo de poro</th>
+<th>Diámetro (μm)</th>
+<th>Función</th>
+<th>¿Retiene agua disponible?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Macroporos</strong></td>
+<td>&gt; 30</td>
+<td>Drenaje, aireación, infiltración</td>
+<td>No (drena por gravedad)</td>
+</tr>
+<tr class="even">
+<td><strong>Mesoporos</strong></td>
+<td>0.2 - 30</td>
+<td><strong>Retención de agua disponible</strong></td>
+<td><strong>Sí</strong> (capilaridad)</td>
+</tr>
+<tr class="odd">
+<td><strong>Microporos</strong></td>
+<td>&lt; 0.2</td>
+<td>Retención de agua no disponible</td>
+<td>No (adsorbida fuertemente)</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 1em; text-align: center; font-weight: bold;">
+<p>Un suelo ideal tiene balance de los tres: drena el exceso, retiene lo útil, almacena reserva.</p>
+</div>
+</section>
+<section id="energía-del-agua-en-el-suelo" class="slide level2 center">
+<h2>Energía del agua en el suelo</h2>
+<p>En la Unidad 1 vimos: <span class="math inline">\(\Psi_{total} = \Psi_m + \Psi_o + \Psi_g + \Psi_p\)</span></p>
+<p>En el <strong>suelo no saturado</strong>, el potencial mátrico (<span class="math inline">\(\Psi_m\)</span>) domina:</p>
+<p><strong>Dos mecanismos de retención:</strong> 1. <strong>Capilaridad:</strong> agua retenida en poros por tensión superficial. La altura de ascenso capilar ∝ 1/diámetro del poro. 2. <strong>Adsorción:</strong> agua unida electrostáticamente a superficies de arcilla y MO. Forma películas de pocas moléculas de espesor.</p>
+<div style="margin-top: 1em;">
+<p><span class="math inline">\(\Psi_m\)</span> es <strong>siempre negativo</strong> en suelo no saturado — el suelo “chupa” el agua.</p>
+</div>
+</section>
+<section id="potencial-mátrico-el-concepto-de-succión" class="slide level2 center">
+<h2>Potencial mátrico: el concepto de succión</h2>
+<p><strong>Succión del suelo</strong> = <span class="math inline">\(-\Psi_m\)</span> (valor positivo en kPa)</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Ψm (kPa)</th>
+<th>Succión (kPa)</th>
+<th>¿Qué significa?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>Sin succión — suelo saturado</td>
+</tr>
+<tr class="even">
+<td>-10</td>
+<td>10</td>
+<td>Succión baja — macroporos ya drenaron</td>
+</tr>
+<tr class="odd">
+<td>-33</td>
+<td>33</td>
+<td><strong>Capacidad de campo</strong></td>
+</tr>
+<tr class="even">
+<td>-100</td>
+<td>100</td>
+<td>El agua solo está en mesoporos finos</td>
+</tr>
+<tr class="odd">
+<td>-500</td>
+<td>500</td>
+<td>Queda poca agua disponible</td>
+</tr>
+<tr class="even">
+<td>-1500</td>
+<td>1500</td>
+<td><strong>PMP</strong> — la planta no puede extraer más</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 1em; font-size: 0.85em;">
+<p>La relación entre Ψm y θ es la <strong>curva característica de retención</strong> — la “huella digital hídrica” del suelo.</p>
+</div>
+</section>
+<section id="curva-característica-de-retención-de-agua" class="slide level2 center">
+<h2>Curva característica de retención de agua</h2>
+<p><span class="math display">\[ \theta = f(\Psi_m) \]</span></p>
+<p><strong>¿Qué nos dice la curva?</strong> - Para cada Ψm → cuánta agua queda en el suelo (θ) - La forma de la curva depende de la textura y estructura - Dos suelos con la misma θ pueden tener distinto Ψm (distinta disponibilidad)</p>
+<p><strong>Puntos clave en la curva:</strong> - Ψm = 0 → Saturación (θ = porosidad total) - Ψm = -33 kPa → CC (θ = agua retenida contra gravedad) - Ψm = -1500 kPa → PMP (θ = agua no disponible)</p>
+</section>
+<section id="comparación-de-curvas-por-textura" class="slide level2 center">
+<h2>Comparación de curvas por textura</h2>
+<div style="font-size: 0.9em;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Ψm (kPa)</th>
+<th>θ arenoso</th>
+<th>θ franco</th>
+<th>θ arcilloso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0 (Sat)</td>
+<td>0.42</td>
+<td>0.48</td>
+<td>0.55</td>
+</tr>
+<tr class="even">
+<td>-33 (CC)</td>
+<td>0.12</td>
+<td>0.30</td>
+<td>0.40</td>
+</tr>
+<tr class="odd">
+<td>-1500 (PMP)</td>
+<td>0.03</td>
+<td>0.11</td>
+<td>0.21</td>
+</tr>
+<tr class="even">
+<td><strong>ADT (CC-PMP)</strong></td>
+<td><strong>0.09</strong></td>
+<td><strong>0.19</strong></td>
+<td><strong>0.19</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observación clave:</strong> El suelo arcilloso retiene más agua total que el arenoso, pero el franco y el arcilloso tienen el MISMO ADT. ¿Por qué? Porque el arcilloso también retiene más agua en PMP.</p>
+</div>
+</section>
+<section id="histéresis-secado-humedecimiento" class="slide level2 center">
+<h2>Histéresis: secado ≠ humedecimiento</h2>
+<div style="font-size: 0.9em;">
+<p>La curva de retención NO es única: depende de si el suelo se está secando o humedeciendo.</p>
+<p><strong>Causas de la histéresis:</strong> 1. <strong>Efecto “cuello de botella” (ink-bottle):</strong> poros con entrada estrecha y cuerpo ancho. El agua entra fácil pero sale con dificultad. 2. <strong>Ángulo de contacto:</strong> diferente en avance (mojado) vs.&nbsp;retroceso (secado). 3. <strong>Aire atrapado:</strong> burbujas de aire que quedan ocluidas durante el humedecimiento.</p>
+<p><strong>Consecuencia práctica:</strong> Para un mismo Ψm, el suelo en proceso de secado contiene MÁS agua que en proceso de humedecimiento.</p>
+</div>
+</section>
+<section id="factores-que-afectan-la-retención-de-agua" class="slide level2 center">
+<h2>Factores que afectan la retención de agua</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 29%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Efecto</th>
+<th>Mecanismo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>↑ Arcilla</strong></td>
+<td>↑ Retención total, ↑ PMP</td>
+<td>Mayor área superficial y microporosidad</td>
+</tr>
+<tr class="even">
+<td><strong>↑ Materia orgánica</strong></td>
+<td>↑↑ Agua disponible</td>
+<td>MO retiene 3-5× su peso; crea mesoporos</td>
+</tr>
+<tr class="odd">
+<td><strong>Buena estructura</strong></td>
+<td>↑ Agua disponible</td>
+<td>Más mesoporos = más agua capilar</td>
+</tr>
+<tr class="even">
+<td><strong>Compactación</strong></td>
+<td>↓↓ Infiltración, ↓ agua disponible</td>
+<td>Destruye macroporos; reduce porosidad total</td>
+</tr>
+<tr class="odd">
+<td><strong>↑ Profundidad</strong></td>
+<td>↑ Reservorio total (mm)</td>
+<td>Más volumen de suelo explorable</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="materia-orgánica-el-mejor-mejorador-de-la-retención" class="slide level2 center">
+<h2>Materia orgánica: el mejor mejorador de la retención</h2>
+<div style="font-size: 0.9em;">
+<p>La MO es el factor de manejo más potente para mejorar la retención de agua:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 21%">
+<col style="width: 19%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Efecto de ↑ 1% de MO</th>
+<th>Suelo arenoso</th>
+<th>Suelo franco</th>
+<th>Suelo arcilloso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>↑ Agua disponible</td>
+<td>+15-20 mm/m</td>
+<td>+10-15 mm/m</td>
+<td>+5-10 mm/m</td>
+</tr>
+<tr class="even">
+<td>↑ Capacidad de campo</td>
+<td>+2-4% θv</td>
+<td>+1-3% θv</td>
+<td>+1-2% θv</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mecanismo:</strong> La MO forma agregados estables → crea mesoporosidad. Además, el humus adsorbe agua (superficie ~700 m²/g).</p>
+<p><strong>Práctica:</strong> Incorporar rastrojos, compost, abonos verdes, reducir labranza.</p>
+</div>
+</section>
+<section id="compactación-el-enemigo-del-agua-en-el-suelo" class="slide level2 center">
+<h2>Compactación: el enemigo del agua en el suelo</h2>
+<div style="font-size: 0.9em;">
+<p><strong>La compactación reduce la porosidad total y elimina macroporos:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Indicador</th>
+<th>Suelo no compactado</th>
+<th>Suelo compactado</th>
+<th>Cambio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Da (g/cm³)</td>
+<td>1.35</td>
+<td>1.70</td>
+<td>↑ 26%</td>
+</tr>
+<tr class="even">
+<td>Porosidad (%)</td>
+<td>49</td>
+<td>36</td>
+<td>↓ 27%</td>
+</tr>
+<tr class="odd">
+<td>Infiltración (mm/h)</td>
+<td>25</td>
+<td>5</td>
+<td>↓ 80%</td>
+</tr>
+<tr class="even">
+<td>ADT (mm/m)</td>
+<td>190</td>
+<td>140</td>
+<td>↓ 26%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Causas:</strong> Tráfico de maquinaria pesada, labranza repetida a misma profundidad (pie de arado), sobrepastoreo.</p>
+<p><strong>Solución:</strong> Labranza vertical, subsolado, cultivos de raíz profunda, control de tráfico.</p>
+</div>
+</section>
+<section id="caso-chileno-suelos-de-la-zona-central" class="slide level2 center">
+<h2>Caso chileno: suelos de la zona central</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Serie de suelo</th>
+<th>Textura superficial</th>
+<th>Da (g/cm³)</th>
+<th>CC (cm³/cm³)</th>
+<th>PMP (cm³/cm³)</th>
+<th>ADT (cm³/cm³)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Santiago</td>
+<td>Franco</td>
+<td>1.32</td>
+<td>0.30</td>
+<td>0.14</td>
+<td>0.16</td>
+</tr>
+<tr class="even">
+<td>Maipo</td>
+<td>Franco-arenoso</td>
+<td>1.45</td>
+<td>0.22</td>
+<td>0.09</td>
+<td>0.13</td>
+</tr>
+<tr class="odd">
+<td>Colina</td>
+<td>Franco-arcilloso</td>
+<td>1.20</td>
+<td>0.35</td>
+<td>0.18</td>
+<td>0.17</td>
+</tr>
+<tr class="even">
+<td>Chicureo</td>
+<td>Arenoso-franco</td>
+<td>1.55</td>
+<td>0.18</td>
+<td>0.06</td>
+<td>0.12</td>
+</tr>
+</tbody>
+</table>
+<div style="font-size: 0.75em; margin-top: 0.5em; color: #888;">
+<p>Datos orientativos. Fuente: CIREN, Estudio Agrológico RM.</p>
+</div>
+</section>
+<section id="ejercicio-en-clase" class="slide level2 center">
+<h2>Ejercicio en clase</h2>
+<p><strong>Problema:</strong> Compara dos suelos de un mismo predio:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Suelo A</th>
+<th>Suelo B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Textura</td>
+<td>Franco-arenoso</td>
+<td>Franco-arcilloso</td>
+</tr>
+<tr class="even">
+<td>Da (g/cm³)</td>
+<td>1.50</td>
+<td>1.15</td>
+</tr>
+<tr class="odd">
+<td>CC (cm³/cm³)</td>
+<td>0.20</td>
+<td>0.38</td>
+</tr>
+<tr class="even">
+<td>PMP (cm³/cm³)</td>
+<td>0.07</td>
+<td>0.19</td>
+</tr>
+<tr class="odd">
+<td>MO (%)</td>
+<td>1.2</td>
+<td>3.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Responda:</strong> 1. ¿Cuál tiene más agua total a CC? ¿Y más agua disponible (ADT)? 2. ¿Qué explica la diferencia de MO? 3. Si Ud. fuera a cultivar lechugas (p=0.30), ¿en cuál suelo regaría menos frecuentemente?</p>
+</section>
+<section id="vocabulario-clave" class="slide level2 center">
+<h2>Vocabulario clave</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Textura</td>
+<td>Proporción de arena, limo y arcilla</td>
+</tr>
+<tr class="even">
+<td>Estructura</td>
+<td>Organización de partículas en agregados</td>
+</tr>
+<tr class="odd">
+<td>Área superficial específica</td>
+<td>Superficie total por gramo de suelo (m²/g)</td>
+</tr>
+<tr class="even">
+<td>Potencial mátrico (Ψm)</td>
+<td>Energía del agua debida a la matriz del suelo</td>
+</tr>
+<tr class="odd">
+<td>Curva característica</td>
+<td>Relación θ(Ψm) — huella digital hídrica</td>
+</tr>
+<tr class="even">
+<td>Histéresis</td>
+<td>Diferencia entre curva de secado y humedecimiento</td>
+</tr>
+<tr class="odd">
+<td>Mesoporos</td>
+<td>Poros de 0.2-30 μm que retienen agua disponible</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resumen-de-conceptos-clave" class="slide level2 center">
+<h2>Resumen de conceptos clave</h2>
+<ol type="1">
+<li><p>El suelo es <strong>trifásico</strong>: sólidos (50%), agua (25%), aire (25%)</p></li>
+<li><p>La <strong>textura</strong> define el área superficial y la distribución de tamaños de poro</p></li>
+<li><p>La <strong>estructura</strong> define la macroporosidad — es modificable por manejo</p></li>
+<li><p>El <strong>potencial mátrico</strong> (<span class="math inline">\(\Psi_m\)</span>) es la fuerza con que el suelo retiene el agua — más negativo = más seco</p></li>
+<li><p>La <strong>curva característica</strong> <span class="math inline">\(\theta(\Psi_m)\)</span> es única para cada suelo: define cuánta agua hay a cada succión</p></li>
+<li><p>Los puntos clave: <strong>Saturación (0 kPa) → CC (-33 kPa) → PMP (-1500 kPa)</strong></p></li>
+<li><p>La <strong>materia orgánica</strong> es la herramienta más efectiva para mejorar la retención de agua disponible</p></li>
+</ol>
+</section>
+<section id="para-la-próxima-sesión" class="slide level2 center">
+<h2>Para la próxima sesión</h2>
+<p><strong>Sesión 2.2:</strong> Relaciones masa-volumen de suelo</p>
+<p>→ Densidad aparente (Da), densidad real (Dr), porosidad total. → ¿Cómo medimos cuantitativamente lo que hoy describimos cualitativamente?</p>
+<p><strong>Taller 1</strong> (Google Colab): Abre <code>taller-01.ipynb</code> — huella hídrica + Da + porosidad.</p>
+</section>
+<section id="preguntas-de-autoevaluación" class="slide level2 center">
+<h2>Preguntas de autoevaluación</h2>
+<ol type="1">
+<li><p>¿Por qué un suelo arcilloso retiene más agua total que uno arenoso, pero no necesariamente más agua disponible?</p></li>
+<li><p>¿Cuál es la diferencia entre textura y estructura? ¿Cuál de las dos puede modificar un agricultor?</p></li>
+<li><p>¿Qué significa que el potencial mátrico sea -100 kPa? ¿Está el suelo húmedo o seco?</p></li>
+<li><p>¿Por qué la curva de retención tiene histéresis? ¿Qué implicancia práctica tiene?</p></li>
+<li><p>¿Cómo afecta aumentar 1% la materia orgánica en un suelo arenoso? Dé valores concretos.</p></li>
+<li><p>Un suelo tiene estructura laminar en superficie. ¿Qué problema de infiltración esperaría?</p></li>
+<li><p>Dibuje aproximadamente las curvas de retención de un suelo arenoso, uno franco y uno arcilloso en un mismo gráfico θ vs.&nbsp;log(Ψm).</p></li>
+</ol>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>TAG2027 — Relación Suelo Agua Planta | UDLA</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="unidad-02_sesion-01_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="unidad-02_sesion-01_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
