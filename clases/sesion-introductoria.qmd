@@ -412,8 +412,8 @@ La modalidad semipresencial requiere **compromiso con el trabajo personal** (108
 ✅ Revisa el [programa del curso](https://github.com/frzambra/RSPA-TAG-UDLA)  
 ✅ Asegúrate de tener una **cuenta de Google** (para Colab)  
 ✅ Navega por el repositorio de GitHub para familiarizarte  
-✅ Lee la **lectura complementaria** de la Unidad 1:  
-  *"Características de la molécula de agua y su importancia en la relación suelo-agua-planta-atmósfera"*
+✅ Lee la **lectura complementaria** de la Unidad 1:
+  *"[Características de la molécula de agua y su importancia en la relación suelo-agua-planta-atmósfera](../material/lecturas/lectura-01-molecula-agua.html)"*
 :::
 
 ::: {style="text-align: center; margin-top: 2em;"}
