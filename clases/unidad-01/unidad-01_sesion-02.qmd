@@ -14,12 +14,12 @@ execute:
 ## Recapitulación sesión anterior {.center}
 
 ::: {style="font-size: 0.85em;"}
-**Sesión 1.1 — Ideas fuerza:**
-1. El agua es una molécula polar con propiedades excepcionales
-2. El ciclo hidrológico define la disponibilidad de agua en cada zona
-3. En Chile, la agricultura consume >80% del agua — principalmente en la zona central
-4. La huella hídrica mide cuánta agua "cuesta" producir cada cultivo
-5. Chile exporta ~11,000 millones de m³ de agua virtual al año
+**Sesión 1.1 — Ideas fuerza:**  
+1. El agua es una molécula polar con propiedades excepcionales  
+2. El ciclo hidrológico define la disponibilidad de agua en cada zona  
+3. En Chile, la agricultura consume >80% del agua — principalmente en la zona central  
+4. La huella hídrica mide cuánta agua "cuesta" producir cada cultivo  
+5. Chile exporta ~11,000 millones de m³ de agua virtual al año  
 
 **Hoy:** ¿Cómo se mueve el agua dentro del sistema? → El SPAC
 :::
@@ -91,6 +91,19 @@ $$
 
 :::
 :::
+
+
+---
+
+## Transporte de agua suelo-raíz via simplasto
+
+![](../../images/transporte_agua_simplasto.png){fig-align="center"}
+
+---
+
+## Transporte de agua suelo-raíz via apoplasto
+
+![](../../images/transporte_agua_apoplasto.png){fig-align="center"}
 
 
 ---
@@ -242,7 +255,7 @@ Los estomas son la **llave que regula todo el sistema**.
 
 ---
 
-## Resistencia al flujo de agua en el SPAC {.center}
+## Resistencia al flujo de agua en el SPAC {.center .smaller}
 
 **Analogía con la ley de Ohm:**
 
@@ -256,6 +269,12 @@ $$R_{total} = R_{suelo} + R_{raiz} + R_{xilema} + R_{hoja} + R_{estomatica} + R_
 | Rcapa límite | Alta (sin viento) | Velocidad de viento |
 | Rxilema | Baja-media | Anatomía de la planta |
 | Rsuelo-raíz | Media | Contenido de agua del suelo |
+
+---
+
+## Resistencia al flujo de agua en el SPAC {.center .smaller}
+
+![](../../images/analogia_ley_de_ohm.png){fig-align="center" with=100%}
 
 ---
 

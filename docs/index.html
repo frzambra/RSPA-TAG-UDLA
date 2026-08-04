@@ -657,12 +657,15 @@
 
     .ac-unit.open::before { width: 6px; }
 
-    .ac-unit:nth-child(1)::before { background: linear-gradient(180deg, var(--color-water-500), var(--color-water-400)); }
-    .ac-unit:nth-child(2)::before { background: linear-gradient(180deg, var(--color-soil-600), var(--color-soil-400)); }
-    .ac-unit:nth-child(3)::before { background: linear-gradient(180deg, var(--color-plant-500), var(--color-plant-400)); }
-    .ac-unit:nth-child(4)::before { background: linear-gradient(180deg, var(--color-accent), #E8C547); }
-    .ac-unit:nth-child(5)::before { background: linear-gradient(180deg, var(--color-water-600), var(--color-water-400)); }
-    .ac-unit:nth-child(6)::before { background: linear-gradient(180deg, #7B68EE, #9B8FF0); }
+    .ac-unit--intro::before { background: linear-gradient(180deg, #E8C547, var(--color-plant-400)); }
+    .ac-unit:nth-child(2)::before { background: linear-gradient(180deg, var(--color-water-500), var(--color-water-400)); }
+    .ac-unit:nth-child(3)::before { background: linear-gradient(180deg, var(--color-soil-600), var(--color-soil-400)); }
+    .ac-unit:nth-child(4)::before { background: linear-gradient(180deg, var(--color-plant-500), var(--color-plant-400)); }
+    .ac-unit:nth-child(5)::before { background: linear-gradient(180deg, var(--color-accent), #E8C547); }
+    .ac-unit:nth-child(6)::before { background: linear-gradient(180deg, var(--color-water-600), var(--color-water-400)); }
+    .ac-unit:nth-child(7)::before { background: linear-gradient(180deg, #7B68EE, #9B8FF0); }
+
+    .raa-tag--intro { background: #FEF3C7; color: #92400E; }
 
     .ac-emoji {
       font-size: 2rem;
@@ -1225,11 +1228,11 @@
           </div>
         </div>
         <div class="hero-cta">
-          <a href="#unidades" class="btn btn-primary">
-            <span>📖</span> Explorar unidades
+          <a href="clases/sesion-introductoria.html" class="btn btn-primary">
+            <span>👋</span> Sesión Introductoria
           </a>
-          <a href="material/programa-mejorado.html" class="btn btn-secondary">
-            <span>📋</span> Ver programa completo
+          <a href="#unidades" class="btn btn-secondary">
+            <span>📖</span> Explorar unidades
           </a>
           <a href="https://github.com/frzambra/RSPA-TAG-UDLA" class="btn btn-outline">
             <span>🔗</span> GitHub
@@ -1311,6 +1314,45 @@
       </div>
 
       <div class="accordion" id="accordion">
+
+        <!-- ── Sesión Introductoria ── -->
+        <div class="ac-unit ac-unit--intro fade-in">
+          <button class="ac-header" aria-expanded="false">
+            <span class="ac-emoji">👋</span>
+            <div class="ac-info">
+              <h3>Sesión Introductoria — Bienvenida al curso</h3>
+              <div class="ac-meta">
+                <span>Programa, profesor y dinámica</span>
+                <span class="raa-tag raa-tag--intro">Inicio</span>
+              </div>
+            </div>
+            <svg class="ac-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="ac-body">
+            <div class="ac-sessions">
+              <a href="clases/sesion-introductoria.html" class="ac-session">
+                <span class="ac-session-icon ac-session-icon--ready">📖</span>
+                <div class="ac-session-text">
+                  <strong>Sesión Introductoria</strong>
+                  <span>Bienvenida, presentación del programa y del profesor</span>
+                </div>
+                <span class="ac-session-badge ac-session-badge--ready">Disponible</span>
+                <span class="ac-session-link-icon">🔗</span>
+              </a>
+              <a href="https://francisco-zambrano.cl" class="ac-session" target="_blank" rel="noopener">
+                <span class="ac-session-icon ac-session-icon--ready">👨‍🏫</span>
+                <div class="ac-session-text">
+                  <strong>Profesor</strong>
+                  <span>Francisco Zambrano — francisco-zambrano.cl</span>
+                </div>
+                <span class="ac-session-badge ac-session-badge--ready">Web</span>
+                <span class="ac-session-link-icon">🔗</span>
+              </a>
+            </div>
+          </div>
+        </div>
 
         <!-- ── Unidad 1 ── -->
         <div class="ac-unit fade-in">

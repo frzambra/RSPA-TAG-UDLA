@@ -1,0 +1,446 @@
+---
+title: "TAG2027 — Relación Suelo Agua Planta"
+subtitle: "Sesión introductoria: bienvenida, programa y presentación del curso"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+    width: 1280
+    height: 720
+    margin: 0.1
+    center: true
+    transition: slide
+execute:
+  echo: false
+---
+
+## Bienvenida {.center}
+
+::: {style="font-size: 1.6em; font-weight: 300;"}
+**TAG2027 — Relación Suelo Agua Planta**
+:::
+
+::: {style="font-size: 1.1em; margin-top: 1em;"}
+Técnico de Nivel Superior Agrícola
+Facultad de Medicina Veterinaria y Agronomía
+Universidad de Las Américas
+:::
+
+::: {style="margin-top: 2em; font-size: 0.9em; color: #666;"}
+Semestre 202610 · Modalidad Semipresencial Vespertino
+:::
+
+---
+
+## ¿Quién es tu profesor? {.center .smaller}
+
+<div class="columns">
+
+<div class="column" style="width:40%;">
+
+![](https://francisco-zambrano.cl/img/foto_perfil.jpeg){width="220px" style="border-radius: 50%;"}
+
+**Francisco Zambrano, Dr.**
+
+</div>
+
+<div class="column" style="width:60%;">
+
+- **Doctor en Ingeniería Agrícola** — especialización en recursos hídricos y teledetección
+- **Científico de datos espaciales** aplicado a agricultura y agua
+- **Investigador** en variabilidad climática, sequías y dinámica de vegetación
+- **Desarrollador open-source** — R, Python, geocomputación
+
+| Plataforma | Enlace |
+|-----------|--------|
+| 🌐 Web | [francisco-zambrano.cl](https://francisco-zambrano.cl) |
+| 🔬 Google Scholar | [Perfil académico](https://scholar.google.com/citations?user=mKQRdOEAAAAJ) |
+| 💻 GitHub | [@frzambra](https://github.com/frzambra) |
+
+</div>
+
+</div>
+
+---
+
+## Mi enfoque como docente {.center}
+
+::: {style="font-size: 0.95em;"}
+> *"Tender puentes entre los datos, la ciencia y las decisiones
+> para una gestión más informada de nuestros recursos hídricos."*
+:::
+
+::: {style="font-size: 0.85em; margin-top: 1.5em;"}
+**Lo que valoro en este curso:**  
+- 🧮 **Cálculo aplicado** — las ecuaciones cobran sentido con datos reales  
+- 💻 **Herramientas computacionales** — Python y R como aliados, no como obstáculos  
+- 🌍 **Contexto chileno** — trabajamos con datos y problemas de nuestra agricultura  
+- 🤝 **Aprendizaje activo** — se aprende haciendo, preguntando y discutiendo  
+- 📊 **Evidencia sobre opinión** — las decisiones de riego se respaldan con datos  
+:::
+
+---
+
+## Identificación de la asignatura {.center}
+
+::: {style="font-size: 0.9em;"}
+| Campo | Valor |
+|-------|-------|
+| **Código** | TAG2027 |
+| **Nombre** | Relación Suelo Agua Planta |
+| **Facultad** | Medicina Veterinaria y Agronomía |
+| **Carrera** | Técnico de Nivel Superior Agrícola |
+| **Créditos** | 6 SCUDLA |
+| **Modalidad** | Semipresencial Vespertino |
+| **Horas totales** | 162 (36 teóricas + 18 ayudantía + 108 trabajo personal) |
+| **Laboratorios** | 6 talleres computacionales (18h) + 1 salida a terreno |
+| **Vigencia** | Desde 202610 (febrero 2026) |
+:::
+
+---
+
+## ¿De qué trata este curso? {.center .smaller}
+
+El curso recorre el **camino del agua** a través del sistema:
+
+::: {style="font-size: 1.3em; text-align: center; margin: 1em 0;"}
+🌤️ **Atmósfera** → 🌱 **Planta** → 🟫 **Suelo** → 💧 **Riego**
+:::
+
+::: {style="font-size: 0.9em;"}
+1. El agua entra al suelo (infiltración, almacenamiento)
+2. Las raíces la absorben (potencial hídrico, conductividad hidráulica)
+3. El xilema la transporta hacia las hojas (continuo SPA)
+4. Los estomas la liberan como vapor (transpiración)
+5. El agricultor repone lo perdido (riego)
+:::
+
+::: {.callout-tip}
+## Objetivo central
+Aprender a **programar el riego** entendiendo los procesos físicos y biológicos que lo determinan.
+:::
+
+---
+
+## ¿Por qué es importante este curso? {.center}
+
+::: {style="font-size: 0.9em;"}
+- 🌎 **70% del agua dulce** se usa en agricultura a nivel global
+- 🇨🇱 Chile enfrenta la **megasequía más larga de su historia** (desde 2010)
+- 📉 La disponibilidad de agua para riego **disminuye cada año**
+- 💰 El riego eficiente **reduce costos** y **aumenta rendimientos**
+- 🔧 El técnico agrícola moderno necesita **dominar herramientas digitales** de gestión hídrica
+:::
+
+::: {.callout-important}
+## Dato clave
+Un riego mal programado puede significar **pérdidas de 30-50% de agua** y **reducciones de rendimiento de 10-40%**.
+:::
+
+---
+
+## Estructura del curso — 6 Unidades {.center}
+
+| Unidad | Tema | RAA | Sesiones |
+|--------|------|-----|----------|
+| 💧 **U1** | El agua en la producción agrícola | RAA1 | 2 |
+| 🟫 **U2** | El agua en el suelo | RAA2-4 | 4 |
+| 🌱 **U3** | El agua en la planta | RAA5 | 3 |
+| 📐 **U4** | Requerimiento hídrico de los cultivos | RAA6 | 3 |
+| 📅 **U5** | Programación de riego | RAA7 | 2 |
+| 📡 **U6** | Tecnologías de monitoreo y control | RAA8-10 | 2 |
+
+::: {style="font-size: 0.85em; margin-top: 1em;"}
+Cada unidad combina **clases teóricas, ejercicios de cálculo y laboratorios computacionales**.
+:::
+
+---
+
+## Unidad 1 — El agua en la producción agrícola {.center}
+
+**RAA1:** Explicar la importancia del agua en la agricultura, sus propiedades y funciones en el sistema SPA.
+
+::: {style="font-size: 0.85em;"}
+| Sesión | Contenido |
+|--------|-----------|
+| **1.1** | Propiedades del agua, ciclo hidrológico, huella hídrica, contexto Chile |
+| **1.2** | Continuo suelo-planta-atmósfera, potencial hídrico, introducción al riego |
+
+**Laboratorio asociado:** Taller 1 — Huella hídrica y propiedades físicas del suelo
+:::
+
+---
+
+## Unidad 2 — El agua en el suelo {.center}
+
+**RAA2-4:** Caracterizar el continuo suelo-agua, factores del contenido de agua, redistribución y constantes hídricas.
+
+::: {style="font-size: 0.85em;"}
+| Sesión | Contenido |
+|--------|-----------|
+| **2.1** | Propiedades físicas e hidráulicas del suelo |
+| **2.2** | Relaciones masa-volumen: Da, Dr, porosidad |
+| **2.3** | Contenido de humedad: θg, θv, CC, PMP |
+| **2.4** | ADT, AFA, monitoreo de humedad de suelo |
+
+**Laboratorio asociado:** Taller 2 — Contenido de agua en el suelo (curvas de retención)
+:::
+
+---
+
+## Unidad 3 — El agua en la planta {.center}
+
+**RAA5:** Caracterizar procesos de absorción radical, transporte xilemático y transpiración.
+
+::: {style="font-size: 0.85em;"}
+| Sesión | Contenido |
+|--------|-----------|
+| **3.1** | Sistema radical, xilema y absorción de agua |
+| **3.2** | Potencial hídrico y sus componentes |
+| **3.3** | Transpiración, fotosíntesis y eficiencia de uso del agua (WUE) |
+
+**Laboratorio asociado:** Taller 3 — Potencial hídrico, transpiración y WUE
+:::
+
+---
+
+## Unidad 4 — Requerimiento hídrico {.center}
+
+**RAA6:** Aplicar procesos de evapotranspiración en ejercicios de cálculo de ETo y ETc.
+
+::: {style="font-size: 0.85em;"}
+| Sesión | Contenido |
+|--------|-----------|
+| **4.1** | Evapotranspiración: conceptos, definiciones y factores |
+| **4.2** | ETo por Penman-Monteith (FAO-56) y Hargreaves-Samani |
+| **4.3** | Coeficientes de cultivo (Kc) y ETc |
+
+**Laboratorio asociado:** Taller 4 — Cálculo de Penman-Monteith y Hargreaves
+:::
+
+---
+
+## Unidad 5 — Programación de riego {.center}
+
+**RAA7:** Calcular frecuencia y duración del riego para múltiples cultivos.
+
+::: {style="font-size: 0.85em;"}
+| Sesión | Contenido |
+|--------|-----------|
+| **5.1** | Frecuencia de riego, lámina neta, tiempo de aplicación |
+| **5.2** | Balance hídrico del suelo y calendario de riego |
+
+**Laboratorio asociado:** Taller 5 — Balance hídrico y calendario de riego
+:::
+
+---
+
+## Unidad 6 — Tecnologías de monitoreo y control {.center}
+
+**RAA8-10:** Utilizar tecnologías para monitoreo hídrico, caracterizar estaciones meteorológicas e identificar sistemas informáticos de registro.
+
+::: {style="font-size: 0.85em;"}
+| Sesión | Contenido |
+|--------|-----------|
+| **6.1** | Telemetría y sensores de humedad de suelo |
+| **6.2** | Plataformas digitales, interpretación de datos y automatización |
+
+**Laboratorio asociado:** Taller 6 — Plataformas, sensores y telemetría
+:::
+
+---
+
+## Sistema de evaluación {.center}
+
+<div class="columns">
+
+<div class="column" style="width:33.3%; text-align:center; padding:1em; background:#EBF5FB; border-radius:12px;">
+
+### 🏆 Examen
+## 35%
+Examen final
+(Todas las unidades)
+
+</div>
+
+<div class="column" style="width:33.3%; text-align:center; padding:1em; background:#E8F5E9; border-radius:12px;">
+
+### 📝 Cátedras
+## 45%
+C1 (U1-U2)
+C2 (U3-U4)
+C3 (U5-U6)
+
+</div>
+
+<div class="column" style="width:33.3%; text-align:center; padding:1em; background:#FEF3C7; border-radius:12px;">
+
+### 💻 Ejercicios
+## 20%
+E1 (U1-U2)
+E2 (U3)
+E3 (U4)
+E4 (U5)
+
+</div>
+
+</div>
+
+::: {style="font-size: 0.85em; margin-top: 1.5em; text-align: center;"}
+Cada ejercicio está **vinculado a un taller de laboratorio**.
+:::
+
+---
+
+## Laboratorios computacionales {.center}
+
+::: {style="font-size: 0.85em;"}
+| # | Taller | Unidad | Herramienta |
+|---|--------|--------|-------------|
+| 1 | Huella hídrica, Da, porosidad, θg | U1-U2 | 🐍 Python · Google Colab |
+| 2 | θv, CC, PMP, ADT, AFA, curvas de retención | U2 | 🐍 Python · Google Colab |
+| 3 | Potencial hídrico, transpiración, WUE | U3 | 🐍 Python · Google Colab |
+| 4 | Penman-Monteith, Hargreaves, Kc, ETc | U4 | 🐍 Python · Google Colab |
+| 5 | Balance hídrico, frecuencia, calendario | U5 | 🐍 Python · Google Colab |
+| 6 | Sensores, telemetría, dashboards | U6 | 🐍 Python · Google Colab |
+| 🥾 | Salida a terreno: medición de humedad | U2-U3 | Sensor FDR portátil |
+:::
+
+::: {.callout-tip}
+## Cero instalación
+Cada taller se abre con un **badge de Google Colab**. Solo necesitas un navegador y una cuenta de Google.
+:::
+
+---
+
+## Herramientas del curso {.center}
+
+<div class="columns">
+
+<div class="column" style="width:50%;">
+
+### 📚 Para las clases teóricas
+- **Quarto + reveal.js** → diapositivas interactivas
+- **R + ggplot2** → gráficos y análisis
+- Ecuaciones en **LaTeX**
+- Todo el material en **GitHub**
+
+### 💻 Para los laboratorios
+- **Google Colab** → notebooks en la nube
+- **Python** (numpy, pandas, matplotlib, scipy)
+- Datos reales de la agricultura chilena
+- **Cero instalación** — solo navegador web
+
+</div>
+
+<div class="column" style="width:50%;">
+
+### 🌐 Plataformas externas
+- [**redmeteo.cl**](https://redmeteo.cl) — datos meteorológicos en tiempo real
+- [**CNR**](https://cnr.gob.cl) — estadísticas de riego, visor de cultivos
+- [**FAO-56**](https://www.fao.org/3/x0490s/x0490s00.htm) — estándar de evapotranspiración
+- [**Water Footprint Network**](https://waterfootprint.org) — huella hídrica por cultivo
+
+</div>
+
+</div>
+
+---
+
+## Dinámica de las clases {.center}
+
+::: {style="font-size: 0.9em;"}
+| Momento | Duración | Actividad |
+|---------|----------|-----------|
+| 🔄 Recapitulación | 5-10 min | Repaso de la sesión anterior, dudas |
+| 📖 Exposición | 45-60 min | Conceptos nuevos con ejemplos y gráficos |
+| ✏️ Ejercicio en sala | 15-20 min | Cálculo guiado, resolución de problemas |
+| 💻 Demo Python | 10-15 min | Preparación para el laboratorio |
+| ❓ Cierre y dudas | 5 min | Resumen, preguntas, próxima sesión |
+:::
+
+::: {.callout-important}
+## Asistencia y participación
+La modalidad semipresencial requiere **compromiso con el trabajo personal** (108 horas). Las clases presenciales son el espacio para resolver dudas y practicar.
+:::
+
+---
+
+## ¿Qué espero de ustedes? {.center}
+
+::: {style="font-size: 0.9em;"}
+1. 📖 **Llegar con lo leído** — el material está disponible antes de cada clase
+2. ❓ **Preguntar sin miedo** — no hay preguntas tontas en este curso
+3. 💻 **Traer su notebook o tablet** — para seguir los ejemplos en vivo
+4. 🤝 **Trabajar en equipo** — los laboratorios se resuelven colaborativamente
+5. 📊 **Entregar a tiempo** — los ejercicios tienen fechas definidas
+6. 🔗 **Usar los recursos** — GitHub, Colab, foro del curso
+:::
+
+---
+
+## Lo que este curso NO es {.center}
+
+::: {style="font-size: 0.95em;"}
+| ❌ No es... | ✅ Es... |
+|------------|---------|
+| Un curso de programación | Un curso que **usa** programación para resolver problemas agronómicos |
+| Memorización de fórmulas | **Comprensión** de conceptos físicos y su aplicación práctica |
+| Solo teoría | Teoría + **cálculo aplicado** + datos reales |
+| Solo riego | La **base científica** para entender por qué y cómo regar |
+| Difícil si no sé programar | Una introducción **gradual** a Python, partiendo desde cero |
+:::
+
+---
+
+## Recursos y canales de comunicación {.center}
+
+::: {style="font-size: 0.9em;"}
+| Recurso | ¿Dónde? |
+|---------|---------|
+| 📂 **Repositorio del curso** | [github.com/frzambra/RSPA-TAG-UDLA](https://github.com/frzambra/RSPA-TAG-UDLA) |
+| 📚 **Diapositivas** | `clases/` → renderizadas a HTML |
+| 💻 **Laboratorios** | `labs/` → abrir con badge de Colab |
+| 📋 **Programa oficial** | `docs/material/programa-mejorado.html` |
+| 🌐 **Página web del curso** | `docs/index.html` |
+| 📧 **Correo del profesor** | Plataforma UDLA / Web de contacto |
+:::
+
+---
+
+## Antes de la próxima clase... {.center}
+
+::: {style="font-size: 0.9em;"}
+✅ Revisa el [programa del curso](https://github.com/frzambra/RSPA-TAG-UDLA)
+✅ Asegúrate de tener una **cuenta de Google** (para Colab)
+✅ Navega por el repositorio de GitHub para familiarizarte
+✅ Lee la **lectura complementaria** de la Unidad 1:
+  *"Características de la molécula de agua y su importancia en la relación suelo-agua-planta-atmósfera"*
+:::
+
+::: {style="text-align: center; margin-top: 2em;"}
+# 🚀
+:::
+
+---
+
+## Resumen de la sesión {.center}
+
+::: {style="font-size: 0.85em;"}
+Hoy cubrimos:
+
+| Tema | Ideas clave |
+|------|-------------|
+| 👨‍🏫 Profesor | Francisco Zambrano — Dr. en Ingeniería Agrícola, datos espaciales |
+| 📋 Programa | 6 unidades, 16 sesiones, 10 RAA |
+| 🧪 Laboratorios | 6 talleres en Python (Google Colab) + 1 terreno |
+| 📊 Evaluación | Examen 35% · Cátedras 45% · Ejercicios 20% |
+| 🛠️ Herramientas | Quarto, R, Python, Colab, GitHub, redmeteo, CNR |
+| 📅 Dinámica | Clases presenciales + trabajo personal + laboratorios |
+:::
+
+::: {style="text-align: center; margin-top: 1.5em; font-size: 1.2em;"}
+**¡Bienvenidos a TAG2027 — Relación Suelo Agua Planta!**
+:::
