@@ -82,6 +82,8 @@ Contextualizar con datos locales. Preguntar si algún estudiante ha vivido direc
 - Puentes de hidrógeno entre moléculas
 - Ángulo de enlace: 104.5°
 - Distribución asimétrica de carga
+
+[Video](https://www.youtube.com/watch?v=W-eYqyJRfWk)
 :::
 
 ::: {.column width="50%"}
@@ -143,6 +145,12 @@ Sin polaridad no habría ascenso de savia en el xilema (Unidad 3), ni retención
 
 ---
 
+## Propiedades del agua (II): Cohesión y adhesión {.center .smaller}
+
+![](../../images/cohesion_adhesion_tension.png){width=100% fig-align='center'}
+
+---
+
 ## Propiedades del agua (III): Poder disolvente {.center .smaller}
 
 El agua es el **solvente universal** — disuelve más sustancias que cualquier otro líquido.
@@ -154,6 +162,8 @@ El agua es el **solvente universal** — disuelve más sustancias que cualquier 
 - Responsable del potencial osmótico (Ψo) → Unidad 3  
 
 **Dato clave:** 1 kg de suelo puede contener entre 0.1 y 0.5 g de sales disueltas. Con riego insuficiente, estas sales se concentran → salinización.
+
+[video](https://www.youtube.com/watch?v=3fOeGGfpiy8)
 
 ---
 
@@ -184,6 +194,18 @@ Los puentes de hidrógeno explican:
 **Viscosidad y temperatura:** El agua a 5°C es ~1.7× más viscosa que a 25°C.
 → En suelo frío, el agua se mueve más lento → menor disponibilidad para la planta.
 :::
+
+
+---
+
+## El ciclo hidrológico {.center .smaller}
+
+![](../../images/hydro_cycle.jpg){width=100% fig-align='center'}
+
+---
+
+## {background-image="../../images/hydro_cycle2.png" background-size="contain"}
+
 
 ---
 
