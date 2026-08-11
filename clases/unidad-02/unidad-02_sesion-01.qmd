@@ -145,6 +145,12 @@ Las arcillas tienen **carga eléctrica negativa permanente** en su superficie:
 
 ---
 
+## Las cargas eléctricas de las arcillas {.center}
+
+![](../../images/retencion_agua_arcillas.png)
+
+---
+
 ## Triángulo textural y clases texturales {.center}
 
 ::: {style="font-size: 0.9em;"}
