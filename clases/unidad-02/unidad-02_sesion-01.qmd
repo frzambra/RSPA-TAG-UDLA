@@ -14,13 +14,13 @@ execute:
 ## Recapitulación: de la molécula al suelo {.center}
 
 ::: {style="font-size: 0.85em;"}
-**Unidad 1 — Ideas fuerza:**
-- El agua es una molécula polar con propiedades excepcionales
-- El SPAC describe el camino del agua: Suelo → Planta → Atmósfera
-- El agua se mueve SIEMPRE de mayor a menor potencial hídrico
-- Chile central tiene déficit hídrico de ~1,000 mm/año → el riego es esencial
+**Unidad 1 — Ideas fuerza:**  
+- El agua es una molécula polar con propiedades excepcionales  
+- El SPAC describe el camino del agua: Suelo → Planta → Atmósfera  
+- El agua se mueve SIEMPRE de mayor a menor potencial hídrico  
+- Chile central tiene déficit hídrico de ~1,000 mm/año → el riego es esencial  
 
-**Ahora:** Vamos al primer compartimento del SPAC — **el suelo**.
+**Ahora:** Vamos al primer compartimento del SPAC: **el suelo**.
 :::
 
 ---
@@ -63,9 +63,13 @@ El suelo es un sistema **trifásico**:
 La fase líquida es la que gestionamos con el riego
 :::
 
+## El suelo como reservorio de agua {.center}
+
+![](../../images/suelo_trifasico.png){fig-align='center'}
+
 ---
 
-## ¿Qué determina cuánta agua puede almacenar un suelo? {.center}
+## ¿Qué determina cuánta agua puede almacenar un suelo? {.center .smaller}
 
 **Dos propiedades fundamentales:**
 
@@ -80,6 +84,12 @@ La fase líquida es la que gestionamos con el riego
 ::: {style="margin-top: 1em; font-weight: bold; text-align: center;"}
 Textura ≈ lo que heredas | Estructura ≈ lo que manejas
 :::
+
+---
+
+## Dos propiedades fundamentales
+
+![](../../images/textura_vs_estructura.png){fig-align="center"}
 
 ---
 
@@ -156,7 +166,13 @@ Las **12 clases texturales** se determinan por % arena, % limo, % arcilla.
 
 ---
 
-## Estructura del suelo {.center}
+## Triángulo textural y clases texturales {.center}
+
+![](../../images/triangulo_de_texturas_de_suelo_con_clave.png){fig-align="center"}
+
+---
+
+## Estructura del suelo {.center .smaller}
 
 **Definición:** Organización de partículas primarias en agregados (peds) con formas y tamaños definidos.
 
@@ -190,9 +206,9 @@ En la Unidad 1 vimos: $\Psi_{total} = \Psi_m + \Psi_o + \Psi_g + \Psi_p$
 
 En el **suelo no saturado**, el potencial mátrico ($\Psi_m$) domina:
 
-**Dos mecanismos de retención:**
-1. **Capilaridad:** agua retenida en poros por tensión superficial. La altura de ascenso capilar ∝ 1/diámetro del poro.
-2. **Adsorción:** agua unida electrostáticamente a superficies de arcilla y MO. Forma películas de pocas moléculas de espesor.
+**Dos mecanismos de retención:**  
+1. **Capilaridad:** agua retenida en poros por tensión superficial. La altura de ascenso capilar ∝ 1/diámetro del poro.  
+2. **Adsorción:** agua unida electrostáticamente a superficies de arcilla y MO. Forma películas de pocas moléculas de espesor.  
 
 ::: {style="margin-top: 1em;"}
 $\Psi_m$ es **siempre negativo** en suelo no saturado — el suelo "chupa" el agua.
@@ -223,15 +239,15 @@ La relación entre Ψm y θ es la **curva característica de retención** — la
 
 $$ \theta = f(\Psi_m) $$
 
-**¿Qué nos dice la curva?**
-- Para cada Ψm → cuánta agua queda en el suelo (θ)
-- La forma de la curva depende de la textura y estructura
+**¿Qué nos dice la curva?**  
+- Para cada Ψm → cuánta agua queda en el suelo (θ)  
+- La forma de la curva depende de la textura y estructura  
 - Dos suelos con la misma θ pueden tener distinto Ψm (distinta disponibilidad)
 
-**Puntos clave en la curva:**
-- Ψm = 0 → Saturación (θ = porosidad total)
-- Ψm = -33 kPa → CC (θ = agua retenida contra gravedad)
-- Ψm = -1500 kPa → PMP (θ = agua no disponible)
+**Puntos clave en la curva:**  
+- Ψm = 0 → Saturación (θ = porosidad total)  
+- Ψm = -33 kPa → CC (θ = agua retenida contra gravedad)  
+- Ψm = -1500 kPa → PMP (θ = agua no disponible)   
 
 ---
 
@@ -250,18 +266,29 @@ $$ \theta = f(\Psi_m) $$
 
 ---
 
+## Curva característica de retención de agua {.center}
+
+![](../../images/curva_retencion_humedad.png){fig-align="center"}
+---
+
 ## Histéresis: secado ≠ humedecimiento {.center}
 
 ::: {style="font-size: 0.9em;"}
 La curva de retención NO es única: depende de si el suelo se está secando o humedeciendo.
 
-**Causas de la histéresis:**
-1. **Efecto "cuello de botella" (ink-bottle):** poros con entrada estrecha y cuerpo ancho. El agua entra fácil pero sale con dificultad.
-2. **Ángulo de contacto:** diferente en avance (mojado) vs. retroceso (secado).
-3. **Aire atrapado:** burbujas de aire que quedan ocluidas durante el humedecimiento.
+**Causas de la histéresis:**  
+1. **Efecto "cuello de botella" (ink-bottle):** poros con entrada estrecha y cuerpo ancho. El agua entra fácil pero sale con dificultad.  
+2. **Ángulo de contacto:** diferente en avance (mojado) vs. retroceso (secado).  
+3. **Aire atrapado:** burbujas de aire que quedan ocluidas durante el humedecimiento.  
 
 **Consecuencia práctica:** Para un mismo Ψm, el suelo en proceso de secado contiene MÁS agua que en proceso de humedecimiento.
 :::
+
+---
+
+## Histéresis: secado ≠ humedecimiento {.center}
+
+![](../../images/hisetrisis.png){fig-align='center'}
 
 ---
 

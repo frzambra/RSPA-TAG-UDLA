@@ -281,16 +281,16 @@ $$R_{total} = R_{suelo} + R_{raiz} + R_{xilema} + R_{hoja} + R_{estomatica} + R_
 ## ¿Por qué regar? Las tres razones {.center}
 
 ::: {style="font-size: 0.9em;"}
-**1. Déficit hídrico estructural**
-- Chile central: P ≈ 340 mm/año, ETo ≈ 1,350 mm/año
+**1. Déficit hídrico estructural**  
+- Chile central: P ≈ 340 mm/año, ETo ≈ 1,350 mm/año  
 - Déficit ≈ 1,010 mm/año → sin riego no hay cultivo posible
 
-**2. Oportunidad productiva**
-- Cultivos de alto valor (frutales, hortalizas) en zonas áridas/semiáridas
+**2. Oportunidad productiva**  
+- Cultivos de alto valor (frutales, hortalizas) en zonas áridas/semiáridas  
 - Chile es potencia frutícola del hemisferio sur GRACIAS al riego
 
-**3. Estabilización de la producción**
-- La variabilidad interanual de lluvias en Chile es alta (CV > 30%)
+**3. Estabilización de la producción**  
+- La variabilidad interanual de lluvias en Chile es alta (CV > 30%)  
 - El riego desacopla la producción de la incertidumbre climática
 :::
 
@@ -342,7 +342,7 @@ Donde $E_a$ = eficiencia de aplicación del sistema de riego.
 
 ---
 
-## Eficiencia de aplicación (Ea) por sistema {.center}
+## Eficiencia de aplicación (Ea) por sistema {.center .smaller}
 
 | Sistema de riego | Ea típica | ¿Qué se pierde? |
 |-----------------|----------|-----------------|
@@ -355,12 +355,12 @@ Donde $E_a$ = eficiencia de aplicación del sistema de riego.
 
 ---
 
-## Ejemplo: cálculo de lámina de riego {.center}
+## Ejemplo: cálculo de lámina de riego {.center .smaller}
 
-**Datos:**
-- Suelo franco: CC = 0.30 cm³/cm³, θ actual = 0.18 cm³/cm³
-- Profundidad radical (maíz): Zr = 0.8 m = 800 mm
-- Sistema de riego por goteo: Ea = 0.90
+**Datos:**  
+- Suelo franco: CC = 0.30 cm³/cm³, θ actual = 0.18 cm³/cm³  
+- Profundidad radical (maíz): Zr = 0.8 m = 800 mm  
+- Sistema de riego por goteo: Ea = 0.90  
 
 **Cálculo:**
 $$L_n = (0.30 - 0.18) \times 800 = 0.12 \times 800 = 96 \text{ mm}$$
@@ -388,6 +388,18 @@ $$\Delta S = P + R - ET_c - D - Q$$
 ::: {style="margin-top: 1em; font-size: 0.9em;"}
 **Objetivo del manejo de riego:** Mantener ΔS ≈ 0 en el rango AFA < θ < CC.
 :::
+
+---
+
+## El balance hídrico como herramienta de gestión {.center}
+
+![](../../images/balance_hidrico.png){fig-align="center"}
+
+---
+
+## El balance hídrico como herramienta de gestión {.center}
+
+![](../../images/balance_hidrico_FAO56.png){fig-align="center"}
 
 ---
 
@@ -436,7 +448,7 @@ Resuelve en 8 minutos. Comparte tu resultado.
 
 ---
 
-## Resumen de conceptos clave {.center}
+## Resumen de conceptos clave {.center .smaller}
 
 1. El **SPAC** describe el camino del agua: Suelo → Raíz → Xilema → Hoja → Atmósfera
 
@@ -471,7 +483,7 @@ Sesión 2.1: Propiedades físicas e hidráulicas del suelo que afectan la retenc
 
 ---
 
-## Preguntas de autoevaluación {.center}
+## Preguntas de autoevaluación {.center .smaller}
 
 1. Dibuje el continuo suelo-planta-atmósfera indicando los valores típicos de potencial hídrico en cada compartimento.
 
