@@ -239,6 +239,22 @@ Resuelva en 8 minutos.
 
 ---
 
+## Ejercicio rápido: sensores {.center}
+
+1. ¿Qué propiedad física mide un sensor FDR/TDR?
+2. ¿Por qué el agua "domina" la señal del sensor?
+3. ¿Qué mide directamente el tensiómetro que los FDR/TDR no?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. La constante dieléctrica aparente (Ka). 2. Ka del agua ≈ 80, vs 1 (aire) y 3–5 (sólidos). 3. El potencial mátrico Ψm (lo que "siente" la raíz).
+:::
+
+---
+
 ## Tensiómetro: midiendo Ψm directamente {.center}
 
 **Componentes:**

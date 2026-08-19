@@ -108,6 +108,22 @@ $$
 
 ---
 
+## Ejercicio rápido: ordena el camino del agua {.center}
+
+Ordena los compartimentos del SPAC según el potencial hídrico, del MENOS negativo al MÁS negativo:
+
+Suelo · Hoja · Raíz · Xilema · Atmósfera
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 2 minutos. ¿En qué dirección se mueve el agua?
+:::
+
+::: {.notes}
+Suelo (−0.03) → Raíz (−0.3) → Xilema (−0.8) → Hoja (−1.5) → Atmósfera (−100 MPa). El agua fluye de mayor a menor Ψ (hacia la atmósfera).
+:::
+
+---
+
 ## Potencial hídrico (Ψ): definición formal {.center .smaller}
 
 **Definición:** Energía libre del agua por unidad de volumen en un punto del sistema, comparada con agua pura a presión atmosférica y misma temperatura (referencia = 0).
@@ -195,6 +211,25 @@ En suelo usamos kPa; en fisiología vegetal, MPa.
 
 ---
 
+## Ejercicio: ¿qué componente domina? {.center}
+
+Para cada compartimento, indica el componente del potencial hídrico que domina:
+
+1. Suelo no saturado → ______
+2. Suelo con mucha sal (salinidad) → ______
+3. Célula turgente de la hoja → ______
+4. Columna de agua del xilema → ______
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. Ψm (mátrico). 2. Ψm + Ψo. 3. Ψp (turgencia). 4. Ψp negativo (tensión).
+:::
+
+---
+
 ## Cálculo del potencial atmosférico {.center .smaller}
 
 El potencial hídrico del vapor de agua en la atmósfera depende de la humedad relativa:
@@ -275,6 +310,22 @@ $$R_{total} = R_{suelo} + R_{raiz} + R_{xilema} + R_{hoja} + R_{estomatica} + R_
 ## Resistencia al flujo de agua en el SPAC {.center .smaller}
 
 ![](../../images/analogia_ley_de_ohm.png){fig-align="center" with=100%}
+
+---
+
+## Ejercicio: la resistencia que manda {.center}
+
+1. ¿Qué resistencia domina el flujo de agua en el SPAC?
+2. ¿Qué estructura de la planta la controla?
+3. Si la planta cierra los estomas, ¿qué le ocurre a la transpiración y al Ψ de la hoja?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. Restomática. 2. Los estomas. 3. La transpiración baja y el Ψ foliar se recupera (menos negativo) — mecanismo de defensa frente a sequía.
+:::
 
 ---
 

@@ -198,6 +198,25 @@ Los puentes de hidrógeno explican:
 
 ---
 
+## Ejercicio rápido: ¿qué propiedad lo explica? {.center}
+
+Nombra la propiedad del agua que explica cada fenómeno:
+
+1. El suelo húmedo tarda más en calentarse que el seco → ______
+2. La savia sube por el xilema de un árbol de 30 m → ______
+3. Los nutrientes ($\text{NO}_3^-$, $\text{K}^+$) viajan disueltos hacia la raíz → ______
+4. El agua asciende por poros finos contra la gravedad → ______
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos. Discute con tu compañero.
+:::
+
+::: {.notes}
+1. Calor específico alto (inercia térmica). 2. Cohesión + adhesión (tensión-cohesión). 3. Poder disolvente. 4. Capilaridad (tensión superficial).
+:::
+
+---
+
 ## El ciclo hidrológico {.center .smaller}
 
 ![](../../images/hydro_cycle.jpg){width=100% fig-align='center'}
@@ -241,6 +260,24 @@ En la zona de mayor producción agrícola (central), el déficit hídrico supera
 
 ---
 
+## Ejercicio: lee el balance hídrico de Chile {.center}
+
+Con la tabla de zonas de Chile:
+
+1. ¿En qué zona(s) llueve más de lo que evapora (superávit)?
+2. ¿Cuál es el déficit ($P - ETo$) de la zona central? ¿Qué implica para el riego?
+3. ¿Por qué el Norte Grande, con <1 mm/año de lluvia, igual tiene agricultura?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. Zona Sur y Austral. 2. Déficit ≈ −1,000 mm/año → el riego es obligatorio todo el año. 3. Riego con aguas subterráneas y ríos andinos (acuíferos, embalses).
+:::
+
+---
+
 ## Agua en la agricultura mundial {.center}
 
 ::: {style="font-size: 0.85em;"}
@@ -268,6 +305,26 @@ Superficie regada mundial: ~342 millones de hectáreas (FAO, 2020)
 | Aspersión (cañón) | 60-75% | 6-7.5 de cada 10 L | Evaporación, arrastre por viento |
 | Pivote central | 75-90% | 7.5-9 de cada 10 L | Evaporación (menor) |
 | Goteo | 85-95% | 8.5-9.5 de cada 10 L | Mínimas (evaporación localizada) |
+
+---
+
+## Ejercicio: ¿cuánta agua llega al cultivo? {.center}
+
+Aplicas 1,000 m³ de agua con cada sistema. ¿Cuántos m³ quedan realmente disponibles para el cultivo?
+
+| Sistema | Ea | Agua útil (m³) |
+|---------|----|----------------|
+| Inundación | 0.40 | ______ |
+| Aspersión | 0.70 | ______ |
+| Goteo | 0.90 | ______ |
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos. ¿Qué sistema desperdicia menos?
+:::
+
+::: {.notes}
+400, 700 y 900 m³ respectivamente. El goteo desperdicia solo ~10% del agua aplicada.
+:::
 
 ---
 
@@ -394,6 +451,24 @@ Esto equivale a ~18 veces el volumen del embalse El Yeso (principal fuente de ag
 - Tensión entre rentabilidad económica de la fruticultura y sostenibilidad hídrica  
 
 **Herramienta de análisis:** ¿Estamos exportando los cultivos correctos desde las zonas correctas?
+
+---
+
+## Ejercicio: piensa y discute {.center}
+
+Chile exporta ~11,000 millones de m³ de agua virtual al año.
+
+1. ¿Qué significa "exportar agua virtual"?
+2. ¿Por qué es paradójico exportar palta desde Petorca, una zona con sequía?
+3. ¿Qué criterios usarías para decidir si un cultivo es apropiado para una zona?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Discute en parejas 4 minutos. Fundamenta con datos.
+:::
+
+::: {.notes}
+La huella azul de la palta (~850 L/kg) se exporta como agua virtual. Clave: contrastar rentabilidad económica con sostenibilidad hídrica (HF azul vs. disponibilidad local).
+:::
 
 ---
 

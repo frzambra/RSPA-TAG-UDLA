@@ -97,6 +97,24 @@ En porcentaje: $\theta_g(\%) = 21.5\%$
 
 ---
 
+## Ejercicio rápido: θg {.center}
+
+Una muestra húmeda pesa 96 g; tras secar a 105°C pesa 80 g.
+
+1. Calcula θg (g/g).
+2. ¿Cuántos gramos de agua había en la muestra?
+3. Expresa θg en porcentaje.
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. θg = (96−80)/80 = 0.20 g/g. 2. 16 g de agua. 3. 20%.
+:::
+
+---
+
 ## Contenido volumétrico de agua (θv) {.center}
 
 **Definición:** Volumen de agua por unidad de volumen total de suelo.
@@ -302,6 +320,24 @@ Contenido de agua que queda en el suelo 2-3 días después de saturarlo, cuando 
 
 ::: {style="margin-top: 1em; text-align: center; font-weight: bold;"}
 ADT = CC - PMP
+:::
+
+---
+
+## Ejercicio: clasifica el agua {.center}
+
+Para un suelo franco: Saturación θ = 0.48, CC = 0.30, PMP = 0.11.
+
+1. ¿Qué agua hay entre Saturación y CC? ¿Está disponible?
+2. ¿Qué agua hay entre CC y PMP? ¿Cómo se llama?
+3. ¿Qué ocurre con el agua por debajo de PMP?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. Agua gravitacional, no disponible (drena). 2. Agua disponible (ADT = 0.19). 3. Agua no disponible (adsorbida fuertemente).
 :::
 
 ---

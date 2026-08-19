@@ -164,6 +164,24 @@ La Da crítica depende de la textura: en arcillosos es menor (~1.5) que en areno
 
 ---
 
+## Ejercicio rápido: densidad aparente {.center}
+
+Un cilindro de 100 cm³ de suelo seco pesa 145 g.
+
+1. Calcula la Da.
+2. ¿El suelo está compactado? (usa la tabla de interpretación)
+3. Si el mismo suelo tuviera Da = 1.2 g/cm³, ¿qué habría cambiado en el campo?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 4 minutos.
+:::
+
+::: {.notes}
+1. Da = 145/100 = 1.45 g/cm³ (franco, rango ideal). 2. No, está en rango óptimo. 3. Más porosidad → menos compactación (más MO, menos tráfico, mejor estructura).
+:::
+
+---
+
 ## Densidad real (Dr): definición y valores {.center}
 
 **Definición:** Masa de suelo seco por unidad de volumen de partículas sólidas (sin poros).
@@ -207,6 +225,22 @@ $$D_r = \frac{M_s \times \rho_{agua}}{M_s - (P_{vacio+suelo+agua} - P_{vacio+agu
 En la práctica del curso: asumimos Dr = 2.65 g/cm³ (suelo mineral típico).
 :::
 
+:::
+
+---
+
+## Ejercicio: densidad real {.center}
+
+1. ¿Por qué Dr (≈2.65) es siempre mayor que Da (≈1.3–1.6)?
+2. ¿Qué volumen mide Da que Dr no incluye?
+3. Un suelo muy orgánico tiene Dr = 1.5. ¿Por qué es tan baja?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. Dr solo considera sólidos (sin poros). 2. Da incluye los poros (volumen total). 3. La MO tiene densidad ~1.3–1.5, mucho menor que los minerales (~2.65).
 :::
 
 ---

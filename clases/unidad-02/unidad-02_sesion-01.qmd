@@ -69,6 +69,24 @@ La fase líquida es la que gestionamos con el riego
 
 ---
 
+## Ejercicio rápido: el suelo trifásico {.center}
+
+Un suelo ideal en volumen es: 50% sólidos, 25% agua, 25% aire.
+
+1. ¿Qué fase gestiona directamente el riego?
+2. Si la compactación reduce los poros, ¿qué fase(s) disminuyen?
+3. ¿Por qué el aire del suelo es tan importante como el agua?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. La fase líquida. 2. Disminuye la fase gaseosa y luego la líquida (baja la porosidad total). 3. Las raíces y microorganismos respiran; sin O₂ hay hipoxia.
+:::
+
+---
+
 ## ¿Qué determina cuánta agua puede almacenar un suelo? {.center .smaller}
 
 **Dos propiedades fundamentales:**
@@ -151,6 +169,22 @@ Las arcillas tienen **carga eléctrica negativa permanente** en su superficie:
 
 ---
 
+## Ejercicio: área superficial y retención {.center}
+
+1. ¿Por qué la arcilla retiene mucha más agua que la arena?
+2. ¿Esa agua retenida por la arcilla está toda disponible para la planta? ¿Por qué?
+3. ¿Qué carga eléctrica tiene la superficie de las arcillas y qué atrae?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. Área superficial ~1,000–10,000× mayor. 2. No: parte queda adsorbida con Ψm < PMP. 3. Carga negativa; atrae cationes y dipolos de agua (doble capa difusa).
+:::
+
+---
+
 ## Triángulo textural y clases texturales {.center}
 
 ::: {style="font-size: 0.9em;"}
@@ -202,6 +236,22 @@ Las **12 clases texturales** se determinan por % arena, % limo, % arcilla.
 
 ::: {style="margin-top: 1em; text-align: center; font-weight: bold;"}
 Un suelo ideal tiene balance de los tres: drena el exceso, retiene lo útil, almacena reserva.
+:::
+
+---
+
+## Ejercicio: textura, estructura y poros {.center}
+
+1. ¿Qué tipo de poro retiene el agua DISPONIBLE para la planta?
+2. Un suelo franco tiene mejor balance retención-disponibilidad que uno arcilloso. ¿Por qué?
+3. ¿Puede un agricultor cambiar la textura de su suelo? ¿Y la estructura?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. Mesoporos (0.2–30 μm). 2. El arcilloso retiene más agua total pero también más en PMP → ADT similar pero menos agua fácilmente aprovechable. 3. Textura no; estructura sí (MO, labranza, evitar compactación).
 :::
 
 ---
@@ -275,6 +325,24 @@ $$ \theta = f(\Psi_m) $$
 ## Curva característica de retención de agua {.center}
 
 ![](../../images/curva_retencion_humedad.png){fig-align="center"}
+---
+
+## Ejercicio: lee la curva de retención {.center}
+
+Para un suelo franco: θ a −33 kPa = 0.30 y θ a −1500 kPa = 0.11.
+
+1. ¿Cuánta agua disponible (ADT) hay?
+2. Si la θv actual es 0.20, ¿el suelo está húmedo o seco respecto a CC?
+3. ¿Qué ocurre con θ cuando Ψm se hace más negativo?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 4 minutos.
+:::
+
+::: {.notes}
+1. ADT = 0.30 − 0.11 = 0.19. 2. Seco (0.20 < CC = 0.30; se han consumido ~0.10). 3. θ disminuye (menos agua a mayor succión).
+:::
+
 ---
 
 ## Histéresis: secado ≠ humedecimiento {.center}
