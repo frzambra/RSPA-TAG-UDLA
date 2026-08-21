@@ -14,10 +14,10 @@ execute:
 ## Recapitulación sesión anterior {.center}
 
 ::: {style="font-size: 0.85em;"}
-**Sesión 2.1 — Ideas fuerza:**
-- Textura + estructura + MO determinan la capacidad de retención de agua
-- Ψm mide la succión con que el suelo retiene el agua
-- La curva característica θ(Ψm) es la huella digital hídrica
+**Sesión 2.1 — Ideas fuerza:**  
+- Textura + estructura + MO determinan la capacidad de retención de agua  
+- Ψm mide la succión con que el suelo retiene el agua  
+- La curva característica θ(Ψm) es la huella digital hídrica  
 
 **Hoy:** Pasamos de lo cualitativo a lo **cuantitativo**: ¿cómo medimos la densidad y porosidad del suelo?
 :::
@@ -48,7 +48,7 @@ Al finalizar esta sesión, serás capaz de:
 
 ---
 
-## ¿Por qué importan estas relaciones? {.center}
+## ¿Por qué importan estas relaciones? {.center .smaller}
 
 Para calcular cuánta agua hay en el suelo necesitamos tres números:
 
@@ -66,24 +66,7 @@ $\theta_v = \theta_g \times \frac{D_a}{\rho_{agua}}$ — Sin Da no hay conversi�
 
 ## Esquema: componentes del volumen de suelo {.center}
 
-```
-┌───────────────────────────────────────┐
-│         VOLUMEN TOTAL (Vt)            │
-│  ┌─────────────────┬─────────────────┐│
-│  │    SÓLIDOS (Vs) │   POROS (Vp)    ││
-│  │                 │                 ││
-│  │  Masa seca (Ms) │   ┌─────┬─────┐ ││
-│  │  = partículas   │   │Agua │Aire │ ││
-│  │    minerales    │   │     │     │ ││
-│  │    + MO         │   └─────┴─────┘ ││
-│  └─────────────────┴─────────────────┘│
-└───────────────────────────────────────┘
-
-Relaciones fundamentales:
-  Vt = Vs + Vp
-  Ms = masa de partículas sólidas (suelo seco a 105°C)
-  Porosidad = Vp / Vt = (Vt - Vs) / Vt
-```
+![](../../images/agua_en_el_suelo.png){fig-align="center"}
 
 ---
 
@@ -93,10 +76,10 @@ Relaciones fundamentales:
 
 $$D_a = \frac{M_s}{V_t} \quad [\text{g/cm}^3 \text{ o Mg/m}^3]$$
 
-**¿Qué mide realmente Da?**
-- No mide la densidad de las partículas
-- Mide cuán "empacado" está el suelo
-- Da alta = partículas más juntas = menos poros = más compactado
+**¿Qué mide realmente Da?** 
+- No mide la densidad de las partículas  
+- Mide cuán "empacado" está el suelo  
+- Da alta = partículas más juntas = menos poros = más compactado  
 - Da baja = más espacio poroso = menos compactado
 
 ---
@@ -104,7 +87,7 @@ $$D_a = \frac{M_s}{V_t} \quad [\text{g/cm}^3 \text{ o Mg/m}^3]$$
 ## Método del cilindro para determinar Da {.center}
 
 ::: {style="font-size: 0.9em;"}
-**Procedimiento paso a paso:**
+**Procedimiento paso a paso: [Video](https://www.youtube.com/watch?v=pOQcfaw7UEk)**
 
 1. **Insertar** cilindro metálico de volumen conocido (típicamente 100 cm³) en el suelo sin disturbar. Usar un martillo y un bloque de madera para inserción pareja.
 
@@ -119,9 +102,10 @@ $$D_a = \frac{M_s}{V_t} \quad [\text{g/cm}^3 \text{ o Mg/m}^3]$$
 6. **Pesar** la muestra seca (Ms). Calcular: $D_a = M_s / V_{cilindro}$
 :::
 
+
 ---
 
-## Errores comunes en la medición de Da {.center}
+## Errores comunes en la medición de Da {.center .smaller}
 
 | Error | Efecto en Da | Cómo evitarlo |
 |-------|-------------|---------------|
@@ -133,7 +117,7 @@ $$D_a = \frac{M_s}{V_t} \quad [\text{g/cm}^3 \text{ o Mg/m}^3]$$
 
 ---
 
-## Valores típicos e interpretación de Da {.center}
+## Valores típicos e interpretación de Da {.center .smaller}
 
 | Da (g/cm³) | Tipo de suelo | Interpretación agronómica |
 |-----------|--------------|--------------------------|
@@ -182,7 +166,7 @@ Resuelve en 4 minutos.
 
 ---
 
-## Densidad real (Dr): definición y valores {.center}
+## Densidad real (Dr): definición y valores {.center .smaller}
 
 **Definición:** Masa de suelo seco por unidad de volumen de partículas sólidas (sin poros).
 
@@ -205,7 +189,7 @@ Para la mayoría de suelos minerales chilenos: Dr ≈ 2.65 g/cm³
 
 ---
 
-## Método del picnómetro para Dr {.center}
+## Método del picnómetro para Dr {.center .smaller}
 
 ::: {style="font-size: 0.85em;"}
 **Procedimiento:**
@@ -245,7 +229,7 @@ Resuelve en 3 minutos.
 
 ---
 
-## Porosidad total (P) {.center}
+## Porosidad total (P) {.center .smaller}
 
 **Definición:** Fracción del volumen total del suelo ocupada por espacios vacíos (poros).
 
@@ -256,10 +240,10 @@ $$P = \frac{V_p}{V_t} = \frac{V_t - V_s}{V_t} = 1 - \frac{V_s}{V_t}$$
 $$P = 1 - \frac{D_a}{D_r}$$
 $$P(\%) = \left(1 - \frac{D_a}{D_r}\right) \times 100$$
 
-**Interpretación:**
-- P = 30% → suelo compactado, pocos poros
-- P = 50% → suelo agrícola en buenas condiciones
-- P = 65% → suelo muy poroso (orgánico o arcilloso muy estructurado)
+**Interpretación:**  
+- P = 30% → suelo compactado, pocos poros  
+- P = 50% → suelo agrícola en buenas condiciones  
+- P = 65% → suelo muy poroso (orgánico o arcilloso muy estructurado)  
 
 ---
 
@@ -320,7 +304,7 @@ De esos 224 mm, solo ~120 mm son agua disponible (ADT). El resto es agua gravita
 
 ---
 
-## Relación entre Da, Dr y P: tabla resumen {.center}
+## Relación entre Da, Dr y P: tabla resumen {.center .smaller}
 
 | Suelo | Da (g/cm³) | Dr (g/cm³) | P (%) | ¿Compactado? | Calidad física |
 |-------|-----------|-----------|-------|--------------|---------------|
@@ -337,12 +321,12 @@ De esos 224 mm, solo ~120 mm son agua disponible (ADT). El resto es agua gravita
 
 Un cilindro de 100 cm³ extrae una muestra de suelo franco. Después de secar a 105°C por 24h, la masa seca es de 142 g. Asuma Dr = 2.65 g/cm³.
 
-**Calcule:**
-1. Densidad aparente (Da)
-2. Volumen de sólidos (Vs)
-3. Volumen de poros (Vp)
-4. Porosidad total (P) en %
-5. ¿El suelo está compactado? Justifique.
+**Calcule:**  
+1. Densidad aparente (Da)  
+2. Volumen de sólidos (Vs)  
+3. Volumen de poros (Vp)  
+4. Porosidad total (P) en %  
+5. ¿El suelo está compactado? Justifique.  
 
 ::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
 Resuelva en 5 minutos. Revise con su compañero.
@@ -439,7 +423,7 @@ En un mismo predio, Da puede variar significativamente:
 
 ---
 
-## Preguntas de autoevaluación {.center}
+## Preguntas de autoevaluación {.center .smaller}
 
 1. ¿Cuál es la diferencia entre Da y Dr? ¿Por qué Da siempre es menor que Dr?
 
