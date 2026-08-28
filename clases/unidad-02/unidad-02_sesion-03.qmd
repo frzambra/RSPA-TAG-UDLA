@@ -157,9 +157,9 @@ Aunque el suelo arenoso tiene el **menor θg**, su mayor Da compensa parcialment
 
 $$L = \theta_v \times Z \quad [\text{mm}]$$
 
-Donde:
-- θv en cm³/cm³ (o m³/m³)
-- Z = profundidad del suelo en mm
+Donde:  
+- θv en cm³/cm³ (o m³/m³)  
+- Z = profundidad del suelo en mm  
 
 **Ejemplo:** θv = 0.305 cm³/cm³, Z = 600 mm (60 cm)
 
