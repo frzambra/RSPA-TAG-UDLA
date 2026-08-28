@@ -247,13 +247,13 @@ $$P(\%) = \left(1 - \frac{D_a}{D_r}\right) \times 100$$
 
 ---
 
-## Ejemplo completo de cálculo {.center}
+## Ejemplo completo de cálculo {.center .smaller} 
 
-**Datos de campo:**
-- Cilindro metálico: diámetro = 5.0 cm, altura = 5.1 cm
-- Masa de suelo húmedo extraído: 185.0 g
-- Masa después de secado (105°C, 24h): 157.0 g
-- Dr asumida: 2.65 g/cm³
+**Datos de campo:**  
+- Cilindro metálico: diámetro = 5.0 cm, altura = 5.1 cm  
+- Masa de suelo húmedo extraído: 185.0 g  
+- Masa después de secado (105°C, 24h): 157.0 g  
+- Dr asumida: 2.65 g/cm³  
 
 **Paso 1 — Volumen del cilindro:**
 $V_t = \pi \times (2.5)^2 \times 5.1 = 100.1 \text{ cm}^3$
@@ -286,11 +286,11 @@ Cada 0.1 g/cm³ de aumento en Da ≈ 3.8% de pérdida de porosidad.
 
 ---
 
-## Aplicación práctica: ¿cuánta agua cabe en este suelo? {.center}
+## Aplicación práctica: ¿cuánta agua cabe en este suelo? {.center .smaller}
 
-**Datos del ejemplo anterior:**
-- Da = 1.57 g/cm³, P = 40.8%
-- Si el suelo está a CC (θv ≈ 60% de P en suelo arenoso-franco):
+**Datos del ejemplo anterior:**  
+- Da = 1.57 g/cm³, P = 40.8%  
+- Si el suelo está a CC (θv ≈ 55% de P en suelo arenoso-franco):  
 
 $$\theta_{v,CC} \approx 0.408 \times 0.55 = 0.224 \text{ cm}^3/\text{cm}^3$$
 
@@ -351,7 +351,7 @@ Se muestrearon 3 sectores de un mismo predio frutal:
 
 ---
 
-## Variabilidad espacial de la densidad aparente {.center}
+## Variabilidad espacial de la densidad aparente {.center .smaller}
 
 ::: {style="font-size: 0.9em;"}
 En un mismo predio, Da puede variar significativamente:
@@ -368,7 +368,7 @@ En un mismo predio, Da puede variar significativamente:
 
 ---
 
-## Efecto del manejo en la Da a largo plazo {.center}
+## Efecto del manejo en la Da a largo plazo {.center .smaller}
 
 | Práctica de manejo | Efecto en Da | Tiempo de respuesta |
 |--------------------|-------------|-------------------|
@@ -382,15 +382,15 @@ En un mismo predio, Da puede variar significativamente:
 
 ## Ejercicio 3: de Da a lámina de agua {.center}
 
-**Datos:**
-- Muestra de suelo: V_cilindro = 98 cm³, M_húmedo = 172 g, M_seco = 148 g
-- Dr = 2.65 g/cm³
+**Datos:**  
+- Muestra de suelo: V_cilindro = 98 cm³, M_húmedo = 172 g, M_seco = 148 g  
+- Dr = 2.65 g/cm³  
 
-**Calcule:**
-1. Da
-2. Porosidad total
-3. Contenido gravimétrico de agua (θg)
-4. Contenido volumétrico de agua (θv)
+**Calcule:**  
+1. Da  
+2. Porosidad total  
+3. Contenido gravimétrico de agua (θg)  
+4. Contenido volumétrico de agua (θv)  
 5. Si este suelo está a CC (Ψm = -33 kPa) y θv_actual es la calculada, ¿está bien regado o necesita riego?
 
 ---
