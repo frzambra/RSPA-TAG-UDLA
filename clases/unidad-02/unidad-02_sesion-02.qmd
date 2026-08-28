@@ -76,7 +76,7 @@ $\theta_v = \theta_g \times \frac{D_a}{\rho_{agua}}$ — Sin Da no hay conversi�
 
 $$D_a = \frac{M_s}{V_t} \quad [\text{g/cm}^3 \text{ o Mg/m}^3]$$
 
-**¿Qué mide realmente Da?** 
+**¿Qué mide realmente Da?**   
 - No mide la densidad de las partículas  
 - Mide cuán "empacado" está el suelo  
 - Da alta = partículas más juntas = menos poros = más compactado  
