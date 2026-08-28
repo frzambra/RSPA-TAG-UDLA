@@ -298,9 +298,6 @@ $$\theta_{v,CC} \approx 0.408 \times 0.55 = 0.224 \text{ cm}^3/\text{cm}^3$$
 
 $$L_{CC} = 0.224 \times 1000 \text{ mm} = 224 \text{ mm}$$
 
-::: {style="margin-top: 1em; font-weight: bold; text-align: center;"}
-De esos 224 mm, solo ~120 mm son agua disponible (ADT). El resto es agua gravitacional o no disponible.
-:::
 
 ---
 
