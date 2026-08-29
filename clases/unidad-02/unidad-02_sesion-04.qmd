@@ -14,11 +14,11 @@ execute:
 ## Recapitulación {.center}
 
 ::: {style="font-size: 0.85em;"}
-**Sesión 2.3 — Lo que aprendimos:**
-- θg = (Mh - Ms)/Ms; θv = θg × Da; Lámina (mm) = θv × Z
-- CC = θv a -33 kPa = límite superior de agua disponible
-- PMP = θv a -1500 kPa = límite inferior
-- ADT = CC - PMP
+**Sesión 2.3 — Lo que aprendimos:**  
+- θg = (Mh - Ms)/Ms; θv = θg × Da; Lámina (mm) = θv × Z  
+- CC = θv a -33 kPa = límite superior de agua disponible  
+- PMP = θv a -1500 kPa = límite inferior  
+- ADT = CC - PMP  
 
 **Hoy:** ¿Toda esa agua está igualmente disponible? No. → AFA + monitoreo.
 :::
@@ -50,7 +50,7 @@ Al finalizar esta sesión, serás capaz de:
 
 ---
 
-## Agua Disponible Total (ADT): definición y cálculo {.center}
+## Agua Disponible Total (ADT): definición y cálculo {.center .smaller}
 
 $$ADT = CC - PMP \quad [\text{cm}^3/\text{cm}^3]$$
 
@@ -64,7 +64,7 @@ $$L_{ADT,total} = \sum_{i=1}^{n} (CC_i - PMP_i) \times Z_i$$
 
 ---
 
-## Ejemplo: ADT por horizonte y perfil {.center}
+## Ejemplo: ADT por horizonte y perfil {.center .smaller}
 
 | Horizonte | Z (cm) | CC | PMP | ADT (v/v) | L_ADT (mm) |
 |-----------|--------|-----|------|-----------|------------|
@@ -79,7 +79,7 @@ Si ETc = 6 mm/día → 115 / 6 = **19 días** hasta agotar el ADT desde CC.
 
 ---
 
-## ¿Por qué no podemos usar todo el ADT? {.center}
+## ¿Por qué no podemos usar todo el ADT? {.center .smaller}
 
 **El agua no está igualmente disponible a lo largo de todo el rango CC → PMP:**
 
@@ -93,7 +93,7 @@ Si ETc = 6 mm/día → 115 / 6 = **19 días** hasta agotar el ADT desde CC.
 
 ---
 
-## Agua Fácilmente Aprovechable (AFA) {.center}
+## Agua Fácilmente Aprovechable (AFA) {.center .smaller}
 
 $$AFA = ADT \times p$$
 
@@ -110,19 +110,19 @@ Donde $p$ = **fracción de agotamiento permisible** (fracción del ADT que podem
 
 ---
 
-## Ejemplo: cálculo de AFA {.center}
+## Ejemplo: cálculo de AFA {.center .smaller}
 
-**Datos:**
-- ADT del perfil: 115 mm
-- Cultivo: maíz (p = 0.50)
+**Datos:**  
+- ADT del perfil: 115 mm  
+- Cultivo: maíz (p = 0.50)  
 
 $$AFA = 115 \times 0.50 = 57.5 \text{ mm}$$
 
-**Interpretación para el manejo del riego:**
-- El suelo almacena 115 mm que la planta PUEDE extraer
-- Pero solo 57.5 mm deben consumirse antes de regar
-- Los otros 57.5 mm son **reserva de seguridad** — NUNCA deben agotarse
-- Regar cuando el cultivo haya consumido ≈ 57.5 mm
+**Interpretación para el manejo del riego:**  
+- El suelo almacena 115 mm que la planta PUEDE extraer  
+- Pero solo 57.5 mm deben consumirse antes de regar  
+- Los otros 57.5 mm son **reserva de seguridad** — NUNCA deben agotarse  
+- Regar cuando el cultivo haya consumido ≈ 57.5 mm  
 
 ::: {style="font-size: 0.8em; margin-top: 0.5em;"}
 Si ETc = 6 mm/día → regar aproximadamente cada 57.5/6 ≈ 9-10 días.
@@ -130,7 +130,7 @@ Si ETc = 6 mm/día → regar aproximadamente cada 57.5/6 ≈ 9-10 días.
 
 ---
 
-## Umbral de riego: ¿cuándo regar exactamente? {.center}
+## Umbral de riego: ¿cuándo regar exactamente? {.center .smaller}
 
 **Dos formas equivalentes de calcular el umbral:**
 
@@ -138,7 +138,7 @@ $$\theta_{umbral} = CC - AFA$$
 
 $$\theta_{umbral} = PMP + (1-p) \times ADT$$
 
-**Ejemplo (maíz, perfil anterior):**
+**Ejemplo (maíz, perfil anterior):**  
 
 CC promedio = (0.32×25 + 0.28×35 + 0.22×40)/100 = 0.265 cm³/cm³
 
@@ -173,7 +173,7 @@ La eficiencia importa: con riego por surco hay que aplicar **casi el doble** que
 
 ---
 
-## Ejercicio integrador 1 {.center}
+## Ejercicio integrador 1 {.center .smaller}
 
 | Horizonte | Z (cm) | CC (cm³/cm³) | PMP (cm³/cm³) |
 |-----------|--------|-------------|--------------|
@@ -181,11 +181,11 @@ La eficiencia importa: con riego por surco hay que aplicar **casi el doble** que
 | Bt (30-70) | 40 | 0.30 | 0.18 |
 | C (70-100) | 30 | 0.24 | 0.14 |
 
-**Calcule:**
-1. ADT por horizonte (cm³/cm³) y lámina total (mm)
-2. AFA para vid vinífera (p = 0.45)
-3. Lámina bruta si se riega por goteo (Ea = 0.90)
-4. Frecuencia de riego si ETc = 4.8 mm/día
+**Calcule:**  
+1. ADT por horizonte (cm³/cm³) y lámina total (mm)  
+2. AFA para vid vinífera (p = 0.45)  
+3. Lámina bruta si se riega por goteo (Ea = 0.90)  
+4. Frecuencia de riego si ETc = 4.8 mm/día  
 
 ::: {style="font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
 Resuelva en 8 minutos.
@@ -193,7 +193,7 @@ Resuelva en 8 minutos.
 
 ---
 
-## Monitoreo de humedad: ¿por qué medir? {.center}
+## Monitoreo de humedad: ¿por qué medir? {.center .smaller}
 
 **El cálculo de balance hídrico (ETc - P) es una estimación. Medir da certeza.**
 
@@ -239,7 +239,7 @@ Resuelva en 8 minutos.
 
 ---
 
-## Ejercicio rápido: sensores {.center}
+## Ejercicio rápido: sensores {.center .smaller}
 
 1. ¿Qué propiedad física mide un sensor FDR/TDR?
 2. ¿Por qué el agua "domina" la señal del sensor?
