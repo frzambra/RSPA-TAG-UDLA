@@ -1,0 +1,391 @@
+---
+title: "Guía de Ejercicios N°1"
+subtitle: "Unidad 1 y Unidad 2 (hasta la sesión 2.3)"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    lang: es
+    theme: default
+    code-fold: false
+  pdf:
+    toc: true
+    lang: es
+execute:
+  echo: false
+  warning: false
+---
+
+## 1. Presentación
+
+Esta guía reúne ejercicios para el **trabajo personal** de las dos primeras unidades del curso, considerando los contenidos vistos hasta la **sesión 2.3**:
+
+| Unidad | Sesiones cubiertas | RAA |
+|--------|--------------------|-----|
+| **1 — El agua en la producción agrícola** | 1.1 y 1.2 | RAA1 |
+| **2 — El agua en el suelo** | 2.1, 2.2 y 2.3 | RAA2, RAA3, RAA4 |
+
+**Cómo usar esta guía:**
+
+1. Resuelve los ejercicios **sin mirar el solucionario**.
+2. Escribe siempre los **datos**, la **fórmula**, el **cálculo** y la **unidad** del resultado.
+3. Interpreta cada resultado: un número sin interpretación agronómica no sirve.
+4. Revisa tus respuestas en la **Sección 6 — Solucionario**.
+
+::: {.callout-tip}
+## Recomendación
+Los ejercicios de cálculo son los que más suelen evaluarse en la **Cátedra 1 (U1–U2)** y en el **Ejercicio 1**. Practícalos con calculadora y verifica las unidades en cada paso.
+:::
+
+---
+
+## 2. Fórmulas y datos de referencia
+
+### 2.1 Balance hídrico y huella hídrica (Unidad 1)
+
+| Fórmula | Descripción |
+|---------|-------------|
+| $P = ET + Q + \Delta S + R$ | Balance hídrico de cuenca |
+| $HF_{total} = HF_{azul} + HF_{verde} + HF_{gris}$ | Huella hídrica total (L/kg) |
+| $HF = \dfrac{\text{volumen de agua (L)}}{\text{producción (kg)}}$ | Huella hídrica de un cultivo |
+| $1 \text{ m}^3 = 1000 \text{ L}$; $1 \text{ mm} = 1 \text{ L/m}^2$ | Conversiones útiles |
+
+::: {style="font-size: 0.9em;"}
+**Huellas hídricas de referencia (Water Footprint Network):** palta 2,080 L/kg (azul 850, verde 1,150, gris 80); uva de mesa 630; manzana 510; maíz 950; trigo 1,370; tomate (goteo) 195.
+:::
+
+### 2.2 Potencial hídrico (Unidad 1)
+
+| Fórmula | Descripción |
+|---------|-------------|
+| $\Psi_{total} = \Psi_m + \Psi_o + \Psi_g + \Psi_p$ | Potencial hídrico total |
+| $\Psi_{atm} = \dfrac{RT}{V_w}\ln\left(\dfrac{HR}{100}\right) = 0.462 \cdot T \cdot \ln\left(\dfrac{HR}{100}\right)$ | Potencial de la atmósfera (MPa), $T$ en Kelvin |
+| $L_n = (\theta_{CC} - \theta_{actual}) \times Z_r$ | Lámina neta (mm) |
+| $L_b = \dfrac{L_n}{E_a}$ | Lámina bruta (mm) |
+
+**Unidades:** $1 \text{ MPa} = 10 \text{ bar} = 1000 \text{ kPa}$. $1 \text{ bar} = 100 \text{ kPa}$.
+
+**Valores típicos del SPAC (MPa):** Suelo $−0.03$ → Raíz $−0.3$ → Xilema $−0.8$ → Hoja $−1.5$ → Atmósfera $−100$.
+
+**Eficiencia de aplicación (Ea):** tendido/inundación 0.30–0.45 · surco 0.40–0.65 · aspersión 0.60–0.75 · pivote 0.75–0.90 · goteo 0.85–0.95.
+
+### 2.3 Relaciones masa-volumen y humedad del suelo (Unidad 2)
+
+| Fórmula | Descripción |
+|---------|-------------|
+| $D_a = \dfrac{M_s}{V_t}$ | Densidad aparente (g/cm³) |
+| $D_r = \dfrac{M_s}{V_s} \approx 2.65 \text{ g/cm}^3$ | Densidad real (suelo mineral) |
+| $P = \left(1 - \dfrac{D_a}{D_r}\right) \times 100$ | Porosidad total (%) |
+| $\theta_g = \dfrac{M_{húmedo} - M_{seco}}{M_{seco}}$ | Contenido gravimétrico (g/g) |
+| $\theta_v = \theta_g \times \dfrac{D_a}{\rho_{agua}} \approx \theta_g \times D_a$ | Contenido volumétrico (cm³/cm³) |
+| $L = \theta_v \times Z$ | Lámina de agua (mm), $Z$ en mm |
+| $ADT = CC - PMP$ | Agua disponible total (cm³/cm³) |
+
+**Puntos hídricos clave:** Saturación $\Psi_m = 0$ kPa · Capacidad de Campo (CC) $\Psi_m = -33$ kPa · Punto de Marchitez Permanente (PMP) $\Psi_m = -1500$ kPa.
+
+| Textura | CC (cm³/cm³) | PMP (cm³/cm³) | ADT (cm³/cm³) |
+|---------|--------------|---------------|---------------|
+| Arenoso | 0.08 – 0.15 | 0.02 – 0.05 | ~0.06 – 0.10 |
+| Franco-arenoso | 0.15 – 0.22 | 0.05 – 0.08 | ~0.10 – 0.14 |
+| Franco | 0.25 – 0.35 | 0.09 – 0.15 | ~0.15 – 0.20 |
+| Franco-arcilloso | 0.30 – 0.40 | 0.15 – 0.20 | ~0.15 – 0.20 |
+| Arcilloso | 0.35 – 0.50 | 0.18 – 0.30 | ~0.17 – 0.20 |
+
+**Interpretación de Da (suelos francos):** ideal 1.3–1.5 · compactación moderada > 1.6 · severa > 1.8 g/cm³.
+
+---
+
+## 3. Unidad 1 — Ejercicios
+
+### 3.1 Sesión 1.1 — Propiedades del agua, ciclo hidrológico y huella hídrica
+
+**Ejercicio 1. ¿Qué propiedad lo explica?** Asocia cada fenómeno con la propiedad del agua correspondiente (cohesión · adhesión · tensión superficial · calor específico · poder disolvente).
+
+1. El suelo húmedo se calienta más lento que el suelo seco.
+2. La savia asciende por el xilema de un árbol de 30 m.
+3. Los iones $\text{NO}_3^-$ y $\text{K}^+$ viajan disueltos hacia la raíz.
+4. El agua asciende por poros finos contra la gravedad.
+
+**Ejercicio 2.** Explica brevemente por qué el alto **calor latente de vaporización** del agua (2.45 MJ/kg) es un mecanismo de enfriamiento para la hoja, y cómo se relaciona con la transpiración.
+
+**Ejercicio 3. Balance hídrico de una cuenca.** En una cuenca de la zona central se registran en un año: precipitación $P = 1200$ mm, evapotranspiración $ET = 480$ mm y escorrentía $Q = 520$ mm. El almacenamiento aumentó en $\Delta S = +40$ mm. Calcula la recarga subterránea $R$ (mm).
+
+**Ejercicio 4. Balance hídrico de Chile.** Con los datos de la tabla, determina el balance ($P - ETo$) de cada zona e indica cuáles tienen déficit y cuáles superávit.
+
+| Zona | P (mm/año) | ETo (mm/año) |
+|------|-----------|--------------|
+| Norte Grande (Arica) | < 1 | ~1,800 |
+| Zona Central (Santiago) | ~340 | ~1,350 |
+| Zona Sur (Temuco) | ~1,200 | ~850 |
+
+**Ejercicio 5. Eficiencia de aplicación.** Aplicas 1,000 m³ de agua con tres sistemas distintos. Completa la tabla con el agua realmente disponible para el cultivo y concluye cuál sistema desperdicia menos.
+
+| Sistema | Ea | Agua útil (m³) |
+|---------|----|----------------|
+| Inundación | 0.40 | |
+| Aspersión | 0.70 | |
+| Goteo | 0.90 | |
+
+**Ejercicio 6. Huella hídrica del palto.** Un predio de 50 ha de palto produce 12 ton/ha·año. El riego aplicado es 12,000 m³/ha·año (toda de pozo = huella azul), la lluvia efectiva es 180 mm/año (huella verde) y el nitrógeno lixiviado requiere 300 m³/ha·año para dilución (huella gris). Calcula:
+
+1. Huella azul (L/kg)
+2. Huella verde (L/kg)
+3. Huella gris (L/kg)
+4. Huella total (L/kg) y comparación con el promedio global (2,080 L/kg)
+
+**Ejercicio 7. Agua virtual.** La palta tiene una huella hídrica de ~2,080 L/kg y Chile exporta ~180,000 ton/año. La uva de mesa tiene ~630 L/kg y se exportan ~650,000 ton/año. Calcula el agua virtual exportada por cada cultivo (en millones de m³/año).
+
+### 3.2 Sesión 1.2 — SPAC, potencial hídrico y lámina de riego
+
+**Ejercicio 8. Ordena el SPAC.** Ordena los compartimentos del continuo suelo-planta-atmósfera desde el potencial hídrico **menos negativo** al **más negativo**, e indica en qué dirección se mueve el agua: Suelo · Raíz · Xilema · Hoja · Atmósfera.
+
+**Ejercicio 9. Conversión de unidades.** Convierte los siguientes valores de potencial hídrico:
+
+1. $-33$ kPa → MPa y bar
+2. $-1500$ kPa → MPa y bar
+3. $-0.033$ MPa → kPa
+
+**Ejercicio 10. Potencial de la atmósfera.** Calcula el potencial hídrico de la atmósfera para $T = 30$ °C (303 K) y $HR = 30\%$, usando $\Psi_{atm} = 0.462 \cdot T \cdot \ln(HR/100)$. Interpreta el resultado.
+
+**Ejercicio 11. Componente dominante.** Indica el componente del potencial hídrico ($\Psi_m$, $\Psi_o$, $\Psi_g$ o $\Psi_p$) que domina en cada compartimento:
+
+1. Suelo no saturado
+2. Suelo con alta salinidad
+3. Célula turgente de la hoja
+4. Columna de agua del xilema bajo tensión
+
+**Ejercicio 12. Lámina de riego.** Un agricultor cultiva tomate con riego por goteo ($E_a = 0.90$) en suelo franco con $CC = 0.32$ cm³/cm³. La humedad actual es $\theta = 0.20$ cm³/cm³ y la profundidad radical es $Z_r = 0.6$ m. Calcula:
+
+1. Lámina neta ($L_n$) necesaria para llevar el suelo a CC
+2. Lámina bruta ($L_b$) a aplicar
+
+---
+
+## 4. Unidad 2 — Ejercicios
+
+### 4.1 Sesión 2.1 — Propiedades físicas e hidráulicas del suelo
+
+**Ejercicio 13. Suelo trifásico.** El suelo ideal en volumen es 50% sólidos, 25% agua y 25% aire.
+
+1. ¿Qué fase gestiona directamente el riego?
+2. Si la compactación reduce los poros, ¿qué fase(s) disminuyen?
+3. ¿Por qué el aire del suelo es tan importante como el agua?
+
+**Ejercicio 14. Textura y estructura.** Explica la diferencia entre textura y estructura del suelo. ¿Cuál de las dos puede modificar un agricultor y mediante qué prácticas?
+
+**Ejercicio 15. Área superficial y retención.**
+
+1. ¿Por qué la arcilla retiene mucha más agua que la arena?
+2. ¿Esa agua retenida por la arcilla está toda disponible para la planta? Justifica.
+3. ¿Qué carga eléctrica tiene la superficie de las arcillas y qué atrae?
+
+**Ejercicio 16. Tamaño de poros.** ¿Qué tipo de poro retiene el agua **disponible** para la planta? Indica el rango de diámetro y por qué los otros dos tipos no contribuyen al agua disponible.
+
+**Ejercicio 17. Lectura de la curva de retención.** Para un suelo franco se tienen los siguientes pares $\Psi_m \text{–} \theta_v$:
+
+| $\Psi_m$ (kPa) | 0 | 5 | 10 | 33 | 100 | 500 | 1500 |
+|----------------|---|---|----|----|-----|-----|------|
+| $\theta_v$ (cm³/cm³) | 0.48 | 0.42 | 0.38 | 0.30 | 0.22 | 0.14 | 0.11 |
+
+1. ¿Cuánta agua disponible (ADT) hay en este suelo?
+2. Si la humedad actual es $\theta_v = 0.20$, ¿el suelo está húmedo o seco respecto a CC?
+3. ¿Qué ocurre con $\theta_v$ cuando $\Psi_m$ se hace más negativo?
+
+**Ejercicio 18. Succión del suelo.** Explica qué significa que un suelo tenga $\Psi_m = -33$ kPa y otro $\Psi_m = -1500$ kPa. ¿Cuál está más seco y por qué?
+
+### 4.2 Sesión 2.2 — Relaciones masa-volumen
+
+**Ejercicio 19. Densidad aparente.** Un cilindro de 100 cm³ de suelo seco pesa 145 g.
+
+1. Calcula la densidad aparente ($D_a$).
+2. Calcula la porosidad total ($P$) asumiendo $D_r = 2.65$ g/cm³.
+3. ¿El suelo está compactado? Justifica.
+
+**Ejercicio 20. Ejemplo completo de campo.** Se extrae una muestra con un cilindro de diámetro 5.0 cm y altura 5.1 cm. La masa de suelo húmedo fue 185.0 g y tras secar a 105 °C la masa seca fue 157.0 g ($D_r = 2.65$ g/cm³). Calcula:
+
+1. Volumen del cilindro ($V_t$)
+2. Densidad aparente ($D_a$)
+3. Volumen de sólidos ($V_s$)
+4. Volumen de poros ($V_p$)
+5. Porosidad total ($P$) en %
+
+**Ejercicio 21. Compactación por sector.** Se muestrearon tres sectores de un predio frutal. Calcula la porosidad de cada uno y recomienda al agricultor qué hacer en el sector con problemas.
+
+| Sector | Da (g/cm³) | Dr (g/cm³) |
+|--------|-----------|------------|
+| Entre hileras (tráfico) | 1.72 | 2.65 |
+| Bajo la hilera (goteo) | 1.28 | 2.65 |
+| Cabecera (sin tráfico) | 1.38 | 2.65 |
+
+**Ejercicio 22. De la densidad a la lámina.** Una muestra tiene $V_{cilindro} = 98$ cm³, $M_{húmedo} = 172$ g y $M_{seco} = 148$ g ($D_r = 2.65$ g/cm³). Calcula:
+
+1. Densidad aparente ($D_a$)
+2. Porosidad total ($P$)
+3. Contenido gravimétrico de agua ($\theta_g$)
+4. Contenido volumétrico de agua ($\theta_v$)
+
+### 4.3 Sesión 2.3 — Contenido de humedad y parámetros hídricos
+
+**Ejercicio 23. Contenido gravimétrico.** Una muestra húmeda pesa 96 g; tras secar a 105 °C pesa 80 g.
+
+1. Calcula $\theta_g$ (g/g).
+2. ¿Cuántos gramos de agua había en la muestra?
+3. Expresa $\theta_g$ en porcentaje.
+
+**Ejercicio 24. Conversión $\theta_g \to \theta_v \to$ lámina.** Completa la tabla y determina en qué suelo hay más agua total (mm) en el perfil.
+
+| Suelo | θg (g/g) | Da (g/cm³) | Profundidad (cm) |
+|-------|---------|------------|------------------|
+| Arenoso | 0.12 | 1.60 | 50 |
+| Franco | 0.25 | 1.35 | 70 |
+| Arcilloso | 0.38 | 1.10 | 60 |
+
+**Ejercicio 25. Lámina y autonomía.** Un suelo tiene $\theta_v = 0.305$ cm³/cm³ hasta 60 cm de profundidad. Calcula la lámina de agua (mm). Si el cultivo consume 6 mm/día, ¿para cuántos días alcanza esta agua sin lluvia ni riego?
+
+**Ejercicio 26. Clasifica el agua.** Para un suelo franco: Saturación $\theta = 0.48$, $CC = 0.30$, $PMP = 0.11$.
+
+1. ¿Qué agua hay entre Saturación y CC? ¿Está disponible?
+2. ¿Qué agua hay entre CC y PMP? ¿Cómo se llama y cuánto vale?
+3. ¿Qué ocurre con el agua por debajo de PMP?
+
+**Ejercicio 27. ADT del perfil.** Se caracterizó un perfil de suelo en tres horizontes:
+
+| Horizonte | Prof. (cm) | CC (cm³/cm³) | PMP (cm³/cm³) |
+|-----------|-----------|--------------|---------------|
+| Ap (0–25) | 25 | 0.33 | 0.14 |
+| Bt (25–55) | 30 | 0.28 | 0.17 |
+| C (55–90) | 35 | 0.22 | 0.12 |
+
+Calcula:
+
+1. ADT por horizonte (cm³/cm³)
+2. Lámina de ADT por horizonte (mm)
+3. Lámina total de ADT del perfil (mm)
+4. Si el cultivo consume 5.5 mm/día, ¿cuántos días de agua disponible tiene?
+
+---
+
+## 5. Ejercicios integradores
+
+**Ejercicio 28. Del muestreo a la decisión de riego.** Un técnico extrae una muestra de suelo con un cilindro de diámetro 5.0 cm y altura 5.1 cm. La masa húmeda fue 182.0 g y la masa seca 155.0 g. El suelo tiene $CC = 0.30$ y $PMP = 0.11$ cm³/cm³, $D_r = 2.65$ g/cm³ y la profundidad radical es $Z_r = 0.7$ m. La evapotranspiración de referencia es $ETo = 5$ mm/día y el coeficiente de cultivo $K_c = 0.9$; el sistema de riego tiene $E_a = 0.85$.
+
+Calcula:
+
+1. Densidad aparente ($D_a$)
+2. Porosidad total ($P$)
+3. Contenido gravimétrico ($\theta_g$) y volumétrico ($\theta_v$) actual
+4. Lámina de agua actual en la zona radical (mm)
+5. ADT y lámina de ADT (mm)
+6. Lámina neta a reponer para llevar el suelo a CC ($L_n$) y lámina bruta ($L_b$)
+7. Consumo del cultivo ($ET_c$) y días de agua disponible desde el estado actual hasta PMP
+
+**Ejercicio 29. Análisis de un predio.** Un agricultor debe elegir entre dos suelos para cultivar lechugas (cultivo sensible, de raíces superficiales):
+
+| Propiedad | Suelo A | Suelo B |
+|-----------|---------|---------|
+| Textura | Franco-arenoso | Franco-arcilloso |
+| Da (g/cm³) | 1.50 | 1.15 |
+| CC (cm³/cm³) | 0.20 | 0.38 |
+| PMP (cm³/cm³) | 0.07 | 0.19 |
+| MO (%) | 1.2 | 3.5 |
+
+1. ¿Cuál suelo tiene más agua total a CC? ¿Y más agua disponible (ADT)?
+2. ¿Qué explica la diferencia de materia orgánica (MO) entre ambos suelos?
+3. ¿En cuál suelo regarías menos frecuentemente? Justifica considerando ADT y Da.
+
+---
+
+## 6. Solucionario
+
+### 6.1 Soluciones Unidad 1
+
+**Solución 1.** 1) Calor específico (inercia térmica). 2) Cohesión + adhesión (teoría de cohesión-tensión). 3) Poder disolvente. 4) Capilaridad (tensión superficial).
+
+**Solución 2.** Al transpirar, el agua pasa de líquido a vapor en la hoja y absorbe 2.45 MJ por cada kg evaporado. Esa energía se extrae del tejido foliar, que se enfría. Es el principal mecanismo de disipación del exceso de calor en una planta expuesta al sol.
+
+**Solución 3.** $R = P - ET - Q - \Delta S = 1200 - 480 - 520 - 40 = 160$ mm/año.
+
+**Solución 4.** Norte Grande: $<1 - 1800 \approx -1800$ mm (déficit extremo). Zona Central: $340 - 1350 = -1010$ mm (déficit). Zona Sur: $1200 - 850 = +350$ mm (superávit). En las dos primeras el riego es imprescindible.
+
+**Solución 5.** Inundación: $1000 \times 0.40 = 400$ m³. Aspersión: $700$ m³. Goteo: $900$ m³. El goteo desperdicia solo ~10%.
+
+**Solución 6.**
+
+1. Producción total $= 50 \times 12 = 600$ ton $= 600{,}000$ kg/año.
+2. Agua azul $= 12{,}000 \times 50 = 600{,}000$ m³ $= 6 \times 10^8$ L. → $HF_{azul} = 6 \times 10^8 / 6 \times 10^5 = 1000$ L/kg.
+3. Agua verde $= 0.18 \text{ m} \times 500{,}000 \text{ m}^2 = 90{,}000$ m³ $= 9 \times 10^7$ L. → $HF_{verde} = 9 \times 10^7 / 6 \times 10^5 = 150$ L/kg.
+4. Agua gris $= 300 \times 50 = 15{,}000$ m³ $= 1.5 \times 10^7$ L. → $HF_{gris} = 25$ L/kg.
+5. $HF_{total} = 1000 + 150 + 25 = 1175$ L/kg. Es **menor** que el promedio global (2,080 L/kg): el predio es más eficiente que el promedio.
+
+**Solución 7.** Palta: $2080 \text{ L/kg} \times 180{,}000{,}000 \text{ kg} = 3.744 \times 10^{11}$ L $= 374.4$ millones m³/año. Uva: $630 \times 650{,}000{,}000 = 4.095 \times 10^{11}$ L $= 409.5$ millones m³/año.
+
+**Solución 8.** Suelo ($-0.03$) → Raíz ($-0.3$) → Xilema ($-0.8$) → Hoja ($-1.5$) → Atmósfera ($-100$ MPa). El agua se mueve de mayor a menor potencial: del suelo hacia la atmósfera.
+
+**Solución 9.** 1) $-33$ kPa $= -0.033$ MPa $= -0.33$ bar. 2) $-1500$ kPa $= -1.5$ MPa $= -15$ bar. 3) $-0.033$ MPa $= -33$ kPa.
+
+**Solución 10.** $\ln(0.30) = -1.204$. $\Psi_{atm} = 0.462 \times 303 \times (-1.204) = 139.99 \times (-1.204) = -168.5$ MPa. La atmósfera es un sumidero de agua muy negativo: por eso el agua "es succionada" hacia ella.
+
+**Solución 11.** 1) $\Psi_m$ (mátrico). 2) $\Psi_m + \Psi_o$. 3) $\Psi_p$ (turgencia). 4) $\Psi_p$ negativo (tensión).
+
+**Solución 12.** 1) $L_n = (0.32 - 0.20) \times 600 = 0.12 \times 600 = 72$ mm. 2) $L_b = 72 / 0.90 = 80$ mm.
+
+### 6.2 Soluciones Unidad 2
+
+**Solución 13.** 1) La fase líquida. 2) Disminuye primero la fase gaseosa y luego la líquida (baja la porosidad total). 3) Las raíces y los microorganismos respiran; sin O₂ hay hipoxia y la absorción de agua y nutrientes se detiene.
+
+**Solución 14.** La **textura** es la proporción de arena, limo y arcilla (heredada, no modificable). La **estructura** es la organización de esas partículas en agregados (modificable). El agricultor modifica la estructura mediante materia orgánica, labranza adecuada, control de tráfico y evitando compactación.
+
+**Solución 15.** 1) La arcilla tiene entre 1,000 y 10,000 veces más área superficial que la arena, por lo que adsorbe mucha más agua. 2) No: parte del agua queda adsorbida con $\Psi_m$ menor (más negativo) que el PMP y no es extraíble. 3) Carga negativa permanente; atrae cationes ($\text{Ca}^{2+}$, $\text{K}^+$, $\text{Na}^+$) y dipolos de agua (doble capa difusa).
+
+**Solución 16.** Los **mesoporos** (0.2–30 μm) retienen agua disponible por capilaridad. Los macroporos (>30 μm) drenan por gravedad y los microporos (<0.2 μm) retienen agua tan fuertemente adsorbida que no está disponible.
+
+**Solución 17.** 1) $ADT = CC - PMP = 0.30 - 0.11 = 0.19$ cm³/cm³. 2) Seco: $0.20 < CC = 0.30$; se ha consumido ~0.10 cm³/cm³. 3) $\theta_v$ disminuye: a mayor succión, menos agua retenida.
+
+**Solución 18.** $\Psi_m = -33$ kPa es la capacidad de campo (suelo con agua disponible). $\Psi_m = -1500$ kPa es el punto de marchitez permanente. El de $-1500$ kPa está más seco, porque a mayor succión (más negativo) queda menos agua, retenida con más fuerza.
+
+**Solución 19.** 1) $D_a = 145/100 = 1.45$ g/cm³. 2) $P = (1 - 1.45/2.65)\times 100 = (1 - 0.547)\times 100 = 45.3\%$. 3) No está compactado: $D_a = 1.45$ está en el rango ideal para un suelo franco (1.3–1.5).
+
+**Solución 20.** 1) $V_t = \pi \times 2.5^2 \times 5.1 = 100.14$ cm³. 2) $D_a = 157/100.14 = 1.57$ g/cm³. 3) $V_s = M_s / D_r = 157/2.65 = 59.25$ cm³. 4) $V_p = V_t - V_s = 100.14 - 59.25 = 40.89$ cm³. 5) $P = (1 - 1.57/2.65)\times 100 = 40.8\%$.
+
+**Solución 21.** Entre hileras: $P = (1 - 1.72/2.65)\times 100 = 35.1\%$ (**compactación moderada**). Bajo hilera: $P = (1 - 1.28/2.65)\times 100 = 51.7\%$. Cabecera: $P = (1 - 1.38/2.65)\times 100 = 47.9\%$. Recomendación: en la entre-hilera hay compactación por tráfico; se sugiere tráfico controlado y subsolado o labranza vertical.
+
+**Solución 22.** 1) $D_a = 148/98 = 1.510$ g/cm³. 2) $P = (1 - 1.510/2.65)\times 100 = 43.0\%$. 3) $\theta_g = (172 - 148)/148 = 24/148 = 0.162$ g/g. 4) $\theta_v = 0.162 \times 1.510 = 0.245$ cm³/cm³.
+
+**Solución 23.** 1) $\theta_g = (96 - 80)/80 = 0.20$ g/g. 2) $16$ g de agua. 3) $20\%$.
+
+**Solución 24.** Arenoso: $\theta_v = 0.12\times1.60 = 0.192$; $L = 0.192 \times 500 = 96$ mm. Franco: $\theta_v = 0.25\times1.35 = 0.3375$; $L = 0.3375 \times 700 = 236.3$ mm. Arcilloso: $\theta_v = 0.38\times1.10 = 0.418$; $L = 0.418 \times 600 = 250.8$ mm. El **arcilloso** tiene más agua total (250.8 mm).
+
+**Solución 25.** $L = 0.305 \times 600 = 183$ mm. Autonomía $= 183 / 6 = 30.5$ días.
+
+**Solución 26.** 1) Agua gravitacional ($0.48 - 0.30 = 0.18$): drena por gravedad, **no** disponible. 2) Agua disponible total, $ADT = 0.30 - 0.11 = 0.19$ cm³/cm³. 3) Agua no disponible (adsorbida fuertemente en microporos): queda en el suelo.
+
+**Solución 27.** Ap: $ADT = 0.33 - 0.14 = 0.19$; $L = 0.19 \times 250 = 47.5$ mm. Bt: $ADT = 0.28 - 0.17 = 0.11$; $L = 0.11 \times 300 = 33.0$ mm. C: $ADT = 0.22 - 0.12 = 0.10$; $L = 0.10 \times 350 = 35.0$ mm. Total $= 47.5 + 33.0 + 35.0 = 115.5$ mm. Autonomía $= 115.5 / 5.5 = 21$ días.
+
+### 6.3 Soluciones integradores
+
+**Solución 28.**
+
+1. $V_t = \pi \times 2.5^2 \times 5.1 = 100.14$ cm³. $D_a = 155 / 100.14 = 1.55$ g/cm³.
+2. $P = (1 - 1.55/2.65)\times 100 = 41.5\%$.
+3. $\theta_g = (182 - 155)/155 = 0.174$ g/g. $\theta_v = 0.174 \times 1.55 = 0.270$ cm³/cm³.
+4. Lámina actual $= 0.270 \times 700 = 188.8$ mm.
+5. $ADT = 0.30 - 0.11 = 0.19$ cm³/cm³. Lámina $ADT = 0.19 \times 700 = 133$ mm.
+6. $L_n = (0.30 - 0.270) \times 700 = 21$ mm. $L_b = 21 / 0.85 = 24.7$ mm.
+7. $ET_c = K_c \times ETo = 0.9 \times 5 = 4.5$ mm/día. Agua disponible actual $= (\theta_v - PMP)\times Z = (0.270 - 0.11)\times 700 = 112$ mm. Autonomía $= 112 / 4.5 = 24.9$ días.
+
+**Solución 29.**
+
+1. Agua a CC: Suelo B (0.38 vs 0.20). ADT: A $= 0.20 - 0.07 = 0.13$; B $= 0.38 - 0.19 = 0.19$. El suelo B tiene más agua disponible.
+2. El suelo B tiene más MO (3.5% vs 1.2%), lo que favorece la formación de agregados estables y mesoporos, mejorando la retención de agua disponible.
+3. En el suelo B se regaría menos frecuentemente: tiene más ADT (0.19 vs 0.13) y menor Da (1.15 vs 1.50), es decir, más agua disponible y un suelo menos compactado que favorece el desarrollo radical de la lechuga.
+
+---
+
+## 7. Resultados de aprendizaje cubiertos
+
+| RAA | Descripción | Ejercicios asociados |
+|-----|-------------|----------------------|
+| **RAA1** | Importancia del agua, propiedades y funciones en el sistema SPA | 1–12 |
+| **RAA2** | Continuo suelo-agua-planta y aprovechamiento del agua | 8, 11, 13–16 |
+| **RAA3** | Factores que afectan el contenido de agua del suelo y ejercicios prácticos | 17–27 |
+| **RAA4** | Redistribución del agua (saturación, CC, PMP) | 17, 18, 26, 27, 28 |

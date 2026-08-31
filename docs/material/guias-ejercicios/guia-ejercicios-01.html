@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Guía de Ejercicios N°1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="guia-ejercicios-01_files/libs/clipboard/clipboard.min.js"></script>
+<script src="guia-ejercicios-01_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="guia-ejercicios-01_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="guia-ejercicios-01_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="guia-ejercicios-01_files/libs/quarto-html/popper.min.js"></script>
+<script src="guia-ejercicios-01_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="guia-ejercicios-01_files/libs/quarto-html/anchor.min.js"></script>
+<link href="guia-ejercicios-01_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="guia-ejercicios-01_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="guia-ejercicios-01_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="guia-ejercicios-01_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="guia-ejercicios-01_files/libs/bootstrap/bootstrap-cb5b25c0b2dbaa07e4625950326014b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">1. Presentación</a></li>
+  <li><a href="#fórmulas-y-datos-de-referencia" id="toc-fórmulas-y-datos-de-referencia" class="nav-link" data-scroll-target="#fórmulas-y-datos-de-referencia">2. Fórmulas y datos de referencia</a>
+  <ul class="collapse">
+  <li><a href="#balance-hídrico-y-huella-hídrica-unidad-1" id="toc-balance-hídrico-y-huella-hídrica-unidad-1" class="nav-link" data-scroll-target="#balance-hídrico-y-huella-hídrica-unidad-1">2.1 Balance hídrico y huella hídrica (Unidad 1)</a></li>
+  <li><a href="#potencial-hídrico-unidad-1" id="toc-potencial-hídrico-unidad-1" class="nav-link" data-scroll-target="#potencial-hídrico-unidad-1">2.2 Potencial hídrico (Unidad 1)</a></li>
+  <li><a href="#relaciones-masa-volumen-y-humedad-del-suelo-unidad-2" id="toc-relaciones-masa-volumen-y-humedad-del-suelo-unidad-2" class="nav-link" data-scroll-target="#relaciones-masa-volumen-y-humedad-del-suelo-unidad-2">2.3 Relaciones masa-volumen y humedad del suelo (Unidad 2)</a></li>
+  </ul></li>
+  <li><a href="#unidad-1-ejercicios" id="toc-unidad-1-ejercicios" class="nav-link" data-scroll-target="#unidad-1-ejercicios">3. Unidad 1 — Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#sesión-1.1-propiedades-del-agua-ciclo-hidrológico-y-huella-hídrica" id="toc-sesión-1.1-propiedades-del-agua-ciclo-hidrológico-y-huella-hídrica" class="nav-link" data-scroll-target="#sesión-1.1-propiedades-del-agua-ciclo-hidrológico-y-huella-hídrica">3.1 Sesión 1.1 — Propiedades del agua, ciclo hidrológico y huella hídrica</a></li>
+  <li><a href="#sesión-1.2-spac-potencial-hídrico-y-lámina-de-riego" id="toc-sesión-1.2-spac-potencial-hídrico-y-lámina-de-riego" class="nav-link" data-scroll-target="#sesión-1.2-spac-potencial-hídrico-y-lámina-de-riego">3.2 Sesión 1.2 — SPAC, potencial hídrico y lámina de riego</a></li>
+  </ul></li>
+  <li><a href="#unidad-2-ejercicios" id="toc-unidad-2-ejercicios" class="nav-link" data-scroll-target="#unidad-2-ejercicios">4. Unidad 2 — Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#sesión-2.1-propiedades-físicas-e-hidráulicas-del-suelo" id="toc-sesión-2.1-propiedades-físicas-e-hidráulicas-del-suelo" class="nav-link" data-scroll-target="#sesión-2.1-propiedades-físicas-e-hidráulicas-del-suelo">4.1 Sesión 2.1 — Propiedades físicas e hidráulicas del suelo</a></li>
+  <li><a href="#sesión-2.2-relaciones-masa-volumen" id="toc-sesión-2.2-relaciones-masa-volumen" class="nav-link" data-scroll-target="#sesión-2.2-relaciones-masa-volumen">4.2 Sesión 2.2 — Relaciones masa-volumen</a></li>
+  <li><a href="#sesión-2.3-contenido-de-humedad-y-parámetros-hídricos" id="toc-sesión-2.3-contenido-de-humedad-y-parámetros-hídricos" class="nav-link" data-scroll-target="#sesión-2.3-contenido-de-humedad-y-parámetros-hídricos">4.3 Sesión 2.3 — Contenido de humedad y parámetros hídricos</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-integradores" id="toc-ejercicios-integradores" class="nav-link" data-scroll-target="#ejercicios-integradores">5. Ejercicios integradores</a></li>
+  <li><a href="#solucionario" id="toc-solucionario" class="nav-link" data-scroll-target="#solucionario">6. Solucionario</a>
+  <ul class="collapse">
+  <li><a href="#soluciones-unidad-1" id="toc-soluciones-unidad-1" class="nav-link" data-scroll-target="#soluciones-unidad-1">6.1 Soluciones Unidad 1</a></li>
+  <li><a href="#soluciones-unidad-2" id="toc-soluciones-unidad-2" class="nav-link" data-scroll-target="#soluciones-unidad-2">6.2 Soluciones Unidad 2</a></li>
+  <li><a href="#soluciones-integradores" id="toc-soluciones-integradores" class="nav-link" data-scroll-target="#soluciones-integradores">6.3 Soluciones integradores</a></li>
+  </ul></li>
+  <li><a href="#resultados-de-aprendizaje-cubiertos" id="toc-resultados-de-aprendizaje-cubiertos" class="nav-link" data-scroll-target="#resultados-de-aprendizaje-cubiertos">7. Resultados de aprendizaje cubiertos</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="guia-ejercicios-01.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Guía de Ejercicios N°1</h1>
+<p class="subtitle lead">Unidad 1 y Unidad 2 (hasta la sesión 2.3)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="presentación" class="level2">
+<h2 class="anchored" data-anchor-id="presentación">1. Presentación</h2>
+<p>Esta guía reúne ejercicios para el <strong>trabajo personal</strong> de las dos primeras unidades del curso, considerando los contenidos vistos hasta la <strong>sesión 2.3</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Unidad</th>
+<th>Sesiones cubiertas</th>
+<th>RAA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1 — El agua en la producción agrícola</strong></td>
+<td>1.1 y 1.2</td>
+<td>RAA1</td>
+</tr>
+<tr class="even">
+<td><strong>2 — El agua en el suelo</strong></td>
+<td>2.1, 2.2 y 2.3</td>
+<td>RAA2, RAA3, RAA4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cómo usar esta guía:</strong></p>
+<ol type="1">
+<li>Resuelve los ejercicios <strong>sin mirar el solucionario</strong>.</li>
+<li>Escribe siempre los <strong>datos</strong>, la <strong>fórmula</strong>, el <strong>cálculo</strong> y la <strong>unidad</strong> del resultado.</li>
+<li>Interpreta cada resultado: un número sin interpretación agronómica no sirve.</li>
+<li>Revisa tus respuestas en la <strong>Sección 6 — Solucionario</strong>.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Recomendación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los ejercicios de cálculo son los que más suelen evaluarse en la <strong>Cátedra 1 (U1–U2)</strong> y en el <strong>Ejercicio 1</strong>. Practícalos con calculadora y verifica las unidades en cada paso.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="fórmulas-y-datos-de-referencia" class="level2">
+<h2 class="anchored" data-anchor-id="fórmulas-y-datos-de-referencia">2. Fórmulas y datos de referencia</h2>
+<section id="balance-hídrico-y-huella-hídrica-unidad-1" class="level3">
+<h3 class="anchored" data-anchor-id="balance-hídrico-y-huella-hídrica-unidad-1">2.1 Balance hídrico y huella hídrica (Unidad 1)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fórmula</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(P = ET + Q + \Delta S + R\)</span></td>
+<td>Balance hídrico de cuenca</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(HF_{total} = HF_{azul} + HF_{verde} + HF_{gris}\)</span></td>
+<td>Huella hídrica total (L/kg)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(HF = \dfrac{\text{volumen de agua (L)}}{\text{producción (kg)}}\)</span></td>
+<td>Huella hídrica de un cultivo</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1 \text{ m}^3 = 1000 \text{ L}\)</span>; <span class="math inline">\(1 \text{ mm} = 1 \text{ L/m}^2\)</span></td>
+<td>Conversiones útiles</td>
+</tr>
+</tbody>
+</table>
+<div style="font-size: 0.9em;">
+<p><strong>Huellas hídricas de referencia (Water Footprint Network):</strong> palta 2,080 L/kg (azul 850, verde 1,150, gris 80); uva de mesa 630; manzana 510; maíz 950; trigo 1,370; tomate (goteo) 195.</p>
+</div>
+</section>
+<section id="potencial-hídrico-unidad-1" class="level3">
+<h3 class="anchored" data-anchor-id="potencial-hídrico-unidad-1">2.2 Potencial hídrico (Unidad 1)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fórmula</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\Psi_{total} = \Psi_m + \Psi_o + \Psi_g + \Psi_p\)</span></td>
+<td>Potencial hídrico total</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Psi_{atm} = \dfrac{RT}{V_w}\ln\left(\dfrac{HR}{100}\right) = 0.462 \cdot T \cdot \ln\left(\dfrac{HR}{100}\right)\)</span></td>
+<td>Potencial de la atmósfera (MPa), <span class="math inline">\(T\)</span> en Kelvin</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(L_n = (\theta_{CC} - \theta_{actual}) \times Z_r\)</span></td>
+<td>Lámina neta (mm)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L_b = \dfrac{L_n}{E_a}\)</span></td>
+<td>Lámina bruta (mm)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Unidades:</strong> <span class="math inline">\(1 \text{ MPa} = 10 \text{ bar} = 1000 \text{ kPa}\)</span>. <span class="math inline">\(1 \text{ bar} = 100 \text{ kPa}\)</span>.</p>
+<p><strong>Valores típicos del SPAC (MPa):</strong> Suelo <span class="math inline">\(−0.03\)</span> → Raíz <span class="math inline">\(−0.3\)</span> → Xilema <span class="math inline">\(−0.8\)</span> → Hoja <span class="math inline">\(−1.5\)</span> → Atmósfera <span class="math inline">\(−100\)</span>.</p>
+<p><strong>Eficiencia de aplicación (Ea):</strong> tendido/inundación 0.30–0.45 · surco 0.40–0.65 · aspersión 0.60–0.75 · pivote 0.75–0.90 · goteo 0.85–0.95.</p>
+</section>
+<section id="relaciones-masa-volumen-y-humedad-del-suelo-unidad-2" class="level3">
+<h3 class="anchored" data-anchor-id="relaciones-masa-volumen-y-humedad-del-suelo-unidad-2">2.3 Relaciones masa-volumen y humedad del suelo (Unidad 2)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fórmula</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(D_a = \dfrac{M_s}{V_t}\)</span></td>
+<td>Densidad aparente (g/cm³)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D_r = \dfrac{M_s}{V_s} \approx 2.65 \text{ g/cm}^3\)</span></td>
+<td>Densidad real (suelo mineral)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(P = \left(1 - \dfrac{D_a}{D_r}\right) \times 100\)</span></td>
+<td>Porosidad total (%)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\theta_g = \dfrac{M_{húmedo} - M_{seco}}{M_{seco}}\)</span></td>
+<td>Contenido gravimétrico (g/g)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\theta_v = \theta_g \times \dfrac{D_a}{\rho_{agua}} \approx \theta_g \times D_a\)</span></td>
+<td>Contenido volumétrico (cm³/cm³)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L = \theta_v \times Z\)</span></td>
+<td>Lámina de agua (mm), <span class="math inline">\(Z\)</span> en mm</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(ADT = CC - PMP\)</span></td>
+<td>Agua disponible total (cm³/cm³)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Puntos hídricos clave:</strong> Saturación <span class="math inline">\(\Psi_m = 0\)</span> kPa · Capacidad de Campo (CC) <span class="math inline">\(\Psi_m = -33\)</span> kPa · Punto de Marchitez Permanente (PMP) <span class="math inline">\(\Psi_m = -1500\)</span> kPa.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Textura</th>
+<th>CC (cm³/cm³)</th>
+<th>PMP (cm³/cm³)</th>
+<th>ADT (cm³/cm³)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arenoso</td>
+<td>0.08 – 0.15</td>
+<td>0.02 – 0.05</td>
+<td>~0.06 – 0.10</td>
+</tr>
+<tr class="even">
+<td>Franco-arenoso</td>
+<td>0.15 – 0.22</td>
+<td>0.05 – 0.08</td>
+<td>~0.10 – 0.14</td>
+</tr>
+<tr class="odd">
+<td>Franco</td>
+<td>0.25 – 0.35</td>
+<td>0.09 – 0.15</td>
+<td>~0.15 – 0.20</td>
+</tr>
+<tr class="even">
+<td>Franco-arcilloso</td>
+<td>0.30 – 0.40</td>
+<td>0.15 – 0.20</td>
+<td>~0.15 – 0.20</td>
+</tr>
+<tr class="odd">
+<td>Arcilloso</td>
+<td>0.35 – 0.50</td>
+<td>0.18 – 0.30</td>
+<td>~0.17 – 0.20</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretación de Da (suelos francos):</strong> ideal 1.3–1.5 · compactación moderada &gt; 1.6 · severa &gt; 1.8 g/cm³.</p>
+<hr>
+</section>
+</section>
+<section id="unidad-1-ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="unidad-1-ejercicios">3. Unidad 1 — Ejercicios</h2>
+<section id="sesión-1.1-propiedades-del-agua-ciclo-hidrológico-y-huella-hídrica" class="level3">
+<h3 class="anchored" data-anchor-id="sesión-1.1-propiedades-del-agua-ciclo-hidrológico-y-huella-hídrica">3.1 Sesión 1.1 — Propiedades del agua, ciclo hidrológico y huella hídrica</h3>
+<p><strong>Ejercicio 1. ¿Qué propiedad lo explica?</strong> Asocia cada fenómeno con la propiedad del agua correspondiente (cohesión · adhesión · tensión superficial · calor específico · poder disolvente).</p>
+<ol type="1">
+<li>El suelo húmedo se calienta más lento que el suelo seco.</li>
+<li>La savia asciende por el xilema de un árbol de 30 m.</li>
+<li>Los iones <span class="math inline">\(\text{NO}_3^-\)</span> y <span class="math inline">\(\text{K}^+\)</span> viajan disueltos hacia la raíz.</li>
+<li>El agua asciende por poros finos contra la gravedad.</li>
+</ol>
+<p><strong>Ejercicio 2.</strong> Explica brevemente por qué el alto <strong>calor latente de vaporización</strong> del agua (2.45 MJ/kg) es un mecanismo de enfriamiento para la hoja, y cómo se relaciona con la transpiración.</p>
+<p><strong>Ejercicio 3. Balance hídrico de una cuenca.</strong> En una cuenca de la zona central se registran en un año: precipitación <span class="math inline">\(P = 1200\)</span> mm, evapotranspiración <span class="math inline">\(ET = 480\)</span> mm y escorrentía <span class="math inline">\(Q = 520\)</span> mm. El almacenamiento aumentó en <span class="math inline">\(\Delta S = +40\)</span> mm. Calcula la recarga subterránea <span class="math inline">\(R\)</span> (mm).</p>
+<p><strong>Ejercicio 4. Balance hídrico de Chile.</strong> Con los datos de la tabla, determina el balance (<span class="math inline">\(P - ETo\)</span>) de cada zona e indica cuáles tienen déficit y cuáles superávit.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Zona</th>
+<th>P (mm/año)</th>
+<th>ETo (mm/año)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Norte Grande (Arica)</td>
+<td>&lt; 1</td>
+<td>~1,800</td>
+</tr>
+<tr class="even">
+<td>Zona Central (Santiago)</td>
+<td>~340</td>
+<td>~1,350</td>
+</tr>
+<tr class="odd">
+<td>Zona Sur (Temuco)</td>
+<td>~1,200</td>
+<td>~850</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejercicio 5. Eficiencia de aplicación.</strong> Aplicas 1,000 m³ de agua con tres sistemas distintos. Completa la tabla con el agua realmente disponible para el cultivo y concluye cuál sistema desperdicia menos.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Sistema</th>
+<th>Ea</th>
+<th>Agua útil (m³)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inundación</td>
+<td>0.40</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Aspersión</td>
+<td>0.70</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Goteo</td>
+<td>0.90</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejercicio 6. Huella hídrica del palto.</strong> Un predio de 50 ha de palto produce 12 ton/ha·año. El riego aplicado es 12,000 m³/ha·año (toda de pozo = huella azul), la lluvia efectiva es 180 mm/año (huella verde) y el nitrógeno lixiviado requiere 300 m³/ha·año para dilución (huella gris). Calcula:</p>
+<ol type="1">
+<li>Huella azul (L/kg)</li>
+<li>Huella verde (L/kg)</li>
+<li>Huella gris (L/kg)</li>
+<li>Huella total (L/kg) y comparación con el promedio global (2,080 L/kg)</li>
+</ol>
+<p><strong>Ejercicio 7. Agua virtual.</strong> La palta tiene una huella hídrica de ~2,080 L/kg y Chile exporta ~180,000 ton/año. La uva de mesa tiene ~630 L/kg y se exportan ~650,000 ton/año. Calcula el agua virtual exportada por cada cultivo (en millones de m³/año).</p>
+</section>
+<section id="sesión-1.2-spac-potencial-hídrico-y-lámina-de-riego" class="level3">
+<h3 class="anchored" data-anchor-id="sesión-1.2-spac-potencial-hídrico-y-lámina-de-riego">3.2 Sesión 1.2 — SPAC, potencial hídrico y lámina de riego</h3>
+<p><strong>Ejercicio 8. Ordena el SPAC.</strong> Ordena los compartimentos del continuo suelo-planta-atmósfera desde el potencial hídrico <strong>menos negativo</strong> al <strong>más negativo</strong>, e indica en qué dirección se mueve el agua: Suelo · Raíz · Xilema · Hoja · Atmósfera.</p>
+<p><strong>Ejercicio 9. Conversión de unidades.</strong> Convierte los siguientes valores de potencial hídrico:</p>
+<ol type="1">
+<li><span class="math inline">\(-33\)</span> kPa → MPa y bar</li>
+<li><span class="math inline">\(-1500\)</span> kPa → MPa y bar</li>
+<li><span class="math inline">\(-0.033\)</span> MPa → kPa</li>
+</ol>
+<p><strong>Ejercicio 10. Potencial de la atmósfera.</strong> Calcula el potencial hídrico de la atmósfera para <span class="math inline">\(T = 30\)</span> °C (303 K) y <span class="math inline">\(HR = 30\%\)</span>, usando <span class="math inline">\(\Psi_{atm} = 0.462 \cdot T \cdot \ln(HR/100)\)</span>. Interpreta el resultado.</p>
+<p><strong>Ejercicio 11. Componente dominante.</strong> Indica el componente del potencial hídrico (<span class="math inline">\(\Psi_m\)</span>, <span class="math inline">\(\Psi_o\)</span>, <span class="math inline">\(\Psi_g\)</span> o <span class="math inline">\(\Psi_p\)</span>) que domina en cada compartimento:</p>
+<ol type="1">
+<li>Suelo no saturado</li>
+<li>Suelo con alta salinidad</li>
+<li>Célula turgente de la hoja</li>
+<li>Columna de agua del xilema bajo tensión</li>
+</ol>
+<p><strong>Ejercicio 12. Lámina de riego.</strong> Un agricultor cultiva tomate con riego por goteo (<span class="math inline">\(E_a = 0.90\)</span>) en suelo franco con <span class="math inline">\(CC = 0.32\)</span> cm³/cm³. La humedad actual es <span class="math inline">\(\theta = 0.20\)</span> cm³/cm³ y la profundidad radical es <span class="math inline">\(Z_r = 0.6\)</span> m. Calcula:</p>
+<ol type="1">
+<li>Lámina neta (<span class="math inline">\(L_n\)</span>) necesaria para llevar el suelo a CC</li>
+<li>Lámina bruta (<span class="math inline">\(L_b\)</span>) a aplicar</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="unidad-2-ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="unidad-2-ejercicios">4. Unidad 2 — Ejercicios</h2>
+<section id="sesión-2.1-propiedades-físicas-e-hidráulicas-del-suelo" class="level3">
+<h3 class="anchored" data-anchor-id="sesión-2.1-propiedades-físicas-e-hidráulicas-del-suelo">4.1 Sesión 2.1 — Propiedades físicas e hidráulicas del suelo</h3>
+<p><strong>Ejercicio 13. Suelo trifásico.</strong> El suelo ideal en volumen es 50% sólidos, 25% agua y 25% aire.</p>
+<ol type="1">
+<li>¿Qué fase gestiona directamente el riego?</li>
+<li>Si la compactación reduce los poros, ¿qué fase(s) disminuyen?</li>
+<li>¿Por qué el aire del suelo es tan importante como el agua?</li>
+</ol>
+<p><strong>Ejercicio 14. Textura y estructura.</strong> Explica la diferencia entre textura y estructura del suelo. ¿Cuál de las dos puede modificar un agricultor y mediante qué prácticas?</p>
+<p><strong>Ejercicio 15. Área superficial y retención.</strong></p>
+<ol type="1">
+<li>¿Por qué la arcilla retiene mucha más agua que la arena?</li>
+<li>¿Esa agua retenida por la arcilla está toda disponible para la planta? Justifica.</li>
+<li>¿Qué carga eléctrica tiene la superficie de las arcillas y qué atrae?</li>
+</ol>
+<p><strong>Ejercicio 16. Tamaño de poros.</strong> ¿Qué tipo de poro retiene el agua <strong>disponible</strong> para la planta? Indica el rango de diámetro y por qué los otros dos tipos no contribuyen al agua disponible.</p>
+<p><strong>Ejercicio 17. Lectura de la curva de retención.</strong> Para un suelo franco se tienen los siguientes pares <span class="math inline">\(\Psi_m \text{–} \theta_v\)</span>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\Psi_m\)</span> (kPa)</th>
+<th>0</th>
+<th>5</th>
+<th>10</th>
+<th>33</th>
+<th>100</th>
+<th>500</th>
+<th>1500</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\theta_v\)</span> (cm³/cm³)</td>
+<td>0.48</td>
+<td>0.42</td>
+<td>0.38</td>
+<td>0.30</td>
+<td>0.22</td>
+<td>0.14</td>
+<td>0.11</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>¿Cuánta agua disponible (ADT) hay en este suelo?</li>
+<li>Si la humedad actual es <span class="math inline">\(\theta_v = 0.20\)</span>, ¿el suelo está húmedo o seco respecto a CC?</li>
+<li>¿Qué ocurre con <span class="math inline">\(\theta_v\)</span> cuando <span class="math inline">\(\Psi_m\)</span> se hace más negativo?</li>
+</ol>
+<p><strong>Ejercicio 18. Succión del suelo.</strong> Explica qué significa que un suelo tenga <span class="math inline">\(\Psi_m = -33\)</span> kPa y otro <span class="math inline">\(\Psi_m = -1500\)</span> kPa. ¿Cuál está más seco y por qué?</p>
+</section>
+<section id="sesión-2.2-relaciones-masa-volumen" class="level3">
+<h3 class="anchored" data-anchor-id="sesión-2.2-relaciones-masa-volumen">4.2 Sesión 2.2 — Relaciones masa-volumen</h3>
+<p><strong>Ejercicio 19. Densidad aparente.</strong> Un cilindro de 100 cm³ de suelo seco pesa 145 g.</p>
+<ol type="1">
+<li>Calcula la densidad aparente (<span class="math inline">\(D_a\)</span>).</li>
+<li>Calcula la porosidad total (<span class="math inline">\(P\)</span>) asumiendo <span class="math inline">\(D_r = 2.65\)</span> g/cm³.</li>
+<li>¿El suelo está compactado? Justifica.</li>
+</ol>
+<p><strong>Ejercicio 20. Ejemplo completo de campo.</strong> Se extrae una muestra con un cilindro de diámetro 5.0 cm y altura 5.1 cm. La masa de suelo húmedo fue 185.0 g y tras secar a 105 °C la masa seca fue 157.0 g (<span class="math inline">\(D_r = 2.65\)</span> g/cm³). Calcula:</p>
+<ol type="1">
+<li>Volumen del cilindro (<span class="math inline">\(V_t\)</span>)</li>
+<li>Densidad aparente (<span class="math inline">\(D_a\)</span>)</li>
+<li>Volumen de sólidos (<span class="math inline">\(V_s\)</span>)</li>
+<li>Volumen de poros (<span class="math inline">\(V_p\)</span>)</li>
+<li>Porosidad total (<span class="math inline">\(P\)</span>) en %</li>
+</ol>
+<p><strong>Ejercicio 21. Compactación por sector.</strong> Se muestrearon tres sectores de un predio frutal. Calcula la porosidad de cada uno y recomienda al agricultor qué hacer en el sector con problemas.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Sector</th>
+<th>Da (g/cm³)</th>
+<th>Dr (g/cm³)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entre hileras (tráfico)</td>
+<td>1.72</td>
+<td>2.65</td>
+</tr>
+<tr class="even">
+<td>Bajo la hilera (goteo)</td>
+<td>1.28</td>
+<td>2.65</td>
+</tr>
+<tr class="odd">
+<td>Cabecera (sin tráfico)</td>
+<td>1.38</td>
+<td>2.65</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejercicio 22. De la densidad a la lámina.</strong> Una muestra tiene <span class="math inline">\(V_{cilindro} = 98\)</span> cm³, <span class="math inline">\(M_{húmedo} = 172\)</span> g y <span class="math inline">\(M_{seco} = 148\)</span> g (<span class="math inline">\(D_r = 2.65\)</span> g/cm³). Calcula:</p>
+<ol type="1">
+<li>Densidad aparente (<span class="math inline">\(D_a\)</span>)</li>
+<li>Porosidad total (<span class="math inline">\(P\)</span>)</li>
+<li>Contenido gravimétrico de agua (<span class="math inline">\(\theta_g\)</span>)</li>
+<li>Contenido volumétrico de agua (<span class="math inline">\(\theta_v\)</span>)</li>
+</ol>
+</section>
+<section id="sesión-2.3-contenido-de-humedad-y-parámetros-hídricos" class="level3">
+<h3 class="anchored" data-anchor-id="sesión-2.3-contenido-de-humedad-y-parámetros-hídricos">4.3 Sesión 2.3 — Contenido de humedad y parámetros hídricos</h3>
+<p><strong>Ejercicio 23. Contenido gravimétrico.</strong> Una muestra húmeda pesa 96 g; tras secar a 105 °C pesa 80 g.</p>
+<ol type="1">
+<li>Calcula <span class="math inline">\(\theta_g\)</span> (g/g).</li>
+<li>¿Cuántos gramos de agua había en la muestra?</li>
+<li>Expresa <span class="math inline">\(\theta_g\)</span> en porcentaje.</li>
+</ol>
+<p><strong>Ejercicio 24. Conversión <span class="math inline">\(\theta_g \to \theta_v \to\)</span> lámina.</strong> Completa la tabla y determina en qué suelo hay más agua total (mm) en el perfil.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Suelo</th>
+<th>θg (g/g)</th>
+<th>Da (g/cm³)</th>
+<th>Profundidad (cm)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arenoso</td>
+<td>0.12</td>
+<td>1.60</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>Franco</td>
+<td>0.25</td>
+<td>1.35</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td>Arcilloso</td>
+<td>0.38</td>
+<td>1.10</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejercicio 25. Lámina y autonomía.</strong> Un suelo tiene <span class="math inline">\(\theta_v = 0.305\)</span> cm³/cm³ hasta 60 cm de profundidad. Calcula la lámina de agua (mm). Si el cultivo consume 6 mm/día, ¿para cuántos días alcanza esta agua sin lluvia ni riego?</p>
+<p><strong>Ejercicio 26. Clasifica el agua.</strong> Para un suelo franco: Saturación <span class="math inline">\(\theta = 0.48\)</span>, <span class="math inline">\(CC = 0.30\)</span>, <span class="math inline">\(PMP = 0.11\)</span>.</p>
+<ol type="1">
+<li>¿Qué agua hay entre Saturación y CC? ¿Está disponible?</li>
+<li>¿Qué agua hay entre CC y PMP? ¿Cómo se llama y cuánto vale?</li>
+<li>¿Qué ocurre con el agua por debajo de PMP?</li>
+</ol>
+<p><strong>Ejercicio 27. ADT del perfil.</strong> Se caracterizó un perfil de suelo en tres horizontes:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Horizonte</th>
+<th>Prof.&nbsp;(cm)</th>
+<th>CC (cm³/cm³)</th>
+<th>PMP (cm³/cm³)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ap (0–25)</td>
+<td>25</td>
+<td>0.33</td>
+<td>0.14</td>
+</tr>
+<tr class="even">
+<td>Bt (25–55)</td>
+<td>30</td>
+<td>0.28</td>
+<td>0.17</td>
+</tr>
+<tr class="odd">
+<td>C (55–90)</td>
+<td>35</td>
+<td>0.22</td>
+<td>0.12</td>
+</tr>
+</tbody>
+</table>
+<p>Calcula:</p>
+<ol type="1">
+<li>ADT por horizonte (cm³/cm³)</li>
+<li>Lámina de ADT por horizonte (mm)</li>
+<li>Lámina total de ADT del perfil (mm)</li>
+<li>Si el cultivo consume 5.5 mm/día, ¿cuántos días de agua disponible tiene?</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="ejercicios-integradores" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-integradores">5. Ejercicios integradores</h2>
+<p><strong>Ejercicio 28. Del muestreo a la decisión de riego.</strong> Un técnico extrae una muestra de suelo con un cilindro de diámetro 5.0 cm y altura 5.1 cm. La masa húmeda fue 182.0 g y la masa seca 155.0 g. El suelo tiene <span class="math inline">\(CC = 0.30\)</span> y <span class="math inline">\(PMP = 0.11\)</span> cm³/cm³, <span class="math inline">\(D_r = 2.65\)</span> g/cm³ y la profundidad radical es <span class="math inline">\(Z_r = 0.7\)</span> m. La evapotranspiración de referencia es <span class="math inline">\(ETo = 5\)</span> mm/día y el coeficiente de cultivo <span class="math inline">\(K_c = 0.9\)</span>; el sistema de riego tiene <span class="math inline">\(E_a = 0.85\)</span>.</p>
+<p>Calcula:</p>
+<ol type="1">
+<li>Densidad aparente (<span class="math inline">\(D_a\)</span>)</li>
+<li>Porosidad total (<span class="math inline">\(P\)</span>)</li>
+<li>Contenido gravimétrico (<span class="math inline">\(\theta_g\)</span>) y volumétrico (<span class="math inline">\(\theta_v\)</span>) actual</li>
+<li>Lámina de agua actual en la zona radical (mm)</li>
+<li>ADT y lámina de ADT (mm)</li>
+<li>Lámina neta a reponer para llevar el suelo a CC (<span class="math inline">\(L_n\)</span>) y lámina bruta (<span class="math inline">\(L_b\)</span>)</li>
+<li>Consumo del cultivo (<span class="math inline">\(ET_c\)</span>) y días de agua disponible desde el estado actual hasta PMP</li>
+</ol>
+<p><strong>Ejercicio 29. Análisis de un predio.</strong> Un agricultor debe elegir entre dos suelos para cultivar lechugas (cultivo sensible, de raíces superficiales):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Suelo A</th>
+<th>Suelo B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Textura</td>
+<td>Franco-arenoso</td>
+<td>Franco-arcilloso</td>
+</tr>
+<tr class="even">
+<td>Da (g/cm³)</td>
+<td>1.50</td>
+<td>1.15</td>
+</tr>
+<tr class="odd">
+<td>CC (cm³/cm³)</td>
+<td>0.20</td>
+<td>0.38</td>
+</tr>
+<tr class="even">
+<td>PMP (cm³/cm³)</td>
+<td>0.07</td>
+<td>0.19</td>
+</tr>
+<tr class="odd">
+<td>MO (%)</td>
+<td>1.2</td>
+<td>3.5</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>¿Cuál suelo tiene más agua total a CC? ¿Y más agua disponible (ADT)?</li>
+<li>¿Qué explica la diferencia de materia orgánica (MO) entre ambos suelos?</li>
+<li>¿En cuál suelo regarías menos frecuentemente? Justifica considerando ADT y Da.</li>
+</ol>
+<hr>
+</section>
+<section id="solucionario" class="level2">
+<h2 class="anchored" data-anchor-id="solucionario">6. Solucionario</h2>
+<section id="soluciones-unidad-1" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-unidad-1">6.1 Soluciones Unidad 1</h3>
+<p><strong>Solución 1.</strong> 1) Calor específico (inercia térmica). 2) Cohesión + adhesión (teoría de cohesión-tensión). 3) Poder disolvente. 4) Capilaridad (tensión superficial).</p>
+<p><strong>Solución 2.</strong> Al transpirar, el agua pasa de líquido a vapor en la hoja y absorbe 2.45 MJ por cada kg evaporado. Esa energía se extrae del tejido foliar, que se enfría. Es el principal mecanismo de disipación del exceso de calor en una planta expuesta al sol.</p>
+<p><strong>Solución 3.</strong> <span class="math inline">\(R = P - ET - Q - \Delta S = 1200 - 480 - 520 - 40 = 160\)</span> mm/año.</p>
+<p><strong>Solución 4.</strong> Norte Grande: <span class="math inline">\(&lt;1 - 1800 \approx -1800\)</span> mm (déficit extremo). Zona Central: <span class="math inline">\(340 - 1350 = -1010\)</span> mm (déficit). Zona Sur: <span class="math inline">\(1200 - 850 = +350\)</span> mm (superávit). En las dos primeras el riego es imprescindible.</p>
+<p><strong>Solución 5.</strong> Inundación: <span class="math inline">\(1000 \times 0.40 = 400\)</span> m³. Aspersión: <span class="math inline">\(700\)</span> m³. Goteo: <span class="math inline">\(900\)</span> m³. El goteo desperdicia solo ~10%.</p>
+<p><strong>Solución 6.</strong></p>
+<ol type="1">
+<li>Producción total <span class="math inline">\(= 50 \times 12 = 600\)</span> ton <span class="math inline">\(= 600{,}000\)</span> kg/año.</li>
+<li>Agua azul <span class="math inline">\(= 12{,}000 \times 50 = 600{,}000\)</span> m³ <span class="math inline">\(= 6 \times 10^8\)</span> L. → <span class="math inline">\(HF_{azul} = 6 \times 10^8 / 6 \times 10^5 = 1000\)</span> L/kg.</li>
+<li>Agua verde <span class="math inline">\(= 0.18 \text{ m} \times 500{,}000 \text{ m}^2 = 90{,}000\)</span> m³ <span class="math inline">\(= 9 \times 10^7\)</span> L. → <span class="math inline">\(HF_{verde} = 9 \times 10^7 / 6 \times 10^5 = 150\)</span> L/kg.</li>
+<li>Agua gris <span class="math inline">\(= 300 \times 50 = 15{,}000\)</span> m³ <span class="math inline">\(= 1.5 \times 10^7\)</span> L. → <span class="math inline">\(HF_{gris} = 25\)</span> L/kg.</li>
+<li><span class="math inline">\(HF_{total} = 1000 + 150 + 25 = 1175\)</span> L/kg. Es <strong>menor</strong> que el promedio global (2,080 L/kg): el predio es más eficiente que el promedio.</li>
+</ol>
+<p><strong>Solución 7.</strong> Palta: <span class="math inline">\(2080 \text{ L/kg} \times 180{,}000{,}000 \text{ kg} = 3.744 \times 10^{11}\)</span> L <span class="math inline">\(= 374.4\)</span> millones m³/año. Uva: <span class="math inline">\(630 \times 650{,}000{,}000 = 4.095 \times 10^{11}\)</span> L <span class="math inline">\(= 409.5\)</span> millones m³/año.</p>
+<p><strong>Solución 8.</strong> Suelo (<span class="math inline">\(-0.03\)</span>) → Raíz (<span class="math inline">\(-0.3\)</span>) → Xilema (<span class="math inline">\(-0.8\)</span>) → Hoja (<span class="math inline">\(-1.5\)</span>) → Atmósfera (<span class="math inline">\(-100\)</span> MPa). El agua se mueve de mayor a menor potencial: del suelo hacia la atmósfera.</p>
+<p><strong>Solución 9.</strong> 1) <span class="math inline">\(-33\)</span> kPa <span class="math inline">\(= -0.033\)</span> MPa <span class="math inline">\(= -0.33\)</span> bar. 2) <span class="math inline">\(-1500\)</span> kPa <span class="math inline">\(= -1.5\)</span> MPa <span class="math inline">\(= -15\)</span> bar. 3) <span class="math inline">\(-0.033\)</span> MPa <span class="math inline">\(= -33\)</span> kPa.</p>
+<p><strong>Solución 10.</strong> <span class="math inline">\(\ln(0.30) = -1.204\)</span>. <span class="math inline">\(\Psi_{atm} = 0.462 \times 303 \times (-1.204) = 139.99 \times (-1.204) = -168.5\)</span> MPa. La atmósfera es un sumidero de agua muy negativo: por eso el agua “es succionada” hacia ella.</p>
+<p><strong>Solución 11.</strong> 1) <span class="math inline">\(\Psi_m\)</span> (mátrico). 2) <span class="math inline">\(\Psi_m + \Psi_o\)</span>. 3) <span class="math inline">\(\Psi_p\)</span> (turgencia). 4) <span class="math inline">\(\Psi_p\)</span> negativo (tensión).</p>
+<p><strong>Solución 12.</strong> 1) <span class="math inline">\(L_n = (0.32 - 0.20) \times 600 = 0.12 \times 600 = 72\)</span> mm. 2) <span class="math inline">\(L_b = 72 / 0.90 = 80\)</span> mm.</p>
+</section>
+<section id="soluciones-unidad-2" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-unidad-2">6.2 Soluciones Unidad 2</h3>
+<p><strong>Solución 13.</strong> 1) La fase líquida. 2) Disminuye primero la fase gaseosa y luego la líquida (baja la porosidad total). 3) Las raíces y los microorganismos respiran; sin O₂ hay hipoxia y la absorción de agua y nutrientes se detiene.</p>
+<p><strong>Solución 14.</strong> La <strong>textura</strong> es la proporción de arena, limo y arcilla (heredada, no modificable). La <strong>estructura</strong> es la organización de esas partículas en agregados (modificable). El agricultor modifica la estructura mediante materia orgánica, labranza adecuada, control de tráfico y evitando compactación.</p>
+<p><strong>Solución 15.</strong> 1) La arcilla tiene entre 1,000 y 10,000 veces más área superficial que la arena, por lo que adsorbe mucha más agua. 2) No: parte del agua queda adsorbida con <span class="math inline">\(\Psi_m\)</span> menor (más negativo) que el PMP y no es extraíble. 3) Carga negativa permanente; atrae cationes (<span class="math inline">\(\text{Ca}^{2+}\)</span>, <span class="math inline">\(\text{K}^+\)</span>, <span class="math inline">\(\text{Na}^+\)</span>) y dipolos de agua (doble capa difusa).</p>
+<p><strong>Solución 16.</strong> Los <strong>mesoporos</strong> (0.2–30 μm) retienen agua disponible por capilaridad. Los macroporos (&gt;30 μm) drenan por gravedad y los microporos (&lt;0.2 μm) retienen agua tan fuertemente adsorbida que no está disponible.</p>
+<p><strong>Solución 17.</strong> 1) <span class="math inline">\(ADT = CC - PMP = 0.30 - 0.11 = 0.19\)</span> cm³/cm³. 2) Seco: <span class="math inline">\(0.20 &lt; CC = 0.30\)</span>; se ha consumido ~0.10 cm³/cm³. 3) <span class="math inline">\(\theta_v\)</span> disminuye: a mayor succión, menos agua retenida.</p>
+<p><strong>Solución 18.</strong> <span class="math inline">\(\Psi_m = -33\)</span> kPa es la capacidad de campo (suelo con agua disponible). <span class="math inline">\(\Psi_m = -1500\)</span> kPa es el punto de marchitez permanente. El de <span class="math inline">\(-1500\)</span> kPa está más seco, porque a mayor succión (más negativo) queda menos agua, retenida con más fuerza.</p>
+<p><strong>Solución 19.</strong> 1) <span class="math inline">\(D_a = 145/100 = 1.45\)</span> g/cm³. 2) <span class="math inline">\(P = (1 - 1.45/2.65)\times 100 = (1 - 0.547)\times 100 = 45.3\%\)</span>. 3) No está compactado: <span class="math inline">\(D_a = 1.45\)</span> está en el rango ideal para un suelo franco (1.3–1.5).</p>
+<p><strong>Solución 20.</strong> 1) <span class="math inline">\(V_t = \pi \times 2.5^2 \times 5.1 = 100.14\)</span> cm³. 2) <span class="math inline">\(D_a = 157/100.14 = 1.57\)</span> g/cm³. 3) <span class="math inline">\(V_s = M_s / D_r = 157/2.65 = 59.25\)</span> cm³. 4) <span class="math inline">\(V_p = V_t - V_s = 100.14 - 59.25 = 40.89\)</span> cm³. 5) <span class="math inline">\(P = (1 - 1.57/2.65)\times 100 = 40.8\%\)</span>.</p>
+<p><strong>Solución 21.</strong> Entre hileras: <span class="math inline">\(P = (1 - 1.72/2.65)\times 100 = 35.1\%\)</span> (<strong>compactación moderada</strong>). Bajo hilera: <span class="math inline">\(P = (1 - 1.28/2.65)\times 100 = 51.7\%\)</span>. Cabecera: <span class="math inline">\(P = (1 - 1.38/2.65)\times 100 = 47.9\%\)</span>. Recomendación: en la entre-hilera hay compactación por tráfico; se sugiere tráfico controlado y subsolado o labranza vertical.</p>
+<p><strong>Solución 22.</strong> 1) <span class="math inline">\(D_a = 148/98 = 1.510\)</span> g/cm³. 2) <span class="math inline">\(P = (1 - 1.510/2.65)\times 100 = 43.0\%\)</span>. 3) <span class="math inline">\(\theta_g = (172 - 148)/148 = 24/148 = 0.162\)</span> g/g. 4) <span class="math inline">\(\theta_v = 0.162 \times 1.510 = 0.245\)</span> cm³/cm³.</p>
+<p><strong>Solución 23.</strong> 1) <span class="math inline">\(\theta_g = (96 - 80)/80 = 0.20\)</span> g/g. 2) <span class="math inline">\(16\)</span> g de agua. 3) <span class="math inline">\(20\%\)</span>.</p>
+<p><strong>Solución 24.</strong> Arenoso: <span class="math inline">\(\theta_v = 0.12\times1.60 = 0.192\)</span>; <span class="math inline">\(L = 0.192 \times 500 = 96\)</span> mm. Franco: <span class="math inline">\(\theta_v = 0.25\times1.35 = 0.3375\)</span>; <span class="math inline">\(L = 0.3375 \times 700 = 236.3\)</span> mm. Arcilloso: <span class="math inline">\(\theta_v = 0.38\times1.10 = 0.418\)</span>; <span class="math inline">\(L = 0.418 \times 600 = 250.8\)</span> mm. El <strong>arcilloso</strong> tiene más agua total (250.8 mm).</p>
+<p><strong>Solución 25.</strong> <span class="math inline">\(L = 0.305 \times 600 = 183\)</span> mm. Autonomía <span class="math inline">\(= 183 / 6 = 30.5\)</span> días.</p>
+<p><strong>Solución 26.</strong> 1) Agua gravitacional (<span class="math inline">\(0.48 - 0.30 = 0.18\)</span>): drena por gravedad, <strong>no</strong> disponible. 2) Agua disponible total, <span class="math inline">\(ADT = 0.30 - 0.11 = 0.19\)</span> cm³/cm³. 3) Agua no disponible (adsorbida fuertemente en microporos): queda en el suelo.</p>
+<p><strong>Solución 27.</strong> Ap: <span class="math inline">\(ADT = 0.33 - 0.14 = 0.19\)</span>; <span class="math inline">\(L = 0.19 \times 250 = 47.5\)</span> mm. Bt: <span class="math inline">\(ADT = 0.28 - 0.17 = 0.11\)</span>; <span class="math inline">\(L = 0.11 \times 300 = 33.0\)</span> mm. C: <span class="math inline">\(ADT = 0.22 - 0.12 = 0.10\)</span>; <span class="math inline">\(L = 0.10 \times 350 = 35.0\)</span> mm. Total <span class="math inline">\(= 47.5 + 33.0 + 35.0 = 115.5\)</span> mm. Autonomía <span class="math inline">\(= 115.5 / 5.5 = 21\)</span> días.</p>
+</section>
+<section id="soluciones-integradores" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-integradores">6.3 Soluciones integradores</h3>
+<p><strong>Solución 28.</strong></p>
+<ol type="1">
+<li><span class="math inline">\(V_t = \pi \times 2.5^2 \times 5.1 = 100.14\)</span> cm³. <span class="math inline">\(D_a = 155 / 100.14 = 1.55\)</span> g/cm³.</li>
+<li><span class="math inline">\(P = (1 - 1.55/2.65)\times 100 = 41.5\%\)</span>.</li>
+<li><span class="math inline">\(\theta_g = (182 - 155)/155 = 0.174\)</span> g/g. <span class="math inline">\(\theta_v = 0.174 \times 1.55 = 0.270\)</span> cm³/cm³.</li>
+<li>Lámina actual <span class="math inline">\(= 0.270 \times 700 = 188.8\)</span> mm.</li>
+<li><span class="math inline">\(ADT = 0.30 - 0.11 = 0.19\)</span> cm³/cm³. Lámina <span class="math inline">\(ADT = 0.19 \times 700 = 133\)</span> mm.</li>
+<li><span class="math inline">\(L_n = (0.30 - 0.270) \times 700 = 21\)</span> mm. <span class="math inline">\(L_b = 21 / 0.85 = 24.7\)</span> mm.</li>
+<li><span class="math inline">\(ET_c = K_c \times ETo = 0.9 \times 5 = 4.5\)</span> mm/día. Agua disponible actual <span class="math inline">\(= (\theta_v - PMP)\times Z = (0.270 - 0.11)\times 700 = 112\)</span> mm. Autonomía <span class="math inline">\(= 112 / 4.5 = 24.9\)</span> días.</li>
+</ol>
+<p><strong>Solución 29.</strong></p>
+<ol type="1">
+<li>Agua a CC: Suelo B (0.38 vs 0.20). ADT: A <span class="math inline">\(= 0.20 - 0.07 = 0.13\)</span>; B <span class="math inline">\(= 0.38 - 0.19 = 0.19\)</span>. El suelo B tiene más agua disponible.</li>
+<li>El suelo B tiene más MO (3.5% vs 1.2%), lo que favorece la formación de agregados estables y mesoporos, mejorando la retención de agua disponible.</li>
+<li>En el suelo B se regaría menos frecuentemente: tiene más ADT (0.19 vs 0.13) y menor Da (1.15 vs 1.50), es decir, más agua disponible y un suelo menos compactado que favorece el desarrollo radical de la lechuga.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="resultados-de-aprendizaje-cubiertos" class="level2">
+<h2 class="anchored" data-anchor-id="resultados-de-aprendizaje-cubiertos">7. Resultados de aprendizaje cubiertos</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 32%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>RAA</th>
+<th>Descripción</th>
+<th>Ejercicios asociados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>RAA1</strong></td>
+<td>Importancia del agua, propiedades y funciones en el sistema SPA</td>
+<td>1–12</td>
+</tr>
+<tr class="even">
+<td><strong>RAA2</strong></td>
+<td>Continuo suelo-agua-planta y aprovechamiento del agua</td>
+<td>8, 11, 13–16</td>
+</tr>
+<tr class="odd">
+<td><strong>RAA3</strong></td>
+<td>Factores que afectan el contenido de agua del suelo y ejercicios prácticos</td>
+<td>17–27</td>
+</tr>
+<tr class="even">
+<td><strong>RAA4</strong></td>
+<td>Redistribución del agua (saturación, CC, PMP)</td>
+<td>17, 18, 26, 27, 28</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
