@@ -1,0 +1,179 @@
+---
+title: "Cátedra 1 — Solucionario y rúbrica"
+subtitle: "Unidad 1 y Unidad 2 (hasta la sesión 2.3) · RAA1–RAA4"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    lang: es
+    theme: default
+    number-sections: true
+  pdf:
+    toc: true
+    lang: es
+    number-sections: true
+execute:
+  echo: false
+  warning: false
+---
+
+::: {.callout-note}
+## Uso de este documento
+Documento para el docente. Contiene las **soluciones paso a paso**, la **rúbrica de puntaje** y la **tabla de procedencia** (qué ítem proviene de las diapositivas y cuál es nuevo o reformulado). No distribuir a estudiantes.
+:::
+
+## Rúbrica resumida
+
+| Ítem | Tipo | Puntaje | Procedencia |
+|------|------|---------|-------------|
+| A.1 | Concepto | 10 | Diapositiva 1.1 (ejercicio "¿qué propiedad lo explica?") |
+| A.2 | Concepto | 6 | Diapositiva 1.2 (ejercicio "ordena el camino del agua") |
+| A.3 | Concepto | 8 | Diapositiva 1.2 (componente dominante), reformulado como caso salino |
+| A.4 | Concepto | 8 | **Nueva** (interpretación aplicada con valores de la sesión 2.3) |
+| A.5 | Concepto | 8 | Diapositiva 2.1 (textura vs. estructura), reformulado |
+| A.6 | Concepto | 10 | Diapositiva 2.3 (tres parámetros hídricos) |
+| B.1 | Ejercicio | 10 | Diapositiva 1.1 (ejercicio de huella hídrica del palto) |
+| B.2 | Ejercicio | 10 | Guía Ej. 12 / diapositiva 1.2, con números nuevos y comparación |
+| B.3 | Ejercicio (gráfico) | 10 | Diapositiva 2.3 (curva de retención), reformulado a **lectura de gráfico** |
+| B.4 | Ejercicio (gráfico) | 10 | Diapositiva 2.1 (comparación de curvas), reformulado a **lectura de gráfico** |
+| B.5 | Ejercicio | 10 | **Nueva** (integra Da + θg + θv + lámina, sesiones 2.2–2.3) |
+
+**Balance de procedencia:** los ítems marcados como "diapositiva" o "reformulado" se basan directamente en las preguntas/ejercicios ya presentes en las slides y la guía (~80 puntos); los ítems **nuevos** (A.4, B.5, ~18 puntos) evalúan los mismos conceptos en un contexto distinto. Los ítems "reformulados" (A.3, A.5, B.2, B.3, B.4) cambian formato o números, lo que dificulta la respuesta automática por copia. La división **concepto/ejercicio es exactamente 50/50**.
+
+---
+
+# Parte A — Soluciones
+
+## A.1 — Propiedad del agua (10 puntos)
+
+| Fenómeno | Propiedad |
+|----------|-----------|
+| 1. Suelo húmedo se calienta más lento | **Calor específico** (inercia térmica) |
+| 2. Savia asciende por xilema 30 m | **Cohesión** (puentes de hidrógeno; con aporte de adhesión) |
+| 3. Iones $\text{NO}_3^-$, $\text{K}^+$ viajan disueltos | **Poder disolvente** |
+| 4. Agua asciende por poros finos contra gravedad | **Tensión superficial** (capilaridad) |
+| 5. Agua se adhiere a arcillas y paredes celulares | **Adhesión** |
+
+**Rúbrica:** 2 puntos por asociación correcta (10 puntos). No hay medio punto; si el par es correcto, 2 puntos.
+
+## A.2 — El continuo suelo-planta-atmósfera (6 puntos)
+
+Orden (menos negativo → más negativo):
+
+$$\text{Suelo }(-0.03) \rightarrow \text{Raíz }(-0.3) \rightarrow \text{Xilema }(-0.8) \rightarrow \text{Hoja }(-1.5) \rightarrow \text{Atmósfera }(-100 \text{ MPa})$$
+
+El agua se mueve **de mayor a menor potencial hídrico**, es decir, desde el suelo hacia la atmósfera.
+
+**Rúbrica:** 4 puntos por el orden correcto con valores razonables; 2 puntos por la dirección del flujo y su justificación. Se aceptan valores aproximados (p. ej. atmósfera −80 a −100 MPa).
+
+## A.3 — Componente dominante (8 puntos)
+
+| Compartimento | Componente(s) dominante(s) |
+|---------------|---------------------------|
+| 1. Suelo no saturado | $\Psi_m$ (mátrico) |
+| 2. Suelo con alta salinidad | $\Psi_m + \Psi_o$ (mátrico + osmótico) |
+| 3. Célula turgente de la hoja | $\Psi_p$ (presión de turgencia) |
+| 4. Columna de agua del xilema | $\Psi_p$ **negativo** (tensión) |
+
+**Rúbrica:** 2 puntos por compartimento (8 puntos).
+
+## A.4 — Interpretación de una medición (8 puntos)
+
+**Respuesta:** En el suelo **arcilloso** hay más agua disponible.
+
+- Arenoso: $ADT = CC - PMP = 0.12 - 0.03 = 0.09$ cm³/cm³. Con $\theta_v = 0.30 > CC = 0.12$, está por sobre CC: el exceso es agua gravitacional que **drena y no está disponible**.
+- Arcilloso: $ADT = 0.40 - 0.21 = 0.19$ cm³/cm³. Con $\theta_v = 0.30 < CC = 0.40$, el agua está dentro del rango disponible.
+
+El arcilloso tiene más agua disponible porque su **ADT es mayor** (0.19 vs. 0.09) y, a la misma $\theta_v$, retiene el agua en el rango útil.
+
+**Rúbrica:** 3 puntos por identificar el suelo correcto; 5 puntos por la justificación con CC/PMP y ADT. Se valora que explique que "misma θv ≠ misma disponibilidad".
+
+## A.5 — Textura, estructura y manejo (8 puntos)
+
+- **Textura:** proporción relativa de arena, limo y arcilla; es heredada y **no se modifica** a corto plazo.
+- **Estructura:** organización de esas partículas en agregados (peds); es **modificable**.
+- El agricultor modifica la **estructura** mediante: incorporación de **materia orgánica** (compost, rastrojos, abonos verdes), **labranza adecuada**, **control de tráfico** y evitando la compactación.
+
+**Rúbrica:** 3 puntos por la diferencia textura/estructura; 2 puntos por identificar la estructura como modificable; 3 puntos por al menos dos prácticas concretas.
+
+## A.6 — Los tres parámetros hídricos (10 puntos)
+
+| Parámetro | $\Psi_m$ | Significado y tipo de agua |
+|-----------|----------|---------------------------|
+| **Saturación (S)** | 0 kPa | Todos los poros llenos de agua ($\theta_v = P$). Agua gravitacional + capilar; **sin aire** (hipoxia si persiste). |
+| **Capacidad de Campo (CC)** | −33 kPa | Macroporos drenados; agua retenida contra gravedad. **Límite superior** del agua disponible. |
+| **Punto de Marchitez Permanente (PMP)** | −1500 kPa | Agua adsorbida fuertemente en microporos; la planta **no la puede extraer**. **Límite inferior** del agua disponible. |
+
+Rangos de agua: **gravitacional** (0 a −33 kPa, no disponible) · **disponible / ADT** (−33 a −1500 kPa) · **no disponible** (< −1500 kPa).
+
+**Rúbrica:** 2 puntos por cada definición + Ψm correctos (6 puntos); 4 puntos por la clasificación de los tres tipos de agua.
+
+---
+
+# Parte B — Soluciones
+
+## B.1 — Huella hídrica del palto (10 puntos)
+
+Producción total: $50 \text{ ha} \times 12 \text{ ton/ha} = 600 \text{ ton} = 600{,}000 \text{ kg/año}$.
+
+1. **Huella azul.** Agua azul $= 12{,}000 \times 50 = 600{,}000$ m³ $= 6\times 10^{8}$ L. $HF_{azul} = \dfrac{6\times 10^{8}}{6\times 10^{5}} = 1000$ L/kg.
+2. **Huella verde.** Agua verde $= 0.18 \text{ m} \times 500{,}000 \text{ m}^2 = 90{,}000$ m³ $= 9\times 10^{7}$ L. $HF_{verde} = \dfrac{9\times 10^{7}}{6\times 10^{5}} = 150$ L/kg.
+3. **Huella gris.** Agua gris $= 300 \times 50 = 15{,}000$ m³ $= 1.5\times 10^{7}$ L. $HF_{gris} = \dfrac{1.5\times 10^{7}}{6\times 10^{5}} = 25$ L/kg.
+4. **Huella total.** $HF_{total} = 1000 + 150 + 25 = 1175$ L/kg. Es **menor** que el promedio global (2,080 L/kg): el predio es más eficiente que el promedio mundial.
+
+**Rúbrica:** 2 puntos por sub-pregunta (azul, verde, gris) + 4 puntos por total y comparación. Descontar 0.5 puntos por error de unidad o de conversión (m³→L, mm→m³).
+
+## B.2 — Lámina de riego (10 puntos)
+
+1. $L_n = (0.32 - 0.20) \times 600 = 0.12 \times 600 = 72$ mm.
+2. $L_b = \dfrac{72}{0.90} = 80$ mm (goteo).
+3. $L_b = \dfrac{72}{0.55} = 130.9$ mm (surco). Ahorro $= 130.9 - 80 \approx 51$ mm. El goteo requiere ~51 mm menos de agua bruta por riego.
+
+**Rúbrica:** 3 puntos por $L_n$; 3 puntos por $L_b$ goteo; 4 puntos por $L_b$ surco + ahorro. Verificar que $Z_r$ se convierta a mm ($0.6$ m $= 600$ mm).
+
+## B.3 — Lectura de la curva de retención (10 puntos)
+
+1. De la curva (Figura B.3): $CC = \theta_v$ a −33 kPa $\approx 0.30$ cm³/cm³; $PMP = \theta_v$ a −1500 kPa $\approx 0.11$ cm³/cm³.
+2. $ADT = CC - PMP = 0.30 - 0.11 = 0.19$ cm³/cm³.
+3. $\theta_v = 0.20 < CC = 0.30$ → el suelo está **por debajo de CC** (se ha consumido ~0.10 cm³/cm³ de agua). Implica que hay déficit de humedad: debe regarse antes de acercarse al PMP, idealmente dentro del rango de agua disponible.
+4. Fracción disponible $= \dfrac{ADT}{\theta_{sat}} = \dfrac{0.19}{0.48} \approx 0.40$, es decir **~40%** del agua a saturación está realmente disponible.
+
+**Rúbrica:** 2 puntos por CC y PMP; 2 puntos por ADT; 3 puntos por la interpretación del estado del suelo; 3 puntos por el porcentaje. **Tolerancia de lectura:** aceptar CC $0.29\text{–}0.31$ y PMP $0.10\text{–}0.12$.
+
+## B.4 — Comparación de curvas por textura (10 puntos)
+
+1. A CC retiene más agua total el **arcilloso** ($\theta_v \approx 0.40$); a PMP también el **arcilloso** ($\approx 0.21$).
+2. Lectura y cálculo:
+
+| Textura | CC (cm³/cm³) | PMP (cm³/cm³) | ADT = CC − PMP |
+|---------|--------------|---------------|----------------|
+| Arenoso | 0.12 | 0.03 | 0.09 |
+| Franco | 0.30 | 0.11 | 0.19 |
+| Arcilloso | 0.40 | 0.21 | 0.19 |
+
+3. **Franco y arcilloso** tienen el mayor ADT (0.19), superior al arenoso (0.09). El arcilloso retiene más agua total (CC = 0.40) pero también retiene más en el PMP (0.21) por su mayor área superficial y microporosidad; por eso su ADT resulta similar al del franco: **no toda el agua que retiene está disponible**.
+
+**Rúbrica:** 2 puntos por (1); 4 puntos por la tabla CC/PMP/ADT; 4 puntos por la interpretación. **Tolerancia de lectura:** ±0.01 cm³/cm³ en cada valor.
+
+## B.5 — De la muestra de campo a la lámina (10 puntos)
+
+1. $V_t = \pi \times (2.5)^2 \times 5.1 = 100.1$ cm³. $D_a = \dfrac{160}{100.1} = 1.60$ g/cm³.
+2. $P = \left(1 - \dfrac{1.60}{2.65}\right)\times 100 = (1 - 0.604)\times 100 = 39.6\%$.
+3. $\theta_g = \dfrac{190 - 160}{160} = \dfrac{30}{160} = 0.1875$ g/g ($=18.75\%$).
+4. $\theta_v = 0.1875 \times 1.60 = 0.30$ cm³/cm³.
+5. Lámina $= 0.30 \times 700 = 210$ mm.
+
+**Rúbrica:** 2 puntos por sub-pregunta. Penalizar si no calculan $V_t$ para obtener $D_a$.
+
+---
+
+## Nota de corrección
+
+- Se sugiere calificar con **pauta de desarrollo**: asignar puntaje parcial por datos, fórmula, cálculo y unidad, y reservar ~20% del puntaje de cada ejercicio a la **interpretación**.
+- En los ítems de **lectura de gráfico** (B.3, B.4) aplicar la tolerancia indicada (±0.01 cm³/cm³), pero exigir que la interpretación sea coherente con el valor leído.
+- Los errores de cálculo por arrastre (usar un valor previo equivocado) se descuentan solo una vez, siempre que el procedimiento sea correcto.
+- La escala de notas UDLA (1.0–7.0) puede aplicarse sobre el puntaje 0–100 con la exigencia de 60%.
+
+## Generación de las figuras
+
+Las figuras B.3 y B.4 se generan automáticamente con `ggplot2` al renderizar (dependencia ya presente en el proyecto). Si se prefiere entregarlas como imagen estática en Blackboard, basta renderizar una vez y exportar los PNG resultantes.

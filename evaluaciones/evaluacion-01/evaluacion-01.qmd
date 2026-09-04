@@ -1,0 +1,222 @@
+---
+title: "Cátedra 1 — Relación Suelo Agua Planta"
+subtitle: "Unidad 1 y Unidad 2 (hasta la sesión 2.3) · RAA1–RAA4"
+format:
+  html:
+    toc: false
+    lang: es
+    theme: default
+    number-sections: true
+  pdf:
+    toc: false
+    lang: es
+    number-sections: true
+execute:
+  echo: false
+  warning: false
+---
+
+::: {style="font-size: 0.9em;"}
+| | |
+|---|---|
+| **Asignatura** | TAG2027 — Relación Suelo Agua Planta |
+| **Evaluación** | Cátedra 1 (Unidades 1–2 · RAA1–RAA4) |
+| **Nombre** | |
+| **RUT** | |
+| **Sección / Fecha** | |
+| **Duración** | 90 minutos |
+| **Puntaje total** | 100 puntos |
+| **Exigencia** | 60% (nota 4.0 ≈ 60 puntos) |
+:::
+
+## Instrucciones generales
+
+1. Lee cada pregunta con atención antes de responder.
+2. En los **ejercicios de cálculo**, escribe siempre: **dato → fórmula → cálculo → unidad** y una **interpretación agronómica** de una línea. Un número sin interpretación no se considera completo.
+3. En los **ejercicios de lectura de gráfico**, indica el valor leído, la fórmula y el cálculo; la interpretación es parte del puntaje.
+4. En las **preguntas de conceptos**, responde con tus propias palabras y justifica brevemente.
+5. Puedes usar calculadora, pero no material impreso ni aplicaciones de terceros.
+6. **Integridad académica:** toda respuesta debe ser elaboración propia. El uso de IA u otras fuentes no autorizadas, o la copia entre compañeros, se rige por el Reglamento del Alumno UDLA (Art. 72) y puede significar nota 1.0.
+7. Distribución sugerida del tiempo: **Parte A ≈ 40 min · Parte B ≈ 50 min**.
+
+## Fórmulas y constantes de referencia
+
+| Magnitud | Expresión |
+|----------|-----------|
+| Potencial hídrico total | $\Psi = \Psi_m + \Psi_o + \Psi_g + \Psi_p$ |
+| Densidad aparente | $D_a = M_s / V_t$ (g/cm³) |
+| Densidad real (suelo mineral) | $D_r \approx 2.65$ g/cm³ |
+| Porosidad total | $P = \left(1 - D_a/D_r\right) \times 100$ (%) |
+| Contenido gravimétrico | $\theta_g = (M_{húmedo} - M_{seco})/M_{seco}$ (g/g) |
+| Contenido volumétrico | $\theta_v = \theta_g \times D_a$ (cm³/cm³), con $\rho_{agua} \approx 1.0$ g/cm³ |
+| Lámina de agua | $L = \theta_v \times Z$ (mm), $Z$ en mm |
+| Agua disponible total | $ADT = CC - PMP$ (cm³/cm³) |
+| Lámina neta / bruta | $L_n = (\theta_{CC} - \theta_{actual}) \times Z_r$ ; $L_b = L_n / E_a$ |
+| Huella hídrica | $HF = \text{volumen de agua (L)} / \text{producción (kg)}$ |
+
+**Conversiones:** $1$ m³ $= 1000$ L · $1$ mm $= 1$ L/m² · $1$ ha $= 10{,}000$ m² · $1$ MPa $= 1000$ kPa $= 10$ bar.
+
+**Puntos hídricos:** Saturación $\Psi_m = 0$ kPa · Capacidad de Campo (CC) $\Psi_m = -33$ kPa · Punto de Marchitez Permanente (PMP) $\Psi_m = -1500$ kPa.
+
+---
+
+# Parte A — Preguntas de conceptos (50 puntos)
+
+## A.1 — Propiedad del agua (10 puntos)
+
+Relaciona cada fenómeno con la propiedad del agua que lo explica. Usa cada propiedad **una sola vez**.
+
+**Propiedades:** cohesión · adhesión · tensión superficial · calor específico · poder disolvente.
+
+| Fenómeno | Propiedad |
+|----------|-----------|
+| 1. El suelo húmedo se calienta más lento que el suelo seco. | |
+| 2. La savia asciende por el xilema de un árbol de 30 m. | |
+| 3. Los iones $\text{NO}_3^-$ y $\text{K}^+$ viajan disueltos hacia la raíz. | |
+| 4. El agua asciende por poros finos contra la gravedad. | |
+| 5. El agua se adhiere a la superficie de las arcillas y paredes celulares. | |
+
+## A.2 — El continuo suelo-planta-atmósfera (6 puntos)
+
+Ordena los compartimentos del **SPAC** desde el potencial hídrico **menos negativo** al **más negativo**, indicando un valor típico de potencial (en MPa) para cada uno. Luego indica **en qué dirección se mueve el agua** y por qué.
+
+*Compartimentos:* Suelo · Raíz · Xilema · Hoja · Atmósfera.
+
+## A.3 — Componente dominante del potencial hídrico (8 puntos)
+
+Un predio de la zona costera riega con agua de pozo de alta salinidad. Indica qué componente(s) del potencial hídrico ($\Psi_m$, $\Psi_o$, $\Psi_g$, $\Psi_p$) domina(n) en cada compartimento.
+
+| Compartimento | Componente(s) dominante(s) |
+|---------------|---------------------------|
+| 1. Suelo no saturado | |
+| 2. Suelo con alta salinidad | |
+| 3. Célula turgente de la hoja | |
+| 4. Columna de agua del xilema | |
+
+## A.4 — Interpretación de una medición (8 puntos)
+
+En un mismo predio se miden dos suelos que, en ese momento, tienen la **misma** humedad volumétrica $\theta_v = 0.30$ cm³/cm³: uno **arenoso** (CC ≈ 0.12, PMP ≈ 0.03) y otro **arcilloso** (CC ≈ 0.40, PMP ≈ 0.21).
+
+¿En cuál de los dos hay **más agua disponible para la planta** en ese momento? Justifica tu respuesta usando CC y PMP.
+
+## A.5 — Textura, estructura y manejo (8 puntos)
+
+Explica la diferencia entre **textura** y **estructura** del suelo. ¿Cuál de las dos puede modificar un agricultor y mediante qué práctica(s) concreta(s)?
+
+## A.6 — Los tres parámetros hídricos (10 puntos)
+
+Define **Saturación (S)**, **Capacidad de Campo (CC)** y **Punto de Marchitez Permanente (PMP)**, indicando el potencial mátrico ($\Psi_m$) de cada uno y **qué tipo de agua** queda en cada rango (gravitacional, disponible o no disponible).
+
+---
+
+# Parte B — Ejercicios (50 puntos)
+
+## B.1 — Huella hídrica del palto (10 puntos)
+
+Un predio de 50 ha de palto en la V Región produce 12 ton/ha·año. El riego aplicado es 12,000 m³/ha·año (toda el agua es de pozo = huella azul). La lluvia efectiva es 180 mm/año (huella verde). El nitrógeno lixiviado requiere 300 m³/ha·año para su dilución (huella gris).
+
+Calcule:
+
+1. Huella azul (L/kg).
+2. Huella verde (L/kg).
+3. Huella gris (L/kg).
+4. Huella total (L/kg) y compárela con el promedio global (2,080 L/kg).
+
+## B.2 — Lámina de riego y elección de sistema (10 puntos)
+
+Un agricultor cultiva tomate en suelo franco con $CC = 0.32$ cm³/cm³. La humedad actual es $\theta = 0.20$ cm³/cm³ y la profundidad radical es $Z_r = 0.6$ m.
+
+Calcule:
+
+1. Lámina neta ($L_n$) necesaria para llevar el suelo a capacidad de campo.
+2. Lámina bruta ($L_b$) si riega por goteo ($E_a = 0.90$).
+3. Lámina bruta ($L_b$) si riega por surco ($E_a = 0.55$). ¿Cuánta agua se ahorra con goteo respecto del surco?
+
+## B.3 — Lectura de la curva de retención (10 puntos)
+
+La **Figura B.3** muestra la curva de retención de agua de un suelo **franco** ($\theta_v$ vs. succión, en escala logarítmica).
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 6.5
+#| fig-height: 4
+#| fig-align: center
+
+library(ggplot2)
+
+df_franco <- data.frame(
+  succion = c(5, 10, 33, 100, 500, 1500),
+  theta   = c(0.42, 0.38, 0.30, 0.22, 0.14, 0.11)
+)
+
+ggplot(df_franco, aes(x = succion, y = theta)) +
+  geom_line(linewidth = 1.1, color = "#2166AC") +
+  geom_point(size = 3, color = "#2166AC") +
+  scale_x_log10(breaks = c(5, 10, 33, 100, 500, 1500)) +
+  scale_y_continuous(limits = c(0, 0.5), breaks = seq(0, 0.5, 0.05)) +
+  labs(x = "Succión del suelo (kPa, escala logarítmica)",
+       y = expression(theta[v] ~ "(cm³/cm³)")) +
+  theme_minimal(base_size = 13)
+```
+
+Responda:
+
+1. Lea de la curva el valor de $\theta_v$ a **−33 kPa** (CC) y a **−1500 kPa** (PMP).
+2. Calcule el agua disponible total (**ADT**).
+3. Si la humedad actual es $\theta_v = 0.20$ cm³/cm³, ¿el suelo está por sobre o por debajo de CC? ¿Qué implica para el riego?
+4. Si a saturación el suelo tiene $\theta_v \approx 0.48$ cm³/cm³, ¿qué porcentaje de esa agua está realmente disponible para la planta?
+
+## B.4 — Comparación de curvas por textura (10 puntos)
+
+La **Figura B.4** muestra las curvas de retención de tres suelos de distinta textura (escala logarítmica en el eje x).
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 6.5
+#| fig-height: 4
+#| fig-align: center
+
+df_texturas <- data.frame(
+  succion = rep(c(5, 10, 33, 100, 500, 1500), 3),
+  textura = rep(c("Arenoso", "Franco", "Arcilloso"), each = 6),
+  theta = c(
+    0.40, 0.30, 0.12, 0.07, 0.04, 0.03,   # arenoso
+    0.44, 0.39, 0.30, 0.22, 0.14, 0.11,   # franco
+    0.52, 0.48, 0.40, 0.30, 0.24, 0.21    # arcilloso
+  )
+)
+
+ggplot(df_texturas, aes(x = succion, y = theta, color = textura, shape = textura)) +
+  geom_line(linewidth = 1.1) +
+  geom_point(size = 2.6) +
+  scale_x_log10(breaks = c(5, 10, 33, 100, 500, 1500)) +
+  scale_y_continuous(limits = c(0, 0.6), breaks = seq(0, 0.6, 0.1)) +
+  scale_color_manual(values = c("Arenoso" = "#E69F00", "Franco" = "#2166AC", "Arcilloso" = "#C0392B")) +
+  labs(x = "Succión del suelo (kPa, escala logarítmica)",
+       y = expression(theta[v] ~ "(cm³/cm³)"),
+       color = "Textura", shape = "Textura") +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "bottom")
+```
+
+Responda:
+
+1. ¿Cuál textura retiene **más agua total** a CC? ¿Y a PMP?
+2. Estime de la curva la CC y el PMP de cada textura y calcule el **ADT** de cada una.
+3. ¿Cuál textura tiene más agua disponible? Explique por qué el arcilloso, pese a retener más agua total, tiene un ADT similar al del franco.
+
+## B.5 — De la muestra de campo a la lámina (10 puntos)
+
+Se extrae una muestra con un cilindro de diámetro 5.0 cm y altura 5.1 cm. La masa húmeda fue 190 g y, tras secar a 105 °C, la masa seca fue 160 g ($D_r = 2.65$ g/cm³). La profundidad radical del cultivo es $Z_r = 0.7$ m.
+
+Calcule:
+
+1. Densidad aparente ($D_a$).
+2. Porosidad total ($P$).
+3. Contenido gravimétrico de agua ($\theta_g$).
+4. Contenido volumétrico de agua ($\theta_v$).
+5. Lámina de agua actual en la zona radical (mm).

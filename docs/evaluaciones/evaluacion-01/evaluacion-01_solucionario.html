@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cátedra 1 — Solucionario y rúbrica</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="evaluacion-01_solucionario_files/libs/clipboard/clipboard.min.js"></script>
+<script src="evaluacion-01_solucionario_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="evaluacion-01_solucionario_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="evaluacion-01_solucionario_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="evaluacion-01_solucionario_files/libs/quarto-html/popper.min.js"></script>
+<script src="evaluacion-01_solucionario_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="evaluacion-01_solucionario_files/libs/quarto-html/anchor.min.js"></script>
+<link href="evaluacion-01_solucionario_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="evaluacion-01_solucionario_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="evaluacion-01_solucionario_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="evaluacion-01_solucionario_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="evaluacion-01_solucionario_files/libs/bootstrap/bootstrap-cb5b25c0b2dbaa07e4625950326014b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul class="collapse">
+  <li><a href="#rúbrica-resumida" id="toc-rúbrica-resumida" class="nav-link active" data-scroll-target="#rúbrica-resumida"><span class="header-section-number">0.1</span> Rúbrica resumida</a></li>
+  <li><a href="#parte-a-soluciones" id="toc-parte-a-soluciones" class="nav-link" data-scroll-target="#parte-a-soluciones"><span class="header-section-number">1</span> Parte A — Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#a.1-propiedad-del-agua-10-puntos" id="toc-a.1-propiedad-del-agua-10-puntos" class="nav-link" data-scroll-target="#a.1-propiedad-del-agua-10-puntos"><span class="header-section-number">1.1</span> A.1 — Propiedad del agua (10 puntos)</a></li>
+  <li><a href="#a.2-el-continuo-suelo-planta-atmósfera-6-puntos" id="toc-a.2-el-continuo-suelo-planta-atmósfera-6-puntos" class="nav-link" data-scroll-target="#a.2-el-continuo-suelo-planta-atmósfera-6-puntos"><span class="header-section-number">1.2</span> A.2 — El continuo suelo-planta-atmósfera (6 puntos)</a></li>
+  <li><a href="#a.3-componente-dominante-8-puntos" id="toc-a.3-componente-dominante-8-puntos" class="nav-link" data-scroll-target="#a.3-componente-dominante-8-puntos"><span class="header-section-number">1.3</span> A.3 — Componente dominante (8 puntos)</a></li>
+  <li><a href="#a.4-interpretación-de-una-medición-8-puntos" id="toc-a.4-interpretación-de-una-medición-8-puntos" class="nav-link" data-scroll-target="#a.4-interpretación-de-una-medición-8-puntos"><span class="header-section-number">1.4</span> A.4 — Interpretación de una medición (8 puntos)</a></li>
+  <li><a href="#a.5-textura-estructura-y-manejo-8-puntos" id="toc-a.5-textura-estructura-y-manejo-8-puntos" class="nav-link" data-scroll-target="#a.5-textura-estructura-y-manejo-8-puntos"><span class="header-section-number">1.5</span> A.5 — Textura, estructura y manejo (8 puntos)</a></li>
+  <li><a href="#a.6-los-tres-parámetros-hídricos-10-puntos" id="toc-a.6-los-tres-parámetros-hídricos-10-puntos" class="nav-link" data-scroll-target="#a.6-los-tres-parámetros-hídricos-10-puntos"><span class="header-section-number">1.6</span> A.6 — Los tres parámetros hídricos (10 puntos)</a></li>
+  </ul></li>
+  <li><a href="#parte-b-soluciones" id="toc-parte-b-soluciones" class="nav-link" data-scroll-target="#parte-b-soluciones"><span class="header-section-number">2</span> Parte B — Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#b.1-huella-hídrica-del-palto-10-puntos" id="toc-b.1-huella-hídrica-del-palto-10-puntos" class="nav-link" data-scroll-target="#b.1-huella-hídrica-del-palto-10-puntos"><span class="header-section-number">2.1</span> B.1 — Huella hídrica del palto (10 puntos)</a></li>
+  <li><a href="#b.2-lámina-de-riego-10-puntos" id="toc-b.2-lámina-de-riego-10-puntos" class="nav-link" data-scroll-target="#b.2-lámina-de-riego-10-puntos"><span class="header-section-number">2.2</span> B.2 — Lámina de riego (10 puntos)</a></li>
+  <li><a href="#b.3-lectura-de-la-curva-de-retención-10-puntos" id="toc-b.3-lectura-de-la-curva-de-retención-10-puntos" class="nav-link" data-scroll-target="#b.3-lectura-de-la-curva-de-retención-10-puntos"><span class="header-section-number">2.3</span> B.3 — Lectura de la curva de retención (10 puntos)</a></li>
+  <li><a href="#b.4-comparación-de-curvas-por-textura-10-puntos" id="toc-b.4-comparación-de-curvas-por-textura-10-puntos" class="nav-link" data-scroll-target="#b.4-comparación-de-curvas-por-textura-10-puntos"><span class="header-section-number">2.4</span> B.4 — Comparación de curvas por textura (10 puntos)</a></li>
+  <li><a href="#b.5-de-la-muestra-de-campo-a-la-lámina-10-puntos" id="toc-b.5-de-la-muestra-de-campo-a-la-lámina-10-puntos" class="nav-link" data-scroll-target="#b.5-de-la-muestra-de-campo-a-la-lámina-10-puntos"><span class="header-section-number">2.5</span> B.5 — De la muestra de campo a la lámina (10 puntos)</a></li>
+  <li><a href="#nota-de-corrección" id="toc-nota-de-corrección" class="nav-link" data-scroll-target="#nota-de-corrección"><span class="header-section-number">2.6</span> Nota de corrección</a></li>
+  <li><a href="#generación-de-las-figuras" id="toc-generación-de-las-figuras" class="nav-link" data-scroll-target="#generación-de-las-figuras"><span class="header-section-number">2.7</span> Generación de las figuras</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="evaluacion-01_solucionario.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cátedra 1 — Solucionario y rúbrica</h1>
+<p class="subtitle lead">Unidad 1 y Unidad 2 (hasta la sesión 2.3) · RAA1–RAA4</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Uso de este documento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Documento para el docente. Contiene las <strong>soluciones paso a paso</strong>, la <strong>rúbrica de puntaje</strong> y la <strong>tabla de procedencia</strong> (qué ítem proviene de las diapositivas y cuál es nuevo o reformulado). No distribuir a estudiantes.</p>
+</div>
+</div>
+<section id="rúbrica-resumida" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="rúbrica-resumida"><span class="header-section-number">0.1</span> Rúbrica resumida</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ítem</th>
+<th>Tipo</th>
+<th>Puntaje</th>
+<th>Procedencia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A.1</td>
+<td>Concepto</td>
+<td>10</td>
+<td>Diapositiva 1.1 (ejercicio “¿qué propiedad lo explica?”)</td>
+</tr>
+<tr class="even">
+<td>A.2</td>
+<td>Concepto</td>
+<td>6</td>
+<td>Diapositiva 1.2 (ejercicio “ordena el camino del agua”)</td>
+</tr>
+<tr class="odd">
+<td>A.3</td>
+<td>Concepto</td>
+<td>8</td>
+<td>Diapositiva 1.2 (componente dominante), reformulado como caso salino</td>
+</tr>
+<tr class="even">
+<td>A.4</td>
+<td>Concepto</td>
+<td>8</td>
+<td><strong>Nueva</strong> (interpretación aplicada con valores de la sesión 2.3)</td>
+</tr>
+<tr class="odd">
+<td>A.5</td>
+<td>Concepto</td>
+<td>8</td>
+<td>Diapositiva 2.1 (textura vs.&nbsp;estructura), reformulado</td>
+</tr>
+<tr class="even">
+<td>A.6</td>
+<td>Concepto</td>
+<td>10</td>
+<td>Diapositiva 2.3 (tres parámetros hídricos)</td>
+</tr>
+<tr class="odd">
+<td>B.1</td>
+<td>Ejercicio</td>
+<td>10</td>
+<td>Diapositiva 1.1 (ejercicio de huella hídrica del palto)</td>
+</tr>
+<tr class="even">
+<td>B.2</td>
+<td>Ejercicio</td>
+<td>10</td>
+<td>Guía Ej. 12 / diapositiva 1.2, con números nuevos y comparación</td>
+</tr>
+<tr class="odd">
+<td>B.3</td>
+<td>Ejercicio (gráfico)</td>
+<td>10</td>
+<td>Diapositiva 2.3 (curva de retención), reformulado a <strong>lectura de gráfico</strong></td>
+</tr>
+<tr class="even">
+<td>B.4</td>
+<td>Ejercicio (gráfico)</td>
+<td>10</td>
+<td>Diapositiva 2.1 (comparación de curvas), reformulado a <strong>lectura de gráfico</strong></td>
+</tr>
+<tr class="odd">
+<td>B.5</td>
+<td>Ejercicio</td>
+<td>10</td>
+<td><strong>Nueva</strong> (integra Da + θg + θv + lámina, sesiones 2.2–2.3)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance de procedencia:</strong> los ítems marcados como “diapositiva” o “reformulado” se basan directamente en las preguntas/ejercicios ya presentes en las slides y la guía (~80 puntos); los ítems <strong>nuevos</strong> (A.4, B.5, ~18 puntos) evalúan los mismos conceptos en un contexto distinto. Los ítems “reformulados” (A.3, A.5, B.2, B.3, B.4) cambian formato o números, lo que dificulta la respuesta automática por copia. La división <strong>concepto/ejercicio es exactamente 50/50</strong>.</p>
+<hr>
+</section>
+<section id="parte-a-soluciones" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Parte A — Soluciones</h1>
+<section id="a.1-propiedad-del-agua-10-puntos" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="a.1-propiedad-del-agua-10-puntos"><span class="header-section-number">1.1</span> A.1 — Propiedad del agua (10 puntos)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 47%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fenómeno</th>
+<th>Propiedad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Suelo húmedo se calienta más lento</td>
+<td><strong>Calor específico</strong> (inercia térmica)</td>
+</tr>
+<tr class="even">
+<td>2. Savia asciende por xilema 30 m</td>
+<td><strong>Cohesión</strong> (puentes de hidrógeno; con aporte de adhesión)</td>
+</tr>
+<tr class="odd">
+<td>3. Iones <span class="math inline">\(\text{NO}_3^-\)</span>, <span class="math inline">\(\text{K}^+\)</span> viajan disueltos</td>
+<td><strong>Poder disolvente</strong></td>
+</tr>
+<tr class="even">
+<td>4. Agua asciende por poros finos contra gravedad</td>
+<td><strong>Tensión superficial</strong> (capilaridad)</td>
+</tr>
+<tr class="odd">
+<td>5. Agua se adhiere a arcillas y paredes celulares</td>
+<td><strong>Adhesión</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rúbrica:</strong> 2 puntos por asociación correcta (10 puntos). No hay medio punto; si el par es correcto, 2 puntos.</p>
+</section>
+<section id="a.2-el-continuo-suelo-planta-atmósfera-6-puntos" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="a.2-el-continuo-suelo-planta-atmósfera-6-puntos"><span class="header-section-number">1.2</span> A.2 — El continuo suelo-planta-atmósfera (6 puntos)</h2>
+<p>Orden (menos negativo → más negativo):</p>
+<p><span class="math display">\[\text{Suelo }(-0.03) \rightarrow \text{Raíz }(-0.3) \rightarrow \text{Xilema }(-0.8) \rightarrow \text{Hoja }(-1.5) \rightarrow \text{Atmósfera }(-100 \text{ MPa})\]</span></p>
+<p>El agua se mueve <strong>de mayor a menor potencial hídrico</strong>, es decir, desde el suelo hacia la atmósfera.</p>
+<p><strong>Rúbrica:</strong> 4 puntos por el orden correcto con valores razonables; 2 puntos por la dirección del flujo y su justificación. Se aceptan valores aproximados (p.&nbsp;ej. atmósfera −80 a −100 MPa).</p>
+</section>
+<section id="a.3-componente-dominante-8-puntos" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="a.3-componente-dominante-8-puntos"><span class="header-section-number">1.3</span> A.3 — Componente dominante (8 puntos)</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Compartimento</th>
+<th>Componente(s) dominante(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Suelo no saturado</td>
+<td><span class="math inline">\(\Psi_m\)</span> (mátrico)</td>
+</tr>
+<tr class="even">
+<td>2. Suelo con alta salinidad</td>
+<td><span class="math inline">\(\Psi_m + \Psi_o\)</span> (mátrico + osmótico)</td>
+</tr>
+<tr class="odd">
+<td>3. Célula turgente de la hoja</td>
+<td><span class="math inline">\(\Psi_p\)</span> (presión de turgencia)</td>
+</tr>
+<tr class="even">
+<td>4. Columna de agua del xilema</td>
+<td><span class="math inline">\(\Psi_p\)</span> <strong>negativo</strong> (tensión)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rúbrica:</strong> 2 puntos por compartimento (8 puntos).</p>
+</section>
+<section id="a.4-interpretación-de-una-medición-8-puntos" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="a.4-interpretación-de-una-medición-8-puntos"><span class="header-section-number">1.4</span> A.4 — Interpretación de una medición (8 puntos)</h2>
+<p><strong>Respuesta:</strong> En el suelo <strong>arcilloso</strong> hay más agua disponible.</p>
+<ul>
+<li>Arenoso: <span class="math inline">\(ADT = CC - PMP = 0.12 - 0.03 = 0.09\)</span> cm³/cm³. Con <span class="math inline">\(\theta_v = 0.30 &gt; CC = 0.12\)</span>, está por sobre CC: el exceso es agua gravitacional que <strong>drena y no está disponible</strong>.</li>
+<li>Arcilloso: <span class="math inline">\(ADT = 0.40 - 0.21 = 0.19\)</span> cm³/cm³. Con <span class="math inline">\(\theta_v = 0.30 &lt; CC = 0.40\)</span>, el agua está dentro del rango disponible.</li>
+</ul>
+<p>El arcilloso tiene más agua disponible porque su <strong>ADT es mayor</strong> (0.19 vs.&nbsp;0.09) y, a la misma <span class="math inline">\(\theta_v\)</span>, retiene el agua en el rango útil.</p>
+<p><strong>Rúbrica:</strong> 3 puntos por identificar el suelo correcto; 5 puntos por la justificación con CC/PMP y ADT. Se valora que explique que “misma θv ≠ misma disponibilidad”.</p>
+</section>
+<section id="a.5-textura-estructura-y-manejo-8-puntos" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="a.5-textura-estructura-y-manejo-8-puntos"><span class="header-section-number">1.5</span> A.5 — Textura, estructura y manejo (8 puntos)</h2>
+<ul>
+<li><strong>Textura:</strong> proporción relativa de arena, limo y arcilla; es heredada y <strong>no se modifica</strong> a corto plazo.</li>
+<li><strong>Estructura:</strong> organización de esas partículas en agregados (peds); es <strong>modificable</strong>.</li>
+<li>El agricultor modifica la <strong>estructura</strong> mediante: incorporación de <strong>materia orgánica</strong> (compost, rastrojos, abonos verdes), <strong>labranza adecuada</strong>, <strong>control de tráfico</strong> y evitando la compactación.</li>
+</ul>
+<p><strong>Rúbrica:</strong> 3 puntos por la diferencia textura/estructura; 2 puntos por identificar la estructura como modificable; 3 puntos por al menos dos prácticas concretas.</p>
+</section>
+<section id="a.6-los-tres-parámetros-hídricos-10-puntos" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="a.6-los-tres-parámetros-hídricos-10-puntos"><span class="header-section-number">1.6</span> A.6 — Los tres parámetros hídricos (10 puntos)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 20%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th><span class="math inline">\(\Psi_m\)</span></th>
+<th>Significado y tipo de agua</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Saturación (S)</strong></td>
+<td>0 kPa</td>
+<td>Todos los poros llenos de agua (<span class="math inline">\(\theta_v = P\)</span>). Agua gravitacional + capilar; <strong>sin aire</strong> (hipoxia si persiste).</td>
+</tr>
+<tr class="even">
+<td><strong>Capacidad de Campo (CC)</strong></td>
+<td>−33 kPa</td>
+<td>Macroporos drenados; agua retenida contra gravedad. <strong>Límite superior</strong> del agua disponible.</td>
+</tr>
+<tr class="odd">
+<td><strong>Punto de Marchitez Permanente (PMP)</strong></td>
+<td>−1500 kPa</td>
+<td>Agua adsorbida fuertemente en microporos; la planta <strong>no la puede extraer</strong>. <strong>Límite inferior</strong> del agua disponible.</td>
+</tr>
+</tbody>
+</table>
+<p>Rangos de agua: <strong>gravitacional</strong> (0 a −33 kPa, no disponible) · <strong>disponible / ADT</strong> (−33 a −1500 kPa) · <strong>no disponible</strong> (&lt; −1500 kPa).</p>
+<p><strong>Rúbrica:</strong> 2 puntos por cada definición + Ψm correctos (6 puntos); 4 puntos por la clasificación de los tres tipos de agua.</p>
+<hr>
+</section>
+</section>
+<section id="parte-b-soluciones" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Parte B — Soluciones</h1>
+<section id="b.1-huella-hídrica-del-palto-10-puntos" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="b.1-huella-hídrica-del-palto-10-puntos"><span class="header-section-number">2.1</span> B.1 — Huella hídrica del palto (10 puntos)</h2>
+<p>Producción total: <span class="math inline">\(50 \text{ ha} \times 12 \text{ ton/ha} = 600 \text{ ton} = 600{,}000 \text{ kg/año}\)</span>.</p>
+<ol type="1">
+<li><strong>Huella azul.</strong> Agua azul <span class="math inline">\(= 12{,}000 \times 50 = 600{,}000\)</span> m³ <span class="math inline">\(= 6\times 10^{8}\)</span> L. <span class="math inline">\(HF_{azul} = \dfrac{6\times 10^{8}}{6\times 10^{5}} = 1000\)</span> L/kg.</li>
+<li><strong>Huella verde.</strong> Agua verde <span class="math inline">\(= 0.18 \text{ m} \times 500{,}000 \text{ m}^2 = 90{,}000\)</span> m³ <span class="math inline">\(= 9\times 10^{7}\)</span> L. <span class="math inline">\(HF_{verde} = \dfrac{9\times 10^{7}}{6\times 10^{5}} = 150\)</span> L/kg.</li>
+<li><strong>Huella gris.</strong> Agua gris <span class="math inline">\(= 300 \times 50 = 15{,}000\)</span> m³ <span class="math inline">\(= 1.5\times 10^{7}\)</span> L. <span class="math inline">\(HF_{gris} = \dfrac{1.5\times 10^{7}}{6\times 10^{5}} = 25\)</span> L/kg.</li>
+<li><strong>Huella total.</strong> <span class="math inline">\(HF_{total} = 1000 + 150 + 25 = 1175\)</span> L/kg. Es <strong>menor</strong> que el promedio global (2,080 L/kg): el predio es más eficiente que el promedio mundial.</li>
+</ol>
+<p><strong>Rúbrica:</strong> 2 puntos por sub-pregunta (azul, verde, gris) + 4 puntos por total y comparación. Descontar 0.5 puntos por error de unidad o de conversión (m³→L, mm→m³).</p>
+</section>
+<section id="b.2-lámina-de-riego-10-puntos" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="b.2-lámina-de-riego-10-puntos"><span class="header-section-number">2.2</span> B.2 — Lámina de riego (10 puntos)</h2>
+<ol type="1">
+<li><span class="math inline">\(L_n = (0.32 - 0.20) \times 600 = 0.12 \times 600 = 72\)</span> mm.</li>
+<li><span class="math inline">\(L_b = \dfrac{72}{0.90} = 80\)</span> mm (goteo).</li>
+<li><span class="math inline">\(L_b = \dfrac{72}{0.55} = 130.9\)</span> mm (surco). Ahorro <span class="math inline">\(= 130.9 - 80 \approx 51\)</span> mm. El goteo requiere ~51 mm menos de agua bruta por riego.</li>
+</ol>
+<p><strong>Rúbrica:</strong> 3 puntos por <span class="math inline">\(L_n\)</span>; 3 puntos por <span class="math inline">\(L_b\)</span> goteo; 4 puntos por <span class="math inline">\(L_b\)</span> surco + ahorro. Verificar que <span class="math inline">\(Z_r\)</span> se convierta a mm (<span class="math inline">\(0.6\)</span> m <span class="math inline">\(= 600\)</span> mm).</p>
+</section>
+<section id="b.3-lectura-de-la-curva-de-retención-10-puntos" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="b.3-lectura-de-la-curva-de-retención-10-puntos"><span class="header-section-number">2.3</span> B.3 — Lectura de la curva de retención (10 puntos)</h2>
+<ol type="1">
+<li>De la curva (Figura B.3): <span class="math inline">\(CC = \theta_v\)</span> a −33 kPa <span class="math inline">\(\approx 0.30\)</span> cm³/cm³; <span class="math inline">\(PMP = \theta_v\)</span> a −1500 kPa <span class="math inline">\(\approx 0.11\)</span> cm³/cm³.</li>
+<li><span class="math inline">\(ADT = CC - PMP = 0.30 - 0.11 = 0.19\)</span> cm³/cm³.</li>
+<li><span class="math inline">\(\theta_v = 0.20 &lt; CC = 0.30\)</span> → el suelo está <strong>por debajo de CC</strong> (se ha consumido ~0.10 cm³/cm³ de agua). Implica que hay déficit de humedad: debe regarse antes de acercarse al PMP, idealmente dentro del rango de agua disponible.</li>
+<li>Fracción disponible <span class="math inline">\(= \dfrac{ADT}{\theta_{sat}} = \dfrac{0.19}{0.48} \approx 0.40\)</span>, es decir <strong>~40%</strong> del agua a saturación está realmente disponible.</li>
+</ol>
+<p><strong>Rúbrica:</strong> 2 puntos por CC y PMP; 2 puntos por ADT; 3 puntos por la interpretación del estado del suelo; 3 puntos por el porcentaje. <strong>Tolerancia de lectura:</strong> aceptar CC <span class="math inline">\(0.29\text{–}0.31\)</span> y PMP <span class="math inline">\(0.10\text{–}0.12\)</span>.</p>
+</section>
+<section id="b.4-comparación-de-curvas-por-textura-10-puntos" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="b.4-comparación-de-curvas-por-textura-10-puntos"><span class="header-section-number">2.4</span> B.4 — Comparación de curvas por textura (10 puntos)</h2>
+<ol type="1">
+<li>A CC retiene más agua total el <strong>arcilloso</strong> (<span class="math inline">\(\theta_v \approx 0.40\)</span>); a PMP también el <strong>arcilloso</strong> (<span class="math inline">\(\approx 0.21\)</span>).</li>
+<li>Lectura y cálculo:</li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Textura</th>
+<th>CC (cm³/cm³)</th>
+<th>PMP (cm³/cm³)</th>
+<th>ADT = CC − PMP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arenoso</td>
+<td>0.12</td>
+<td>0.03</td>
+<td>0.09</td>
+</tr>
+<tr class="even">
+<td>Franco</td>
+<td>0.30</td>
+<td>0.11</td>
+<td>0.19</td>
+</tr>
+<tr class="odd">
+<td>Arcilloso</td>
+<td>0.40</td>
+<td>0.21</td>
+<td>0.19</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" type="1">
+<li><strong>Franco y arcilloso</strong> tienen el mayor ADT (0.19), superior al arenoso (0.09). El arcilloso retiene más agua total (CC = 0.40) pero también retiene más en el PMP (0.21) por su mayor área superficial y microporosidad; por eso su ADT resulta similar al del franco: <strong>no toda el agua que retiene está disponible</strong>.</li>
+</ol>
+<p><strong>Rúbrica:</strong> 2 puntos por (1); 4 puntos por la tabla CC/PMP/ADT; 4 puntos por la interpretación. <strong>Tolerancia de lectura:</strong> ±0.01 cm³/cm³ en cada valor.</p>
+</section>
+<section id="b.5-de-la-muestra-de-campo-a-la-lámina-10-puntos" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="b.5-de-la-muestra-de-campo-a-la-lámina-10-puntos"><span class="header-section-number">2.5</span> B.5 — De la muestra de campo a la lámina (10 puntos)</h2>
+<ol type="1">
+<li><span class="math inline">\(V_t = \pi \times (2.5)^2 \times 5.1 = 100.1\)</span> cm³. <span class="math inline">\(D_a = \dfrac{160}{100.1} = 1.60\)</span> g/cm³.</li>
+<li><span class="math inline">\(P = \left(1 - \dfrac{1.60}{2.65}\right)\times 100 = (1 - 0.604)\times 100 = 39.6\%\)</span>.</li>
+<li><span class="math inline">\(\theta_g = \dfrac{190 - 160}{160} = \dfrac{30}{160} = 0.1875\)</span> g/g (<span class="math inline">\(=18.75\%\)</span>).</li>
+<li><span class="math inline">\(\theta_v = 0.1875 \times 1.60 = 0.30\)</span> cm³/cm³.</li>
+<li>Lámina <span class="math inline">\(= 0.30 \times 700 = 210\)</span> mm.</li>
+</ol>
+<p><strong>Rúbrica:</strong> 2 puntos por sub-pregunta. Penalizar si no calculan <span class="math inline">\(V_t\)</span> para obtener <span class="math inline">\(D_a\)</span>.</p>
+<hr>
+</section>
+<section id="nota-de-corrección" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="nota-de-corrección"><span class="header-section-number">2.6</span> Nota de corrección</h2>
+<ul>
+<li>Se sugiere calificar con <strong>pauta de desarrollo</strong>: asignar puntaje parcial por datos, fórmula, cálculo y unidad, y reservar ~20% del puntaje de cada ejercicio a la <strong>interpretación</strong>.</li>
+<li>En los ítems de <strong>lectura de gráfico</strong> (B.3, B.4) aplicar la tolerancia indicada (±0.01 cm³/cm³), pero exigir que la interpretación sea coherente con el valor leído.</li>
+<li>Los errores de cálculo por arrastre (usar un valor previo equivocado) se descuentan solo una vez, siempre que el procedimiento sea correcto.</li>
+<li>La escala de notas UDLA (1.0–7.0) puede aplicarse sobre el puntaje 0–100 con la exigencia de 60%.</li>
+</ul>
+</section>
+<section id="generación-de-las-figuras" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="generación-de-las-figuras"><span class="header-section-number">2.7</span> Generación de las figuras</h2>
+<p>Las figuras B.3 y B.4 se generan automáticamente con <code>ggplot2</code> al renderizar (dependencia ya presente en el proyecto). Si se prefiere entregarlas como imagen estática en Blackboard, basta renderizar una vez y exportar los PNG resultantes.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

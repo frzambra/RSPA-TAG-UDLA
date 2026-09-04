@@ -1,0 +1,135 @@
+---
+title: "Estrategia anti-IA en Blackboard"
+subtitle: "Cátedra 1 — TAG2027 Relación Suelo Agua Planta"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    lang: es
+    theme: default
+  pdf:
+    toc: true
+    lang: es
+execute:
+  echo: false
+  warning: false
+---
+
+::: {.callout-note}
+## Plataforma objetivo: Blackboard Learn
+La configuración difiere entre **Ultra Course View** (interfaz actual) y **Original Course View** (interfaz clásica). Se indican ambos nombres donde corresponden. Algunas herramientas (Respondus, SafeAssign) requieren **licencia institucional**.
+:::
+
+## 1. Planteamiento
+
+Ninguna medida aislada elimina el uso indebido de IA. La estrategia es **defensa en capas**:
+
+1. **Diseño de la prueba** — el más efectivo y de menor costo (ya aplicado).
+2. **Configuración del test en Blackboard** — aleatorización y control de flujo.
+3. **Verificación de autenticidad** — defensa oral breve + normativa.
+
+---
+
+## 2. Capa 1 — Diseño (ya aplicado en esta evaluación)
+
+1. **Proceso e interpretación obligatorios:** cada ejercicio exige *dato → fórmula → cálculo → unidad → interpretación agronómica*. Reservar ~20% del puntaje a la interpretación.
+2. **Contexto local del curso:** palto en Petorca, suelos de la zona central, valores CC/PMP de las diapositivas. Una respuesta de IA suele ser genérica y se detecta por no citar el contexto pedido.
+3. **Ítems de interpretación "a contrapelo":** p. ej. A.4 (dos suelos con la misma θv) obliga a razonar con CC/PMP/ADT y no se resuelve por pregunta-respuesta automática.
+4. **Formatos variados:** emparejamiento, ordenamiento, desarrollo corto y cálculo.
+
+---
+
+## 3. Capa 2 — Configuración del test en Blackboard
+
+### 3.1 La herramienta clave: pregunta de **Fórmula Calculada**
+
+Blackboard permite definir un **rango de valores** y una **fórmula de respuesta**; cada estudiante recibe números distintos, por lo que el copia-pega y el "screenshot de la solución" dejan de servir.
+
+- **Ultra:** tipo de pregunta *"Fórmula calculada"* (Crear pregunta → Fórmula calculada).
+- **Original:** tipo *"Calculated Formula"*.
+
+Se definen variables con rango, la fórmula de respuesta y tolerancia. Ejemplo para el ejercicio B.2 (lámina neta):
+
+| Variable | Rango | Paso |
+|----------|-------|------|
+| `CC` | 0.28 – 0.36 cm³/cm³ | 0.01 |
+| `theta` | 0.15 – 0.24 cm³/cm³ | 0.01 |
+| `Zr` | 0.4 – 0.9 m | 0.1 |
+
+Fórmula de respuesta (mm): `(CC - theta) * Zr * 1000`.
+
+**Mapeo de cada ejercicio a Blackboard:**
+
+| Ítem | Tipo sugerido | Variables / respuesta |
+|------|---------------|-----------------------|
+| B.1 | Banco de preguntas (3–5 versiones) | Huella hídrica con datos distintos |
+| B.2 | Fórmula calculada | $L_n = (CC - \theta)\cdot Z_r \cdot 1000$ ; $L_b = L_n / E_a$ |
+| B.3 | **Pregunta con figura** (lectura de gráfico) | CC/PMP/ADT leídos desde la curva de retención |
+| B.4 | **Pregunta con figura** (lectura de gráfico) | Comparación de 3 texturas |
+| B.5 | Fórmula calculada | $D_a$, $P$, $\theta_g$, $\theta_v$ y lámina |
+
+- Los ítems multi-paso con conversión de unidades (B.1) son más cómodos como **banco de preguntas con versiones fijas** que como fórmula calculada.
+- **Los ítems con figura (B.3, B.4) son en sí mismos anti-IA:** leer un valor desde un gráfico propio del curso no se resuelve con una respuesta textual genérica. Para variar entre estudiantes, se generan **2–3 versiones del mismo gráfico** (distintos valores de CC/PMP) en el banco.
+
+### 3.2 Bancos de preguntas y bloques aleatorios
+
+- Crear un **banco de preguntas** (*Question Pool* en Ultra / *Pool* en Original) con las variantes de cada ítem.
+- En el test, usar un **bloque aleatorio** que extraiga *N* preguntas del banco (p. ej. 3 de 5). Así el orden y el contenido varían entre estudiantes.
+
+### 3.3 Control de flujo y tiempo
+
+| Configuración | Ultra | Original | Efecto |
+|---------------|-------|----------|--------|
+| Mostrar una pregunta a la vez | Ajustes del test | *One at a time* | Reduce la consulta externa en paralelo |
+| **Prohibir retroceder** | *Prohibit backtracking* | *Prohibit backtracking* | Impide volver a modificar respuestas |
+| **Límite de tiempo + envío automático** | *Time limit → Auto-submit* | *Set Timer → Auto-Submit* | Los 90 min se cumplen solos |
+| Barajar respuestas | Por pregunta, *Shuffle answers* | *Randomize answers* | Dificulta compartir letras |
+| Barajar preguntas | *Randomize questions* | *Randomize questions* | Dificulta compartir el orden |
+| **Finalización forzada** | (por defecto) | *Forced Completion* | No se puede pausar y retomar |
+
+### 3.4 Respondus LockDown Browser (+ Monitor)
+
+Si la UDLA tiene licencia de **Respondus**:
+
+- **LockDown Browser:** bloquea el navegador (sin otras pestañas, sin copiar/pegar, sin captura, sin imprimir) mientras el test está activo.
+- **Respondus Monitor:** agrega grabación por webcam con revisión de banderas (mirada fuera de pantalla, presencia de otras personas, teléfono).
+
+Es el control técnico más fuerte disponible en Blackboard. **Requisito:** licencia institucional y comunicarlo a los estudiantes con anticipación.
+
+### 3.5 SafeAssign (menos relevante aquí)
+
+SafeAssign detecta similitud de texto, útil para ensayos. Como esta evaluación es numérica/estructurada, su aporte es limitado; se reserva para las preguntas de desarrollo si se amplía.
+
+---
+
+## 4. Capa 3 — Verificación de autenticidad
+
+### 4.1 Defensa oral breve (la más disuasiva)
+
+Tras el test, en una instancia corta (2–3 min por estudiante o por sorteo), se pide **explicar una respuesta elegida al azar**. Quien no justifica el procedimiento de su propia respuesta queda en evidencia de forma rápida y objetiva. Se puede agendar como sesión de Blackboard Collaborate.
+
+### 4.2 Pregunta metacognitiva final
+
+Pregunta de cierre de bajo puntaje: *"¿Qué ítem te resultó más difícil y por qué? Describe en 2 líneas tu razonamiento."* Una respuesta vacía o genérica es señal de bajo involucramiento.
+
+### 4.3 Normativa explícita
+
+Mantener la referencia al **Reglamento del Alumno UDLA (Art. 72)** (ya en el encabezado) y avisar que puede aplicarse verificación oral y Respondus Monitor.
+
+---
+
+## 5. Qué NO hacer
+
+- **No** basarse solo en detectores de IA (falsos positivos, fáciles de evadir).
+- **No** subir la dificultad indiscriminadamente (castiga al honesto).
+- **No** prohibir toda la tecnología si el curso ya usa Colab/Python: el mensaje es "el razonamiento es tuyo", no "la tecnología es mala".
+
+---
+
+## 6. Recomendación priorizada (Blackboard)
+
+1. **Convertir B.2, B.3 y B.4 a preguntas de Fórmula Calculada** (impacto alto, costo medio).
+2. **Crear bancos de preguntas** para B.1 y B.5 con 3–5 versiones y bloques aleatorios.
+3. **Activar:** una pregunta a la vez + prohibir retroceder + límite 90 min con auto-envío + barajar respuestas.
+4. **Si hay licencia:** habilitar Respondus LockDown Browser (y Monitor si corresponde).
+5. **Agendar defensa oral breve** de una respuesta al azar (disuasivo muy alto).
