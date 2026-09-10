@@ -345,7 +345,7 @@
 <p>Regar cuando θv del perfil baje de ~0.208 (≈ 57.5 mm consumidos desde CC)</p>
 </div>
 </section>
-<section id="de-umbral-a-decisión-de-riego" class="slide level2 center">
+<section id="de-umbral-a-decisión-de-riego" class="slide level2 center smaller">
 <h2>De umbral a decisión de riego</h2>
 <p><strong>Lámina neta a reponer (cuando estamos en el umbral):</strong> <span class="math display">\[L_n = AFA = 57.5 \text{ mm}\]</span></p>
 <p><strong>Lámina bruta (considerando eficiencia del sistema):</strong> <span class="math display">\[L_b = \frac{L_n}{E_a}\]</span></p>
@@ -466,7 +466,7 @@
 </table>
 <p><strong>Recomendación:</strong> Combinar balance hídrico (planificación) + monitoreo de suelo (verificación).</p>
 </section>
-<section id="métodos-de-monitoreo-de-humedad-del-suelo" class="slide level2 center">
+<section id="métodos-de-monitoreo-de-humedad-del-suelo" class="slide level2 center smaller">
 <h2>Métodos de monitoreo de humedad del suelo</h2>
 <table class="caption-top">
 <colgroup>
@@ -531,7 +531,7 @@
 </tbody>
 </table>
 </section>
-<section id="sensores-fdrtdr-fundamento" class="slide level2 center">
+<section id="sensores-fdrtdr-fundamento" class="slide level2 center smaller">
 <h2>Sensores FDR/TDR: fundamento</h2>
 <p><strong>Principio físico:</strong> Miden la constante dieléctrica aparente del suelo (Ka).</p>
 <table class="caption-top">
@@ -561,7 +561,9 @@
 </tbody>
 </table>
 <p>→ Ka del suelo depende principalmente de θv. Si Ka sube → hay más agua.</p>
-<p><strong>Diferencia FDR vs.&nbsp;TDR:</strong> - <strong>FDR (Frequency Domain Reflectometry):</strong> mide la capacitancia a una frecuencia fija. Más barato, algo menos preciso. - <strong>TDR (Time Domain Reflectometry):</strong> mide el tiempo de viaje de un pulso electromagnético. Más caro, mayor precisión.</p>
+<p><strong>Diferencia FDR vs.&nbsp;TDR:</strong><br>
+- <strong>FDR (Frequency Domain Reflectometry):</strong> mide la capacitancia a una frecuencia fija. Más barato, algo menos preciso.<br>
+- <strong>TDR (Time Domain Reflectometry):</strong> mide el tiempo de viaje de un pulso electromagnético. Más caro, mayor precisión.</p>
 </section>
 <section id="ejercicio-rápido-sensores" class="slide level2 center smaller">
 <h2>Ejercicio rápido: sensores</h2>
@@ -589,10 +591,15 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="tensiómetro-midiendo-ψm-directamente" class="slide level2 center">
+<section id="tensiómetro-midiendo-ψm-directamente" class="slide level2 center smaller">
 <h2>Tensiómetro: midiendo Ψm directamente</h2>
-<p><strong>Componentes:</strong> - Cápsula porosa cerámica (permite paso de agua, no de aire) - Tubo lleno de agua conectado a un vacuómetro o transductor de presión - Se entierra a la profundidad deseada</p>
-<p><strong>Funcionamiento:</strong> - Suelo seco → “chupa” agua del tensiómetro → vacío interno → lectura de succión - Suelo húmedo → agua del suelo entra al tensiómetro → vacío disminuye</p>
+<p><strong>Componentes:</strong><br>
+- Cápsula porosa cerámica (permite paso de agua, no de aire)<br>
+- Tubo lleno de agua conectado a un vacuómetro o transductor de presión<br>
+- Se entierra a la profundidad deseada</p>
+<p><strong>Funcionamiento:</strong><br>
+- Suelo seco → “chupa” agua del tensiómetro → vacío interno → lectura de succión<br>
+- Suelo húmedo → agua del suelo entra al tensiómetro → vacío disminuye</p>
 <p><strong>Rango útil:</strong> 0 a -80 kPa. Más allá, entra aire por la cápsula y pierde precisión.</p>
 <div style="font-size: 0.85em; margin-top: 0.5em;">
 <p>Ventaja: mide Ψm directamente (lo que la raíz “siente”). Desventaja: mantenimiento (rellenar agua), rango limitado.</p>
@@ -634,26 +641,12 @@
 </table>
 <p><strong>Regla de oro:</strong> Instalar al menos a <strong>2 profundidades</strong> — una en la zona de máxima densidad radical y otra en el fondo del perfil.</p>
 </section>
-<section id="interpretación-de-series-temporales-de-humedad" class="slide level2 center">
+<section id="interpretación-de-series-temporales-de-humedad" class="slide level2 center smaller">
 <h2>Interpretación de series temporales de humedad</h2>
-<pre><code>θv (cm³/cm³)
-0.35 ┤  ╱╲ Riego    ╱╲ Riego
-     │ ╱  ╲╱╲       ╱  ╲╱╲
-0.30 ┤╱      ╲     ╱      ╲
-     │        ╲   ╱        ╲
-CC=0.30│- - - - -╲-╱- - - - - - - - - - - - - - - - - -
-0.25 ┤          ╲╱  Consumo
-     │           ╲
-0.20 ┤            ╲
-Umbral│- - - - - - -╲- - - - - - - - - - - - - - - - -
-     │              ╲
-0.15 ┤                ╲
-PMP=0.11│- - - - - - - - -╲- - - - - - - - - - - - - -
-     └────┬────┬────┬────┬────┬────┬────┬────
-         L    M    X    J    V    S    D</code></pre>
-<p><strong>Interpretación:</strong> Cada caída = consumo. Cada subida = riego o lluvia. Pendiente = tasa de consumo.</p>
+
+<img data-src="../../images/variacion_humeda_suelo_riegos.png" class="quarto-figure quarto-figure-center r-stretch"><p><strong>Interpretación:</strong> Cada caída = consumo. Cada subida = riego o lluvia. Pendiente = tasa de consumo.</p>
 </section>
-<section id="qué-nos-dice-la-pendiente-de-la-curva" class="slide level2 center">
+<section id="qué-nos-dice-la-pendiente-de-la-curva" class="slide level2 center smaller">
 <h2>¿Qué nos dice la pendiente de la curva?</h2>
 <table class="caption-top">
 <colgroup>
@@ -698,7 +691,7 @@ PMP=0.11│- - - - - - - - -╲- - - - - - - - - - - - - -
 </tbody>
 </table>
 </section>
-<section id="ejercicio-de-interpretación" class="slide level2 center">
+<section id="ejercicio-de-interpretación" class="slide level2 center smaller">
 <h2>Ejercicio de interpretación</h2>
 <p><strong>Gráfico de θv a 20 cm y 50 cm durante una semana:</strong></p>
 <table class="caption-top">
@@ -738,19 +731,31 @@ PMP=0.11│- - - - - - - - -╲- - - - - - - - - - - - - -
 </tbody>
 </table>
 <p><strong>CC = 0.33, PMP = 0.14, p = 0.50 (maíz)</strong></p>
-<p><strong>Responda:</strong> 1. ¿Hubo un riego? ¿Qué día? ¿A qué profundidad llegó? 2. ¿Cuánto consumió el cultivo entre el miércoles y el domingo a 20 cm? 3. ¿Está el cultivo en estrés al final de la semana? 4. ¿Recomendaría regar el lunes? Justifique.</p>
+<p><strong>Responda:</strong><br>
+1. ¿Hubo un riego? ¿Qué día? ¿A qué profundidad llegó?<br>
+2. ¿Cuánto consumió el cultivo entre el miércoles y el domingo a 20 cm?<br>
+3. ¿Está el cultivo en estrés al final de la semana?<br>
+4. ¿Recomendaría regar el lunes? Justifique.</p>
 </section>
-<section id="calibración-de-sensores-de-humedad" class="slide level2 center">
+<section id="calibración-de-sensores-de-humedad" class="slide level2 center smaller">
 <h2>Calibración de sensores de humedad</h2>
 <div style="font-size: 0.9em;">
 <p>Los sensores FDR/TDR miden Ka (constante dieléctrica), no θv directamente. Necesitan <strong>calibración</strong>.</p>
 <p><strong>Ecuación de calibración típica:</strong></p>
 <p><span class="math display">\[\theta_v = a \times \sqrt{Ka} + b\]</span></p>
-<p><strong>¿Por qué calibrar?</strong> - Cada suelo tiene distinta mineralogía → distinta Ka para igual θv - Suelos con arcilla 2:1 (montmorillonita) o salinos requieren calibración específica - La calibración de fábrica puede tener errores de ±0.03-0.05 cm³/cm³</p>
-<p><strong>Método de calibración en campo:</strong> 1. Instalar el sensor y tomar lectura de Ka 2. Extraer muestra de suelo justo al lado del sensor 3. Medir θv por método gravimétrico (referencia) 4. Repetir a distintas humedades (después de riego, varios días después) 5. Ajustar regresión <span class="math inline">\(\theta_v = f(Ka)\)</span></p>
+<p><strong>¿Por qué calibrar?</strong><br>
+- Cada suelo tiene distinta mineralogía → distinta Ka para igual θv<br>
+- Suelos con arcilla 2:1 (montmorillonita) o salinos requieren calibración específica<br>
+- La calibración de fábrica puede tener errores de ±0.03-0.05 cm³/cm³</p>
+<p><strong>Método de calibración en campo:</strong><br>
+1. Instalar el sensor y tomar lectura de Ka<br>
+2. Extraer muestra de suelo justo al lado del sensor<br>
+3. Medir θv por método gravimétrico (referencia)<br>
+4. Repetir a distintas humedades (después de riego, varios días después)<br>
+5. Ajustar regresión <span class="math inline">\(\theta_v = f(Ka)\)</span></p>
 </div>
 </section>
-<section id="ventajas-y-desventajas-de-los-métodos-de-monitoreo" class="slide level2 center">
+<section id="ventajas-y-desventajas-de-los-métodos-de-monitoreo" class="slide level2 center smaller">
 <h2>Ventajas y desventajas de los métodos de monitoreo</h2>
 <table class="caption-top">
 <colgroup>
@@ -801,7 +806,7 @@ PMP=0.11│- - - - - - - - -╲- - - - - - - - - - - - - -
 </tbody>
 </table>
 </section>
-<section id="ejercicio-integrador-2" class="slide level2 center">
+<section id="ejercicio-integrador-2" class="slide level2 center smaller">
 <h2>Ejercicio integrador 2</h2>
 <table class="caption-top">
 <thead>
@@ -833,10 +838,18 @@ PMP=0.11│- - - - - - - - -╲- - - - - - - - - - - - - -
 </tr>
 </tbody>
 </table>
-<p><strong>Datos adicionales:</strong> - Cultivo: trigo (p = 0.55) - Sistema de riego: pivote central (Ea = 0.82) - ETc actual: 5.2 mm/día</p>
-<p><strong>Calcule:</strong> 1. ADT total del perfil (mm) 2. AFA para trigo (mm) 3. Lámina bruta a aplicar 4. Frecuencia de riego (días entre riegos) 5. Umbral de θv para decidir el riego</p>
+<p><strong>Datos adicionales:</strong><br>
+- Cultivo: trigo (p = 0.55)<br>
+- Sistema de riego: pivote central (Ea = 0.82)<br>
+- ETc actual: 5.2 mm/día</p>
+<p><strong>Calcule:</strong><br>
+1. ADT total del perfil (mm)<br>
+2. AFA para trigo (mm)<br>
+3. Lámina bruta a aplicar<br>
+4. Frecuencia de riego (días entre riegos)<br>
+5. Umbral de θv para decidir el riego</p>
 </section>
-<section id="resumen-de-conceptos-clave" class="slide level2 center">
+<section id="resumen-de-conceptos-clave" class="slide level2 center smaller">
 <h2>Resumen de conceptos clave</h2>
 <ol type="1">
 <li><p><strong>ADT</strong> = CC − PMP → agua total que el suelo puede almacenar para la planta (mm en el perfil)</p></li>
@@ -855,10 +868,12 @@ PMP=0.11│- - - - - - - - -╲- - - - - - - - - - - - - -
 </div>
 <div style="margin-top: 1em; text-align: center;">
 <p>Ya sabemos cuánta agua hay en el suelo y cuándo regar…</p>
-<p>→ ¿Cómo absorbe el agua la planta? → ¿Cómo la transporta desde la raíz hasta las hojas? → ¿Qué controla la pérdida de agua por transpiración?</p>
+<p>→ ¿Cómo absorbe el agua la planta?<br>
+→ ¿Cómo la transporta desde la raíz hasta las hojas?<br>
+→ ¿Qué controla la pérdida de agua por transpiración?</p>
 </div>
 </section>
-<section id="preguntas-de-autoevaluación" class="slide level2 center">
+<section id="preguntas-de-autoevaluación" class="slide level2 center smaller">
 <h2>Preguntas de autoevaluación</h2>
 <ol type="1">
 <li><p>Calcule ADT y AFA (p=0.5) para un perfil de 80 cm con CC=0.30 cm³/cm³ y PMP=0.12 cm³/cm³ uniforme.</p></li>

@@ -1,0 +1,402 @@
+---
+title: "Unidad 3 — El agua en la planta"
+subtitle: "Sesión 3.3: Transpiración, fotosíntesis y control estomático"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+## Recapitulación sesión anterior {.center}
+
+::: {style="font-size: 0.85em;"}
+**Sesión 3.2 — Ideas fuerza:**
+- El agua sube por el **xilema** tirada por la transpiración
+- La teoría de **cohesión-tensión** explica el ascenso
+- El mayor salto de $\Psi$ está en la interfaz **hoja → atmósfera**
+- Medimos el estado hídrico con Scholander, psicrómetro y porómetro
+
+**Ahora:** cerramos el SPAC. ¿Cómo sale el agua de la hoja y cómo se regula? Y la pregunta de fondo: **¿cuánta agua "cuesta" producir biomasa?**
+:::
+
+---
+
+## Información de la sesión {.center}
+
+| | |
+|---|---|
+| **Unidad** | 3 — El agua en la planta |
+| **Sesión** | 3.3 |
+| **RAA** | RAA5 |
+| **Duración** | ~90 minutos |
+| **Contenido** | Transpiración, conductancia estomática, relación transpiración-fotosíntesis, WUE, factores ambientales |
+
+---
+
+## Objetivos de aprendizaje {.center}
+
+Al finalizar esta sesión, serás capaz de:
+
+1. Describir el proceso de transpiración (flujo hoja → atmósfera)
+2. Explicar la conductancia estomática ($g_s$) y sus mecanismos de regulación
+3. Relacionar la transpiración con la fotosíntesis (el "trade-off" del estoma)
+4. Calcular e interpretar la eficiencia de uso del agua (WUE = A/E)
+5. Identificar los factores ambientales que controlan la transpiración
+
+---
+
+## La hoja: el último compartimento del SPAC {.center}
+
+::: {style="font-size: 0.9em;"}
+El agua sale de la planta por la **hoja**, a través de los **estomas**.
+
+| Estructura | Función |
+|------------|---------|
+| **Estomas** | Poros regulables en la epidermis (hoja, principalmente envés) |
+| **Células oclusivas** | Controlan la apertura/cierre del poro |
+| **Cámara subestomática** | Espacio aéreo saturado de vapor bajo el estoma |
+| **Cutícula** | Capa cerosa que reduce la pérdida de agua (transpiración cuticular ~5-10%) |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Más del 90% del agua que pierde una planta sale por los estomas.
+:::
+
+:::
+
+---
+
+## ¿Qué es la transpiración? {.center}
+
+::: {style="font-size: 0.9em;"}
+La **transpiración** es la pérdida de agua en forma de **vapor** desde la planta hacia la atmósfera.
+
+El vapor se mueve por **difusión**: de la cámara subestomática (alta concentración de vapor) hacia el aire exterior (menor concentración).
+
+$$ E = \frac{c_i - c_a}{r_s + r_a} $$
+
+donde:
+- $c_i$ = concentración de vapor dentro de la hoja
+- $c_a$ = concentración de vapor en el aire
+- $r_s$ = resistencia estomática | $r_a$ = resistencia de la capa límite (aire)
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+El **déficit de presión de vapor (DPV)** es la fuerza motriz: a mayor DPV, más se "seca" el aire y más transpira la planta.
+:::
+
+:::
+
+---
+
+## El motor de la transpiración {.center}
+
+::: {style="font-size: 0.9em;"}
+La transpiración depende de **dos cosas**:
+
+1. **Demanda atmosférica (fuerza motriz):**
+   - Radiación solar → calienta la hoja y evapora agua
+   - DPV (déficit de presión de vapor) → aire más seco "tira" más vapor
+   - Viento → remueve el vapor de la superficie de la hoja
+
+2. **Resistencia de la planta (control):**
+   - Conductancia estomática ($g_s$): cuánto abiertos están los estomas
+   - $E = g_s \times DPV$ (forma simplificada, en condiciones sin viento extremo)
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+La atmósfera demanda; la planta controla con los estomas.
+:::
+
+:::
+
+---
+
+## Conductancia estomática ($g_s$) {.center}
+
+::: {style="font-size: 0.9em;"}
+La **conductancia estomática** ($g_s$) es la facilidad con que el vapor pasa por los estomas. Es el **inverso de la resistencia**:
+
+$$ g_s = \frac{1}{r_s} $$
+
+**Unidades:** mol H₂O m⁻² s⁻¹ (o mmol m⁻² s⁻¹)
+
+| $g_s$ | Estado de los estomas | Transpiración |
+|-------|------------------------|---------------|
+| Alta (0.3-0.5) | Abiertos | Alta |
+| Media | Parcialmente cerrados | Media |
+| **Baja (< 0.05)** | **Cerrados** | **Mínima** |
+
+:::
+
+---
+
+## ¿Cómo se regulan los estomas? {.center}
+
+::: {style="font-size: 0.9em;"}
+La apertura estomática responde a **múltiples señales** simultáneamente:
+
+| Señal | Efecto en los estomas |
+|-------|------------------------|
+| **Luz** | Abre (fotosíntesis activa) |
+| **CO₂ interno bajo** | Abre (necesita CO₂) |
+| **CO₂ interno alto** | Cierra |
+| **DPV alto** | Cierra (evita deshidratación) |
+| **$\Psi_{hoja}$ bajo (sequía)** | Cierra (via ABA, hormona del estrés) |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+La planta optimiza: abre para captar CO₂, cierra para no deshidratarse.
+:::
+
+:::
+
+---
+
+## El trade-off fundamental: CO₂ vs. H₂O {.center}
+
+::: {style="font-size: 0.9em;"}
+El estoma es una **puerta de doble tránsito** con un conflicto:
+
+- Para **fotosintetizar**, la planta necesita **CO₂** (que entra por el estoma)
+- Al abrir el estoma para el CO₂, **pierde agua** (que sale como vapor)
+
+| Molécula | Dirección | Consecuencia |
+|----------|-----------|--------------|
+| CO₂ | Entra | Fotosíntesis (producción) |
+| H₂O | Sale | Transpiración (pérdida) |
+
+**Razón típica:** por cada CO₂ que entra, se pierden **200-400 moléculas** de agua.
+
+::: {style="margin-top: 0.8em; text-align: center; font-weight: bold;"}
+Fotosintetizar sin agua es imposible: el estoma debe elegir un balance.
+:::
+
+:::
+
+---
+
+## Fotosíntesis y transpiración acopladas {.center}
+
+::: {style="font-size: 0.9em;"}
+La fotosíntesis ($A$, tasa de asimilación de CO₂) y la transpiración ($E$) están **acopladas** porque ambas pasan por el mismo poro:
+
+- Con **buena disponibilidad de agua**: $g_s$ alta → $A$ alta y $E$ alta
+- Con **estrés hídrico**: $g_s$ baja → $A$ cae y $E$ cae
+
+**Consecuencia agronómica:** el estrés hídrico **reduce la fotosíntesis** y, por tanto, el crecimiento y el rendimiento. Pero un déficit controlado puede ahorrar agua con poco impacto en el rendimiento (riego deficitario, U5).
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+No siempre más agua = más rendimiento; la relación no es lineal.
+:::
+
+:::
+
+---
+
+## Eficiencia de uso del agua (WUE) {.center}
+
+La **WUE** mide cuánta biomasa (fotosíntesis) se produce por unidad de agua transpirada:
+
+$$ WUE = \frac{A}{E} $$
+
+| Variable | Significado | Unidades |
+|----------|-------------|----------|
+| $A$ | Tasa de asimilación (fotosíntesis) | μmol CO₂ m⁻² s⁻¹ |
+| $E$ | Tasa de transpiración | mmol H₂O m⁻² s⁻¹ |
+| **WUE** | **Eficiencia de uso del agua** | **μmol CO₂ / mmol H₂O** |
+
+::: {style="margin-top: 0.8em; text-align: center; font-weight: bold;"}
+A mayor WUE, la planta "rinde" más con menos agua.
+:::
+
+---
+
+## WUE instantánea vs. intrínseca {.center}
+
+::: {style="font-size: 0.9em;"}
+| Tipo | Fórmula | ¿Qué expresa? |
+|------|---------|---------------|
+| **Instantánea** | $WUE = A/E$ | CO₂ fijado por agua transpirada |
+| **Intrínseca** | $WUE_i = A/g_s$ | Eficiencia independiente del DPV |
+
+**Valores orientativos (instantánea):**
+
+| Planta | WUE (μmol CO₂ / mmol H₂O) |
+|--------|---------------------------|
+| Plantas C3 (trigo, vid) | 2 - 5 |
+| Plantas C4 (maíz, sorgo) | 4 - 8 |
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+Las **C4** son más eficientes porque concentran CO₂ internamente → fotosintetizan con estomas más cerrados.
+:::
+
+:::
+
+---
+
+## Ejercicio: calcula la WUE {.center}
+
+**Problema:** Un cultivo tiene $A = 20$ μmol CO₂ m⁻² s⁻¹ y $E = 5$ mmol H₂O m⁻² s⁻¹.
+
+1. Calcula la WUE instantánea.
+2. Si otro cultivo tiene $A = 15$ y $E = 2.5$, ¿cuál es más eficiente?
+3. ¿Qué tipo metabólico (C3 o C4) sospechas en cada caso?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 4 minutos.
+:::
+
+::: {.notes}
+1. WUE = 20/5 = 4 μmol CO₂/mmol H₂O. 2. WUE = 15/2.5 = 6 → el segundo es más eficiente (produce más por agua). 3. El primero podría ser C3, el segundo C4 (mayor WUE).
+:::
+
+---
+
+## Factores ambientales que controlan la transpiración {.center}
+
+| Factor | Efecto sobre $E$ | Mecanismo |
+|--------|------------------|-----------|
+| **Radiación solar** | ↑↑ | Calienta la hoja y **abre estomas** |
+| **DPV** | ↑↑ | Mayor gradiente de vapor (aire seco) |
+| **Viento** | ↑ (luego ↓) | Reduce la capa límite; en exceso cierra estomas |
+| **Temperatura** | ↑ | Aumenta DPV y la capacidad del aire para vapor |
+| **CO₂** | ↓ (moderado) | Cierra parcialmente estomas → ↑ WUE |
+
+---
+
+## Radiación y DPV {.center}
+
+::: {style="font-size: 0.9em;"}
+**Radiación solar ($R_s$):** es la señal que más abre los estomas. De noche, estomas cerrados → $E \approx 0$.
+
+**DPV (déficit de presión de vapor):** es la "sed" del aire.
+
+| DPV (kPa) | Interpretación | Respuesta de la planta |
+|-----------|----------------|------------------------|
+| < 0.8 | Aire húmedo | Estomas abiertos, $E$ moderada |
+| 0.8 - 1.5 | Condición normal | Balance óptimo |
+| **> 2.0** | **Aire muy seco (mediodía de verano)** | **Cierre parcial de estomas** |
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+En verano en la zona central, el DPV al mediodía puede superar 3 kPa → la planta transpira mucho y cierra estomas.
+:::
+
+:::
+
+---
+
+## Viento y CO₂ {.center}
+
+::: {style="font-size: 0.9em;"}
+**Viento:**
+- Viento suave **aumenta** $E$ (remueve el vapor saturado de la capa límite)
+- Viento fuerte **reduce** $E$ (la planta cierra estomas para no deshidratarse)
+- El viento es un factor clave de la ETo (lo usaremos en la Unidad 4)
+
+**CO₂ elevado:**
+- Más CO₂ disponible → la planta puede fotosintetizar con **estomas más cerrados**
+- Resultado: **menos $E$ y mayor WUE** ("efecto de fertilización de CO₂")
+- Implicancia: bajo cambio climático, la demanda de agua por unidad de rendimiento podría bajar, pero el rendimiento y el clima cambian a la vez.
+
+:::
+
+---
+
+## El control estomático como señal de riego {.center}
+
+::: {style="font-size: 0.9em;"}
+Como los estomas se cierran ante el estrés hídrico, su estado **"avisa"** antes de que la planta muestre marchitez visible:
+
+| Señal | Qué indica | Decisión |
+|-------|-----------|----------|
+| $g_s$ baja al mediodía (con luz) | Estrés hídrico incipiente | Considerar riego |
+| $\Psi_{hoja}$ < umbral | Estrés establecido | Regar |
+| Marchitez visible | Estrés severo (ya hay daño) | Regar (tarde) |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Monitorear la planta permite regar **antes** del daño visible. De aquí nace el riego basado en la planta (U6).
+:::
+
+:::
+
+---
+
+## Ejercicio integrador de la Unidad 3 {.center}
+
+**Situación:** Un día de verano, a las 14:00, en un huerto de paltos se observa: radiación alta, DPV = 2.5 kPa, viento moderado, y $\Psi_{hoja}$ = -1.6 MPa.
+
+1. ¿Qué esperas que esté haciendo la planta con sus estomas y por qué?
+2. ¿Cómo estarán la transpiración ($E$) y la fotosíntesis ($A$)?
+3. ¿Qué le recomendarías al productor y con qué instrumento lo respaldarías?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 5 minutos.
+:::
+
+::: {.notes}
+1. Cierre parcial: DPV alto + Ψ foliar muy negativo → cierra para evitar deshidratación/cavitación. 2. E y A bajan (estomas cerrados). 3. Evaluar riego; respaldar con cámara Scholander (Ψ foliar) y porómetro (gs). Si el Ψ ya está bajo el umbral, regar.
+:::
+
+---
+
+## Vocabulario clave {.center}
+
+| Término | Definición |
+|---------|-----------|
+| Transpiración | Pérdida de agua como vapor desde la planta |
+| Estoma | Poro regulable en la epidermis foliar |
+| Conductancia estomática ($g_s$) | Facilidad del paso de vapor por los estomas |
+| DPV | Déficit de presión de vapor — "sed" del aire |
+| Fotosíntesis ($A$) | Fijación de CO₂ para producir biomasa |
+| WUE | Eficiencia de uso del agua: $WUE = A/E$ |
+| ABA | Ácido abscísico — hormona que cierra estomas en sequía |
+
+---
+
+## Resumen de conceptos clave {.center}
+
+1. Más del 90% del agua sale por los **estomas** (transpiración)
+
+2. La transpiración es impulsada por la **demanda atmosférica** (radiación, DPV, viento)
+
+3. La planta controla la pérdida con la **conductancia estomática** ($g_s$)
+
+4. Existe un **trade-off**: abrir estomas capta CO₂ pero pierde agua (200-400:1)
+
+5. La **WUE** ($A/E$) mide cuánta biomasa se produce por agua transpirada
+
+6. El **estrés hídrico** cierra estomas → baja la fotosíntesis y el rendimiento
+
+7. Monitorear $g_s$ y $\Psi_{hoja}$ permite regar **antes** del daño visible
+
+---
+
+## Para la próxima sesión {.center}
+
+**Unidad 4 — Requerimiento hídrico de los cultivos**
+
+→ Ahora que sabemos cuánta agua "usa" la planta (transpiración), la escalamos al **cultivo**.
+→ Evapotranspiración (ET), ETo y ETc.
+→ Métodos de cálculo: **Penman-Monteith** y **Hargreaves**.
+→ Coeficiente de cultivo ($K_c$).
+
+**Taller 3** (Google Colab): gradiente de potencial hídrico, transpiración y WUE.
+
+---
+
+## Preguntas de autoevaluación {.center}
+
+1. ¿Qué es la transpiración y por dónde ocurre mayoritariamente?
+
+2. ¿Qué es la conductancia estomática y qué señales la regulan?
+
+3. Explique el "trade-off" del estoma. ¿Por qué una planta no puede tener los estomas siempre cerrados?
+
+4. Un cultivo tiene $A = 20$ μmol CO₂ m⁻² s⁻¹ y $E = 5$ mmol H₂O m⁻² s⁻¹. Calcule la WUE instantánea.
+
+5. ¿Cómo afecta un DPV alto a la transpiración y a la decisión de riego?
+
+6. ¿Por qué las plantas C4 tienen mayor WUE que las C3?
+
+7. ¿Qué señal mediría en la planta para regar antes de que aparezca marchitez visible?

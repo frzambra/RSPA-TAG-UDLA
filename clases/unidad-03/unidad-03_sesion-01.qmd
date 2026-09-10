@@ -1,0 +1,474 @@
+---
+title: "Unidad 3 — El agua en la planta"
+subtitle: "Sesión 3.1: Sistema radical — absorción de agua y nutrientes"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+## Recapitulación: del suelo a la raíz {.center}
+
+::: {style="font-size: 0.85em;"}
+**Unidad 2 — Ideas fuerza:**  
+- El suelo almacena agua entre **CC** (-33 kPa) y **PMP** (-1500 kPa)  
+- El **agua disponible (ADT)** es la que la planta puede extraer  
+- El agua se mueve de mayor a **menor potencial hídrico** ($\Psi$)  
+
+**Ahora:** El agua ya está en el suelo. ¿Cómo **entra a la planta**? El primer paso es la **raíz**.
+:::
+
+---
+
+## Información de la sesión {.center}
+
+| | |
+|---|---|
+| **Unidad** | 3 — El agua en la planta |
+| **Sesión** | 3.1 |
+| **RAA** | RAA5 |
+| **Duración** | ~90 minutos |
+| **Contenido** | Sistema radical, zonas de absorción, vías apoplasto/simplasto, factores que afectan la absorción |
+
+---
+
+## Objetivos de aprendizaje {.center}
+
+Al finalizar esta sesión, serás capaz de:
+
+1. Describir la arquitectura y distribución del sistema radical
+2. Identificar las zonas de absorción de la raíz (pelos radicales, banda de Caspary)
+3. Explicar las vías de absorción: apoplasto, simplasto y transcelular
+4. Relacionar los factores del suelo (temperatura, aireación, salinidad, compactación) con la absorción
+5. Vincular la absorción radical con el contenido de agua del suelo
+
+---
+
+## ¿Dónde estamos en el continuo SPA? {.center}
+
+::: {style="font-size: 0.9em;"}
+El agua recorre el **continuo suelo-planta-atmósfera** (SPAC):
+
+**Suelo** → **Raíz** → **Tallo (xilema)** → **Hoja** → **Atmósfera**
+
+| Compartimento | $\Psi$ típico (MPa) | ¿Qué estudiamos aquí? |
+|---------------|---------------------|------------------------|
+| Suelo | -0.01 a -0.05 | Retención (U2) |
+| **Raíz** | **-0.2 a -0.5** | **Absorción (hoy)** |
+| Xilema | -0.5 a -1.0 | Transporte (3.2) |
+| Hoja | -0.5 a -1.5 | Transpiración (3.3) |
+| Atmósfera | -50 a -100 | Demanda evaporativa |
+
+::: {style="margin-top: 1em; text-align: center; font-weight: bold;"}
+Hoy nos enfocamos en el primer paso: **la entrada del agua a la planta**
+:::
+
+:::
+
+---
+
+## La raíz: la puerta de entrada del agua {.center}
+
+::: {style="font-size: 0.9em;"}
+Las plantas absorben **casi toda su agua por las raíces** (más del 99%).
+
+**Funciones del sistema radical:**  
+1. **Anclaje** — sostiene la planta en el suelo  
+2. **Absorción** — capta agua y nutrientes minerales  
+3. **Almacenamiento** — reserva de agua, carbohidratos y nutrientes  
+4. **Síntesis** — produce hormonas (citoquininas) y aminoácidos  
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+La absorción depende de cuánta superficie de raíz esté en contacto con el agua del suelo.
+:::
+
+:::
+
+---
+
+## Arquitectura del sistema radical {.center}
+
+Existen **dos arquitecturas radicales** principales:
+
+| Sistema | Descripción | Ejemplos | Profundidad |
+|---------|-------------|----------|-------------|
+| **Pivotante** | Raíz principal gruesa y profunda con ramificaciones | Alfalfa, remolacha, frutales | Profundo (1-3 m) |
+| **Fasciculado** | Muchas raíces finas similares, densas y superficiales | Maíz, trigo, cebolla | Superficial (0.3-1 m) |
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+La **profundidad efectiva de enraizamiento ($Z_r$)** es clave para el riego: define cuánto suelo (y agua) explora la planta. La usaremos en la Unidad 5.
+:::
+
+---
+
+## Distribución espacial de las raíces {.center}
+
+::: {style="font-size: 0.9em;"}
+| Profundidad del suelo | Densidad de raíces | ¿Por qué? |
+|----------------------|-------------------|-----------|
+| 0 - 30 cm | **Muy alta** | Mayor aireación, MO y nutrientes |
+| 30 - 60 cm | Media | Menos O₂, suelo más denso |
+| > 60 cm | Baja | Compactación, menor fertilidad |
+
+**Implicancia para el riego:** la mayor parte del agua se extrae de los primeros 30-60 cm. El riego debe humedecer donde están las raíces activas, no más abajo (se pierde por drenaje).
+
+::: {style="margin-top: 0.8em; text-align: center; font-weight: bold;"}
+"Regar el suelo donde están las raíces, no el suelo donde no las hay."
+:::
+
+:::
+
+---
+
+## Anatomía de una raíz joven {.center}
+
+::: {style="font-size: 0.9em;"}
+De la punta hacia arriba, la raíz tiene **zonas** con funciones distintas:
+
+| Zona | Función |
+|------|---------|
+| **Cofia (caliptra)** | Protege la punta durante el avance |
+| **Meristemo** | División celular (crecimiento) |
+| **Elongación** | Las células se alargan — empujan la punta |
+| **Maduración / pelos radicales** | **Absorción de agua y nutrientes** |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+La absorción ocurre principalmente en la **zona de maduración**, donde están los pelos radicales.
+:::
+
+:::
+
+---
+
+## Los pelos radicales: multiplicando la superficie {.center}
+
+::: {style="font-size: 0.9em;"}
+Los **pelos radicales** son prolongaciones de las células epidérmicas.
+
+| Efecto de los pelos radicales | Magnitud |
+|------------------------------|----------|
+| Aumento de la superficie de absorción | **10 a 20 veces** |
+| Longitud típica del pelo | 0.1 - 1.5 mm |
+| Vida útil | Pocos días (se renuevan constantemente) |
+
+**Ejemplo numérico:** una planta de centeno puede tener > **600 km** de raíces y > **10,000 millones** de pelos radicales, con una superficie total de ~400 m² (¡más que una cancha de básquetbol!).
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+Más superficie de contacto = más agua absorbida por unidad de tiempo.
+:::
+
+:::
+
+---
+
+## Vías de absorción de agua en la raíz {.center .smaller}
+
+El agua puede moverse radialmente (desde el suelo al xilema central) por **tres vías**:
+
+| Vía | Ruta | ¿Cruza membranas? |
+|-----|------|-------------------|
+| **Apoplasto** | Por paredes celulares y espacios intercelulares | No (hasta la banda de Caspary) |
+| **Simplasto** | Por el citoplasma, conectado por plasmodesmos | Solo una vez (al entrar) |
+| **Transcelular** | A través de células, cruzando membranas | Sí (varias veces) |
+
+::: {style="margin-top: 0.8em; text-align: center; font-weight: bold;"}
+Las tres vías convergen en el cilindro central, donde está el xilema.
+:::
+
+---
+
+## Vía apoplasto {.center}
+
+::: {style="font-size: 0.9em;"}
+El **apoplasto** es el continuo de paredes celulares y espacios extracelulares.
+
+- El agua se mueve **libremente** por las paredes, sin entrar a las células
+- Es la vía de **menor resistencia** (más rápida)
+- Transporte pasivo, sin control metabólico
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+**Limitación:** la banda de Caspary la bloquea en la endodermis, obligando al agua a entrar al simplasto.
+:::
+
+:::
+
+---
+
+## Vía apoplasto {.center}
+
+![](../../images/transporte_agua_apoplasto.png){fig-align="center"}
+
+---
+
+## Vía simplasto y transcelular {.center}
+
+::: {style="font-size: 0.9em;"}
+- **Simplasto:** el agua entra a una célula (cruza la membrana) y luego viaja de célula en célula por los **plasmodesmos** (puentes citoplasmáticos), sin volver a cruzar membranas.
+- **Transcelular:** el agua cruza la membrana plasmática en **cada** célula.
+
+| Vía | Control | Velocidad |
+|-----|---------|-----------|
+| Apoplasto | Bajo (pasivo) | Alta |
+| Simplasto | Medio | Media |
+| Transcelular | **Alto (membranas con acuaporinas)** | Media |
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+Las **acuaporinas** son proteínas de membrana que facilitan el paso del agua y permiten regular la permeabilidad.
+:::
+
+:::
+
+---
+
+## Vía simplasto {.center}
+
+![](../../images/transporte_agua_simplasto.png){fig-align="center"}
+
+---
+
+## La banda de Caspary: el filtro de seguridad {.center}
+
+::: {style="font-size: 0.9em;"}
+La **banda de Caspary** es una franja de **suberina y lignina** (impermeable) en las paredes de las células de la **endodermis** (la capa más interna de la corteza).
+
+**¿Qué hace?**  
+1. **Bloquea la vía apoplasto** — el agua ya no puede pasar "entre" las células  
+2. Obliga al agua a **cruzar la membrana** de una célula endodérmica  
+3. Convierte la absorción en un proceso **selectivo** (la planta controla qué entra)  
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+La banda de Caspary es la "aduana" de la planta: controla qué entra al xilema.
+:::
+
+:::
+
+---
+
+## Ejercicio: vías y banda de Caspary {.center}
+
+1. ¿Por qué el apoplasto es la vía de menor resistencia?
+2. ¿Qué pasaría si la raíz no tuviera banda de Caspary?
+3. ¿Qué papel juegan las acuaporinas en la vía transcelular?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 3 minutos.
+:::
+
+::: {.notes}
+1. Porque el agua viaja por paredes y espacios sin cruzar membranas (sin resistencia de membrana). 2. Entrarían solutos y agua sin control — la planta perdería selectividad y no podría regular la concentración interna ni excluir toxinas. 3. Facilitan (aceleran) el paso del agua a través de la membrana y permiten regular la permeabilidad.
+:::
+
+---
+
+## ¿Absorción pasiva o activa? {.center}
+
+::: {style="font-size: 0.9em;"}
+El agua entra a la raíz por **ósmosis**, un proceso pasivo:
+
+$$ \Psi_{suelo} > \Psi_{raiz} \implies \text{el agua entra a la raíz} $$
+
+| Condición | Resultado |
+|-----------|-----------|
+| $\Psi_{suelo}$ > $\Psi_{raíz}$ | El agua **entra** a la raíz |
+| $\Psi_{suelo}$ < $\Psi_{raíz}$ | El agua **no entra** (o sale) |
+| $\Psi_{suelo}$ = $\Psi_{raíz}$ | Equilibrio — sin flujo neto |
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+La planta genera un $\Psi$ interno más negativo (acumulando solutos y por la transpiración) para **atraer** el agua del suelo.
+:::
+
+:::
+
+---
+
+## Factores que afectan la absorción {.center .smaller}
+
+Cuatro factores del suelo controlan cuánta agua puede absorber la raíz:
+
+| Factor | Efecto en la absorción | Mecanismo |
+|--------|------------------------|-----------|
+| **Temperatura** | ↓ absorción si es muy baja (< 5 °C) | Aumenta viscosidad del agua; baja permeabilidad de membranas |
+| **Aireación (O₂)** | ↓↓ absorción en suelo anegado | Las raíces respiran para absorber activamente; sin O₂ = hipoxia |
+| **Salinidad** | ↓ absorción (y puede revertir flujo) | Sales bajan $\Psi_o$ del suelo → menor gradiente |
+| **Compactación** | ↓ absorción | Resistencia mecánica + menor porosidad y O₂ |
+
+---
+
+## Temperatura del suelo y absorción {.center}
+
+::: {style="font-size: 0.9em;"}
+| Temperatura del suelo (°C) | Absorción relativa | Observación |
+|---------------------------|--------------------|-------------|
+| < 5 | **Muy baja** | Agua viscosa, membranas rígidas |
+| 10 - 15 | Media | Propio de primavera en zona central |
+| 20 - 25 | **Óptima** | Máxima absorción |
+| > 35 | Baja | Daño por calor, mayor respiración |
+
+**Consecuencia agronómica:** en invierno/primavera fría, un cultivo puede mostrar **síntomas de sequía** aunque el suelo tenga agua suficiente ("sequía fisiológica").
+:::
+
+---
+
+## Aireación y oxígeno {.center}
+
+::: {style="font-size: 0.9em;"}
+Las raíces **respiran** y necesitan O₂ para producir la energía (ATP) que sostiene la absorción activa de nutrientes.
+
+| Situación | O₂ disponible | Efecto |
+|-----------|--------------|--------|
+| Suelo bien drenado | Alto | Absorción normal |
+| Suelo anegado (> 48 h) | ~0 | Hipoxia → cierre de acuaporinas, marchitez |
+| Suelo compactado | Bajo | Menor absorción y crecimiento |
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+**Un exceso de riego puede "ahogar" la planta.** El agua desplaza el aire de los poros y la raíz deja de absorber aunque esté rodeada de agua.
+:::
+
+:::
+
+---
+
+## Salinidad y compactación {.center}
+
+::: {style="font-size: 0.9em;"}
+**Salinidad:** sales en el suelo hacen más negativo el $\Psi_o$ del agua del suelo.  
+- Si $\Psi_{suelo}$ cae por debajo de $\Psi_{raíz}$, la planta **no puede** extraer agua (o la pierde).  
+- Equivale a una "sequía" aunque haya agua: **sequía osmótica**.
+
+**Compactación:**  
+
+| Efecto | Consecuencia |
+|--------|--------------|
+| ↑ resistencia mecánica | La raíz crece menos y explora menos suelo |
+| ↓ macroporos | Menos O₂ y peor drenaje |
+| ↓ infiltración | Menos agua que reabastece la zona radical |
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+Salinidad, compactación y sequía se retroalimentan negativamente.
+:::
+
+:::
+
+---
+
+## Relación entre absorción y agua del suelo {.center}
+
+::: {style="font-size: 0.9em;"}
+La absorción **no es constante**: depende de cuánta agua queda en el suelo.
+
+| Estado del suelo | $\Psi_m$ (kPa) | Absorción |
+|------------------|----------------|-----------|
+| Saturado | 0 | Baja (falta O₂) |
+| **CC (-33 kPa)** | -33 | **Máxima** |
+| Consumiendo ADT | -33 a -1500 | Disminuye progresivamente |
+| **PMP (-1500 kPa)** | -1500 | **Se detiene** (marchitez) |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Regar antes de agotar el ADT mantiene la absorción en su máximo. Esto anticipa la programación de riego (U5).
+:::
+
+:::
+
+---
+
+## Ejercicio: factores y absorción {.center}
+
+**Situación:** Un agricultor riega en exceso durante una semana y nota que su cultivo de lechuga se ve "marchito" a pesar de que el suelo está mojado.
+
+1. ¿Cuál es la explicación más probable?
+2. ¿Qué factor de los vistos está involucrado?
+3. ¿Qué consejo le darías?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 4 minutos.
+:::
+
+::: {.notes}
+1. Anegamiento: el exceso de agua desplaza el O₂ de los poros. 2. Aireación/oxígeno. 3. Suspender el riego, mejorar el drenaje; regar según demanda y monitorear humedad, no "por si acaso".
+:::
+
+---
+
+## Ejercicio: gradiente de absorción {.center}
+
+**Problema:** El suelo está a $\Psi = -0.03$ MPa y la raíz a $\Psi = -0.4$ MPa.
+
+1. ¿Hacia dónde se mueve el agua y por qué?
+2. Si el suelo se seca a $\Psi = -1.2$ MPa, ¿qué ocurre con la absorción?
+3. ¿Qué puede hacer la planta para seguir absorbiendo cuando el suelo se seca?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 4 minutos.
+:::
+
+::: {.notes}
+1. Del suelo (-0.03) a la raíz (-0.4): el agua va de mayor a menor Ψ. 2. Se detiene (o se revierte), porque el suelo queda más negativo que la raíz. 3. Acumular solutos para bajar su propio Ψo (ajuste osmótico), pero con límite; eventualmente no puede compensar.
+:::
+
+---
+
+## Vocabulario clave {.center .smaller}
+
+| Término | Definición |
+|---------|-----------|
+| Sistema radical pivotante | Raíz principal profunda con ramificaciones |
+| Sistema radical fasciculado | Conjunto denso de raíces finas superficiales |
+| Pelo radical | Prolongación epidérmica que multiplica la superficie de absorción |
+| Banda de Caspary | Barrera impermeable en la endodermis que filtra la vía apoplasto |
+| Apoplasto | Vía por paredes y espacios extracelulares |
+| Simplasto | Vía por citoplasma conectado por plasmodesmos |
+| Acuaporina | Proteína de membrana que facilita el paso del agua |
+| Profundidad efectiva ($Z_r$) | Profundidad de suelo con raíces activas |
+
+---
+
+## Resumen de conceptos clave {.center}
+
+1. La planta absorbe agua por la **raíz**, en la zona de **pelos radicales**
+
+2. Los pelos radicales multiplican la superficie de absorción **10–20 veces**
+
+3. El agua entra por **ósmosis**: siempre de mayor a menor $\Psi$
+
+4. Existen tres vías: **apoplasto** (rápida), **simplasto** y **transcelular** (regulada por acuaporinas)
+
+5. La **banda de Caspary** bloquea el apoplasto y hace la absorción **selectiva**
+
+6. Cuatro factores del suelo limitan la absorción: **temperatura, aireación, salinidad, compactación**
+
+7. La absorción es **máxima cerca de CC** y se detiene en **PMP** — regar antes de agotar el ADT
+
+---
+
+## Para la próxima sesión {.center}
+
+**Sesión 3.2:** Sistema conductor xilemático y transporte de agua
+
+→ Estructura del xilema: traqueidas y elementos de vaso.  
+→ ¿Cómo sube el agua decenas de metros contra la gravedad?  
+→ Teoría de la **cohesión-tensión** (Dixon-Joly).  
+→ Componentes del potencial hídrico y su **medición** (cámara Scholander).  
+
+**Taller 3** (Google Colab): gradiente de potencial hídrico, transpiración y WUE.
+
+---
+
+## Preguntas de autoevaluación {.center .smaller}
+
+1. ¿Cuál es la diferencia entre un sistema radical pivotante y uno fasciculado? Dé un ejemplo de cada uno.
+
+2. ¿En qué zona de la raíz ocurre la absorción y qué estructura la hace más eficiente?
+
+3. Explique las tres vías de absorción. ¿Cuál es la más rápida y por qué?
+
+4. ¿Qué función cumple la banda de Caspary y por qué es clave para la selectividad?
+
+5. ¿Cómo afecta la temperatura baja a la absorción? ¿Qué es la "sequía fisiológica"?
+
+6. ¿Por qué un suelo anegado puede causar marchitez aunque esté lleno de agua?
+
+7. ¿Qué relación existe entre la absorción radical y los puntos CC y PMP vistos en la Unidad 2?
