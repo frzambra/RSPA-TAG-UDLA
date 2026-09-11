@@ -105,6 +105,10 @@ La **profundidad efectiva de enraizamiento ($Z_r$)** es clave para el riego: def
 
 ---
 
+## {background-image="../../images/tipos_de_raices.jpeg" background-size="contain"}
+
+---
+
 ## Distribución espacial de las raíces {.center}
 
 ::: {style="font-size: 0.9em;"}
@@ -141,6 +145,10 @@ La absorción ocurre principalmente en la **zona de maduración**, donde están 
 :::
 
 :::
+
+---
+
+## {background-image="../../images/anatomia_raiz_joven.png" background-size="contain"}
 
 ---
 
@@ -282,6 +290,10 @@ La planta genera un $\Psi$ interno más negativo (acumulando solutos y por la tr
 :::
 
 :::
+
+---
+
+## {background-image="../../images/proceso_osmosis.png" background-size="contain"}
 
 ---
 

@@ -86,6 +86,10 @@ Los **vasos** (tubos abiertos) conducen más rápido que las traqueidas. Por eso
 
 ---
 
+## {background-image="../../images/estructura_xilema.jpeg" background-size="contain"}
+
+---
+
 ## El xilema como tubo continuo {.center}
 
 ::: {style="font-size: 0.9em;"}
@@ -299,6 +303,18 @@ El **método más usado** en frutales y viñas (manejo del riego):
 Se mide al **mediodía** (máximo estrés diario) o **pre-amanecer** (potencial de base).
 :::
 
+:::
+
+---
+
+## Camara de presión Scholander {.center}
+
+::: {#fig-images layout-ncol=2}
+![](../../images/camara_presion_scholander.jpeg){#fig-first}
+
+![](../../images/camara_presion_scholander_principio.jpeg){#fig-second}
+
+Camara de presión Scholaner
 :::
 
 ---
