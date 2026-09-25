@@ -11,6 +11,11 @@ execute:
   echo: false
 ---
 
+```{r}
+#| include: false
+source("../_common.R")
+```
+
 ## Recapitulación {.center}
 
 ::: {style="font-size: 0.85em;"}
@@ -140,14 +145,50 @@ $$\theta_{umbral} = PMP + (1-p) \times ADT$$
 
 **Ejemplo (maíz, perfil anterior):**  
 
-CC promedio = (0.32×25 + 0.28×35 + 0.22×40)/100 = 0.265 cm³/cm³
+CC promedio = (0.32×25 + 0.28×35 + 0.22×40)/100 = 0.266 cm³/cm³
 
 AFA promedio = 0.115 × 0.50 = 0.0575 cm³/cm³
 
-$$\theta_{umbral} = 0.265 - 0.0575 = 0.2075 \text{ cm}^3/\text{cm}^3$$
+$$\theta_{umbral} = 0.266 - 0.0575 = 0.2085 \text{ cm}^3/\text{cm}^3$$
 
 ::: {style="margin-top: 1em; text-align: center; font-weight: bold;"}
-Regar cuando θv del perfil baje de ~0.208 (≈ 57.5 mm consumidos desde CC)
+Regar cuando θv del perfil baje de ~0.209 (≈ 57.5 mm consumidos desde CC)
+:::
+
+
+---
+
+## El reservorio de agua del perfil {.center}
+
+```{r}
+#| fig-width: 9
+#| fig-height: 3.8
+#| fig-align: center
+pmp <- 0.151; umbral <- 0.2085; cc <- 0.266
+res <- tibble(
+  zona = factor(c("No disponible", "Reserva (ADT − AFA)", "AFA"),
+                levels = c("AFA", "Reserva (ADT − AFA)", "No disponible")),
+  ini = c(0, pmp, umbral), fin = c(pmp, umbral, cc)
+) |> mutate(mm = (fin - ini) * 1000, mid = (ini + fin) / 2,
+            lab = sprintf("%s\n%s mm", gsub(" (", "\n(", as.character(zona), fixed = TRUE), sub("\\.0$", "", sprintf("%.1f", mm))))
+f2 <- ggplot(res) +
+  geom_rect(aes(xmin = ini, xmax = fin - 0.001, ymin = 0, ymax = 1, fill = zona)) +
+  geom_text(aes(x = mid, y = 0.5, label = lab), size = 5,
+            colour = c(col_texto, col_texto, "white")) +
+  geom_segment(data = tibble(x = c(pmp, umbral, cc)), aes(x = x, xend = x, y = 1, yend = 1.18),
+               colour = col_texto2) +
+  annotate("text", x = c(pmp, umbral, cc), y = 1.22, vjust = 0, size = 4.8, colour = col_texto,
+           label = c("PMP\n0.151", "Umbral de riego\n0.209", "CC\n0.266")) +
+  scale_fill_manual(values = c("AFA" = col_agua[4], "Reserva (ADT − AFA)" = col_agua[2], "No disponible" = "#e6e5e1")) +
+  scale_x_continuous(limits = c(0, 0.3), breaks = seq(0, 0.3, 0.05)) +
+  scale_y_continuous(limits = c(0, 1.55)) +
+  labs(x = "θv promedio del perfil (cm³/cm³)  ·  láminas en 1 m de suelo", y = NULL) +
+  theme(legend.position = "none", axis.text.y = element_blank(), panel.grid.major.y = element_blank())
+f2
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+Maíz (p = 0.50) en el perfil del ejemplo: se riega al cruzar el umbral y se reponen los 57.5 mm de AFA. La reserva no se toca.
 :::
 
 ---
@@ -311,6 +352,40 @@ Ventaja: mide Ψm directamente (lo que la raíz "siente"). Desventaja: mantenimi
 | Subida gradual | Posible ascenso capilar desde nivel freático |
 | Caída en profundidad sin caída superficial | Las raíces profundas están consumiendo; superficial ya está seco |
 | Meseta horizontal | Cultivo dejó de consumir (estrés severo, senescencia, o cosecha) |
+
+---
+
+## Una semana de datos de sensores {.center}
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+#| fig-align: center
+serie <- tibble(
+  dia = factor(rep(c("L", "M", "X", "J", "V", "S", "D"), 2), levels = c("L", "M", "X", "J", "V", "S", "D")),
+  prof = rep(c("20 cm", "50 cm"), each = 7),
+  theta = c(0.32, 0.29, 0.38, 0.34, 0.31, 0.28, 0.25, 0.28, 0.27, 0.28, 0.27, 0.26, 0.25, 0.24)
+)
+fin <- serie |> filter(dia == "D")
+f3 <- ggplot(serie, aes(dia, theta, colour = prof, shape = prof, group = prof)) +
+  geom_hline(yintercept = c(0.33, 0.14), linetype = "dashed", colour = col_ref) +
+  annotate("text", x = 0.6, y = c(0.33, 0.14), label = c("CC = 0.33", "PMP = 0.14"),
+           vjust = -0.5, hjust = 0, colour = col_texto2, size = 4.5) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3.5) +
+  geom_text(data = fin, aes(label = prof), hjust = -0.3, vjust = c(-0.2, 1.2), size = 5, show.legend = FALSE) +
+  scale_colour_manual(values = col_serie[1:2]) +
+  scale_shape_manual(values = c(16, 15)) +
+  scale_x_discrete(expand = expansion(add = c(0.4, 1))) +
+  scale_y_continuous(limits = c(0.12, 0.40), breaks = seq(0.15, 0.40, 0.05)) +
+  labs(x = "Día de la semana", y = "θv (cm³/cm³)") +
+  theme(legend.position = "none")
+f3
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+Maíz, sensores FDR a 20 y 50 cm. Usa este gráfico y la tabla del ejercicio siguiente.
+:::
 
 ---
 

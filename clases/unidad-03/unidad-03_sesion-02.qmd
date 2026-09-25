@@ -11,6 +11,11 @@ execute:
   echo: false
 ---
 
+```{r}
+#| include: false
+source("../_common.R")
+```
+
 ## Recapitulación sesión anterior {.center}
 
 ::: {style="font-size: 0.85em;"}
@@ -228,6 +233,42 @@ Valores típicos de $\Psi$ (MPa) a lo largo del continuo:
 El mayor salto (y la mayor resistencia) está en la interfaz **hoja → atmósfera**, controlada por los estomas.
 :::
 
+:::
+
+
+---
+
+## El gradiente en una vid: suelo regado vs. seco {.center}
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+#| fig-align: center
+grad <- tibble(
+  comp = factor(rep(c("Suelo", "Raíz", "Xilema", "Hoja"), 2), levels = c("Suelo", "Raíz", "Xilema", "Hoja")),
+  escenario = rep(c("Suelo regado", "Suelo seco"), each = 4),
+  psi = c(-0.02, -0.30, -0.60, -1.00, -0.80, -1.10, -1.40, -1.80)
+)
+f4 <- ggplot(grad, aes(comp, psi, colour = escenario, shape = escenario, group = escenario)) +
+  geom_hline(yintercept = -1.2, linetype = "dashed", colour = col_ref) +
+  annotate("text", x = 4.15, y = -1.2, label = "Umbral de estrés\nen vid (−1.2 MPa)", hjust = 0, vjust = 1.2,
+           colour = col_texto2, size = 4.3, lineheight = 0.9) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3.5) +
+  geom_text(data = filter(grad, comp == "Hoja"), aes(label = escenario), hjust = -0.2, size = 5, show.legend = FALSE) +
+  annotate("text", x = 4.35, y = -0.25, label = "Atmósfera\n≈ −95 MPa\n(fuera de escala) ↓",
+           colour = col_texto2, size = 4.3, hjust = 0) +
+  scale_colour_manual(values = col_serie[1:2]) +
+  scale_shape_manual(values = c(16, 15)) +
+  scale_x_discrete(expand = expansion(add = c(0.4, 1.6))) +
+  scale_y_continuous(limits = c(-2, 0), breaks = seq(-2, 0, 0.5)) +
+  labs(x = NULL, y = "Potencial hídrico Ψ (MPa)", caption = "Vid a mediodía, T = 25 °C, HR = 50 % (datos del Taller 3)") +
+  theme(legend.position = "none")
+f4
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+Con suelo seco todo el perfil se desplaza hacia abajo: la hoja cruza el umbral de estrés aunque el gradiente interno sea similar.
 :::
 
 ---
