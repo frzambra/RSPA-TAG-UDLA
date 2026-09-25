@@ -516,6 +516,10 @@ Menos agua disponible + más demanda = mayor presión sobre el riego
 Resuelve en 5 minutos. Discute con tu compañero.
 :::
 
+::: {.notes}
+Producción = 12 ton/ha = 12.000 kg/ha. 1. Azul = 12.000 m³/ha ÷ 12.000 kg/ha = 1 m³/kg = 1.000 L/kg. 2. Verde = 180 mm = 1.800 m³/ha → 1.800.000 L ÷ 12.000 kg = 150 L/kg. 3. Gris = 300.000 L ÷ 12.000 kg = 25 L/kg → total = 1.000 + 150 + 25 = 1.175 L/kg. 4. Es ~56% del promedio global (2.080 L/kg), pero la composición cambia: aquí la huella azul es ~85% del total (vs ~41% en el promedio global). En Petorca casi toda el agua viene de pozo: el problema es la presión sobre el acuífero, no el volumen total.
+:::
+
 ---
 
 ## Vocabulario clave de esta sesión {.center .smaller}

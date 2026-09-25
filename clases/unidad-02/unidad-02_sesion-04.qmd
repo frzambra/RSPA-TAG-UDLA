@@ -191,6 +191,10 @@ La eficiencia importa: con riego por surco hay que aplicar **casi el doble** que
 Resuelva en 8 minutos.
 :::
 
+::: {.notes}
+1. ADT: Ap = 0.19 (57 mm); Bt = 0.12 (48 mm); C = 0.10 (30 mm) → total 135 mm. 2. AFA = 135 × 0.45 = 60.8 mm. 3. Lb = 60.8 / 0.90 = 67.5 mm. 4. Frecuencia = 60.8 / 4.8 = 12.7 → regar cada 12 días (se redondea hacia abajo para no pasar el umbral). Es el mismo perfil de la Parte 5 del Taller 2 (allí con maíz, p = 0.50).
+:::
+
 ---
 
 ## Monitoreo de humedad: ¿por qué medir? {.center .smaller}
@@ -202,7 +206,7 @@ Resuelva en 8 minutos.
 | **Calendario fijo** | Simple | Ignora variabilidad climática y del cultivo |
 | **Balance hídrico** | Basado en ET real | Requiere datos meteorológicos; acumula errores |
 | **Monitoreo del suelo** | Mide el agua REALMENTE disponible | Costo del equipo; requiere interpretación |
-| **Monitoreo de la planta** | Mide la respuesta REAL de la planta | Laborioso; mide estrés ya ocurrido |
+| **Monitoreo de la planta** | Mide la respuesta REAL de la planta; detecta estrés antes del daño visible | Laborioso; requiere umbrales por cultivo y hora de medición |
 
 **Recomendación:** Combinar balance hídrico (planificación) + monitoreo de suelo (verificación).
 
@@ -217,7 +221,7 @@ Resuelva en 8 minutos.
 | **FDR / Capacitivo** | θv (Ka del suelo) | Media-alta | $100-500 mil | **Sí** |
 | **TDR** | θv (Ka del suelo) | Alta | $500-2M | **Sí** |
 | **Sonda de neutrones** | θv (H atenuado) | Muy alta | $5-15M | No (operador) |
-| **Gravimetría cósmica (COSMOS)** | θv área grande | Alta | Muy alto | Sí |
+| **Sonda de neutrones cósmicos (CRNS)** | θv promedio de área grande (~10-20 ha) | Alta | Muy alto | Sí |
 
 ---
 
@@ -312,7 +316,7 @@ Ventaja: mide Ψm directamente (lo que la raíz "siente"). Desventaja: mantenimi
 
 ## Ejercicio de interpretación {.center .smaller}
 
-**Gráfico de θv a 20 cm y 50 cm durante una semana:**
+**Lecturas diarias de θv (cm³/cm³) a 20 cm y 50 cm durante una semana:**
 
 | Día | L | M | X | J | V | S | D |
 |-----|---|---|---|---|---|---|---|
@@ -326,6 +330,10 @@ Ventaja: mide Ψm directamente (lo que la raíz "siente"). Desventaja: mantenimi
 2. ¿Cuánto consumió el cultivo entre el miércoles y el domingo a 20 cm?  
 3. ¿Está el cultivo en estrés al final de la semana?  
 4. ¿Recomendaría regar el lunes? Justifique.  
+
+::: {.notes}
+1. Sí, riego el miércoles (20 cm: 0.29 → 0.38). A 50 cm casi no hay cambio (0.27 → 0.28): el frente de mojado apenas llegó a esa profundidad. 0.38 > CC: exceso temporal que drena en ~1 día. 2. Δθ a 20 cm entre X y D = 0.38 − 0.25 = 0.13 cm³/cm³; pero 0.05 (0.38 → 0.33) es drenaje sobre CC. Consumo real desde CC ≈ 0.08 cm³/cm³ en 4 días (≈ 0.02/día). 3. Umbral = CC − p × ADT = 0.33 − 0.50 × 0.19 = 0.235. El domingo θv = 0.25 (20 cm) y 0.24 (50 cm): aún sobre el umbral, sin estrés, pero muy cerca. 4. Sí: a ~0.03/día, el lunes 20 cm estará en ~0.22, bajo el umbral. Regar el lunes (o el domingo por la tarde) y con lámina suficiente para mojar hasta 50 cm.
+:::
 
 ---
 
@@ -384,6 +392,10 @@ $$\theta_v = a \times \sqrt{Ka} + b$$
 3. Lámina bruta a aplicar  
 4. Frecuencia de riego (días entre riegos)  
 5. Umbral de θv para decidir el riego  
+
+::: {.notes}
+1. ADT: Ap = 0.20 × 250 = 50 mm; Bt = 0.12 × 400 = 48 mm; C = 0.10 × 350 = 35 mm → 133 mm. 2. AFA = 133 × 0.55 = 73.2 mm. 3. Lb = 73.2 / 0.82 = 89.2 mm. 4. 73.2 / 5.2 = 14.1 → cada 14 días. 5. CC promedio = (0.34×25 + 0.29×40 + 0.23×35)/100 = 0.2815; AFA promedio = 73.2 mm / 1000 mm = 0.0732 → umbral = 0.2815 − 0.0732 ≈ 0.208 cm³/cm³.
+:::
 
 ---
 

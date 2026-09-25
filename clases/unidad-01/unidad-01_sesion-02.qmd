@@ -288,6 +288,10 @@ La interfaz hoja-atmósfera concentra ~98% de la caída total de potencial.
 Los estomas son la **llave que regula todo el sistema**.
 :::
 
+::: {.notes}
+Con los valores de la tabla anterior (suelo a CC): Suelo → Raíz: −0.04 → −0.2 = 0.16 MPa. Raíz → Xilema: −0.2 → −0.5 = 0.3 MPa. Xilema → Hoja: −0.5 → −1.0 = 0.5 MPa. Hoja → Atmósfera: −1.0 → −95 = 94 MPa. Caída total ≈ 95 MPa; el tramo hoja-atmósfera es ≈ 99% del total (la diapositiva dice ~98%, orden de magnitud correcto).
+:::
+
 ---
 
 ## Resistencia al flujo de agua en el SPAC {.center .smaller}
@@ -309,7 +313,7 @@ $$R_{total} = R_{suelo} + R_{raiz} + R_{xilema} + R_{hoja} + R_{estomatica} + R_
 
 ## Resistencia al flujo de agua en el SPAC {.center .smaller}
 
-![](../../images/analogia_ley_de_ohm.png){fig-align="center" with=100%}
+![](../../images/analogia_ley_de_ohm.png){fig-align="center" width=100%}
 
 ---
 
@@ -495,6 +499,10 @@ La tendencia es clara: mayor tecnificación. Cada % de cambio de riego gravitaci
 
 ::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
 Resuelve en 8 minutos. Comparte tu resultado.
+:::
+
+::: {.notes}
+1. Ln = (CC − θ) × Zr = (0.32 − 0.20) × 600 mm = 72 mm. 2. Lb = 72 / 0.90 = 80 mm. 3. ETc = 42 × 0.85 = 35.7 mm/semana (≈ 5.1 mm/día). 4. 72 / 5.1 ≈ 14 días para consumir esa lámina. Adelanto para U2: en la práctica se riega antes, al alcanzar el umbral de AFA, no cuando el suelo llega a 0.20.
 :::
 
 ---

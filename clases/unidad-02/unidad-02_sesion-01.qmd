@@ -163,11 +163,15 @@ Las arcillas tienen **carga eléctrica negativa permanente** en su superficie:
 
 ---
 
+<!-- TODO: diapositiva desactivada — falta la imagen images/retencion_agua_arcillas.png.
+Restaurar cuando se agregue la imagen:
+
 ## Las cargas eléctricas de las arcillas {.center}
 
 ![](../../images/retencion_agua_arcillas.png)
 
 ---
+-->
 
 ## Ejercicio: área superficial y retención {.center}
 
@@ -445,6 +449,10 @@ Datos orientativos. Fuente: CIREN, Estudio Agrológico RM.
 1. ¿Cuál tiene más agua total a CC? ¿Y más agua disponible (ADT)?
 2. ¿Qué explica la diferencia de MO?
 3. Si Ud. fuera a cultivar lechugas (p=0.30), ¿en cuál suelo regaría menos frecuentemente?
+
+::: {.notes}
+1. Agua a CC: B (0.38) > A (0.20). ADT: A = 0.20 − 0.07 = 0.13; B = 0.38 − 0.19 = 0.19 → B tiene más agua total y más ADT. 2. Más arcilla protege la MO de la descomposición (agregados, complejos arcillo-húmicos) y permite más biomasa; también puede influir el manejo (menos laboreo). La MO a su vez baja la Da (1.15 vs 1.50). 3. AFA lechuga: A = 0.13 × 0.30 = 0.039; B = 0.19 × 0.30 = 0.057 → en B se riega con menor frecuencia (~46% más de reserva).
+:::
 
 ---
 

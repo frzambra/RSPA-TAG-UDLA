@@ -329,6 +329,10 @@ Un cilindro de 100 cm³ extrae una muestra de suelo franco. Después de secar a 
 Resuelva en 5 minutos. Revise con su compañero.
 :::
 
+::: {.notes}
+1. Da = 142 / 100 = 1.42 g/cm³. 2. Vs = 142 / 2.65 = 53.6 cm³. 3. Vp = 100 − 53.6 = 46.4 cm³. 4. P = 46.4% (= (1 − 1.42/2.65) × 100). 5. No: para un franco, 1.3–1.5 es el rango ideal y la Da crítica (~1.6) no se alcanza.
+:::
+
 ---
 
 ## Ejercicio 2: interpretación de datos de campo {.center}
@@ -345,6 +349,10 @@ Se muestrearon 3 sectores de un mismo predio frutal:
 1. Porosidad de cada sector
 2. ¿Qué sector tiene problemas de compactación?
 3. ¿Qué recomendaría al agricultor?
+
+::: {.notes}
+1. P = (1 − Da/Dr) × 100: entre hileras 35.1%; bajo la hilera 51.7%; cabecera 47.9%. 2. Entre hileras: Da 1.72 supera la Da crítica de frutales (1.7) y la porosidad es baja → compactación por tráfico de maquinaria. 3. Tráfico controlado (siempre por las mismas huellas), evitar entrar con suelo húmedo, cubierta vegetal entre hileras, y subsolado si la capa compactada limita raíces o infiltración.
+:::
 
 ---
 
@@ -389,6 +397,10 @@ En un mismo predio, Da puede variar significativamente:
 3. Contenido gravimétrico de agua (θg)  
 4. Contenido volumétrico de agua (θv)  
 5. Si este suelo está a CC (Ψm = -33 kPa) y θv_actual es la calculada, ¿está bien regado o necesita riego?
+
+::: {.notes}
+1. Da = 148 / 98 = 1.51 g/cm³. 2. P = (1 − 1.51/2.65) × 100 = 43.0%. 3. θg = (172 − 148) / 148 = 0.162 g/g. 4. θv = 0.162 × 1.51 = 0.245 cm³/cm³. 5. Si la muestra se tomó a CC, entonces CC ≈ 0.245 y el suelo está en el límite superior de agua disponible: está bien regado y no necesita riego (agregar agua solo drenaría). Nótese que θv (0.245) < P (0.43): a CC hay aire en ~43% de los poros (0.185 cm³/cm³).
+:::
 
 ---
 

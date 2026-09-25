@@ -188,6 +188,10 @@ $$L = 0.305 \times 600 = 183 \text{ mm}$$
 Resuelva en 5 minutos.
 :::
 
+::: {.notes}
+Arenoso: θv = 0.12 × 1.60 = 0.192 → L = 0.192 × 500 mm = 96 mm. Franco: θv = 0.25 × 1.35 = 0.338 → L = 0.338 × 700 = 236 mm. Arcilloso: θv = 0.38 × 1.10 = 0.418 → L = 0.418 × 600 = 251 mm. 3. El arcilloso tiene más agua total, aunque con perfiles de distinta profundidad; el franco queda cerca porque su perfil es más profundo.
+:::
+
 ---
 
 ## Los tres parámetros hídricos fundamentales {.center}
@@ -269,11 +273,11 @@ Contenido de agua que queda en el suelo 2-3 días después de saturarlo, cuando 
 
 | Textura | Ψm a CC real (aproximado) | ¿Por qué? |
 |---------|--------------------------|-----------|
-| Arenoso | -10 a -20 kPa | Drena más rápido — a -33 kPa ya está más seco de lo que llamamos CC |
+| Arenoso | ≈ -10 kPa | Sus poros grandes drenan rápido — a -33 kPa ya está más seco de lo que realmente queda en campo |
 | Franco | **-33 kPa** | El estándar original — buena aproximación |
-| Arcilloso | -10 a -20 kPa | Los microporos drenan muy lento — el "drenaje despreciable" se alcanza antes |
+| Arcilloso | -33 kPa (o menor) | Drena lento, pero retiene el agua con mucha fuerza en microporos — -33 kPa es una aproximación razonable |
 
-**Convención del curso:** Usamos **-33 kPa como CC estándar** para todos los suelos, reconociendo que es una aproximación. Es el estándar agronómico internacional.
+**Convención del curso:** Usamos **-33 kPa como CC estándar** para todos los suelos, reconociendo que es una aproximación (en suelos arenosos algunos autores usan -10 kPa). Es el estándar agronómico internacional.
 :::
 
 ---
@@ -382,6 +386,10 @@ Resuelve en 3 minutos.
 3. Lámina total de ADT en el perfil (mm)  
 4. Si el cultivo consume 5.5 mm/día, ¿cuántos días de agua disponible tiene?  
 
+::: {.notes}
+1. ADT: Ap = 0.19; Bt = 0.11; C = 0.10 cm³/cm³. 2. Láminas: Ap = 0.19 × 250 = 47.5 mm; Bt = 0.11 × 300 = 33 mm; C = 0.10 × 350 = 35 mm. 3. Total = 115.5 mm. 4. 115.5 / 5.5 = 21 días desde CC hasta PMP (sin considerar AFA, que se ve en la sesión 2.4). La Da no se necesita porque CC y PMP ya están en base volumétrica.
+:::
+
 ---
 
 ## Vocabulario clave {.center .smaller}
@@ -442,4 +450,4 @@ Resuelve en 3 minutos.
 
 6. Calcule la lámina de agua (mm) para un perfil de 80 cm con θv promedio de 0.25 cm³/cm³. Si el cultivo extrae 4 mm/día, ¿para cuántos días alcanza?
 
-7. Explique por qué la temperatura de secado debe ser exactamente 105°C para determinar θg.
+7. ¿Por qué el estándar de secado para determinar θg es 105°C? ¿En qué suelos se usa una temperatura menor y por qué?
