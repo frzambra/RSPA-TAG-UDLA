@@ -51,8 +51,8 @@ print(f"Porosidad arenoso: {datos['Porosidad'][0]:.1f}%")
 ```python
 # Datos de ejemplo
 curvas = pd.DataFrame({
-    'Psi_kPa': [0, 33, 100, 500, 1500],
-    'Arenoso': [0.42, 0.12, 0.07, 0.04, 0.03],
+    'Psi_kPa': [0.1, 33, 100, 500, 1500],   # 0.1 kPa ≈ saturación
+    'Arenoso': [0.38, 0.12, 0.07, 0.04, 0.03],
     'Franco':  [0.48, 0.30, 0.22, 0.14, 0.11]
 })
 
@@ -79,8 +79,8 @@ CC arenoso: 0.12 cm³/cm³
 ```python
 suelos = pd.DataFrame({
     'Suelo': ['Arenoso', 'Franco', 'Arcilloso'],
-    'Theta_g_gg': [0.12, 0.28, 0.38],
-    'Da_g_cm3': [1.60, 1.32, 1.10]
+    'Theta_g_gg': [0.12, 0.30, 0.36],
+    'Da_g_cm3': [1.60, 1.40, 1.10]
 })
 
 # Operación vectorizada: se aplica a TODA la columna
@@ -90,8 +90,8 @@ suelos['Theta_v_cm3cm3'] = suelos['Theta_g_gg'] * suelos['Da_g_cm3']
 | Suelo | θg | Da | θv |
 |-------|-----|----|-----|
 | Arenoso | 0.12 | 1.60 | 0.192 |
-| Franco | 0.28 | 1.32 | 0.370 |
-| Arcilloso | 0.38 | 1.10 | 0.418 |
+| Franco | 0.30 | 1.40 | 0.420 |
+| Arcilloso | 0.36 | 1.10 | 0.396 |
 
 ::: {.callout-tip}
 En pandas las operaciones son **vectorizadas**: no necesitas bucles `for`.
@@ -117,7 +117,7 @@ theta_v = theta_v.clip(0.15, 0.40)   # valores fuera de [0.15, 0.40] se recortan
 ```python
 # Estadística descriptiva con numpy
 media = np.mean(theta_v)
-desviacion = np.std(theta_v)
+desviacion = np.std(theta_v, ddof=1)   # muestral (n-1), igual que .std() de pandas
 minimo = np.min(theta_v)
 maximo = np.max(theta_v)
 ```
@@ -126,7 +126,7 @@ maximo = np.max(theta_v)
 
 ## Escalas logarítmicas — `semilogx()`
 
-Las curvas de retención usan **escala logarítmica** en el eje X porque cubren varios órdenes de magnitud (0 → 1500 kPa):
+Las curvas de retención usan **escala logarítmica** en el eje X porque cubren varios órdenes de magnitud (0.1 → 1500 kPa):
 
 ```python
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -143,6 +143,10 @@ ax.legend()
 ax.grid(True, alpha=0.3)
 plt.show()
 ```
+
+::: {.callout-warning}
+En escala logarítmica **no se puede graficar Ψm = 0** (log(0) no existe): matplotlib descarta ese punto sin avisar. Por eso la saturación se representa con un valor pequeño, como 0.1 kPa.
+:::
 
 ---
 

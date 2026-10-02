@@ -493,7 +493,7 @@ La transpiración es máxima cerca de las 12:00, no cuando el DPV es máximo: la
 
 ---
 
-## Las plantas también "sudan" para refrescarse {.center}
+## Las plantas también "sudan" para refrescarse {.center .smaller}
 
 ::: {style="font-size: 0.9em;"}
 Evaporar agua **consume energía** (calor latente): la transpiración enfría la hoja, igual que el sudor nos enfría a nosotros.

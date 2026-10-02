@@ -250,8 +250,8 @@
 <h2>Filtrar filas en DataFrames</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="co"># Datos de ejemplo</span></span>
 <span id="cb2-2"><a href=""></a>curvas <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb2-3"><a href=""></a>    <span class="st">'Psi_kPa'</span>: [<span class="dv">0</span>, <span class="dv">33</span>, <span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">1500</span>],</span>
-<span id="cb2-4"><a href=""></a>    <span class="st">'Arenoso'</span>: [<span class="fl">0.42</span>, <span class="fl">0.12</span>, <span class="fl">0.07</span>, <span class="fl">0.04</span>, <span class="fl">0.03</span>],</span>
+<span id="cb2-3"><a href=""></a>    <span class="st">'Psi_kPa'</span>: [<span class="fl">0.1</span>, <span class="dv">33</span>, <span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">1500</span>],   <span class="co"># 0.1 kPa ≈ saturación</span></span>
+<span id="cb2-4"><a href=""></a>    <span class="st">'Arenoso'</span>: [<span class="fl">0.38</span>, <span class="fl">0.12</span>, <span class="fl">0.07</span>, <span class="fl">0.04</span>, <span class="fl">0.03</span>],</span>
 <span id="cb2-5"><a href=""></a>    <span class="st">'Franco'</span>:  [<span class="fl">0.48</span>, <span class="fl">0.30</span>, <span class="fl">0.22</span>, <span class="fl">0.14</span>, <span class="fl">0.11</span>]</span>
 <span id="cb2-6"><a href=""></a>})</span>
 <span id="cb2-7"><a href=""></a></span>
@@ -280,8 +280,8 @@
 <h2>Operaciones entre columnas</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>suelos <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb4-2"><a href=""></a>    <span class="st">'Suelo'</span>: [<span class="st">'Arenoso'</span>, <span class="st">'Franco'</span>, <span class="st">'Arcilloso'</span>],</span>
-<span id="cb4-3"><a href=""></a>    <span class="st">'Theta_g_gg'</span>: [<span class="fl">0.12</span>, <span class="fl">0.28</span>, <span class="fl">0.38</span>],</span>
-<span id="cb4-4"><a href=""></a>    <span class="st">'Da_g_cm3'</span>: [<span class="fl">1.60</span>, <span class="fl">1.32</span>, <span class="fl">1.10</span>]</span>
+<span id="cb4-3"><a href=""></a>    <span class="st">'Theta_g_gg'</span>: [<span class="fl">0.12</span>, <span class="fl">0.30</span>, <span class="fl">0.36</span>],</span>
+<span id="cb4-4"><a href=""></a>    <span class="st">'Da_g_cm3'</span>: [<span class="fl">1.60</span>, <span class="fl">1.40</span>, <span class="fl">1.10</span>]</span>
 <span id="cb4-5"><a href=""></a>})</span>
 <span id="cb4-6"><a href=""></a></span>
 <span id="cb4-7"><a href=""></a><span class="co"># Operación vectorizada: se aplica a TODA la columna</span></span>
@@ -304,15 +304,15 @@
 </tr>
 <tr class="even">
 <td>Franco</td>
-<td>0.28</td>
-<td>1.32</td>
-<td>0.370</td>
+<td>0.30</td>
+<td>1.40</td>
+<td>0.420</td>
 </tr>
 <tr class="odd">
 <td>Arcilloso</td>
-<td>0.38</td>
+<td>0.36</td>
 <td>1.10</td>
-<td>0.418</td>
+<td>0.396</td>
 </tr>
 </tbody>
 </table>
@@ -344,13 +344,13 @@
 <span id="cb5-10"><a href=""></a>theta_v <span class="op">=</span> theta_v.clip(<span class="fl">0.15</span>, <span class="fl">0.40</span>)   <span class="co"># valores fuera de [0.15, 0.40] se recortan</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="co"># Estadística descriptiva con numpy</span></span>
 <span id="cb6-2"><a href=""></a>media <span class="op">=</span> np.mean(theta_v)</span>
-<span id="cb6-3"><a href=""></a>desviacion <span class="op">=</span> np.std(theta_v)</span>
+<span id="cb6-3"><a href=""></a>desviacion <span class="op">=</span> np.std(theta_v, ddof<span class="op">=</span><span class="dv">1</span>)   <span class="co"># muestral (n-1), igual que .std() de pandas</span></span>
 <span id="cb6-4"><a href=""></a>minimo <span class="op">=</span> np.<span class="bu">min</span>(theta_v)</span>
 <span id="cb6-5"><a href=""></a>maximo <span class="op">=</span> np.<span class="bu">max</span>(theta_v)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="escalas-logarítmicas-semilogx" class="slide level2 center">
 <h2>Escalas logarítmicas — <code>semilogx()</code></h2>
-<p>Las curvas de retención usan <strong>escala logarítmica</strong> en el eje X porque cubren varios órdenes de magnitud (0 → 1500 kPa):</p>
+<p>Las curvas de retención usan <strong>escala logarítmica</strong> en el eje X porque cubren varios órdenes de magnitud (0.1 → 1500 kPa):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
 <span id="cb7-2"><a href=""></a></span>
 <span id="cb7-3"><a href=""></a><span class="co"># semilogx: eje X logarítmico, eje Y lineal</span></span>
@@ -364,6 +364,19 @@
 <span id="cb7-11"><a href=""></a>ax.legend()</span>
 <span id="cb7-12"><a href=""></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb7-13"><a href=""></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advertencia</strong></p>
+</div>
+<div class="callout-content">
+<p>En escala logarítmica <strong>no se puede graficar Ψm = 0</strong> (log(0) no existe): matplotlib descarta ese punto sin avisar. Por eso la saturación se representa con un valor pequeño, como 0.1 kPa.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="líneas-de-referencia-verticales" class="slide level2 center">
 <h2>Líneas de referencia verticales</h2>
