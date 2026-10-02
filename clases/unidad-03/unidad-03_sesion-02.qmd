@@ -16,6 +16,34 @@ execute:
 source("../_common.R")
 ```
 
+## ¿Cuál es la pajita más larga con la que podrías tomar jugo? {.center}
+
+::: {style="font-size: 0.9em;"}
+Piénsalo 30 segundos y anota tu apuesta en metros.
+:::
+
+. . .
+
+::: {style="font-size: 0.9em;"}
+Aunque tuvieras un **vacío perfecto**, la atmósfera solo puede empujar el agua **~10 m** hacia arriba (1 atm ≈ 10.3 m de columna de agua). Ninguna bomba de succión supera ese límite.
+:::
+
+. . .
+
+::: {style="font-size: 0.9em;"}
+Pero un **alerce** (*Fitzroya cupressoides*) supera los **50 m** y una secuoya los **115 m**.
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+¿Cómo lo hacen? El agua del xilema no está "aspirada": está bajo **tensión** (presión negativa), y solo resiste porque sus moléculas se mantienen unidas.
+:::
+:::
+
+::: {.notes}
+Recoger 3-4 apuestas. Lo normal es que digan "infinita" o "lo que aguanten mis pulmones". El punto clave: la succión tiene un techo de ~10 m porque solo puede bajar la presión hasta cero; para subir más, el agua tiene que estar a presión absoluta negativa (tensión), algo que solo es posible por la cohesión. Esta es la idea central de la sesión.
+:::
+
+---
+
 ## Recapitulación sesión anterior {.center}
 
 ::: {style="font-size: 0.85em;"}
@@ -63,7 +91,7 @@ Una **secuoya** puede superar los **100 m** de altura. ¿Cómo llega el agua a l
 |--------------------|------------------------|
 | Capilaridad (tubos finos) | No — máximo ~1-2 m en el xilema |
 | Presión de raíz (ósmosis) | No — máximo ~0.1-0.2 MPa (≈ 10-20 m, y solo de noche) |
-| **Succión por transpiración** | **Sí — la tensión generada en la hoja "tira" de la columna** |
+| **Tensión generada por la transpiración** | **Sí — la presión negativa generada en la hoja "tira" de la columna** |
 
 ::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
 El agua no es "empujada" desde abajo, sino **"tirada" desde arriba** por la transpiración.
@@ -76,11 +104,11 @@ El agua no es "empujada" desde abajo, sino **"tirada" desde arriba** por la tran
 ## Estructura del xilema {.center .smaller}
 
 ::: {style="font-size: 0.9em;"}
-El **xilema** es el tejido conductor del agua (y nutrientes minerales), formado por células muertas lignificadas:
+El **xilema** es el tejido conductor del agua (y nutrientes minerales). Sus células **conductoras** son células muertas lignificadas (acompañadas de parénquima vivo y fibras):
 
 | Tipo celular | Descripción | Eficiencia | Grupo de plantas |
 |--------------|-------------|------------|------------------|
-| **Traqueidas** | Células alargadas con puntuaciones (pits) laterales | Menor | Gimnospermas (pinos) |
+| **Traqueidas** | Células alargadas con puntuaciones (pits) laterales | Menor | Todas las plantas vasculares (únicas en gimnospermas, ej. pinos) |
 | **Elementos de vaso** | Células cortas y anchas, sin paredes en los extremos → forman **vasos** continuos | **Mayor** | Angiospermas |
 
 ::: {style="margin-top: 0.8em; font-size: 0.85em;"}
@@ -127,21 +155,41 @@ $$ \Psi_{total} = \Psi_m + \Psi_o + \Psi_g + \Psi_p $$
 
 ---
 
-## ¿Qué componente domina en cada parte? {.center}
+## ¿Qué componente domina en cada parte? {.center .smaller}
 
 ::: {style="font-size: 0.9em;"}
 | Compartimento | Componente dominante | Signo y magnitud típica |
 |---------------|---------------------|--------------------------|
 | Suelo no saturado | $\Psi_m$ | Negativo (-0.01 a -1.5 MPa) |
-| Células de la raíz | $\Psi_o$ + $\Psi_p$ | Turgencia positiva (0.3-0.5 MPa) |
-| Xilema | $\Psi_g$ + tensión ($-\Psi_p$) | Negativo (-0.5 a -1.0 MPa) |
-| Hoja (mesófilo) | $\Psi_o$ | Muy negativo en estrés (-1 a -3 MPa) |
-| Atmósfera | $\Psi_o$ (vapor) | **Muy negativo (-50 a -100 MPa)** |
+| Células de la raíz | $\Psi_o$ + $\Psi_p$ | $\Psi_p$ +0.3 a +0.5, compensado por $\Psi_o$ −0.6 a −1.0 → **$\Psi$ total −0.2 a −0.5 MPa** |
+| Xilema | $\Psi_p < 0$ (tensión) + $\Psi_g$ | Negativo (-0.5 a -1.0 MPa) |
+| Hoja (mesófilo) | $\Psi_o$ + $\Psi_p$ | Muy negativo en estrés (-1 a -3 MPa) |
+| Atmósfera | $\Psi$ del vapor (depende de la HR) | **−95 MPa con HR 50 %; ≈ −175 MPa con HR 27 %** |
 
 ::: {style="margin-top: 0.8em; font-size: 0.85em;"}
-En el xilema el agua está bajo **tensión** (presión negativa), lo que distingue a la savia de un líquido en reposo.
+En el xilema el agua está bajo **tensión** (presión negativa), lo que distingue a la savia de un líquido en reposo. El $\Psi$ del aire **no es osmótico**: se calcula con la HR, $\Psi_{atm} = \frac{RT}{V_w}\ln\left(\frac{HR}{100}\right)$ (Unidad 1).
 :::
 
+:::
+
+---
+
+## ¿Importa la gravedad? {.center}
+
+::: {style="font-size: 0.9em;"}
+$$ \Psi_g = \rho \, g \, h \approx 0.01 \text{ MPa por metro de altura} $$
+
+¿Cuánta tensión **extra** necesita la planta solo para sostener la columna de agua hasta la copa?
+
+| Planta | Altura | $\Psi_g$ en la copa |
+|--------|--------|---------------------|
+| Vid | 2 m | [0.02 MPa → despreciable]{.fragment} |
+| Palto | 10 m | [0.1 MPa → pequeño]{.fragment} |
+| Alerce | 50 m | [**0.5 MPa** → ¡la mitad de toda la caída suelo → hoja de una vid a mediodía!]{.fragment} |
+:::
+
+::: {.notes}
+Pedir que calculen mentalmente antes de revelar cada fila (ρ = 1000 kg/m³, g ≈ 9.81 m/s² → 9 810 Pa/m ≈ 0.01 MPa/m). Conclusión: en cultivos bajos Ψg se ignora; en árboles altos es parte importante del presupuesto de tensión.
 :::
 
 ---
@@ -169,12 +217,32 @@ La hoja "tira", la columna de agua resiste por cohesión, y la adhesión la mant
 
 ---
 
+## Actividad: la cadena humana de agua {.center}
+
+::: {style="font-size: 0.9em;"}
+**6 voluntarios** en fila, tomados de la mano, caminando junto a una pared: son moléculas de agua dentro de un vaso del xilema.
+
+| Acción | Representa |
+|--------|------------|
+| Todos tomados de la mano | **Cohesión** (puentes de hidrógeno) |
+| Cada uno roza la pared con la mano libre | **Adhesión** a las paredes del vaso |
+| El primero camina hacia la ventana ("la atmósfera") | **Tensión** generada por la transpiración |
+| Toda la fila avanza | El agua **sube** por el xilema |
+| [Uno se suelta]{.fragment} | [**Cavitación / embolismo**: la columna se corta y ese vaso deja de conducir]{.fragment} |
+:::
+
+::: {.notes}
+~3 minutos. Preguntar antes del último paso: ¿qué pasa si el primero tira cada vez más fuerte? (más tensión → más riesgo de que alguien se suelte = cavitación con suelo seco y DPV alto). Preguntar también: ¿por qué el que va adelante no puede "empujar" a los de atrás? (el agua no se empuja desde la hoja, se tira).
+:::
+
+---
+
 ## Cohesión y adhesión en detalle {.center}
 
 ::: {style="font-size: 0.9em;"}
 | Propiedad | Mecanismo | Magnitud |
 |-----------|-----------|----------|
-| **Cohesión** | Puentes de hidrógeno entre moléculas de H₂O | Soporta tensiones teóricas de **-20 a -30 MPa** |
+| **Cohesión** | Puentes de hidrógeno entre moléculas de H₂O | Soporta tensiones medidas experimentalmente de hasta **~−30 MPa** |
 | **Adhesión** | Atracción del agua a las paredes de celulosa/lignina | Mantiene la columna pegada a los vasos |
 
 **La clave:** la columna de agua en el xilema es **metastable** — permanece intacta bajo tensión mientras no entren burbujas de aire.
@@ -226,11 +294,15 @@ Valores típicos de $\Psi$ (MPa) a lo largo del continuo:
 | Suelo | -0.01 a -0.05 |
 | Raíz | -0.2 a -0.5 |
 | Xilema (tallo) | -0.5 a -1.0 |
-| Hoja | -0.5 a -1.5 |
-| **Atmósfera** | **-50 a -100** |
+| Hoja | -0.8 a -1.5 |
+| **Atmósfera** | **-50 a -100** (HR 70-50 %) |
 
 ::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
 El mayor salto (y la mayor resistencia) está en la interfaz **hoja → atmósfera**, controlada por los estomas.
+:::
+
+::: {.fragment style="font-size: 0.85em; text-align: center;"}
+¿Por qué mayor salto = mayor resistencia? Los tramos están **en serie**: el mismo flujo pasa por todos. Si $J$ es igual en cada tramo, $R = \Delta\Psi / J$ es mayor donde más cae $\Psi$.
 :::
 
 :::
@@ -238,7 +310,7 @@ El mayor salto (y la mayor resistencia) está en la interfaz **hoja → atmósfe
 
 ---
 
-## El gradiente en una vid: suelo regado vs. seco {.center}
+## Predice: el gradiente en una vid con suelo seco {.center}
 
 ```{r}
 #| fig-width: 9
@@ -246,25 +318,46 @@ El mayor salto (y la mayor resistencia) está en la interfaz **hoja → atmósfe
 #| fig-align: center
 grad <- tibble(
   comp = factor(rep(c("Suelo", "Raíz", "Xilema", "Hoja"), 2), levels = c("Suelo", "Raíz", "Xilema", "Hoja")),
-  escenario = rep(c("Suelo regado", "Suelo seco"), each = 4),
+  escenario = factor(rep(c("Suelo regado", "Suelo seco"), each = 4), levels = c("Suelo regado", "Suelo seco")),
   psi = c(-0.02, -0.30, -0.60, -1.00, -0.80, -1.10, -1.40, -1.80)
 )
-f4 <- ggplot(grad, aes(comp, psi, colour = escenario, shape = escenario, group = escenario)) +
-  geom_hline(yintercept = -1.2, linetype = "dashed", colour = col_ref) +
-  annotate("text", x = 4.15, y = -1.2, label = "Umbral de estrés\nen vid (−1.2 MPa)", hjust = 0, vjust = 1.2,
-           colour = col_texto2, size = 4.3, lineheight = 0.9) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3.5) +
-  geom_text(data = filter(grad, comp == "Hoja"), aes(label = escenario), hjust = -0.2, size = 5, show.legend = FALSE) +
-  annotate("text", x = 4.35, y = -0.25, label = "Atmósfera\n≈ −95 MPa\n(fuera de escala) ↓",
-           colour = col_texto2, size = 4.3, hjust = 0) +
-  scale_colour_manual(values = col_serie[1:2]) +
-  scale_shape_manual(values = c(16, 15)) +
-  scale_x_discrete(expand = expansion(add = c(0.4, 1.6))) +
-  scale_y_continuous(limits = c(-2, 0), breaks = seq(-2, 0, 0.5)) +
-  labs(x = NULL, y = "Potencial hídrico Ψ (MPa)", caption = "Vid a mediodía, T = 25 °C, HR = 50 % (datos del Taller 3)") +
-  theme(legend.position = "none")
-f4
+graf_gradiente <- function(d) {
+  ggplot(d, aes(comp, psi, colour = escenario, shape = escenario, group = escenario)) +
+    geom_hline(yintercept = -1.2, linetype = "dashed", colour = col_ref) +
+    annotate("text", x = 4.15, y = -1.2, label = "Umbral de estrés\nen vid (−1.2 MPa)", hjust = 0, vjust = 1.2,
+             colour = col_texto2, size = 4.3, lineheight = 0.9) +
+    geom_line(linewidth = 1) +
+    geom_point(size = 3.5) +
+    geom_text(data = filter(d, comp == "Hoja"), aes(label = escenario), hjust = -0.2, size = 5, show.legend = FALSE) +
+    annotate("text", x = 4.35, y = -0.25, label = "Atmósfera\n≈ −95 MPa\n(fuera de escala) ↓",
+             colour = col_texto2, size = 4.3, hjust = 0) +
+    scale_colour_manual(values = col_serie[1:2], drop = FALSE) +
+    scale_shape_manual(values = c(16, 15), drop = FALSE) +
+    scale_x_discrete(expand = expansion(add = c(0.4, 1.6))) +
+    scale_y_continuous(limits = c(-2, 0), breaks = seq(-2, 0, 0.5)) +
+    labs(x = NULL, y = "Potencial hídrico Ψ (MPa)", caption = "Vid a mediodía, T = 25 °C, HR = 50 % (datos del Taller 3)") +
+    theme(legend.position = "none")
+}
+graf_gradiente(filter(grad, escenario == "Suelo regado"))
+```
+
+::: {style="font-size: 0.85em; text-align: center;"}
+Esta vid tiene el suelo regado. En tu cuaderno, **dibuja dónde quedaría la línea si el suelo se secara** a −0.8 MPa. ¿La hoja cruza el umbral de estrés?
+:::
+
+::: {.notes}
+2 minutos. Muchos dibujarán solo el punto del suelo más abajo y el resto igual, o una línea más empinada. Pedir que levanten el cuaderno antes de pasar a la siguiente diapositiva.
+:::
+
+---
+
+## Revela: suelo regado vs. seco {.center}
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+#| fig-align: center
+graf_gradiente(grad)
 ```
 
 ::: {style="font-size: 0.8em; text-align: center;"}
@@ -286,12 +379,12 @@ Resuelve en 4 minutos.
 :::
 
 ::: {.notes}
-1. Suelo→raíz: 0.25 MPa; raíz→xilema: 0.5 MPa; xilema→hoja: 0.7 MPa; hoja→atmósfera: 78.5 MPa. 2. En la interfaz hoja→atmósfera (78.5 MPa, ~98% del total). 3. Los estomas (control estomático).
+1. Suelo→raíz: 0.25 MPa; raíz→xilema: 0.5 MPa; xilema→hoja: 0.7 MPa; hoja→atmósfera: 78.5 MPa. 2. En la interfaz hoja→atmósfera (78.5 MPa, ~98% del total): como los tramos están en serie y el flujo es el mismo en todos, donde más cae Ψ hay más resistencia. 3. Los estomas (control estomático).
 :::
 
 ---
 
-## ¿Qué pasa si la tensión es demasiada? {.center}
+## ¿Qué pasa si la tensión es demasiada? {.center .smaller}
 
 ::: {style="font-size: 0.9em;"}
 Si el suelo está muy seco y la atmósfera muy demandante, la tensión puede superar lo que la columna soporta:
@@ -304,6 +397,10 @@ Si el suelo está muy seco y la atmósfera muy demandante, la tensión puede sup
 
 ::: {style="margin-top: 0.8em; font-size: 0.85em;"}
 Riesgo alto con: sequía severa, congelamiento, o daño mecánico. Los estomas se cierran para evitar cavitación (lo veremos en 3.3).
+:::
+
+::: {.fragment style="margin-top: 0.8em; font-size: 0.85em; padding: 0.4em; border-left: 4px solid #2a78d6;"}
+🎧 **Dato curioso: las plantas con sed hacen "clic".** Plantas de tomate y tabaco bajo sequía emiten sonidos **ultrasónicos** (~35 por hora en tomate, casi ninguno si están regadas) que se pueden grabar con un micrófono a varios metros (Khait et al., *Cell*, 2023). Lo más probable es que se deban a la cavitación en el xilema.
 :::
 
 :::
@@ -325,7 +422,7 @@ Conocer el estado hídrico de la planta permite **decidir cuándo regar** con ba
 
 ---
 
-## Cámara de presión de Scholander {.center}
+## Cámara de presión de Scholander {.center .smaller}
 
 ::: {style="font-size: 0.9em;"}
 El **método más usado** en frutales y viñas (manejo del riego):
@@ -344,18 +441,22 @@ El **método más usado** en frutales y viñas (manejo del riego):
 Se mide al **mediodía** (máximo estrés diario) o **pre-amanecer** (potencial de base).
 :::
 
+::: {style="margin-top: 0.6em; font-size: 0.85em; padding: 0.4em; border-left: 4px solid #2a78d6;"}
+**En Chile se usa sobre todo el $\Psi$ de tallo (xilemático):** se cubre una hoja con una bolsa de aluminio 1-2 h antes de medir. Como no transpira, se equilibra con el tallo y la lectura es más estable. Umbrales en vid ($\Psi_{tallo}$ al mediodía): **> −0.6 MPa** sin estrés · **−0.6 a −1.1** estrés leve a moderado · **< −1.1** estrés fuerte.
+:::
+
 :::
 
 ---
 
-## Camara de presión Scholander {.center}
+## Cámara de presión Scholander {.center}
 
 ::: {#fig-images layout-ncol=2}
 ![](../../images/camara_presion_scholander.jpeg){#fig-first}
 
 ![](../../images/camara_presion_scholander_principio.jpeg){#fig-second}
 
-Camara de presión Scholaner
+Cámara de presión Scholander
 :::
 
 ---
@@ -456,7 +557,7 @@ Resuelve en 3 minutos.
 
 4. Un árbol de 50 m: ¿qué componente del $\Psi$ se vuelve relevante y por qué?
 
-5. Calcule la caída de potencial entre la hoja ($-1.5$ MPa) y la atmósfera ($-80$ MPa). ¿Qué implica ese valor para el manejo del riego?
+5. ¿Qué diferencia hay entre medir $\Psi$ de hoja y $\Psi$ de tallo con la cámara de Scholander? ¿Por qué se embolsa la hoja antes de medir?
 
 6. ¿Qué es la cavitación y qué condiciones la favorecen?
 

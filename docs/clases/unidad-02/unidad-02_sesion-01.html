@@ -388,10 +388,18 @@
 <p><strong>Consecuencia para el riego:</strong> El agua cercana a la superficie de arcilla está fuertemente retenida (Ψm muy negativo) y NO está disponible para la planta. Por eso un suelo arcilloso retiene más agua total pero no toda es aprovechable.</p>
 </div>
 </section>
-<section id="las-cargas-eléctricas-de-las-arcillas-1" class="slide level2 center">
-<h2>Las cargas eléctricas de las arcillas</h2>
+<section class="slide level2 center">
 
-<img data-src="../../images/retencion_agua_arcillas.png" class="r-stretch"></section>
+<!-- TODO: diapositiva desactivada — falta la imagen images/retencion_agua_arcillas.png.
+Restaurar cuando se agregue la imagen:
+
+## Las cargas eléctricas de las arcillas {.center}
+
+![](../../images/retencion_agua_arcillas.png)
+
+---
+-->
+</section>
 <section id="ejercicio-área-superficial-y-retención" class="slide level2 center">
 <h2>Ejercicio: área superficial y retención</h2>
 <ol type="1">
@@ -691,6 +699,13 @@
 <p><strong>Observación clave:</strong> El suelo arcilloso retiene más agua total que el arenoso, pero el franco y el arcilloso tienen el MISMO ADT. ¿Por qué? Porque el arcilloso también retiene más agua en PMP.</p>
 </div>
 </section>
+<section id="curvas-de-retención-por-textura" class="slide level2 center">
+<h2>Curvas de retención por textura</h2>
+
+<img data-src="unidad-02_sesion-01_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1350"><div style="font-size: 0.8em; text-align: center;">
+<p>La franja celeste es el agua disponible (CC → PMP): la arena la pierde casi toda antes de −33 kPa.</p>
+</div>
+</section>
 <section id="curva-característica-de-retención-de-agua-1" class="slide level2 center">
 <h2>Curva característica de retención de agua</h2>
 </section>
@@ -965,6 +980,21 @@
 </tbody>
 </table>
 <p><strong>Responda:</strong> 1. ¿Cuál tiene más agua total a CC? ¿Y más agua disponible (ADT)? 2. ¿Qué explica la diferencia de MO? 3. Si Ud. fuera a cultivar lechugas (p=0.30), ¿en cuál suelo regaría menos frecuentemente?</p>
+<aside class="notes">
+<ol type="1">
+<li>Agua a CC: B (0.38) &gt; A (0.20). ADT: A = 0.20 − 0.07 = 0.13; B = 0.38 − 0.19 = 0.19 → B tiene más agua total y más ADT. 2. Más arcilla protege la MO de la descomposición (agregados, complejos arcillo-húmicos) y permite más biomasa; también puede influir el manejo (menos laboreo). La MO a su vez baja la Da (1.15 vs 1.50). 3. AFA lechuga: A = 0.13 × 0.30 = 0.039; B = 0.19 × 0.30 = 0.057 → en B se riega con menor frecuencia (~46% más de reserva).</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="vocabulario-clave" class="slide level2 center">
 <h2>Vocabulario clave</h2>
@@ -1257,6 +1287,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

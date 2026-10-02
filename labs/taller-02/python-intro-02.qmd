@@ -190,6 +190,31 @@ theta_200 = f_interp(200)   # valor estimado entre 100 y 500
 
 ---
 
+## Datos espaciales de campo
+
+Cada punto de muestreo tiene **coordenadas** (X, Y) y un valor de **θv**:
+
+```python
+np.random.seed(42)
+n_puntos = 20
+
+datos_campo = pd.DataFrame({
+    'Punto': range(1, n_puntos + 1),
+    'X_m': np.random.uniform(0, 200, n_puntos),        # coordenada X (m)
+    'Y_m': np.random.uniform(0, 100, n_puntos),        # coordenada Y (m)
+    'Theta_v': np.random.normal(0.28, 0.05, n_puntos)  # θv (cm³/cm³)
+})
+
+# Asegurar valores físicamente razonables
+datos_campo['Theta_v'] = datos_campo['Theta_v'].clip(0.15, 0.40)
+```
+
+::: {.callout-note}
+Son datos simulados que representan un potrero de 200 × 100 m. En el taller se usa exactamente este mismo DataFrame.
+:::
+
+---
+
 ## Gráfico de dispersión (scatter plot)
 
 Para visualizar datos espaciales:
@@ -199,8 +224,8 @@ fig, ax = plt.subplots(figsize=(12, 5))
 
 # scatter: puntos coloreados por una tercera variable
 scatter = ax.scatter(
-    datos['X_m'], datos['Y_m'],
-    c=datos['Theta_v'],        # color según θv
+    datos_campo['X_m'], datos_campo['Y_m'],
+    c=datos_campo['Theta_v'],  # color según θv
     cmap='Blues',              # paleta de colores
     s=100,                     # tamaño de punto
     edgecolors='black'         # borde
@@ -243,8 +268,8 @@ Evalúa la **variabilidad relativa** de los datos:
 $$CV = \frac{\sigma}{\bar{x}} \times 100$$
 
 ```python
-media = datos['Theta_v'].mean()
-desviacion = datos['Theta_v'].std()
+media = datos_campo['Theta_v'].mean()
+desviacion = datos_campo['Theta_v'].std()
 cv = (desviacion / media) * 100
 
 print(f"CV: {cv:.1f}%")

@@ -431,27 +431,56 @@
 </div>
 </div>
 </section>
+<section id="datos-espaciales-de-campo" class="slide level2 center">
+<h2>Datos espaciales de campo</h2>
+<p>Cada punto de muestreo tiene <strong>coordenadas</strong> (X, Y) y un valor de <strong>θv</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb10-2"><a href=""></a>n_puntos <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a>datos_campo <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb10-5"><a href=""></a>    <span class="st">'Punto'</span>: <span class="bu">range</span>(<span class="dv">1</span>, n_puntos <span class="op">+</span> <span class="dv">1</span>),</span>
+<span id="cb10-6"><a href=""></a>    <span class="st">'X_m'</span>: np.random.uniform(<span class="dv">0</span>, <span class="dv">200</span>, n_puntos),        <span class="co"># coordenada X (m)</span></span>
+<span id="cb10-7"><a href=""></a>    <span class="st">'Y_m'</span>: np.random.uniform(<span class="dv">0</span>, <span class="dv">100</span>, n_puntos),        <span class="co"># coordenada Y (m)</span></span>
+<span id="cb10-8"><a href=""></a>    <span class="st">'Theta_v'</span>: np.random.normal(<span class="fl">0.28</span>, <span class="fl">0.05</span>, n_puntos)  <span class="co"># θv (cm³/cm³)</span></span>
+<span id="cb10-9"><a href=""></a>})</span>
+<span id="cb10-10"><a href=""></a></span>
+<span id="cb10-11"><a href=""></a><span class="co"># Asegurar valores físicamente razonables</span></span>
+<span id="cb10-12"><a href=""></a>datos_campo[<span class="st">'Theta_v'</span>] <span class="op">=</span> datos_campo[<span class="st">'Theta_v'</span>].clip(<span class="fl">0.15</span>, <span class="fl">0.40</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>Son datos simulados que representan un potrero de 200 × 100 m. En el taller se usa exactamente este mismo DataFrame.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="gráfico-de-dispersión-scatter-plot" class="slide level2 center">
 <h2>Gráfico de dispersión (scatter plot)</h2>
 <p>Para visualizar datos espaciales:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
-<span id="cb10-2"><a href=""></a></span>
-<span id="cb10-3"><a href=""></a><span class="co"># scatter: puntos coloreados por una tercera variable</span></span>
-<span id="cb10-4"><a href=""></a>scatter <span class="op">=</span> ax.scatter(</span>
-<span id="cb10-5"><a href=""></a>    datos[<span class="st">'X_m'</span>], datos[<span class="st">'Y_m'</span>],</span>
-<span id="cb10-6"><a href=""></a>    c<span class="op">=</span>datos[<span class="st">'Theta_v'</span>],        <span class="co"># color según θv</span></span>
-<span id="cb10-7"><a href=""></a>    cmap<span class="op">=</span><span class="st">'Blues'</span>,              <span class="co"># paleta de colores</span></span>
-<span id="cb10-8"><a href=""></a>    s<span class="op">=</span><span class="dv">100</span>,                     <span class="co"># tamaño de punto</span></span>
-<span id="cb10-9"><a href=""></a>    edgecolors<span class="op">=</span><span class="st">'black'</span>         <span class="co"># borde</span></span>
-<span id="cb10-10"><a href=""></a>)</span>
-<span id="cb10-11"><a href=""></a></span>
-<span id="cb10-12"><a href=""></a><span class="co"># Barra de color</span></span>
-<span id="cb10-13"><a href=""></a>plt.colorbar(scatter, label<span class="op">=</span><span class="st">'θv (cm³/cm³)'</span>)</span>
-<span id="cb10-14"><a href=""></a></span>
-<span id="cb10-15"><a href=""></a>ax.set_xlabel(<span class="st">'Coordenada X (m)'</span>)</span>
-<span id="cb10-16"><a href=""></a>ax.set_ylabel(<span class="st">'Coordenada Y (m)'</span>)</span>
-<span id="cb10-17"><a href=""></a>ax.set_title(<span class="st">'Variabilidad espacial de humedad'</span>)</span>
-<span id="cb10-18"><a href=""></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb11-2"><a href=""></a></span>
+<span id="cb11-3"><a href=""></a><span class="co"># scatter: puntos coloreados por una tercera variable</span></span>
+<span id="cb11-4"><a href=""></a>scatter <span class="op">=</span> ax.scatter(</span>
+<span id="cb11-5"><a href=""></a>    datos_campo[<span class="st">'X_m'</span>], datos_campo[<span class="st">'Y_m'</span>],</span>
+<span id="cb11-6"><a href=""></a>    c<span class="op">=</span>datos_campo[<span class="st">'Theta_v'</span>],  <span class="co"># color según θv</span></span>
+<span id="cb11-7"><a href=""></a>    cmap<span class="op">=</span><span class="st">'Blues'</span>,              <span class="co"># paleta de colores</span></span>
+<span id="cb11-8"><a href=""></a>    s<span class="op">=</span><span class="dv">100</span>,                     <span class="co"># tamaño de punto</span></span>
+<span id="cb11-9"><a href=""></a>    edgecolors<span class="op">=</span><span class="st">'black'</span>         <span class="co"># borde</span></span>
+<span id="cb11-10"><a href=""></a>)</span>
+<span id="cb11-11"><a href=""></a></span>
+<span id="cb11-12"><a href=""></a><span class="co"># Barra de color</span></span>
+<span id="cb11-13"><a href=""></a>plt.colorbar(scatter, label<span class="op">=</span><span class="st">'θv (cm³/cm³)'</span>)</span>
+<span id="cb11-14"><a href=""></a></span>
+<span id="cb11-15"><a href=""></a>ax.set_xlabel(<span class="st">'Coordenada X (m)'</span>)</span>
+<span id="cb11-16"><a href=""></a>ax.set_ylabel(<span class="st">'Coordenada Y (m)'</span>)</span>
+<span id="cb11-17"><a href=""></a>ax.set_title(<span class="st">'Variabilidad espacial de humedad'</span>)</span>
+<span id="cb11-18"><a href=""></a>plt.show()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="cmap-paletas-de-colores-útiles" class="slide level2 center">
 <h2><code>cmap</code> — paletas de colores útiles</h2>
@@ -498,26 +527,26 @@
 </tbody>
 </table>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="co"># En el taller usamos 'Blues' para θv</span></span>
-<span id="cb11-2"><a href=""></a>scatter <span class="op">=</span> ax.scatter(x, y, c<span class="op">=</span>humedad, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="co"># En el taller usamos 'Blues' para θv</span></span>
+<span id="cb12-2"><a href=""></a>scatter <span class="op">=</span> ax.scatter(x, y, c<span class="op">=</span>humedad, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="coeficiente-de-variación-cv" class="slide level2 center">
 <h2>Coeficiente de variación (CV)</h2>
 <p>Evalúa la <strong>variabilidad relativa</strong> de los datos:</p>
 <p><span class="math display">\[CV = \frac{\sigma}{\bar{x}} \times 100\]</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a>media <span class="op">=</span> datos[<span class="st">'Theta_v'</span>].mean()</span>
-<span id="cb12-2"><a href=""></a>desviacion <span class="op">=</span> datos[<span class="st">'Theta_v'</span>].std()</span>
-<span id="cb12-3"><a href=""></a>cv <span class="op">=</span> (desviacion <span class="op">/</span> media) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb12-4"><a href=""></a></span>
-<span id="cb12-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"CV: </span><span class="sc">{</span>cv<span class="sc">:.1f}</span><span class="ss">%"</span>)</span>
-<span id="cb12-6"><a href=""></a></span>
-<span id="cb12-7"><a href=""></a><span class="co"># Interpretación agronómica</span></span>
-<span id="cb12-8"><a href=""></a><span class="cf">if</span> cv <span class="op">&lt;</span> <span class="dv">15</span>:</span>
-<span id="cb12-9"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Baja variabilidad → manejo uniforme posible"</span>)</span>
-<span id="cb12-10"><a href=""></a><span class="cf">elif</span> cv <span class="op">&lt;</span> <span class="dv">35</span>:</span>
-<span id="cb12-11"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Variabilidad moderada → considerar manejo diferenciado"</span>)</span>
-<span id="cb12-12"><a href=""></a><span class="cf">else</span>:</span>
-<span id="cb12-13"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Alta variabilidad → riego de precisión recomendado"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>media <span class="op">=</span> datos_campo[<span class="st">'Theta_v'</span>].mean()</span>
+<span id="cb13-2"><a href=""></a>desviacion <span class="op">=</span> datos_campo[<span class="st">'Theta_v'</span>].std()</span>
+<span id="cb13-3"><a href=""></a>cv <span class="op">=</span> (desviacion <span class="op">/</span> media) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb13-4"><a href=""></a></span>
+<span id="cb13-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"CV: </span><span class="sc">{</span>cv<span class="sc">:.1f}</span><span class="ss">%"</span>)</span>
+<span id="cb13-6"><a href=""></a></span>
+<span id="cb13-7"><a href=""></a><span class="co"># Interpretación agronómica</span></span>
+<span id="cb13-8"><a href=""></a><span class="cf">if</span> cv <span class="op">&lt;</span> <span class="dv">15</span>:</span>
+<span id="cb13-9"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Baja variabilidad → manejo uniforme posible"</span>)</span>
+<span id="cb13-10"><a href=""></a><span class="cf">elif</span> cv <span class="op">&lt;</span> <span class="dv">35</span>:</span>
+<span id="cb13-11"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Variabilidad moderada → considerar manejo diferenciado"</span>)</span>
+<span id="cb13-12"><a href=""></a><span class="cf">else</span>:</span>
+<span id="cb13-13"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Alta variabilidad → riego de precisión recomendado"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="resumen-lo-nuevo-en-el-taller-2" class="slide level2 center">
 <h2>Resumen: lo nuevo en el Taller 2</h2>

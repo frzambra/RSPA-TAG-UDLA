@@ -16,13 +16,39 @@ execute:
 source("../_common.R")
 ```
 
+## ¿Cuántas botellas de 1,5 L "suda" una planta de maíz en su vida? {.center}
+
+::: {style="font-size: 0.9em;"}
+Piénsalo 30 segundos y anota tu apuesta.
+:::
+
+. . .
+
+::: {style="font-size: 1.1em; text-align: center; margin-top: 1em;"}
+**≈ 130 botellas (~200 L de agua)** en una temporada
+:::
+
+. . .
+
+::: {style="font-size: 0.9em; text-align: center;"}
+Y de toda esa agua, **más del 95% se va al aire** como vapor. Solo una fracción mínima queda en la planta.
+
+**¿Por qué la planta "derrocha" tanta agua?** Esa es la pregunta de hoy.
+:::
+
+::: {.notes}
+Hacer la pregunta antes de mostrar la respuesta. Recoger 3-4 apuestas en voz alta (lo normal es que subestimen: 5-20 botellas). La sorpresa abre la pregunta central de la sesión: el agua no se "gasta" por descuido, es el precio de capturar CO₂.
+:::
+
+---
+
 ## Recapitulación sesión anterior {.center}
 
 ::: {style="font-size: 0.85em;"}
-**Sesión 3.2 — Ideas fuerza:**
-- El agua sube por el **xilema** tirada por la transpiración
-- La teoría de **cohesión-tensión** explica el ascenso
-- El mayor salto de $\Psi$ está en la interfaz **hoja → atmósfera**
+**Sesión 3.2 — Ideas fuerza:**  
+- El agua sube por el **xilema** tirada por la transpiración  
+- La teoría de **cohesión-tensión** explica el ascenso  
+- El mayor salto de $\Psi$ está en la interfaz **hoja → atmósfera**  
 - Medimos el estado hídrico con Scholander, psicrómetro y porómetro
 
 **Ahora:** cerramos el SPAC. ¿Cómo sale el agua de la hoja y cómo se regula? Y la pregunta de fondo: **¿cuánta agua "cuesta" producir biomasa?**
@@ -49,7 +75,7 @@ Al finalizar esta sesión, serás capaz de:
 1. Describir el proceso de transpiración (flujo hoja → atmósfera)
 2. Explicar la conductancia estomática ($g_s$) y sus mecanismos de regulación
 3. Relacionar la transpiración con la fotosíntesis (el "trade-off" del estoma)
-4. Calcular e interpretar la eficiencia de uso del agua (WUE = A/E)
+4. Calcular e interpretar la eficiencia de uso del agua (WUE = A/E) y comparar el costo hídrico de plantas C3, C4 y CAM
 5. Identificar los factores ambientales que controlan la transpiración
 
 ---
@@ -74,6 +100,29 @@ Más del 90% del agua que pierde una planta sale por los estomas.
 
 ---
 
+## Estoma abierto vs. cerrado {.center}
+
+:::: {.columns style="font-size: 0.75em; text-align: center;"}
+::: {.column width="50%"}
+**Abierto** — células oclusivas **turgentes** que se curvan y separan
+:::
+::: {.column width="50%"}
+**Cerrado** — células oclusivas **flácidas** que se juntan
+:::
+::::
+
+![](../../images/stomata.png){fig-align="center"}
+
+::: {style="font-size: 0.6em; text-align: center; color: #52514e;"}
+Arriba: vista superficial de la epidermis · Abajo: corte transversal con la cámara subestomática · Flechas azules: vapor de agua que sale
+:::
+
+::: {.notes}
+Pregunta para la sala antes de explicar: ¿qué tiene que pasar dentro de la célula oclusiva para que el poro se abra? Respuesta: entra K⁺ → baja su Ψo → entra agua por ósmosis (sesión 3.1) → aumenta la turgencia y la célula se curva hacia afuera, abriendo el poro. Con ABA (sequía) sale K⁺, sale agua, la célula queda flácida y el poro se cierra. Destacar en el corte la cámara subestomática saturada de vapor: de ahí sale el agua por difusión (siguiente diapositiva).
+:::
+
+---
+
 ## ¿Qué es la transpiración? {.center}
 
 ::: {style="font-size: 0.9em;"}
@@ -83,9 +132,9 @@ El vapor se mueve por **difusión**: de la cámara subestomática (alta concentr
 
 $$ E = \frac{c_i - c_a}{r_s + r_a} $$
 
-donde:
-- $c_i$ = concentración de vapor dentro de la hoja
-- $c_a$ = concentración de vapor en el aire
+donde:  
+- $c_i$ = concentración de vapor dentro de la hoja  
+- $c_a$ = concentración de vapor en el aire  
 - $r_s$ = resistencia estomática | $r_a$ = resistencia de la capa límite (aire)
 
 ::: {style="margin-top: 0.8em; font-size: 0.85em;"}
@@ -96,7 +145,7 @@ El **déficit de presión de vapor (DPV)** es la fuerza motriz: a mayor DPV, má
 
 ---
 
-## El motor de la transpiración {.center}
+## El motor de la transpiración {.center .smaller}
 
 ::: {style="font-size: 0.9em;"}
 La transpiración depende de **dos cosas**:
@@ -108,7 +157,8 @@ La transpiración depende de **dos cosas**:
 
 2. **Resistencia de la planta (control):**
    - Conductancia estomática ($g_s$): cuánto abiertos están los estomas
-   - $E = g_s \times DPV$ (forma simplificada, en condiciones sin viento extremo)
+   - Forma simplificada (sin viento extremo): $E = g_s \cdot \dfrac{DPV}{P_{atm}}$, con $P_{atm} \approx 101.3$ kPa
+   - Ej.: $g_s = 0.3$ mol m⁻² s⁻¹ y DPV = 2 kPa → $E = 0.3 \cdot 2 / 101.3 \approx 5.9$ mmol H₂O m⁻² s⁻¹
 
 ::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
 La atmósfera demanda; la planta controla con los estomas.
@@ -148,12 +198,35 @@ La apertura estomática responde a **múltiples señales** simultáneamente:
 | **CO₂ interno bajo** | Abre (necesita CO₂) |
 | **CO₂ interno alto** | Cierra |
 | **DPV alto** | Cierra (evita deshidratación) |
-| **$\Psi_{hoja}$ bajo (sequía)** | Cierra (via ABA, hormona del estrés) |
+| **$\Psi_{hoja}$ bajo (sequía)** | Cierra (vía ABA, hormona del estrés) |
 
 ::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
 La planta optimiza: abre para captar CO₂, cierra para no deshidratarse.
 :::
 
+:::
+
+---
+
+## Tú eres el estoma: ¿abres o cierras? {.center}
+
+::: {style="font-size: 0.85em;"}
+Vota con la mano: ✋ **abierto** · 👌 **a medias** · ✊ **cerrado**
+
+1. 07:00, amanecer, poca luz, suelo húmedo
+   [→ **A medias**: la luz aún es baja; abre a medida que sube la radiación]{.fragment}
+2. 11:00, sol pleno, DPV = 1.2 kPa, suelo a capacidad de campo
+   [→ **Abierto**: hay luz para fotosintetizar y agua de sobra]{.fragment}
+3. 14:00, DPV = 3.5 kPa, $\Psi_{hoja}$ = −1.4 MPa
+   [→ **A medias o cerrado**: el aire está muy seco y la hoja ya muestra estrés]{.fragment}
+4. Medianoche, suelo húmedo
+   [→ **Cerrado**: sin luz no hay fotosíntesis, no vale la pena perder agua]{.fragment}
+5. Invernadero con CO₂ enriquecido (1000 ppm), buena luz
+   [→ **Menos abierto que lo normal**: obtiene el CO₂ que necesita con un poro más pequeño]{.fragment}
+:::
+
+::: {.notes}
+~5 minutos. Leer cada escenario, contar votos y luego revelar la respuesta (fragmento). Pedir a un estudiante que justifique antes de revelar. El caso 3 es el que más discusión genera: conecta con el ejercicio integrador del palto al final. El caso 5 adelanta el efecto del CO₂ sobre la WUE.
 :::
 
 ---
@@ -171,7 +244,7 @@ El estoma es una **puerta de doble tránsito** con un conflicto:
 | CO₂ | Entra | Fotosíntesis (producción) |
 | H₂O | Sale | Transpiración (pérdida) |
 
-**Razón típica:** por cada CO₂ que entra, se pierden **200-400 moléculas** de agua.
+**Razón típica:** por cada CO₂ que entra, se pierden **~400 moléculas** de agua en plantas C3, **~250** en C4 y **~50** en CAM.
 
 ::: {style="margin-top: 0.8em; text-align: center; font-weight: bold;"}
 Fotosintetizar sin agua es imposible: el estoma debe elegir un balance.
@@ -231,7 +304,7 @@ Un cierre estomático parcial reduce mucho E y poco A: por eso el déficit hídr
 
 ## Eficiencia de uso del agua (WUE) {.center}
 
-La **WUE** mide cuánta biomasa (fotosíntesis) se produce por unidad de agua transpirada:
+La **WUE** mide cuánto CO₂ se fija (la materia prima de la biomasa) por unidad de agua transpirada:
 
 $$ WUE = \frac{A}{E} $$
 
@@ -270,12 +343,43 @@ Las **C4** son más eficientes porque concentran CO₂ internamente → fotosint
 
 ---
 
+## El precio del agua: ¿cuánta agua cuesta 1 kg de biomasa? {.center}
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4
+#| fig-align: center
+precio <- tibble(
+  tipo = factor(c("C3\n(trigo, vid, palto)", "C4\n(maíz, sorgo)", "CAM\n(tuna, agave)"),
+                levels = rev(c("C3\n(trigo, vid, palto)", "C4\n(maíz, sorgo)", "CAM\n(tuna, agave)"))),
+  litros = c(500, 250, 50)
+) |>
+  mutate(etiqueta = paste0("~", litros, " L  (≈ ", round(litros / 1.5), " botellas)"))
+f_precio <- ggplot(precio, aes(litros, tipo)) +
+  geom_col(fill = col_serie[1], width = 0.6) +
+  geom_text(aes(label = etiqueta), hjust = -0.05, colour = col_texto, size = 5.5) +
+  scale_x_continuous(limits = c(0, 750), breaks = c(0, 250, 500)) +
+  labs(x = "Litros de agua transpirada por kg de materia seca", y = NULL,
+       caption = "Valores típicos (orden de magnitud); varían con el clima y el manejo")
+f_precio
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+Las **CAM** (como la tuna, cultivada en Chile) abren los estomas **de noche**, cuando el DPV es bajo, y guardan el CO₂ para usarlo de día.
+:::
+
+::: {.notes}
+Esta diapositiva responde la pregunta de la recapitulación ("¿cuánta agua cuesta producir biomasa?") en unidades agronómicas. Conectar con la huella hídrica de U1. Pregunta para la sala: ¿por qué no cultivamos todo con plantas CAM? (crecen lento; ahorran agua a costa de productividad).
+:::
+
+---
+
 ## Ejercicio: calcula la WUE {.center}
 
 **Problema:** Un cultivo tiene $A = 20$ μmol CO₂ m⁻² s⁻¹ y $E = 5$ mmol H₂O m⁻² s⁻¹.
 
 1. Calcula la WUE instantánea.
-2. Si otro cultivo tiene $A = 15$ y $E = 2.5$, ¿cuál es más eficiente?
+2. Si otro cultivo, medido **el mismo día y con el mismo DPV**, tiene $A = 15$ y $E = 2.5$, ¿cuál es más eficiente?
 3. ¿Qué tipo metabólico (C3 o C4) sospechas en cada caso?
 
 ::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
@@ -283,7 +387,7 @@ Resuelve en 4 minutos.
 :::
 
 ::: {.notes}
-1. WUE = 20/5 = 4 μmol CO₂/mmol H₂O. 2. WUE = 15/2.5 = 6 → el segundo es más eficiente (produce más por agua). 3. El primero podría ser C3, el segundo C4 (mayor WUE).
+1. WUE = 20/5 = 4 μmol CO₂/mmol H₂O. 2. WUE = 15/2.5 = 6 → el segundo es más eficiente (produce más por agua). 3. El primero podría ser C3, el segundo C4 (mayor WUE). La comparación solo es válida porque ambos se midieron con el mismo DPV: la WUE instantánea cambia con el DPV, por eso para comparar entre días se usa WUEᵢ = A/gs.
 :::
 
 ---
@@ -322,11 +426,11 @@ En verano en la zona central, el DPV al mediodía puede superar 3 kPa → la pla
 
 ---
 
-## Un día de verano en una vid {.center}
+## Predice: un día de verano en una vid {.center}
 
 ```{r}
 #| fig-width: 9
-#| fig-height: 5.2
+#| fig-height: 2.6
 #| fig-align: center
 dia <- tibble(
   hora = 7:19,
@@ -336,6 +440,35 @@ dia <- tibble(
 ) |>
   mutate(DPV = 0.6108 * exp(17.27 * T / (T + 237.3)) * (1 - HR / 100),
          E = gs * DPV / 101.3 * 1000)
+ggplot(dia, aes(hora, DPV)) +
+  geom_line(colour = col_serie[1], linewidth = 1) +
+  geom_point(colour = col_serie[1], size = 2.5) +
+  scale_y_continuous(breaks = scales::breaks_pretty(n = 3)) +
+  scale_x_continuous(breaks = seq(7, 19, 2), labels = paste0(seq(7, 19, 2), ":00")) +
+  labs(x = NULL, y = "DPV (kPa)")
+```
+
+::: {style="font-size: 0.85em;"}
+Este es el DPV de un día de verano en la zona central (suelo bien regado). En tu cuaderno, **dibuja cómo crees que varían durante el día**:
+
+1. La apertura estomática ($g_s$)
+2. La transpiración ($E$)
+
+¿A qué hora será máxima la transpiración?
+:::
+
+::: {.notes}
+2-3 minutos. La mayoría dibujará gs y E siguiendo la forma del DPV (máximo a las 15:00). Pedir que levanten el cuaderno antes de pasar a la siguiente diapositiva: la "depresión del mediodía" contradice esa intuición.
+:::
+
+---
+
+## Revela: un día de verano en una vid {.center}
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5.2
+#| fig-align: center
 larga <- dia |>
   select(hora, DPV, gs, E) |>
   pivot_longer(-hora) |>
@@ -354,19 +487,52 @@ f5 <- ggplot(larga, aes(hora, value)) +
 f5
 ```
 
+::: {.notes}
+La transpiración es máxima cerca de las 12:00, no cuando el DPV es máximo: la vid cierra parcialmente los estomas ("depresión del mediodía") aunque el suelo esté húmedo. Comparar con los dibujos de los estudiantes.
+:::
+
+---
+
+## Las plantas también "sudan" para refrescarse {.center}
+
+::: {style="font-size: 0.9em;"}
+Evaporar agua **consume energía** (calor latente): la transpiración enfría la hoja, igual que el sudor nos enfría a nosotros.
+
+| Estado de la planta | Temperatura de la hoja vs. aire |
+|---------------------|---------------------------------|
+| Bien regada, estomas abiertos | **Varios °C más fría** que el aire |
+| Estrés hídrico, estomas cerrados | **2-5 °C más caliente** que el aire |
+
+. . .
+
+**Entonces, ¿por qué no cierra siempre los estomas para ahorrar agua?**
+
+- Sin CO₂ no hay fotosíntesis → no hay crecimiento
+- Sin transpiración la hoja se sobrecalienta → daño por calor a mediodía
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Una hoja caliente "delata" a una planta con sed: lo veremos con cámaras térmicas en la U6.
+:::
+
+:::
+
+::: {.notes}
+Conectar con la experiencia cotidiana: caminar sobre pasto vs. sobre pavimento en verano. La diferencia de temperatura hoja-aire es la base del índice de estrés hídrico del cultivo (CWSI) medido con termografía (U6).
+:::
+
 ---
 
 ## Viento y CO₂ {.center}
 
 ::: {style="font-size: 0.9em;"}
-**Viento:**
-- Viento suave **aumenta** $E$ (remueve el vapor saturado de la capa límite)
-- Viento fuerte **reduce** $E$ (la planta cierra estomas para no deshidratarse)
+**Viento:**  
+- Viento suave **aumenta** $E$ (remueve el vapor saturado de la capa límite)  
+- Viento fuerte **reduce** $E$ (la planta cierra estomas para no deshidratarse)  
 - El viento es un factor clave de la ETo (lo usaremos en la Unidad 4)
 
-**CO₂ elevado:**
-- Más CO₂ disponible → la planta puede fotosintetizar con **estomas más cerrados**
-- Resultado: **menos $E$ y mayor WUE** ("efecto de fertilización de CO₂")
+**CO₂ elevado:**  
+- Más CO₂ disponible → la planta puede fotosintetizar con **estomas más cerrados**  
+- Resultado: **menos $E$ y mayor WUE** ("efecto de fertilización de CO₂")  
 - Implicancia: bajo cambio climático, la demanda de agua por unidad de rendimiento podría bajar, pero el rendimiento y el clima cambian a la vez.
 
 :::
@@ -410,7 +576,7 @@ Resuelve en 5 minutos.
 
 ---
 
-## Vocabulario clave {.center}
+## Vocabulario clave {.center .smaller}
 
 | Término | Definición |
 |---------|-----------|
@@ -421,6 +587,7 @@ Resuelve en 5 minutos.
 | Fotosíntesis ($A$) | Fijación de CO₂ para producir biomasa |
 | WUE | Eficiencia de uso del agua: $WUE = A/E$ |
 | ABA | Ácido abscísico — hormona que cierra estomas en sequía |
+| CAM | Plantas que abren estomas de noche (tuna, agave): muy alta WUE |
 
 ---
 
@@ -432,9 +599,9 @@ Resuelve en 5 minutos.
 
 3. La planta controla la pérdida con la **conductancia estomática** ($g_s$)
 
-4. Existe un **trade-off**: abrir estomas capta CO₂ pero pierde agua (200-400:1)
+4. Existe un **trade-off**: abrir estomas capta CO₂ pero pierde agua (~400:1 en C3, ~250:1 en C4, ~50:1 en CAM)
 
-5. La **WUE** ($A/E$) mide cuánta biomasa se produce por agua transpirada
+5. La **WUE** ($A/E$) mide cuánto CO₂ se fija por agua transpirada; 1 kg de biomasa C3 cuesta ~500 L de agua
 
 6. El **estrés hídrico** cierra estomas → baja la fotosíntesis y el rendimiento
 
@@ -455,7 +622,7 @@ Resuelve en 5 minutos.
 
 ---
 
-## Preguntas de autoevaluación {.center}
+## Preguntas de autoevaluación {.center .smaller}
 
 1. ¿Qué es la transpiración y por dónde ocurre mayoritariamente?
 
@@ -463,7 +630,7 @@ Resuelve en 5 minutos.
 
 3. Explique el "trade-off" del estoma. ¿Por qué una planta no puede tener los estomas siempre cerrados?
 
-4. Un cultivo tiene $A = 20$ μmol CO₂ m⁻² s⁻¹ y $E = 5$ mmol H₂O m⁻² s⁻¹. Calcule la WUE instantánea.
+4. Una vid tiene $A = 20$ μmol CO₂ m⁻² s⁻¹ y $E = 5$ mmol H₂O m⁻² s⁻¹ con DPV = 1 kPa. A mediodía el DPV sube a 3 kPa con los estomas igual de abiertos y la misma $A$. ¿Qué pasa con $E$ y con la WUE? ¿Por qué se usa $WUE_i = A/g_s$ para comparar entre días?
 
 5. ¿Cómo afecta un DPV alto a la transpiración y a la decisión de riego?
 
