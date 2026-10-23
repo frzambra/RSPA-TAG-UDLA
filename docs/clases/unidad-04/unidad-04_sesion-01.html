@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="unidad-04_sesion-01_files/libs/clipboard/clipboard.min.js"></script>
+<script src="unidad-04_sesion-01_files/libs/quarto-html/tabby.min.js"></script>
+<script src="unidad-04_sesion-01_files/libs/quarto-html/popper.min.js"></script>
+<script src="unidad-04_sesion-01_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="unidad-04_sesion-01_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="unidad-04_sesion-01_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="unidad-04_sesion-01_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <title>Unidad 4 — Requerimiento hídrico de los cultivos</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="unidad-04_sesion-01_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="unidad-04_sesion-01_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="unidad-04_sesion-01_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link href="unidad-04_sesion-01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="unidad-04_sesion-01_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="unidad-04_sesion-01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="unidad-04_sesion-01_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Unidad 4 — Requerimiento hídrico de los cultivos</h1>
+  <p class="subtitle">Sesión 4.1: Requerimiento hídrico y evapotranspiración</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="cuántos-camiones-aljibe-se-toma-una-hectárea-de-maíz-en-un-día-de-enero" class="slide level2 center" data-background-image="../../images/maiz_camiones_aljibe.png" data-background-opacity="0.2">
+<h2>¿Cuántos camiones aljibe “se toma” una hectárea de maíz en un día de enero?</h2>
+<div style="font-size: 0.9em;">
+<p>Zona central, cultivo en plena floración, día despejado. Un camión aljibe carga <strong>10 000 L</strong>.</p>
+<p>Piénsalo 30 segundos y anota tu apuesta.</p>
+</div>
+<div class="fragment">
+<div style="font-size: 1.1em; text-align: center; margin-top: 1em;">
+<p><strong>≈ 7 camiones aljibe (~70 000 L) por hectárea, cada día</strong></p>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.9em; text-align: center;">
+<p>Eso equivale a una lámina de <strong>7 mm/día</strong>. Casi toda esa agua vuelve a la atmósfera como vapor.</p>
+<p><strong>¿De dónde sale ese número y qué lo controla?</strong> Esa es la pregunta de hoy.</p>
+</div>
+<aside class="notes">
+<p>Recoger 3-4 apuestas en voz alta. Lo normal es que subestimen (1 camión o menos). El número sale de una ETc típica de maíz en enero (~7 mm/día): 7 mm × 10 m³/ha por mm = 70 m³/ha = 70 000 L. La conversión mm → m³/ha la trabajamos en esta misma sesión.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="recapitulación-unidad-3" class="slide level2 center">
+<h2>Recapitulación: Unidad 3</h2>
+<div style="font-size: 0.85em;">
+<p><strong>Unidad 3 — Ideas fuerza:</strong><br>
+- El agua sube por el <strong>xilema</strong> tirada por la transpiración (cohesión-tensión)<br>
+- Más del 90% del agua sale por los <strong>estomas</strong><br>
+- La transpiración depende de la <strong>demanda atmosférica</strong> (radiación, DPV, viento) y del <strong>control estomático</strong> (<span class="math inline">\(g_s\)</span>)<br>
+- Para fijar CO₂ la planta <strong>debe</strong> perder agua (WUE)</p>
+<p><strong>Ahora:</strong> pasamos de la <strong>hoja</strong> al <strong>cultivo</strong>. ¿Cuánta agua pierde una hectárea completa, sumando plantas y suelo?</p>
+</div>
+</section>
+<section id="información-de-la-sesión" class="slide level2 center">
+<h2>Información de la sesión</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Unidad</strong></td>
+<td>4 — Requerimiento hídrico de los cultivos</td>
+</tr>
+<tr class="even">
+<td><strong>Sesión</strong></td>
+<td>4.1</td>
+</tr>
+<tr class="odd">
+<td><strong>RAA</strong></td>
+<td>RAA6</td>
+</tr>
+<tr class="even">
+<td><strong>Duración</strong></td>
+<td>~90 minutos</td>
+</tr>
+<tr class="odd">
+<td><strong>Contenido</strong></td>
+<td>Requerimiento hídrico, evapotranspiración (E + T), factores que controlan la ET, balance de energía <span class="math inline">\(R_n = G + H + \lambda E\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="objetivos-de-aprendizaje" class="slide level2 center">
+<h2>Objetivos de aprendizaje</h2>
+<p>Al finalizar esta sesión, serás capaz de:</p>
+<ol type="1">
+<li>Explicar el concepto de <strong>requerimiento hídrico</strong> de un cultivo</li>
+<li>Definir la <strong>evapotranspiración</strong> (ET) como la suma de evaporación y transpiración</li>
+<li>Convertir láminas de agua (mm) a volúmenes (m³/ha, L)</li>
+<li>Identificar los factores <strong>climáticos, de cultivo y de manejo</strong> que controlan la ET</li>
+<li>Interpretar el <strong>balance de energía</strong> de la superficie (<span class="math inline">\(R_n = G + H + \lambda E\)</span>) y calcular ET a partir de él</li>
+</ol>
+</section>
+<section id="de-la-hoja-al-potrero" class="slide level2 center">
+<h2>De la hoja al potrero</h2>
+<div style="font-size: 0.9em;">
+<p>En la Unidad 3 medimos el agua en la <strong>hoja</strong> (mmol m⁻² s⁻¹). Para regar necesitamos el agua del <strong>cultivo completo</strong> (mm/día).</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 26%">
+<col style="width: 30%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Escala</th>
+<th>Qué medimos</th>
+<th>Unidad típica</th>
+<th>Instrumento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hoja</td>
+<td>Transpiración (<span class="math inline">\(E\)</span>)</td>
+<td>mmol H₂O m⁻² s⁻¹</td>
+<td>Porómetro, IRGA</td>
+</tr>
+<tr class="even">
+<td>Planta</td>
+<td>Flujo de savia</td>
+<td>L/planta/día</td>
+<td>Sensor de flujo de savia</td>
+</tr>
+<tr class="odd">
+<td><strong>Cultivo</strong></td>
+<td><strong>Evapotranspiración (ET)</strong></td>
+<td><strong>mm/día</strong></td>
+<td><strong>Estación meteorológica, lisímetro</strong></td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>El agricultor no riega hojas: riega hectáreas. Por eso trabajamos en mm/día.</p>
+</div>
+</div>
+</section>
+<section id="medir-el-agua-a-distintas-escalas" class="slide level2 center">
+<h2>Medir el agua a distintas escalas</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../images/escalas_hoja_planta_cultivo.png" class="quarto-figure quarto-figure-center" height="540"></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Recorrer de izquierda a derecha: porómetro en la hoja (U3), sensor de flujo de savia en el tronco (litros por planta) y, a escala de cultivo, la estación meteorológica y el lisímetro (mm/día). El lisímetro es un tanque de suelo con cultivo que se pesa: la pérdida de peso es la ET. Es el método de referencia con que se calibraron las ecuaciones de FAO-56.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="qué-es-el-requerimiento-hídrico" class="slide level2 center">
+<h2>¿Qué es el requerimiento hídrico?</h2>
+<div style="font-size: 0.9em;">
+<p>El <strong>requerimiento hídrico</strong> de un cultivo es la cantidad de agua que necesita para <strong>compensar lo que pierde por evapotranspiración</strong> y así crecer y producir sin restricción.</p>
+<p><span class="math display">\[ \text{Requerimiento hídrico} \approx ET_c \]</span></p>
+<ul>
+<li>Depende del <strong>clima</strong> (cuánto “pide” la atmósfera)</li>
+<li>Depende del <strong>cultivo</strong> (especie, cobertura, etapa)</li>
+<li>Se expresa como <strong>lámina de agua</strong>: mm/día, mm/mes, mm/temporada</li>
+</ul>
+<p>. . .</p>
+<div style="margin-top: 0.6em; font-size: 0.85em;">
+<p><strong>Ojo:</strong> requerimiento hídrico ≠ necesidad de riego. Parte del requerimiento lo cubre la lluvia o el agua guardada en el suelo. La <strong>necesidad de riego</strong> es lo que falta (lo veremos en la U5).</p>
+</div>
+</div>
+<aside class="notes">
+<p>Insistir en la diferencia: el requerimiento es de la planta (fisiológico-climático), la necesidad de riego es del sistema (requerimiento − aportes de lluvia efectiva y del suelo). En la zona central, en verano, casi todo el requerimiento es necesidad de riego porque no llueve.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="por-qué-medir-el-agua-en-milímetros" class="slide level2 center smaller">
+<h2>¿Por qué medir el agua en milímetros?</h2>
+<div style="font-size: 0.9em;">
+<p>Una <strong>lámina</strong> de 1 mm es el agua que cubriría una superficie plana con 1 mm de altura.</p>
+<p><span class="math display">\[ 1 \text{ mm} = 1 \text{ L/m}^2 = 10 \text{ m}^3\text{/ha} = 10\,000 \text{ L/ha} \]</span></p>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><img data-src="../../images/lamina_1mm.png"></p>
+</div><div class="column" style="width:52%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Lámina</th>
+<th>Por m²</th>
+<th>Por hectárea</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 mm</td>
+<td>1 L</td>
+<td>10 m³</td>
+</tr>
+<tr class="even">
+<td>5 mm</td>
+<td>5 L</td>
+<td>50 m³</td>
+</tr>
+<tr class="odd">
+<td><strong>7 mm</strong></td>
+<td><strong>7 L</strong></td>
+<td><strong>70 m³ (≈ 7 camiones)</strong></td>
+</tr>
+<tr class="even">
+<td>600 mm (temporada)</td>
+<td>600 L</td>
+<td>6 000 m³</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<div style="margin-top: 0.8em; font-size: 0.85em;">
+<p>Ventaja: la lluvia (pluviómetro), la ET (estación) y el agua del suelo (ADT, U2) se expresan <strong>en la misma unidad</strong> y se pueden sumar y restar.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Deducción rápida en la pizarra: 1 ha = 10 000 m²; 1 mm = 0.001 m; volumen = 10 000 × 0.001 = 10 m³. Recordar que en U2 calculamos ADT y AFA en mm: ahora vemos por qué esa unidad es tan útil.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ejercicio-rápido-de-mm-a-m³" class="slide level2 center">
+<h2>Ejercicio rápido: de mm a m³</h2>
+<p><strong>Problema:</strong> Un huerto de paltos de <strong>4 ha</strong> tiene una ET de <strong>5.5 mm/día</strong> en febrero.</p>
+<ol type="1">
+<li>¿Cuántos m³ de agua pierde el huerto en un día?</li>
+<li>¿Y en los 28 días de febrero?</li>
+<li>Si el pozo entrega 20 L/s, ¿cuántas horas al día debe funcionar para reponer esa agua (sin considerar pérdidas)?</li>
+</ol>
+<div style="font-size: 0.8em; text-align: center; margin-top: 1em;">
+<p>Resuelve en 4 minutos.</p>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>5.5 mm × 10 m³/ha/mm × 4 ha = 220 m³/día. 2. 220 × 28 = 6 160 m³. 3. 20 L/s = 72 m³/h → 220 / 72 ≈ 3.1 h/día. La pregunta 3 adelanta la lógica del tiempo de riego (U5); las pérdidas por eficiencia se agregan allá.</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="evapotranspiración-dos-procesos-en-uno" class="slide level2 center smaller">
+<h2>Evapotranspiración: dos procesos en uno</h2>
+<div style="font-size: 0.9em;">
+<p>La <strong>evapotranspiración (ET)</strong> es la pérdida total de agua desde una superficie cultivada hacia la atmósfera:</p>
+<p><span class="math display">\[ ET = E + T \]</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../../images/evapotranspiracion_E_T.png"></p>
+</div><div class="column" style="width:50%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>¿Desde dónde sale?</th>
+<th>¿Quién la controla?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Evaporación (<span class="math inline">\(E\)</span>)</strong></td>
+<td>Superficie del suelo y agua sobre las hojas</td>
+<td>Humedad del suelo superficial, sombra</td>
+</tr>
+<tr class="even">
+<td><strong>Transpiración (<span class="math inline">\(T\)</span>)</strong></td>
+<td>Interior de la hoja, por los estomas</td>
+<td>Planta (estomas, <span class="math inline">\(g_s\)</span>) + atmósfera</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>Se agrupan porque ocurren al mismo tiempo y es muy difícil medirlas por separado.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Notación: en esta unidad E es evaporación del suelo y T transpiración. En la U3 usamos E para la transpiración de la hoja; aclarar el cambio para evitar confusión.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="quién-domina-el-suelo-o-la-planta" class="slide level2 center">
+<h2>¿Quién domina: el suelo o la planta?</h2>
+
+<img data-src="unidad-04_sesion-01_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1350"><div style="font-size: 0.8em; text-align: center;">
+<p>Al inicio, casi toda la ET es <strong>evaporación</strong> del suelo. Cuando el follaje cubre el suelo, la <strong>transpiración</strong> domina.</p>
+</div>
+<aside class="notes">
+<p>Pregunta para la sala: si el agua que se evapora del suelo no la usa la planta, ¿cómo podemos reducirla? Respuestas esperadas: mulch, riego por goteo (moja menos superficie), riego subsuperficial, regar de noche. Esta curva es la base del Kc variable que veremos en la sesión 4.2.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="evaporar-agua-cuesta-energía" class="slide level2 center smaller">
+<h2>Evaporar agua cuesta energía</h2>
+<div style="font-size: 0.9em;">
+<p>Para pasar agua líquida a vapor hay que romper los <strong>puentes de hidrógeno</strong> (U1). Esa energía es el <strong>calor latente de vaporización</strong> (<span class="math inline">\(\lambda\)</span>):</p>
+<p><span class="math display">\[ \lambda \approx 2.45 \text{ MJ/kg} \quad (\text{a } 20\,°\text{C}) \]</span></p>
+<p>Como 1 mm de lámina = 1 kg de agua por m²:</p>
+<p><span class="math display">\[ \text{Evaporar 1 mm} = 2.45 \text{ MJ/m}^2 \]</span></p>
+<p>. . .</p>
+<p><strong>¿Cuánta energía llega?</strong> Un día despejado de enero en Santiago: <span class="math inline">\(R_s \approx 28\)</span> MJ/m²/día.</p>
+<p><span class="math display">\[ \frac{28}{2.45} \approx 11 \text{ mm/día} \quad \text{(máximo teórico si toda la energía evaporara agua)} \]</span></p>
+<div style="margin-top: 0.6em; font-weight: bold; text-align: center;">
+<p>En la práctica la ET de enero es ~6-7 mm/día: parte de la energía se refleja o calienta el aire y el suelo.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Esta es la idea central de la sesión: la ET está limitada por la energía disponible. Conectar con la U1 (alto calor latente del agua por los puentes de hidrógeno) y con la U3 (la transpiración enfría la hoja porque consume esa energía). El “techo” de 11 mm explica por qué nunca vemos ET de 20 mm/día en un cultivo regado normal.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="factores-que-controlan-la-et" class="slide level2 center">
+<h2>Factores que controlan la ET</h2>
+<div style="font-size: 0.85em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 33%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Grupo</th>
+<th>Factores</th>
+<th>Qué aportan</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Clima</strong></td>
+<td>Radiación, temperatura, humedad del aire (DPV), viento</td>
+<td><strong>Energía</strong> y <strong>capacidad del aire</strong> para llevarse el vapor</td>
+</tr>
+<tr class="even">
+<td><strong>Cultivo</strong></td>
+<td>Especie, altura, cobertura, etapa fenológica, control estomático</td>
+<td><strong>Superficie</strong> que transpira y su resistencia</td>
+</tr>
+<tr class="odd">
+<td><strong>Suelo y manejo</strong></td>
+<td>Humedad del suelo, salinidad, fertilidad, plagas, método de riego, mulch</td>
+<td>Si hay <strong>agua disponible</strong> para responder a la demanda</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>El clima fija la demanda; el cultivo y el suelo deciden cuánto de esa demanda se cumple.</p>
+</div>
+</div>
+</section>
+<section id="radiación-la-fuente-de-energía" class="slide level2 center">
+<h2>Radiación: la fuente de energía</h2>
+<div style="font-size: 0.9em;">
+<p>La <strong>radiación solar</strong> es el factor más importante: sin energía no hay evaporación.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Situación</th>
+<th><span class="math inline">\(R_s\)</span> (MJ/m²/día)</th>
+<th>ETo aprox. (mm/día)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Invierno nublado, zona central</td>
+<td>5-8</td>
+<td>0.5-1.5</td>
+</tr>
+<tr class="even">
+<td>Primavera despejada</td>
+<td>18-22</td>
+<td>3-5</td>
+</tr>
+<tr class="odd">
+<td><strong>Verano despejado</strong></td>
+<td><strong>26-30</strong></td>
+<td><strong>6-8</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>La radiación depende de la <strong>latitud</strong>, la <strong>época del año</strong> y la <strong>nubosidad</strong></li>
+<li>Por eso la ET de la zona norte es mayor que la del sur, y la de enero mayor que la de julio</li>
+</ul>
+</div>
+<aside class="notes">
+<p>Valores orientativos para Chile central. Preguntar: ¿por qué un día nublado de verano tiene menos ET que uno despejado, aunque haga calor? Porque llega menos energía.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="temperatura-y-humedad-la-sed-del-aire" class="slide level2 center">
+<h2>Temperatura y humedad: la “sed” del aire</h2>
+
+<img data-src="unidad-04_sesion-01_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1350"><div style="font-size: 0.85em;">
+<p><span class="math display">\[ DPV = e_s - e_a = e_s \left(1 - \frac{HR}{100}\right) \]</span></p>
+<p>Al pasar de 15 °C a 30 °C, el aire puede contener <strong>más del doble</strong> de vapor. Con calor y baja humedad, el DPV se dispara y la ET aumenta.</p>
+</div>
+<aside class="notes">
+<p>Retomar el DPV de la U3. Ejemplo rápido: a 30 °C y HR = 30%, DPV = 4.24 × 0.7 ≈ 3.0 kPa. A 15 °C y HR = 80%, DPV = 1.71 × 0.2 ≈ 0.34 kPa: casi 9 veces menor. La ecuación de eₛ es la misma que usaremos en Penman-Monteith (sesión 4.2).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="viento-el-que-se-lleva-el-vapor" class="slide level2 center">
+<h2>Viento: el que se lleva el vapor</h2>
+<div style="font-size: 0.9em;">
+<p>Sobre el cultivo se forma una capa de aire <strong>húmedo</strong>. Si nadie la remueve, el aire se satura y la ET baja.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 0.9em;">
+<ul>
+<li>El <strong>viento</strong> reemplaza el aire húmedo por aire más seco → mantiene alto el gradiente de vapor</li>
+<li>El efecto del viento es <strong>mayor cuando el aire es seco</strong>: viento + aire seco = “secador de pelo”</li>
+<li>Con aire húmedo (costa, neblina), el viento aumenta poco la ET</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../../images/viento_capa_humeda.png"></p>
+</div></div>
+<div style="margin-top: 0.8em; font-size: 0.85em;">
+<p><strong>Ejemplo chileno:</strong> los vientos <strong>puelche</strong> y <strong>terral</strong> (secos y cálidos, bajan de la cordillera) pueden elevar la ET de un día de forma notable y causar estrés en cultivos que estaban bien regados.</p>
+</div>
+</div>
+</section>
+<section id="cultivo-y-suelo-cuánto-de-la-demanda-se-cumple" class="slide level2 center smaller">
+<h2>Cultivo y suelo: cuánto de la demanda se cumple</h2>
+<div style="font-size: 0.9em;">
+<p>Bajo el <strong>mismo clima</strong>, dos superficies pueden evapotranspirar muy distinto:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Más ET</th>
+<th>Menos ET</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cobertura</td>
+<td>Follaje denso, cubre el suelo</td>
+<td>Plantación joven, suelo desnudo seco</td>
+</tr>
+<tr class="even">
+<td>Altura y rugosidad</td>
+<td>Cultivo alto (maíz, frutales)</td>
+<td>Cultivo bajo y liso</td>
+</tr>
+<tr class="odd">
+<td>Etapa fenológica</td>
+<td>Floración, llenado</td>
+<td>Establecimiento, senescencia</td>
+</tr>
+<tr class="even">
+<td>Estomas</td>
+<td>Abiertos (<span class="math inline">\(g_s\)</span> alta)</td>
+<td>Cerrados por estrés o salinidad</td>
+</tr>
+<tr class="odd">
+<td><strong>Agua en el suelo</strong></td>
+<td><strong>Sobre el umbral de riego</strong></td>
+<td><strong>Bajo el umbral (estrés)</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>La altura y la rugosidad importan porque un cultivo alto “atrapa” más turbulencia y el viento remueve mejor el vapor. Este es el origen físico de que Kc &gt; 1 en maíz o caña en plena cobertura (sesión 4.2).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cuando-el-suelo-se-seca-la-et-cae" class="slide level2 center">
+<h2>Cuando el suelo se seca, la ET cae</h2>
+
+<img data-src="unidad-04_sesion-01_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1350"><div style="font-size: 0.8em; text-align: center;">
+<p>Mientras el cultivo consume la <strong>AFA</strong> (U2), transpira a tasa máxima. Al entrar en la reserva, cierra estomas (U3) y la <strong>ET real</strong> cae.</p>
+</div>
+<aside class="notes">
+<p>Esta figura une las tres unidades: el umbral de riego de la U2 (θ_umbral = CC − AFA), el cierre estomático de la U3 y la ET de la U4. El cociente ET real / ET máxima es lo que FAO-56 llama coeficiente de estrés Ks; solo mencionarlo, se trabaja en U5.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tú-eres-el-agrónomo-qué-día-evapotranspira-más" class="slide level2 center">
+<h2>Tú eres el agrónomo: ¿qué día evapotranspira más?</h2>
+<div style="font-size: 0.85em;">
+<p>Mismo huerto de vid, bien regado, en plena temporada. Ordena los días de <strong>mayor a menor ET</strong>:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Día</th>
+<th>Cielo</th>
+<th>T (°C)</th>
+<th>HR (%)</th>
+<th>Viento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A</strong></td>
+<td>Nublado</td>
+<td>18</td>
+<td>80</td>
+<td>Calmo</td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td>Despejado</td>
+<td>30</td>
+<td>30</td>
+<td>Calmo</td>
+</tr>
+<tr class="odd">
+<td><strong>C</strong></td>
+<td>Despejado</td>
+<td>30</td>
+<td>30</td>
+<td>Puelche fuerte</td>
+</tr>
+<tr class="even">
+<td><strong>D</strong></td>
+<td>Despejado</td>
+<td>22</td>
+<td>75</td>
+<td>Brisa costera</td>
+</tr>
+</tbody>
+</table>
+<p><span class="fragment">→ <strong>C &gt; B &gt; D &gt; A</strong>. C y B tienen la misma energía y DPV, pero en C el viento seco remueve el vapor. D tiene energía pero aire húmedo. A tiene poca energía y aire casi saturado.</span></p>
+</div>
+<aside class="notes">
+<p>~5 minutos en parejas. Pedir que justifiquen cada posición con un factor de la tabla de factores. Discusión típica: B vs D (misma radiación, distinto DPV). Si hay tiempo, preguntar en qué día un cultivo con poca agua en el suelo sufriría más estrés (C).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="balance-de-energía-en-la-superficie" class="slide level2 center">
+<h2>Balance de energía en la superficie</h2>
+<div style="font-size: 0.9em;">
+<p>La energía que entra a la superficie de un cultivo <strong>se reparte</strong> en tres destinos:</p>
+<p><span class="math display">\[ R_n = G + H + \lambda E \]</span></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="../../images/balance_energia_superficie.png" height="290"></p>
+</div><div class="column" style="width:60%;">
+<div style="font-size: 0.85em;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Término</th>
+<th>Nombre</th>
+<th>¿A dónde va la energía?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(R_n\)</span></td>
+<td>Radiación neta</td>
+<td>Energía disponible (entra − sale)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(G\)</span></td>
+<td>Flujo de calor del suelo</td>
+<td>Calienta el suelo</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(H\)</span></td>
+<td>Calor sensible</td>
+<td>Calienta el aire</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\lambda E\)</span></td>
+<td><strong>Calor latente</strong></td>
+<td><strong>Evapora agua (ET)</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>Si conocemos <span class="math inline">\(R_n\)</span>, <span class="math inline">\(G\)</span> y <span class="math inline">\(H\)</span>, la ET es “lo que sobra”: <span class="math inline">\(\lambda E = R_n - G - H\)</span>.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Analogía: el sueldo mensual (Rn) se reparte en arriendo (G), comida (H) y ahorro (λE). Si sabemos cuánto entra y cuánto se gastó en lo demás, sabemos cuánto se ahorró. Este es el principio de varios métodos de medición de ET (razón de Bowen, satélites con METRIC/SEBAL, U6).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="qué-pasa-con-la-radiación-que-llega" class="slide level2 center">
+<h2>¿Qué pasa con la radiación que llega?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../images/radiacion_neta.png" class="quarto-figure quarto-figure-center" height="540"></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Antes de la ecuación: de la radiación solar que llega (onda corta), una parte se refleja (albedo) y el resto se absorbe. Al mismo tiempo, la superficie emite calor hacia el cielo como onda larga (infrarrojo), sobre todo con cielo despejado. Lo que queda es la radiación neta, la energía que realmente se puede repartir entre G, H y λE.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="radiación-neta-la-energía-disponible" class="slide level2 center smaller">
+<h2>Radiación neta: la energía disponible</h2>
+<div style="font-size: 0.9em;">
+<p>No toda la radiación solar (<span class="math inline">\(R_s\)</span>) queda en la superficie:</p>
+<p><span class="math display">\[ R_n = \underbrace{(1 - \alpha)\, R_s}_{R_{ns}\text{: onda corta absorbida}} - \underbrace{R_{nl}}_{\text{onda larga perdida}} \]</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 36%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Término</th>
+<th>Significado</th>
+<th>Valor típico</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span></td>
+<td><strong>Albedo</strong>: fracción de <span class="math inline">\(R_s\)</span> reflejada</td>
+<td>0.23 (pasto de referencia)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R_{ns}\)</span></td>
+<td>Onda corta absorbida</td>
+<td>~77% de <span class="math inline">\(R_s\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(R_{nl}\)</span></td>
+<td>Pérdida neta de calor (onda larga) hacia el cielo</td>
+<td>3-8 MJ/m²/día</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo (enero, Santiago):</strong> <span class="math inline">\(R_s = 28\)</span> MJ/m²/día, <span class="math inline">\(R_{nl} = 5\)</span> MJ/m²/día</p>
+<p><span class="math display">\[ R_n = (1 - 0.23) \times 28 - 5 = 21.6 - 5 = 16.6 \text{ MJ/m}^2\text{/día} \]</span></p>
+</div>
+<aside class="notes">
+<p>Albedos orientativos: suelo oscuro húmedo ~0.10, pasto 0.23, suelo claro seco ~0.30-0.35, nieve &gt; 0.8. Rnl es mayor con cielo despejado y aire seco (la superficie “ve” un cielo frío). El cálculo detallado de Rnl se hace en el Taller 4 con la ecuación FAO-56.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cómo-se-reparte-la-energía-en-un-día" class="slide level2 center">
+<h2>¿Cómo se reparte la energía en un día?</h2>
+
+<img data-src="unidad-04_sesion-01_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1425"><div style="font-size: 0.8em; text-align: center;">
+<p>Con agua, la mayor parte de <span class="math inline">\(R_n\)</span> se usa en <strong>evaporar</strong> (<span class="math inline">\(\lambda E\)</span>). Con estrés, los estomas cierran y la energía <strong>calienta el aire</strong> (<span class="math inline">\(H\)</span>): el cultivo se “calienta”.</p>
+</div>
+<aside class="notes">
+<p>Pregunta antes de mostrar los paneles: si cierro los estomas, ¿a dónde se va la energía que ya no evapora agua? Respuesta: a H (y un poco a G); la hoja y el aire se calientan. Es exactamente lo que vimos en la U3 (hoja estresada 2-5 °C más caliente) y lo que mide la termografía en la U6. Unidades: W/m² = J/s/m²; a escala diaria se trabaja en MJ/m²/día.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="razón-de-bowen-la-superficie-calienta-o-evapora" class="slide level2 center smaller">
+<h2>Razón de Bowen: ¿la superficie calienta o evapora?</h2>
+<div style="font-size: 0.9em;">
+<p>La <strong>razón de Bowen</strong> (<span class="math inline">\(\beta\)</span>) compara el calor que se va en calentar el aire con el que se va en evaporar:</p>
+<p><span class="math display">\[ \beta = \frac{H}{\lambda E} \]</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Superficie</th>
+<th><span class="math inline">\(\beta\)</span> aprox.</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cultivo bien regado, pradera verde</td>
+<td>0.1-0.3</td>
+<td>Casi toda la energía evapora agua</td>
+</tr>
+<tr class="even">
+<td>Pradera de secano en verano</td>
+<td>1-3</td>
+<td>Reparto similar o domina <span class="math inline">\(H\)</span></td>
+</tr>
+<tr class="odd">
+<td>Desierto</td>
+<td>&gt; 5</td>
+<td>Casi no hay agua que evaporar</td>
+</tr>
+<tr class="even">
+<td><strong>Oasis regado en zona árida</strong></td>
+<td><strong>&lt; 0</strong></td>
+<td><strong><span class="math inline">\(H\)</span> negativo: el aire caliente aporta energía extra</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>β &lt; 0 es el “efecto oasis” o advección: un huerto regado rodeado de desierto (valle de Copiapó, Pica) recibe aire caliente y seco que entrega energía al cultivo. Resultado: λE &gt; Rn y la ET puede superar lo que permitiría solo la radiación. Por eso los primeros lotes regados en el borde de un valle seco consumen más agua.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="el-efecto-oasis-cuando-lambda-e-r_n" class="slide level2 center">
+<h2>El efecto oasis: cuando <span class="math inline">\(\lambda E &gt; R_n\)</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../images/efecto_oasis_copiapo.png" class="quarto-figure quarto-figure-center" height="440"></p>
+</figure>
+</div>
+<div style="font-size: 0.8em; text-align: center;">
+<p>El aire caliente y seco del desierto entrega energía al huerto regado: <span class="math inline">\(H &lt; 0\)</span>, <span class="math inline">\(\beta &lt; 0\)</span> y la ET supera lo que permitiría solo la radiación.</p>
+</div>
+<aside class="notes">
+<p>Ejemplos en Chile: valle de Copiapó, oasis de Pica, valle de Elqui. Pregunta para la sala: ¿qué huerto consume más agua por hectárea, uno en el centro del valle o uno en el borde, junto al cerro seco? Respuesta: el del borde, porque recibe más aire seco y caliente (advección). Esta es la base de la pregunta 7 de autoevaluación.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ejercicio-de-energía-a-milímetros" class="slide level2 center">
+<h2>Ejercicio: de energía a milímetros</h2>
+<p><strong>Problema:</strong> En un día de enero, sobre un cultivo de tomate bien regado, una estación de balance de energía registra:</p>
+<ul>
+<li><span class="math inline">\(R_n = 16.6\)</span> MJ/m²/día</li>
+<li><span class="math inline">\(G \approx 0\)</span> MJ/m²/día (a escala diaria)</li>
+<li><span class="math inline">\(H = 3.4\)</span> MJ/m²/día</li>
+</ul>
+<ol type="1">
+<li>Calcula <span class="math inline">\(\lambda E\)</span>.</li>
+<li>Convierte <span class="math inline">\(\lambda E\)</span> a ET en mm/día (<span class="math inline">\(\lambda = 2.45\)</span> MJ/kg).</li>
+<li>¿Cuántos m³ necesita reponer una parcela de 2.5 ha?</li>
+<li>Calcula la razón de Bowen. ¿Es coherente con un cultivo bien regado?</li>
+</ol>
+<div style="font-size: 0.8em; text-align: center; margin-top: 1em;">
+<p>Resuelve en 5 minutos.</p>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>λE = 16.6 − 0 − 3.4 = 13.2 MJ/m²/día. 2. ET = 13.2 / 2.45 ≈ 5.4 mm/día. 3. 5.4 × 10 × 2.5 = 135 m³. 4. β = 3.4 / 13.2 ≈ 0.26: sí, coherente (0.1-0.3). G ≈ 0 a escala diaria porque lo que el suelo gana de día lo devuelve de noche; esta simplificación es la misma de FAO-56.</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="et-de-qué-un-adelanto" class="slide level2 center smaller">
+<h2>¿ET de qué? Un adelanto</h2>
+<div style="font-size: 0.9em;">
+<p>Para comparar climas y cultivos necesitamos un <strong>punto de referencia</strong>:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 37%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Término</th>
+<th>¿Qué es?</th>
+<th>Sesión</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ETo</strong></td>
+<td>ET de un <strong>pasto de referencia</strong> bien regado: solo depende del clima</td>
+<td>4.2</td>
+</tr>
+<tr class="even">
+<td><strong>ETc</strong></td>
+<td>ET de un cultivo específico sin restricciones: <span class="math inline">\(ET_c = K_c \times ET_o\)</span></td>
+<td>4.2</td>
+</tr>
+<tr class="odd">
+<td><strong>ET real</strong></td>
+<td>ET que ocurre de verdad (puede ser menor por estrés, plagas, salinidad)</td>
+<td>4.2 / U5</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>ETo = demanda del clima · Kc = efecto del cultivo · ET real = lo que realmente pasa en el campo</p>
+</div>
+</div>
+<aside class="notes">
+<p>Solo presentar la idea; el cálculo de ETo (Penman-Monteith, Hargreaves) y la curva de Kc son el tema de la sesión 4.2. Conectar con la figura de Ks: ET real = Ks × Kc × ETo.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ejercicio-integrador" class="slide level2 center">
+<h2>Ejercicio integrador</h2>
+<p><strong>Situación:</strong> Dos huertos de nogal, a 5 km de distancia, en el mismo día de enero (<span class="math inline">\(R_s\)</span> = 28 MJ/m²/día):</p>
+<ul>
+<li><strong>Huerto 1:</strong> riego al día, suelo sobre el umbral, follaje denso.</li>
+<li><strong>Huerto 2:</strong> el pozo falló hace 10 días; el suelo está bajo el umbral de riego.</li>
+</ul>
+<ol type="1">
+<li>¿Cuál tiene mayor <span class="math inline">\(\lambda E\)</span>? ¿Y mayor <span class="math inline">\(H\)</span>? Explica con el balance de energía.</li>
+<li>Si midieras la temperatura de las hojas al mediodía, ¿qué esperarías encontrar?</li>
+<li>Si el Huerto 1 tiene ET = 6.5 mm/día y 12 ha, ¿cuántos camiones aljibe “consume” por día?</li>
+</ol>
+<div style="font-size: 0.8em; text-align: center; margin-top: 1em;">
+<p>Resuelve en 5 minutos.</p>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>Mismo Rn aprox. Huerto 1: λE alto, H bajo. Huerto 2: estomas cerrados (U3) → λE bajo → H alto. 2. Hojas del Huerto 2 más calientes que el aire (2-5 °C); las del Huerto 1 más frías (transpiración enfría). 3. 6.5 × 10 × 12 = 780 m³/día = 78 camiones de 10 m³.</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="vocabulario-clave" class="slide level2 center smaller">
+<h2>Vocabulario clave</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Requerimiento hídrico</td>
+<td>Agua que necesita el cultivo para compensar su ET sin restricción</td>
+</tr>
+<tr class="even">
+<td>Lámina de agua</td>
+<td>Altura de agua sobre una superficie (1 mm = 1 L/m² = 10 m³/ha)</td>
+</tr>
+<tr class="odd">
+<td>Evapotranspiración (ET)</td>
+<td>Evaporación del suelo + transpiración del cultivo</td>
+</tr>
+<tr class="even">
+<td>Calor latente (<span class="math inline">\(\lambda\)</span>)</td>
+<td>Energía para evaporar el agua: 2.45 MJ/kg</td>
+</tr>
+<tr class="odd">
+<td>Radiación neta (<span class="math inline">\(R_n\)</span>)</td>
+<td>Energía disponible en la superficie (entra − sale)</td>
+</tr>
+<tr class="even">
+<td>Albedo (<span class="math inline">\(\alpha\)</span>)</td>
+<td>Fracción de radiación solar reflejada (0.23 en pasto)</td>
+</tr>
+<tr class="odd">
+<td>Calor sensible (<span class="math inline">\(H\)</span>)</td>
+<td>Energía que calienta el aire</td>
+</tr>
+<tr class="even">
+<td>Flujo de calor del suelo (<span class="math inline">\(G\)</span>)</td>
+<td>Energía que calienta el suelo</td>
+</tr>
+<tr class="odd">
+<td>Razón de Bowen (<span class="math inline">\(\beta\)</span>)</td>
+<td><span class="math inline">\(H / \lambda E\)</span>: indica si la superficie calienta o evapora</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resumen-de-conceptos-clave" class="slide level2 center smaller">
+<h2>Resumen de conceptos clave</h2>
+<ol type="1">
+<li><p>El <strong>requerimiento hídrico</strong> es el agua que el cultivo pierde por <strong>ET</strong>; la necesidad de riego es lo que falta tras la lluvia y el suelo</p></li>
+<li><p><strong>ET = E + T</strong>: al inicio domina la evaporación del suelo; con cobertura completa, la transpiración</p></li>
+<li><p>Trabajamos en <strong>mm</strong>: 1 mm = 1 L/m² = 10 m³/ha</p></li>
+<li><p>Evaporar 1 mm cuesta <strong>2.45 MJ/m²</strong>: la ET está limitada por la <strong>energía</strong> disponible</p></li>
+<li><p>El <strong>clima</strong> fija la demanda (radiación, DPV, viento); el <strong>cultivo y el suelo</strong> deciden cuánto se cumple</p></li>
+<li><p><strong>Balance de energía:</strong> <span class="math inline">\(R_n = G + H + \lambda E\)</span>. Sin agua, la energía calienta el aire (<span class="math inline">\(H\)</span>) en vez de evaporar</p></li>
+</ol>
+</section>
+<section id="para-la-próxima-sesión" class="slide level2 center">
+<h2>Para la próxima sesión</h2>
+<p><strong>Sesión 4.2 — Evapotranspiración de referencia y de cultivo</strong></p>
+<p>→ ¿Cómo se calcula la ETo con datos de una estación meteorológica?<br>
+→ Método <strong>Penman-Monteith FAO-56</strong> (completo) y <strong>Hargreaves-Samani</strong> (pocos datos).<br>
+→ Evapotranspiración de cultivo: <span class="math inline">\(ET_c = K_c \times ET_o\)</span> y la curva de <span class="math inline">\(K_c\)</span>.</p>
+<p><strong>Para preparar:</strong> busca en <strong>redmeteo.cl</strong> la estación más cercana a tu casa y anota la temperatura máxima, mínima y humedad relativa de ayer.</p>
+</section>
+<section id="preguntas-de-autoevaluación" class="slide level2 center smaller">
+<h2>Preguntas de autoevaluación</h2>
+<ol type="1">
+<li><p>¿Cuál es la diferencia entre requerimiento hídrico y necesidad de riego?</p></li>
+<li><p>¿Qué componentes forman la ET y cómo cambia su importancia relativa durante la temporada de un cultivo anual?</p></li>
+<li><p>Un cultivo tiene ET = 4.8 mm/día. ¿Cuántos litros pierde por m² y cuántos m³ por hectárea en una semana?</p></li>
+<li><p>¿Por qué la ET de un cultivo regado en enero rara vez supera los 10-11 mm/día en la zona central?</p></li>
+<li><p>Ordene de mayor a menor efecto sobre la ET: viento con aire húmedo, viento con aire seco, día nublado. Justifique.</p></li>
+<li><p>Escriba el balance de energía de la superficie y explique qué le pasa a cada término cuando un cultivo sufre estrés hídrico.</p></li>
+<li><p>Un huerto regado en el valle de Copiapó tiene <span class="math inline">\(\lambda E\)</span> mayor que <span class="math inline">\(R_n\)</span>. ¿Cómo es posible? ¿Qué signo tiene <span class="math inline">\(H\)</span>?</p></li>
+</ol>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>TAG2027 — Relación Suelo Agua Planta | UDLA</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="unidad-04_sesion-01_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="unidad-04_sesion-01_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
