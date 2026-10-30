@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cátedra 2 — Solucionario y rúbrica</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="evaluacion-02_solucionario_files/libs/clipboard/clipboard.min.js"></script>
+<script src="evaluacion-02_solucionario_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="evaluacion-02_solucionario_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="evaluacion-02_solucionario_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="evaluacion-02_solucionario_files/libs/quarto-html/popper.min.js"></script>
+<script src="evaluacion-02_solucionario_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="evaluacion-02_solucionario_files/libs/quarto-html/anchor.min.js"></script>
+<link href="evaluacion-02_solucionario_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="evaluacion-02_solucionario_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="evaluacion-02_solucionario_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="evaluacion-02_solucionario_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="evaluacion-02_solucionario_files/libs/bootstrap/bootstrap-cb5b25c0b2dbaa07e4625950326014b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul class="collapse">
+  <li><a href="#cobertura" id="toc-cobertura" class="nav-link active" data-scroll-target="#cobertura"><span class="header-section-number">0.1</span> Cobertura</a></li>
+  <li><a href="#rúbrica-resumida" id="toc-rúbrica-resumida" class="nav-link" data-scroll-target="#rúbrica-resumida"><span class="header-section-number">0.2</span> Rúbrica resumida</a></li>
+  <li><a href="#parte-a-soluciones" id="toc-parte-a-soluciones" class="nav-link" data-scroll-target="#parte-a-soluciones"><span class="header-section-number">1</span> Parte A — Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#a.1-qué-mide-cada-instrumento-6-puntos" id="toc-a.1-qué-mide-cada-instrumento-6-puntos" class="nav-link" data-scroll-target="#a.1-qué-mide-cada-instrumento-6-puntos"><span class="header-section-number">1.1</span> A.1 — ¿Qué mide cada instrumento? (6 puntos)</a></li>
+  <li><a href="#a.2-adt-no-es-lo-mismo-que-afa-8-puntos" id="toc-a.2-adt-no-es-lo-mismo-que-afa-8-puntos" class="nav-link" data-scroll-target="#a.2-adt-no-es-lo-mismo-que-afa-8-puntos"><span class="header-section-number">1.2</span> A.2 — ADT no es lo mismo que AFA (8 puntos)</a></li>
+  <li><a href="#a.3-vías-de-absorción-y-banda-de-caspary-10-puntos" id="toc-a.3-vías-de-absorción-y-banda-de-caspary-10-puntos" class="nav-link" data-scroll-target="#a.3-vías-de-absorción-y-banda-de-caspary-10-puntos"><span class="header-section-number">1.3</span> A.3 — Vías de absorción y banda de Caspary (10 puntos)</a></li>
+  <li><a href="#a.4-marchitez-con-el-suelo-mojado-9-puntos" id="toc-a.4-marchitez-con-el-suelo-mojado-9-puntos" class="nav-link" data-scroll-target="#a.4-marchitez-con-el-suelo-mojado-9-puntos"><span class="header-section-number">1.4</span> A.4 — Marchitez con el suelo mojado (9 puntos)</a></li>
+  <li><a href="#a.5-agua-a-la-copa-de-un-nogal-de-25-m-10-puntos" id="toc-a.5-agua-a-la-copa-de-un-nogal-de-25-m-10-puntos" class="nav-link" data-scroll-target="#a.5-agua-a-la-copa-de-un-nogal-de-25-m-10-puntos"><span class="header-section-number">1.5</span> A.5 — Agua a la copa de un nogal de 25 m (10 puntos)</a></li>
+  <li><a href="#a.6-medir-el-estado-hídrico-de-la-planta-7-puntos" id="toc-a.6-medir-el-estado-hídrico-de-la-planta-7-puntos" class="nav-link" data-scroll-target="#a.6-medir-el-estado-hídrico-de-la-planta-7-puntos"><span class="header-section-number">1.6</span> A.6 — Medir el estado hídrico de la planta (7 puntos)</a></li>
+  <li><a href="#a.7-tú-eres-el-estoma-8-puntos" id="toc-a.7-tú-eres-el-estoma-8-puntos" class="nav-link" data-scroll-target="#a.7-tú-eres-el-estoma-8-puntos"><span class="header-section-number">1.7</span> A.7 — Tú eres el estoma (8 puntos)</a></li>
+  <li><a href="#a.8-el-trade-off-del-estoma-y-la-wue-8-puntos" id="toc-a.8-el-trade-off-del-estoma-y-la-wue-8-puntos" class="nav-link" data-scroll-target="#a.8-el-trade-off-del-estoma-y-la-wue-8-puntos"><span class="header-section-number">1.8</span> A.8 — El trade-off del estoma y la WUE (8 puntos)</a></li>
+  </ul></li>
+  <li><a href="#parte-b-soluciones" id="toc-parte-b-soluciones" class="nav-link" data-scroll-target="#parte-b-soluciones"><span class="header-section-number">2</span> Parte B — Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#b.1-programación-de-riego-en-un-perfil-estratificado-14-puntos" id="toc-b.1-programación-de-riego-en-un-perfil-estratificado-14-puntos" class="nav-link" data-scroll-target="#b.1-programación-de-riego-en-un-perfil-estratificado-14-puntos"><span class="header-section-number">2.1</span> B.1 — Programación de riego en un perfil estratificado (14 puntos)</a></li>
+  <li><a href="#b.2-lectura-de-una-serie-de-sensores-10-puntos" id="toc-b.2-lectura-de-una-serie-de-sensores-10-puntos" class="nav-link" data-scroll-target="#b.2-lectura-de-una-serie-de-sensores-10-puntos"><span class="header-section-number">2.2</span> B.2 — Lectura de una serie de sensores (10 puntos)</a></li>
+  <li><a href="#b.3-gradiente-de-potencial-y-wue-10-puntos" id="toc-b.3-gradiente-de-potencial-y-wue-10-puntos" class="nav-link" data-scroll-target="#b.3-gradiente-de-potencial-y-wue-10-puntos"><span class="header-section-number">2.3</span> B.3 — Gradiente de potencial y WUE (10 puntos)</a></li>
+  <li><a href="#nota-de-corrección" id="toc-nota-de-corrección" class="nav-link" data-scroll-target="#nota-de-corrección"><span class="header-section-number">2.4</span> Nota de corrección</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="evaluacion-02_solucionario.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cátedra 2 — Solucionario y rúbrica</h1>
+<p class="subtitle lead">Unidad 2 (sesión 2.4) y Unidad 3 · RAA3–RAA5</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Uso de este documento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Documento para el docente. Contiene las <strong>soluciones paso a paso</strong>, la <strong>rúbrica de puntaje</strong> y la <strong>tabla de procedencia</strong> (qué ítem proviene de las diapositivas y cuál es nuevo o reformulado). No distribuir a estudiantes.</p>
+</div>
+</div>
+<section id="cobertura" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="cobertura"><span class="header-section-number">0.1</span> Cobertura</h2>
+<p>La Cátedra 1 evaluó la Unidad 1 y la Unidad 2 hasta la sesión 2.3. Esta cátedra cubre el contenido no evaluado hasta el cierre de la Unidad 3:</p>
+<ul>
+<li><strong>Sesión 2.4</strong> — ADT por horizonte, AFA, umbral de riego, láminas, frecuencia, monitoreo de humedad (RAA3, RAA4).</li>
+<li><strong>Sesión 3.1</strong> — Sistema radical, vías de absorción, banda de Caspary, factores que afectan la absorción (RAA5).</li>
+<li><strong>Sesión 3.2</strong> — Xilema, cohesión-tensión, gradiente de potencial, cavitación, cámara de Scholander (RAA5).</li>
+<li><strong>Sesión 3.3</strong> — Transpiración, conductancia estomática, trade-off CO₂/H₂O, WUE, factores ambientales (RAA5).</li>
+</ul>
+</section>
+<section id="rúbrica-resumida" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="rúbrica-resumida"><span class="header-section-number">0.2</span> Rúbrica resumida</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 19%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ítem</th>
+<th>Tipo</th>
+<th>Puntaje</th>
+<th>Sesión</th>
+<th>Procedencia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A.1</td>
+<td>Concepto</td>
+<td>6</td>
+<td>2.4, 3.2</td>
+<td>Tablas de métodos de monitoreo (2.4) y de medición del estado hídrico (3.2), reformulado como emparejamiento</td>
+</tr>
+<tr class="even">
+<td>A.2</td>
+<td>Concepto</td>
+<td>8</td>
+<td>2.4</td>
+<td>Autoevaluación 2.4 (pregunta 2) + tabla de <span class="math inline">\(p\)</span> por cultivo</td>
+</tr>
+<tr class="odd">
+<td>A.3</td>
+<td>Concepto</td>
+<td>10</td>
+<td>3.1</td>
+<td>Diapositivas de vías de absorción y ejercicio “vías y banda de Caspary”</td>
+</tr>
+<tr class="even">
+<td>A.4</td>
+<td>Concepto</td>
+<td>9</td>
+<td>3.1</td>
+<td>Ejercicio “factores y absorción” (caso 1); casos 2 y 3 <strong>nuevos</strong></td>
+</tr>
+<tr class="odd">
+<td>A.5</td>
+<td>Concepto</td>
+<td>10</td>
+<td>3.2</td>
+<td>Diapositivas “el problema”, cohesión-tensión y cavitación; reformulado con nogal</td>
+</tr>
+<tr class="even">
+<td>A.6</td>
+<td>Concepto</td>
+<td>7</td>
+<td>3.2</td>
+<td>Diapositiva Scholander + autoevaluación 3.2 (preguntas 5 y 7)</td>
+</tr>
+<tr class="odd">
+<td>A.7</td>
+<td>Concepto</td>
+<td>8</td>
+<td>3.3</td>
+<td>Actividad “Tú eres el estoma”, con escenario CAM <strong>nuevo</strong></td>
+</tr>
+<tr class="even">
+<td>A.8</td>
+<td>Concepto (gráfico)</td>
+<td>8</td>
+<td>3.3</td>
+<td>Figura “la fotosíntesis se satura, la transpiración no” + diapositivas de trade-off y WUE</td>
+</tr>
+<tr class="odd">
+<td>B.1</td>
+<td>Ejercicio</td>
+<td>14</td>
+<td>2.4</td>
+<td>Ejercicios integradores 1 y 2, con perfil, cultivo y sistema <strong>nuevos</strong></td>
+</tr>
+<tr class="even">
+<td>B.2</td>
+<td>Ejercicio (gráfico)</td>
+<td>10</td>
+<td>2.4</td>
+<td>Ejercicio de interpretación de series de sensores, con datos <strong>nuevos</strong></td>
+</tr>
+<tr class="odd">
+<td>B.3</td>
+<td>Ejercicio</td>
+<td>10</td>
+<td>3.2, 3.3</td>
+<td>Ejercicios “lee el gradiente” y “calcula la WUE”, con números <strong>nuevos</strong> + <span class="math inline">\(\Psi_g\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance:</strong> Parte A (conceptos) = <strong>66 puntos</strong>; Parte B (ejercicios) = <strong>34 puntos</strong>, es decir, <strong>2/3 teoría y 1/3 ejercicios</strong>. El tiempo sugerido sigue la misma proporción (60 + 30 min). Todos los ítems se basan en preguntas o ejercicios ya trabajados en clase, pero cambian números, cultivo o formato para que la respuesta no pueda copiarse de las diapositivas.</p>
+<hr>
+</section>
+<section id="parte-a-soluciones" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Parte A — Soluciones</h1>
+<section id="a.1-qué-mide-cada-instrumento-6-puntos" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="a.1-qué-mide-cada-instrumento-6-puntos"><span class="header-section-number">1.1</span> A.1 — ¿Qué mide cada instrumento? (6 puntos)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 23%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Instrumento</th>
+<th>Letra</th>
+<th>Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Muestreo y secado en estufa</td>
+<td><strong>(b)</strong></td>
+<td><span class="math inline">\(\theta_g\)</span> (método de referencia)</td>
+</tr>
+<tr class="even">
+<td>2. Tensiómetro</td>
+<td><strong>(d)</strong></td>
+<td><span class="math inline">\(\Psi_m\)</span> del suelo</td>
+</tr>
+<tr class="odd">
+<td>3. Sensor FDR / TDR</td>
+<td><strong>(c)</strong></td>
+<td><span class="math inline">\(K_a\)</span> → <span class="math inline">\(\theta_v\)</span> (vía calibración)</td>
+</tr>
+<tr class="even">
+<td>4. Cámara de Scholander</td>
+<td><strong>(e)</strong></td>
+<td><span class="math inline">\(\Psi\)</span> de hoja o tallo</td>
+</tr>
+<tr class="odd">
+<td>5. Porómetro</td>
+<td><strong>(a)</strong></td>
+<td><span class="math inline">\(g_s\)</span></td>
+</tr>
+<tr class="even">
+<td>6. Psicrómetro</td>
+<td><strong>(f)</strong></td>
+<td><span class="math inline">\(\Psi\)</span> por HR en equilibrio</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rúbrica:</strong> 1 punto por asociación correcta.</p>
+</section>
+<section id="a.2-adt-no-es-lo-mismo-que-afa-8-puntos" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="a.2-adt-no-es-lo-mismo-que-afa-8-puntos"><span class="header-section-number">1.2</span> A.2 — ADT no es lo mismo que AFA (8 puntos)</h2>
+<ol type="1">
+<li><strong>Error:</strong> usa el ADT completo como criterio de riego. El agua no está igualmente disponible entre CC y PMP: a medida que <span class="math inline">\(\Psi_m\)</span> se hace más negativo (de −100 a −1500 kPa) la planta debe generar más tensión para extraerla, la absorción disminuye, <strong>cierra estomas</strong>, cae la fotosíntesis y se reduce el crecimiento y el rendimiento. El cultivo sufre estrés <strong>mucho antes</strong> de llegar al PMP. Debe regar al consumir el <strong>AFA</strong> (<span class="math inline">\(AFA = ADT \times p\)</span>), no el ADT; la diferencia (<span class="math inline">\(ADT - AFA\)</span>) es una reserva de seguridad que no se toca.</li>
+<li>La <strong>lechuga</strong> tiene raíz superficial y tejido muy hidratado: es muy sensible al estrés y debe regarse habiendo consumido una fracción pequeña del ADT (<span class="math inline">\(p\)</span> bajo). La <strong>alfalfa</strong> tiene raíz muy profunda (&gt; 2 m), es perenne y tolerante, por lo que puede agotar una fracción mayor sin perder rendimiento (<span class="math inline">\(p\)</span> alto).</li>
+</ol>
+<p><strong>Rúbrica:</strong> (1) 5 puntos: 2 por identificar el error (ADT vs.&nbsp;AFA), 3 por explicar el estrés antes del PMP (absorción ↓, cierre estomático, rendimiento ↓). (2) 3 puntos: sensibilidad ligada a profundidad radical / tipo de cultivo.</p>
+</section>
+<section id="a.3-vías-de-absorción-y-banda-de-caspary-10-puntos" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="a.3-vías-de-absorción-y-banda-de-caspary-10-puntos"><span class="header-section-number">1.3</span> A.3 — Vías de absorción y banda de Caspary (10 puntos)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 37%">
+<col style="width: 26%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Vía</th>
+<th>¿Por dónde viaja el agua?</th>
+<th>¿Cruza membranas?</th>
+<th>Velocidad / control</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Apoplasto</td>
+<td>Paredes celulares y espacios intercelulares</td>
+<td><strong>No</strong> (hasta la endodermis)</td>
+<td>Más rápida, menor resistencia; control bajo (pasivo)</td>
+</tr>
+<tr class="even">
+<td>Simplasto</td>
+<td>Citoplasma, de célula en célula por <strong>plasmodesmos</strong></td>
+<td><strong>Una vez</strong> (al entrar)</td>
+<td>Media; control medio</td>
+</tr>
+<tr class="odd">
+<td>Transcelular</td>
+<td>Atraviesa cada célula</td>
+<td><strong>Sí, varias veces</strong></td>
+<td>Media; control <strong>alto</strong> (acuaporinas regulan la permeabilidad)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Banda de Caspary:</strong> franja de <strong>suberina y lignina</strong> (impermeable) en las paredes de las células de la <strong>endodermis</strong>. <strong>Bloquea la vía apoplasto</strong> y obliga al agua y solutos a <strong>cruzar una membrana</strong> para llegar al xilema, lo que hace la absorción <strong>selectiva</strong>. Sin ella, agua y solutos (incluidas sales y toxinas) entrarían sin control al xilema; la planta no podría regular su concentración interna.</p>
+<p><strong>Rúbrica:</strong> 2 puntos por fila completa (6 puntos); 4 puntos por la banda de Caspary (ubicación 1, composición 1, bloqueo/selectividad 1, consecuencia de no tenerla 1).</p>
+</section>
+<section id="a.4-marchitez-con-el-suelo-mojado-9-puntos" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="a.4-marchitez-con-el-suelo-mojado-9-puntos"><span class="header-section-number">1.4</span> A.4 — Marchitez con el suelo mojado (9 puntos)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 27%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Caso</th>
+<th>Factor</th>
+<th>Mecanismo</th>
+<th>Recomendación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Lechuga sobre-regada</td>
+<td><strong>Aireación (O₂)</strong></td>
+<td>El agua desplaza el aire de los poros → <strong>hipoxia</strong>; la raíz no respira, cierra acuaporinas y deja de absorber</td>
+<td>Suspender el riego, mejorar drenaje, regar según AFA y monitoreo</td>
+</tr>
+<tr class="even">
+<td>2. Tomate en suelo a 6 °C</td>
+<td><strong>Temperatura</strong></td>
+<td>Agua más viscosa y membranas menos permeables → absorción muy baja: <strong>sequía fisiológica</strong></td>
+<td>Retrasar trasplante, usar mulch/acolchado plástico, no compensar con más riego</td>
+</tr>
+<tr class="odd">
+<td>3. Maíz con agua salina</td>
+<td><strong>Salinidad</strong></td>
+<td>Las sales bajan <span class="math inline">\(\Psi_o\)</span> del suelo → menor gradiente suelo → raíz: <strong>sequía osmótica</strong></td>
+<td>Mejorar calidad del agua, aplicar lámina de lavado, manejar drenaje</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rúbrica:</strong> 3 puntos por caso (1 factor, 1 mecanismo, 1 recomendación coherente).</p>
+</section>
+<section id="a.5-agua-a-la-copa-de-un-nogal-de-25-m-10-puntos" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="a.5-agua-a-la-copa-de-un-nogal-de-25-m-10-puntos"><span class="header-section-number">1.5</span> A.5 — Agua a la copa de un nogal de 25 m (10 puntos)</h2>
+<ol type="1">
+<li>La <strong>capilaridad</strong> solo explica ~1–2 m en los conductos del xilema. La <strong>presión de raíz</strong> alcanza ~0.1–0.2 MPa (equivalente a 10–20 m) y actúa sobre todo de noche, cuando no hay transpiración. Ninguna alcanza 25 m de día.</li>
+<li><strong>Cohesión-tensión (Dixon-Joly):</strong>
+<ul>
+<li><strong>Tensión:</strong> la transpiración evapora agua en el mesófilo y genera una presión negativa que “tira” de la columna desde arriba.</li>
+<li><strong>Cohesión:</strong> los <strong>puentes de hidrógeno</strong> mantienen unidas las moléculas de agua, de modo que la tensión se transmite a toda la columna hasta la raíz.</li>
+<li><strong>Adhesión:</strong> el agua se adhiere a las paredes del xilema (celulosa/lignina) y la columna no se despega.</li>
+</ul>
+El agua es <strong>tirada desde arriba</strong>, no empujada desde abajo.</li>
+<li><strong>Cavitación:</strong> formación de burbujas de vapor/aire dentro de un vaso cuando la tensión es excesiva; el vaso queda <strong>embolizado</strong> y deja de conducir. La favorecen la <strong>sequía del suelo</strong>, el <strong>DPV alto</strong>, el <strong>congelamiento</strong> y el daño mecánico. La planta la evita <strong>cerrando estomas</strong> (reduce la tensión).</li>
+</ol>
+<p><strong>Rúbrica:</strong> (1) 2 puntos; (2) 6 puntos, 2 por fuerza bien explicada; (3) 2 puntos (definición 1, condiciones + cierre estomático 1).</p>
+</section>
+<section id="a.6-medir-el-estado-hídrico-de-la-planta-7-puntos" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="a.6-medir-el-estado-hídrico-de-la-planta-7-puntos"><span class="header-section-number">1.6</span> A.6 — Medir el estado hídrico de la planta (7 puntos)</h2>
+<ol type="1">
+<li><ol type="i">
+<li>Se corta una hoja y se sella en la cámara con el pecíolo hacia afuera; (ii) se aumenta la presión de gas dentro de la cámara; (iii) se registra la presión a la que aparece savia en el corte. Esa presión de equilibrio es igual a <span class="math inline">\(-\Psi_{hoja}\)</span> (la tensión que tenía el xilema).</li>
+</ol></li>
+<li>El <span class="math inline">\(\Psi\)</span> <strong>de hoja</strong> refleja la hoja transpirando y varía mucho con la luz y el viento. El <span class="math inline">\(\Psi\)</span> <strong>de tallo</strong> se mide en una hoja embolsada (aluminio) 1–2 h antes: al no transpirar, se <strong>equilibra con el xilema del tallo</strong> y la lectura es más estable y representativa de la planta completa. Es la medición más usada en Chile.</li>
+<li>Ejemplos válidos: frutales y viñas de alto valor donde se aplica <strong>riego deficitario controlado</strong> (se busca un nivel de estrés objetivo); suelos <strong>salinos</strong> donde el sensor de humedad muestra agua pero la planta no puede usarla; suelos muy heterogéneos o raíces profundas donde un sensor puntual no es representativo. La planta integra suelo + atmósfera y avisa del estrés <strong>antes</strong> del daño visible.</li>
+</ol>
+<p><strong>Rúbrica:</strong> (1) 3 puntos; (2) 2 puntos; (3) 2 puntos por situación justificada.</p>
+</section>
+<section id="a.7-tú-eres-el-estoma-8-puntos" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="a.7-tú-eres-el-estoma-8-puntos"><span class="header-section-number">1.7</span> A.7 — Tú eres el estoma (8 puntos)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 23%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Escenario</th>
+<th>Estado</th>
+<th>Justificación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Vid 10:30, DPV 1.0, suelo ~CC</td>
+<td><strong>Abierto</strong></td>
+<td>Hay luz para fotosintetizar y agua de sobra; DPV moderado</td>
+</tr>
+<tr class="even">
+<td>2. Vid 15:00, DPV 3.8, <span class="math inline">\(\Psi_{hoja}\)</span> −1.5</td>
+<td><strong>A medias o cerrado</strong></td>
+<td>Aire muy seco y hoja bajo el umbral de estrés de la vid (−1.2 MPa); ABA cierra estomas para evitar deshidratación y cavitación</td>
+</tr>
+<tr class="odd">
+<td>3. Tuna (CAM) 02:00</td>
+<td><strong>Abierto</strong></td>
+<td>Las CAM abren de noche, cuando el DPV es bajo, y guardan el CO₂ para usarlo de día</td>
+</tr>
+<tr class="even">
+<td>4. Invernadero CO₂ 1000 ppm</td>
+<td><strong>Menos abierto (a medias)</strong></td>
+<td>Con CO₂ interno alto obtiene el CO₂ necesario con un poro más pequeño → menos <span class="math inline">\(E\)</span>, mayor WUE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rúbrica:</strong> 2 puntos por escenario (1 estado + 1 justificación). En el escenario 2 se aceptan “a medias” y “cerrado” si la justificación es correcta. El escenario 3 discrimina a quien responde “de noche siempre cerrado” sin considerar el metabolismo CAM.</p>
+</section>
+<section id="a.8-el-trade-off-del-estoma-y-la-wue-8-puntos" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="a.8-el-trade-off-del-estoma-y-la-wue-8-puntos"><span class="header-section-number">1.8</span> A.8 — El trade-off del estoma y la WUE (8 puntos)</h2>
+<ol type="1">
+<li>El estoma es una puerta de <strong>doble tránsito</strong>: para que entre CO₂ (fotosíntesis) debe abrirse, y por el mismo poro sale vapor de agua (~400 moléculas de H₂O por CO₂ en C3). Razones para no cerrarlo siempre: (i) <strong>sin CO₂ no hay fotosíntesis</strong> ni crecimiento; (ii) <strong>sin transpiración la hoja se sobrecalienta</strong> (pierde el enfriamiento por calor latente) y sufre daño por calor.</li>
+<li>En la figura, <span class="math inline">\(A\)</span> <strong>se satura</strong> a <span class="math inline">\(g_s\)</span> altas (curva que se aplana) mientras que <span class="math inline">\(E\)</span> <strong>crece en forma lineal</strong>. Al cerrar parcialmente (p.&nbsp;ej. de <span class="math inline">\(g_s = 0.4\)</span> a <span class="math inline">\(0.2\)</span>), <span class="math inline">\(A\)</span> baja poco (≈ 24 → 20) y <span class="math inline">\(E\)</span> baja mucho (≈ 7.9 → 3.9), de modo que <span class="math inline">\(WUE = A/E\)</span> sube (≈ 3.0 → 5.1). Lo aprovecha el <strong>riego deficitario controlado</strong>: ahorra agua con poca pérdida de rendimiento.</li>
+<li>Las <strong>C4</strong> concentran CO₂ internamente, por lo que fotosintetizan bien con <strong>estomas más cerrados</strong>: pierden menos agua por CO₂ fijado (~250 vs.&nbsp;~400 moléculas en C3).</li>
+</ol>
+<p><strong>Rúbrica:</strong> (1) 3 puntos (trade-off 1, dos razones 2); (2) 3 puntos (lectura de la forma de las curvas 2, riego deficitario 1; no se exige leer valores numéricos); (3) 2 puntos.</p>
+<hr>
+</section>
+</section>
+<section id="parte-b-soluciones" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Parte B — Soluciones</h1>
+<section id="b.1-programación-de-riego-en-un-perfil-estratificado-14-puntos" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="b.1-programación-de-riego-en-un-perfil-estratificado-14-puntos"><span class="header-section-number">2.1</span> B.1 — Programación de riego en un perfil estratificado (14 puntos)</h2>
+<ol type="1">
+<li><strong>ADT por horizonte:</strong></li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Horizonte</th>
+<th>ADT (cm³/cm³)</th>
+<th>Z (mm)</th>
+<th><span class="math inline">\(L_{ADT}\)</span> (mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ap</td>
+<td>0.36 − 0.16 = 0.20</td>
+<td>200</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td>Bt</td>
+<td>0.31 − 0.17 = 0.14</td>
+<td>400</td>
+<td>56</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>0.25 − 0.14 = 0.11</td>
+<td>300</td>
+<td>33</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>900</strong></td>
+<td><strong>129</strong></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(AFA = 129 \times 0.40 = 51.6\)</span> mm.</p></li>
+<li><p><span class="math inline">\(L_b = 51.6 / 0.75 = 68.8\)</span> mm.</p></li>
+<li><p><span class="math inline">\(F = 51.6 / 6.0 = 8.6\)</span> días → <strong>regar cada 8 días</strong>. Se redondea <strong>hacia abajo</strong>: si se espera 9 días se consumirían 54 mm, más que el AFA, y el cultivo entraría en la zona de estrés.</p></li>
+<li><p><span class="math inline">\(\overline{CC} = (0.36\times20 + 0.31\times40 + 0.25\times30)/90 = 27.1/90 = 0.301\)</span> cm³/cm³. <span class="math inline">\(\overline{AFA} = 51.6 \text{ mm} / 900 \text{ mm} = 0.057\)</span> cm³/cm³. <span class="math inline">\(\theta_{umbral} = 0.301 - 0.057 \approx 0.244\)</span> cm³/cm³.</p>
+<p>(Verificación: <span class="math inline">\(\overline{PMP} = 14.2/90 = 0.158\)</span>; <span class="math inline">\(\overline{ADT} = 129/900 = 0.143\)</span>; <span class="math inline">\(0.158 + 0.60 \times 0.143 = 0.244\)</span>.)</p></li>
+</ol>
+<p><strong>Interpretación:</strong> el tomate debe regarse cuando el <span class="math inline">\(\theta_v\)</span> promedio del perfil baje de ~0.244, aplicando ~69 mm brutos cada 8 días; con goteo (<span class="math inline">\(E_a = 0.90\)</span>) bastarían 57 mm.</p>
+<p><strong>Rúbrica:</strong> (1) 4 puntos (3 por horizontes, 1 por total); (2) 2 puntos; (3) 2 puntos; (4) 3 puntos (2 cálculo, 1 criterio de redondeo); (5) 3 puntos (CC ponderada 1, AFA en v/v 1, umbral 1). Penalizar una sola vez si no convierte cm → mm.</p>
+</section>
+<section id="b.2-lectura-de-una-serie-de-sensores-10-puntos" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="b.2-lectura-de-una-serie-de-sensores-10-puntos"><span class="header-section-number">2.2</span> B.2 — Lectura de una serie de sensores (10 puntos)</h2>
+<ol type="1">
+<li><p><strong>Riego el jueves:</strong> a 20 cm sube de 0.23 (X) a 0.35 (J). A 60 cm apenas sube de 0.23 a 0.26: el frente de mojado <strong>llegó débilmente</strong> a esa profundidad; la lámina fue corta.</p></li>
+<li><p>0.35 &gt; CC (0.30): el exceso es <strong>agua gravitacional</strong> que drena en ~1 día. El viernes (0.31) el suelo ya está prácticamente en CC.</p></li>
+<li><p><span class="math inline">\(ADT = 0.30 - 0.12 = 0.18\)</span>; <span class="math inline">\(\theta_{umbral} = 0.30 - 0.45 \times 0.18 = 0.30 - 0.081 = 0.219\)</span> cm³/cm³. Consumo a 20 cm: <span class="math inline">\((0.31 - 0.25)/2 = 0.03\)</span> cm³/cm³/día.</p></li>
+<li><p>A ~0.03/día, el lunes el sensor de 20 cm estaría en ~0.22 (en el umbral) y el martes en ~0.19 (bajo el umbral). <strong>Regar el lunes.</strong> Además, el sensor de 60 cm (0.23) también se acerca al umbral y el riego anterior casi no lo recargó: conviene aplicar una <strong>lámina mayor</strong> (o un tiempo de riego más largo) para mojar toda la zona radical.</p>
+<p>Nota: el miércoles, antes del riego, ambos sensores marcaban 0.23, apenas sobre el umbral (0.219): el riego del jueves fue <strong>oportuno</strong>.</p></li>
+</ol>
+<p><strong>Rúbrica:</strong> (1) 2 puntos; (2) 2 puntos; (3) 3 puntos (umbral 2, tasa 1); (4) 3 puntos (día 2, lámina a 60 cm 1). <strong>Tolerancia de lectura:</strong> ±0.01 cm³/cm³.</p>
+</section>
+<section id="b.3-gradiente-de-potencial-y-wue-10-puntos" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="b.3-gradiente-de-potencial-y-wue-10-puntos"><span class="header-section-number">2.3</span> B.3 — Gradiente de potencial y WUE (10 puntos)</h2>
+<p><strong>Parte a.</strong></p>
+<ol type="1">
+<li>Caídas de potencial:</li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tramo</th>
+<th><span class="math inline">\(\Delta\Psi\)</span> (MPa)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Suelo → raíz</td>
+<td>0.31</td>
+</tr>
+<tr class="even">
+<td>Raíz → xilema</td>
+<td>0.55</td>
+</tr>
+<tr class="odd">
+<td>Xilema → hoja</td>
+<td>0.70</td>
+</tr>
+<tr class="even">
+<td>Hoja → atmósfera</td>
+<td>88.40</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>89.96</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Hoja → atmósfera <span class="math inline">\(= 88.40 / 89.96 \approx 98\%\)</span> de la caída total. 2. Los tramos están <strong>en serie</strong>: el mismo flujo <span class="math inline">\(J\)</span> pasa por todos. Como <span class="math inline">\(R = \Delta\Psi / J\)</span>, la mayor resistencia está donde más cae <span class="math inline">\(\Psi\)</span>: <strong>hoja → atmósfera</strong>, regulada por los <strong>estomas</strong>. 3. <span class="math inline">\(\Psi_g \approx 0.01 \times 12 = 0.12\)</span> MPa. Representa ~8% de la caída suelo → hoja (1.56 MPa): pequeño pero no despreciable; sería relevante en árboles más altos (0.5 MPa a 50 m).</p>
+<p><strong>Parte b.</strong></p>
+<ol start="4" type="1">
+<li><span class="math inline">\(WUE_X = 18 / 6.0 = 3.0\)</span>; <span class="math inline">\(WUE_Y = 24 / 4.0 = 6.0\)</span> μmol CO₂/mmol H₂O. <strong>Y</strong> es más eficiente y probablemente <strong>C4</strong> (rango 4–8); <strong>X</strong> probablemente <strong>C3</strong> (rango 2–5). La comparación es válida porque se midieron con el mismo DPV.</li>
+<li><span class="math inline">\(WUE_X = 15 / 3.5 = 4.3\)</span> μmol CO₂/mmol H₂O (+43%). <span class="math inline">\(A\)</span> cayó 17% y <span class="math inline">\(E\)</span> cayó 42%: el cierre parcial reduce mucho más la transpiración que la fotosíntesis, porque <span class="math inline">\(A\)</span> está cerca de la saturación. La planta ahorra agua a costa de algo de producción.</li>
+</ol>
+<p><strong>Rúbrica:</strong> (a1) 2 puntos; (a2) 2 puntos; (a3) 1 punto; (b4) 3 puntos (2 cálculo, 1 C3/C4); (b5) 2 puntos (1 cálculo, 1 explicación).</p>
+<hr>
+</section>
+<section id="nota-de-corrección" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="nota-de-corrección"><span class="header-section-number">2.4</span> Nota de corrección</h2>
+<ul>
+<li>Se sugiere calificar con <strong>pauta de desarrollo</strong>: asignar puntaje parcial por datos, fórmula, cálculo y unidad, y reservar ~20% del puntaje de cada ejercicio a la <strong>interpretación</strong>.</li>
+<li>En las preguntas de conceptos, aceptar redacciones propias siempre que el mecanismo sea correcto; no exigir la frase textual de las diapositivas.</li>
+<li>En el ítem de lectura de gráfico (B.2) aplicar la tolerancia indicada (±0.01 cm³/cm³), pero exigir que la interpretación sea coherente con el valor leído.</li>
+<li>Los errores de cálculo por arrastre (usar un valor previo equivocado) se descuentan solo una vez, siempre que el procedimiento sea correcto.</li>
+<li>La escala de notas UDLA (1.0–7.0) puede aplicarse sobre el puntaje 0–100 con la exigencia de 60%.</li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

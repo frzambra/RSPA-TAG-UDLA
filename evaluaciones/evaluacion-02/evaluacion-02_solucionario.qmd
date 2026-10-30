@@ -1,0 +1,211 @@
+---
+title: "Cátedra 2 — Solucionario y rúbrica"
+subtitle: "Unidad 2 (sesión 2.4) y Unidad 3 · RAA3–RAA5"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    lang: es
+    theme: default
+    number-sections: true
+  pdf:
+    toc: true
+    lang: es
+    number-sections: true
+execute:
+  echo: false
+  warning: false
+---
+
+::: {.callout-note}
+## Uso de este documento
+Documento para el docente. Contiene las **soluciones paso a paso**, la **rúbrica de puntaje** y la **tabla de procedencia** (qué ítem proviene de las diapositivas y cuál es nuevo o reformulado). No distribuir a estudiantes.
+:::
+
+## Cobertura
+
+La Cátedra 1 evaluó la Unidad 1 y la Unidad 2 hasta la sesión 2.3. Esta cátedra cubre el contenido no evaluado hasta el cierre de la Unidad 3:
+
+- **Sesión 2.4** — ADT por horizonte, AFA, umbral de riego, láminas, frecuencia, monitoreo de humedad (RAA3, RAA4).
+- **Sesión 3.1** — Sistema radical, vías de absorción, banda de Caspary, factores que afectan la absorción (RAA5).
+- **Sesión 3.2** — Xilema, cohesión-tensión, gradiente de potencial, cavitación, cámara de Scholander (RAA5).
+- **Sesión 3.3** — Transpiración, conductancia estomática, trade-off CO₂/H₂O, WUE, factores ambientales (RAA5).
+
+## Rúbrica resumida
+
+| Ítem | Tipo | Puntaje | Sesión | Procedencia |
+|------|------|---------|--------|-------------|
+| A.1 | Concepto | 6 | 2.4, 3.2 | Tablas de métodos de monitoreo (2.4) y de medición del estado hídrico (3.2), reformulado como emparejamiento |
+| A.2 | Concepto | 8 | 2.4 | Autoevaluación 2.4 (pregunta 2) + tabla de $p$ por cultivo |
+| A.3 | Concepto | 10 | 3.1 | Diapositivas de vías de absorción y ejercicio "vías y banda de Caspary" |
+| A.4 | Concepto | 9 | 3.1 | Ejercicio "factores y absorción" (caso 1); casos 2 y 3 **nuevos** |
+| A.5 | Concepto | 10 | 3.2 | Diapositivas "el problema", cohesión-tensión y cavitación; reformulado con nogal |
+| A.6 | Concepto | 7 | 3.2 | Diapositiva Scholander + autoevaluación 3.2 (preguntas 5 y 7) |
+| A.7 | Concepto | 8 | 3.3 | Actividad "Tú eres el estoma", con escenario CAM **nuevo** |
+| A.8 | Concepto (gráfico) | 8 | 3.3 | Figura "la fotosíntesis se satura, la transpiración no" + diapositivas de trade-off y WUE |
+| B.1 | Ejercicio | 14 | 2.4 | Ejercicios integradores 1 y 2, con perfil, cultivo y sistema **nuevos** |
+| B.2 | Ejercicio (gráfico) | 10 | 2.4 | Ejercicio de interpretación de series de sensores, con datos **nuevos** |
+| B.3 | Ejercicio | 10 | 3.2, 3.3 | Ejercicios "lee el gradiente" y "calcula la WUE", con números **nuevos** + $\Psi_g$ |
+
+**Balance:** Parte A (conceptos) = **66 puntos**; Parte B (ejercicios) = **34 puntos**, es decir, **2/3 teoría y 1/3 ejercicios**. El tiempo sugerido sigue la misma proporción (60 + 30 min). Todos los ítems se basan en preguntas o ejercicios ya trabajados en clase, pero cambian números, cultivo o formato para que la respuesta no pueda copiarse de las diapositivas.
+
+---
+
+# Parte A — Soluciones
+
+## A.1 — ¿Qué mide cada instrumento? (6 puntos)
+
+| Instrumento | Letra | Variable |
+|-------------|-------|----------|
+| 1. Muestreo y secado en estufa | **(b)** | $\theta_g$ (método de referencia) |
+| 2. Tensiómetro | **(d)** | $\Psi_m$ del suelo |
+| 3. Sensor FDR / TDR | **(c)** | $K_a$ → $\theta_v$ (vía calibración) |
+| 4. Cámara de Scholander | **(e)** | $\Psi$ de hoja o tallo |
+| 5. Porómetro | **(a)** | $g_s$ |
+| 6. Psicrómetro | **(f)** | $\Psi$ por HR en equilibrio |
+
+**Rúbrica:** 1 punto por asociación correcta.
+
+## A.2 — ADT no es lo mismo que AFA (8 puntos)
+
+1. **Error:** usa el ADT completo como criterio de riego. El agua no está igualmente disponible entre CC y PMP: a medida que $\Psi_m$ se hace más negativo (de −100 a −1500 kPa) la planta debe generar más tensión para extraerla, la absorción disminuye, **cierra estomas**, cae la fotosíntesis y se reduce el crecimiento y el rendimiento. El cultivo sufre estrés **mucho antes** de llegar al PMP. Debe regar al consumir el **AFA** ($AFA = ADT \times p$), no el ADT; la diferencia ($ADT - AFA$) es una reserva de seguridad que no se toca.
+2. La **lechuga** tiene raíz superficial y tejido muy hidratado: es muy sensible al estrés y debe regarse habiendo consumido una fracción pequeña del ADT ($p$ bajo). La **alfalfa** tiene raíz muy profunda (> 2 m), es perenne y tolerante, por lo que puede agotar una fracción mayor sin perder rendimiento ($p$ alto).
+
+**Rúbrica:** (1) 5 puntos: 2 por identificar el error (ADT vs. AFA), 3 por explicar el estrés antes del PMP (absorción ↓, cierre estomático, rendimiento ↓). (2) 3 puntos: sensibilidad ligada a profundidad radical / tipo de cultivo.
+
+## A.3 — Vías de absorción y banda de Caspary (10 puntos)
+
+| Vía | ¿Por dónde viaja el agua? | ¿Cruza membranas? | Velocidad / control |
+|-----|---------------------------|-------------------|---------------------|
+| Apoplasto | Paredes celulares y espacios intercelulares | **No** (hasta la endodermis) | Más rápida, menor resistencia; control bajo (pasivo) |
+| Simplasto | Citoplasma, de célula en célula por **plasmodesmos** | **Una vez** (al entrar) | Media; control medio |
+| Transcelular | Atraviesa cada célula | **Sí, varias veces** | Media; control **alto** (acuaporinas regulan la permeabilidad) |
+
+**Banda de Caspary:** franja de **suberina y lignina** (impermeable) en las paredes de las células de la **endodermis**. **Bloquea la vía apoplasto** y obliga al agua y solutos a **cruzar una membrana** para llegar al xilema, lo que hace la absorción **selectiva**. Sin ella, agua y solutos (incluidas sales y toxinas) entrarían sin control al xilema; la planta no podría regular su concentración interna.
+
+**Rúbrica:** 2 puntos por fila completa (6 puntos); 4 puntos por la banda de Caspary (ubicación 1, composición 1, bloqueo/selectividad 1, consecuencia de no tenerla 1).
+
+## A.4 — Marchitez con el suelo mojado (9 puntos)
+
+| Caso | Factor | Mecanismo | Recomendación |
+|------|--------|-----------|---------------|
+| 1. Lechuga sobre-regada | **Aireación (O₂)** | El agua desplaza el aire de los poros → **hipoxia**; la raíz no respira, cierra acuaporinas y deja de absorber | Suspender el riego, mejorar drenaje, regar según AFA y monitoreo |
+| 2. Tomate en suelo a 6 °C | **Temperatura** | Agua más viscosa y membranas menos permeables → absorción muy baja: **sequía fisiológica** | Retrasar trasplante, usar mulch/acolchado plástico, no compensar con más riego |
+| 3. Maíz con agua salina | **Salinidad** | Las sales bajan $\Psi_o$ del suelo → menor gradiente suelo → raíz: **sequía osmótica** | Mejorar calidad del agua, aplicar lámina de lavado, manejar drenaje |
+
+**Rúbrica:** 3 puntos por caso (1 factor, 1 mecanismo, 1 recomendación coherente).
+
+## A.5 — Agua a la copa de un nogal de 25 m (10 puntos)
+
+1. La **capilaridad** solo explica ~1–2 m en los conductos del xilema. La **presión de raíz** alcanza ~0.1–0.2 MPa (equivalente a 10–20 m) y actúa sobre todo de noche, cuando no hay transpiración. Ninguna alcanza 25 m de día.
+2. **Cohesión-tensión (Dixon-Joly):**
+   - **Tensión:** la transpiración evapora agua en el mesófilo y genera una presión negativa que "tira" de la columna desde arriba.
+   - **Cohesión:** los **puentes de hidrógeno** mantienen unidas las moléculas de agua, de modo que la tensión se transmite a toda la columna hasta la raíz.
+   - **Adhesión:** el agua se adhiere a las paredes del xilema (celulosa/lignina) y la columna no se despega.
+
+   El agua es **tirada desde arriba**, no empujada desde abajo.
+3. **Cavitación:** formación de burbujas de vapor/aire dentro de un vaso cuando la tensión es excesiva; el vaso queda **embolizado** y deja de conducir. La favorecen la **sequía del suelo**, el **DPV alto**, el **congelamiento** y el daño mecánico. La planta la evita **cerrando estomas** (reduce la tensión).
+
+**Rúbrica:** (1) 2 puntos; (2) 6 puntos, 2 por fuerza bien explicada; (3) 2 puntos (definición 1, condiciones + cierre estomático 1).
+
+## A.6 — Medir el estado hídrico de la planta (7 puntos)
+
+1. (i) Se corta una hoja y se sella en la cámara con el pecíolo hacia afuera; (ii) se aumenta la presión de gas dentro de la cámara; (iii) se registra la presión a la que aparece savia en el corte. Esa presión de equilibrio es igual a $-\Psi_{hoja}$ (la tensión que tenía el xilema).
+2. El $\Psi$ **de hoja** refleja la hoja transpirando y varía mucho con la luz y el viento. El $\Psi$ **de tallo** se mide en una hoja embolsada (aluminio) 1–2 h antes: al no transpirar, se **equilibra con el xilema del tallo** y la lectura es más estable y representativa de la planta completa. Es la medición más usada en Chile.
+3. Ejemplos válidos: frutales y viñas de alto valor donde se aplica **riego deficitario controlado** (se busca un nivel de estrés objetivo); suelos **salinos** donde el sensor de humedad muestra agua pero la planta no puede usarla; suelos muy heterogéneos o raíces profundas donde un sensor puntual no es representativo. La planta integra suelo + atmósfera y avisa del estrés **antes** del daño visible.
+
+**Rúbrica:** (1) 3 puntos; (2) 2 puntos; (3) 2 puntos por situación justificada.
+
+## A.7 — Tú eres el estoma (8 puntos)
+
+| Escenario | Estado | Justificación |
+|-----------|--------|---------------|
+| 1. Vid 10:30, DPV 1.0, suelo ~CC | **Abierto** | Hay luz para fotosintetizar y agua de sobra; DPV moderado |
+| 2. Vid 15:00, DPV 3.8, $\Psi_{hoja}$ −1.5 | **A medias o cerrado** | Aire muy seco y hoja bajo el umbral de estrés de la vid (−1.2 MPa); ABA cierra estomas para evitar deshidratación y cavitación |
+| 3. Tuna (CAM) 02:00 | **Abierto** | Las CAM abren de noche, cuando el DPV es bajo, y guardan el CO₂ para usarlo de día |
+| 4. Invernadero CO₂ 1000 ppm | **Menos abierto (a medias)** | Con CO₂ interno alto obtiene el CO₂ necesario con un poro más pequeño → menos $E$, mayor WUE |
+
+**Rúbrica:** 2 puntos por escenario (1 estado + 1 justificación). En el escenario 2 se aceptan "a medias" y "cerrado" si la justificación es correcta. El escenario 3 discrimina a quien responde "de noche siempre cerrado" sin considerar el metabolismo CAM.
+
+## A.8 — El trade-off del estoma y la WUE (8 puntos)
+
+1. El estoma es una puerta de **doble tránsito**: para que entre CO₂ (fotosíntesis) debe abrirse, y por el mismo poro sale vapor de agua (~400 moléculas de H₂O por CO₂ en C3). Razones para no cerrarlo siempre: (i) **sin CO₂ no hay fotosíntesis** ni crecimiento; (ii) **sin transpiración la hoja se sobrecalienta** (pierde el enfriamiento por calor latente) y sufre daño por calor.
+2. En la figura, $A$ **se satura** a $g_s$ altas (curva que se aplana) mientras que $E$ **crece en forma lineal**. Al cerrar parcialmente (p. ej. de $g_s = 0.4$ a $0.2$), $A$ baja poco (≈ 24 → 20) y $E$ baja mucho (≈ 7.9 → 3.9), de modo que $WUE = A/E$ sube (≈ 3.0 → 5.1). Lo aprovecha el **riego deficitario controlado**: ahorra agua con poca pérdida de rendimiento.
+3. Las **C4** concentran CO₂ internamente, por lo que fotosintetizan bien con **estomas más cerrados**: pierden menos agua por CO₂ fijado (~250 vs. ~400 moléculas en C3).
+
+**Rúbrica:** (1) 3 puntos (trade-off 1, dos razones 2); (2) 3 puntos (lectura de la forma de las curvas 2, riego deficitario 1; no se exige leer valores numéricos); (3) 2 puntos.
+
+---
+
+# Parte B — Soluciones
+
+## B.1 — Programación de riego en un perfil estratificado (14 puntos)
+
+1. **ADT por horizonte:**
+
+| Horizonte | ADT (cm³/cm³) | Z (mm) | $L_{ADT}$ (mm) |
+|-----------|---------------|--------|----------------|
+| Ap | 0.36 − 0.16 = 0.20 | 200 | 40 |
+| Bt | 0.31 − 0.17 = 0.14 | 400 | 56 |
+| C | 0.25 − 0.14 = 0.11 | 300 | 33 |
+| **Total** | | **900** | **129** |
+
+2. $AFA = 129 \times 0.40 = 51.6$ mm.
+3. $L_b = 51.6 / 0.75 = 68.8$ mm.
+4. $F = 51.6 / 6.0 = 8.6$ días → **regar cada 8 días**. Se redondea **hacia abajo**: si se espera 9 días se consumirían 54 mm, más que el AFA, y el cultivo entraría en la zona de estrés.
+5. $\overline{CC} = (0.36\times20 + 0.31\times40 + 0.25\times30)/90 = 27.1/90 = 0.301$ cm³/cm³.
+   $\overline{AFA} = 51.6 \text{ mm} / 900 \text{ mm} = 0.057$ cm³/cm³.
+   $\theta_{umbral} = 0.301 - 0.057 \approx 0.244$ cm³/cm³.
+
+   (Verificación: $\overline{PMP} = 14.2/90 = 0.158$; $\overline{ADT} = 129/900 = 0.143$; $0.158 + 0.60 \times 0.143 = 0.244$.)
+
+**Interpretación:** el tomate debe regarse cuando el $\theta_v$ promedio del perfil baje de ~0.244, aplicando ~69 mm brutos cada 8 días; con goteo ($E_a = 0.90$) bastarían 57 mm.
+
+**Rúbrica:** (1) 4 puntos (3 por horizontes, 1 por total); (2) 2 puntos; (3) 2 puntos; (4) 3 puntos (2 cálculo, 1 criterio de redondeo); (5) 3 puntos (CC ponderada 1, AFA en v/v 1, umbral 1). Penalizar una sola vez si no convierte cm → mm.
+
+## B.2 — Lectura de una serie de sensores (10 puntos)
+
+1. **Riego el jueves:** a 20 cm sube de 0.23 (X) a 0.35 (J). A 60 cm apenas sube de 0.23 a 0.26: el frente de mojado **llegó débilmente** a esa profundidad; la lámina fue corta.
+2. 0.35 > CC (0.30): el exceso es **agua gravitacional** que drena en ~1 día. El viernes (0.31) el suelo ya está prácticamente en CC.
+3. $ADT = 0.30 - 0.12 = 0.18$; $\theta_{umbral} = 0.30 - 0.45 \times 0.18 = 0.30 - 0.081 = 0.219$ cm³/cm³.
+   Consumo a 20 cm: $(0.31 - 0.25)/2 = 0.03$ cm³/cm³/día.
+4. A ~0.03/día, el lunes el sensor de 20 cm estaría en ~0.22 (en el umbral) y el martes en ~0.19 (bajo el umbral). **Regar el lunes.** Además, el sensor de 60 cm (0.23) también se acerca al umbral y el riego anterior casi no lo recargó: conviene aplicar una **lámina mayor** (o un tiempo de riego más largo) para mojar toda la zona radical.
+
+   Nota: el miércoles, antes del riego, ambos sensores marcaban 0.23, apenas sobre el umbral (0.219): el riego del jueves fue **oportuno**.
+
+**Rúbrica:** (1) 2 puntos; (2) 2 puntos; (3) 3 puntos (umbral 2, tasa 1); (4) 3 puntos (día 2, lámina a 60 cm 1). **Tolerancia de lectura:** ±0.01 cm³/cm³.
+
+## B.3 — Gradiente de potencial y WUE (10 puntos)
+
+**Parte a.**
+
+1. Caídas de potencial:
+
+| Tramo | $\Delta\Psi$ (MPa) |
+|-------|--------------------|
+| Suelo → raíz | 0.31 |
+| Raíz → xilema | 0.55 |
+| Xilema → hoja | 0.70 |
+| Hoja → atmósfera | 88.40 |
+| **Total** | **89.96** |
+
+   Hoja → atmósfera $= 88.40 / 89.96 \approx 98\%$ de la caída total.
+2. Los tramos están **en serie**: el mismo flujo $J$ pasa por todos. Como $R = \Delta\Psi / J$, la mayor resistencia está donde más cae $\Psi$: **hoja → atmósfera**, regulada por los **estomas**.
+3. $\Psi_g \approx 0.01 \times 12 = 0.12$ MPa. Representa ~8% de la caída suelo → hoja (1.56 MPa): pequeño pero no despreciable; sería relevante en árboles más altos (0.5 MPa a 50 m).
+
+**Parte b.**
+
+4. $WUE_X = 18 / 6.0 = 3.0$; $WUE_Y = 24 / 4.0 = 6.0$ μmol CO₂/mmol H₂O. **Y** es más eficiente y probablemente **C4** (rango 4–8); **X** probablemente **C3** (rango 2–5). La comparación es válida porque se midieron con el mismo DPV.
+5. $WUE_X = 15 / 3.5 = 4.3$ μmol CO₂/mmol H₂O (+43%). $A$ cayó 17% y $E$ cayó 42%: el cierre parcial reduce mucho más la transpiración que la fotosíntesis, porque $A$ está cerca de la saturación. La planta ahorra agua a costa de algo de producción.
+
+**Rúbrica:** (a1) 2 puntos; (a2) 2 puntos; (a3) 1 punto; (b4) 3 puntos (2 cálculo, 1 C3/C4); (b5) 2 puntos (1 cálculo, 1 explicación).
+
+---
+
+## Nota de corrección
+
+- Se sugiere calificar con **pauta de desarrollo**: asignar puntaje parcial por datos, fórmula, cálculo y unidad, y reservar ~20% del puntaje de cada ejercicio a la **interpretación**.
+- En las preguntas de conceptos, aceptar redacciones propias siempre que el mecanismo sea correcto; no exigir la frase textual de las diapositivas.
+- En el ítem de lectura de gráfico (B.2) aplicar la tolerancia indicada (±0.01 cm³/cm³), pero exigir que la interpretación sea coherente con el valor leído.
+- Los errores de cálculo por arrastre (usar un valor previo equivocado) se descuentan solo una vez, siempre que el procedimiento sea correcto.
+- La escala de notas UDLA (1.0–7.0) puede aplicarse sobre el puntaje 0–100 con la exigencia de 60%.
