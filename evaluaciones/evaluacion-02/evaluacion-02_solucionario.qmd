@@ -29,7 +29,7 @@ La Cátedra 1 evaluó la Unidad 1 y la Unidad 2 hasta la sesión 2.3. Esta cáte
 - **Sesión 2.4** — ADT por horizonte, AFA, umbral de riego, láminas, frecuencia, monitoreo de humedad (RAA3, RAA4).
 - **Sesión 3.1** — Sistema radical, vías de absorción, banda de Caspary, factores que afectan la absorción (RAA5).
 - **Sesión 3.2** — Xilema, cohesión-tensión, gradiente de potencial, cavitación, cámara de Scholander (RAA5).
-- **Sesión 3.3** — Transpiración, conductancia estomática, trade-off CO₂/H₂O, WUE, factores ambientales (RAA5).
+- **Sesión 3.3** — Transpiración, conductancia estomática, trade-off CO$_2$/H$_2$O, WUE, factores ambientales (RAA5).
 
 ## Rúbrica resumida
 
@@ -89,7 +89,7 @@ La Cátedra 1 evaluó la Unidad 1 y la Unidad 2 hasta la sesión 2.3. Esta cáte
 
 | Caso | Factor | Mecanismo | Recomendación |
 |------|--------|-----------|---------------|
-| 1. Lechuga sobre-regada | **Aireación (O₂)** | El agua desplaza el aire de los poros → **hipoxia**; la raíz no respira, cierra acuaporinas y deja de absorber | Suspender el riego, mejorar drenaje, regar según AFA y monitoreo |
+| 1. Lechuga sobre-regada | **Aireación (O$_2$)** | El agua desplaza el aire de los poros → **hipoxia**; la raíz no respira, cierra acuaporinas y deja de absorber | Suspender el riego, mejorar drenaje, regar según AFA y monitoreo |
 | 2. Tomate en suelo a 6 °C | **Temperatura** | Agua más viscosa y membranas menos permeables → absorción muy baja: **sequía fisiológica** | Retrasar trasplante, usar mulch/acolchado plástico, no compensar con más riego |
 | 3. Maíz con agua salina | **Salinidad** | Las sales bajan $\Psi_o$ del suelo → menor gradiente suelo → raíz: **sequía osmótica** | Mejorar calidad del agua, aplicar lámina de lavado, manejar drenaje |
 
@@ -122,16 +122,16 @@ La Cátedra 1 evaluó la Unidad 1 y la Unidad 2 hasta la sesión 2.3. Esta cáte
 |-----------|--------|---------------|
 | 1. Vid 10:30, DPV 1.0, suelo ~CC | **Abierto** | Hay luz para fotosintetizar y agua de sobra; DPV moderado |
 | 2. Vid 15:00, DPV 3.8, $\Psi_{hoja}$ −1.5 | **A medias o cerrado** | Aire muy seco y hoja bajo el umbral de estrés de la vid (−1.2 MPa); ABA cierra estomas para evitar deshidratación y cavitación |
-| 3. Tuna (CAM) 02:00 | **Abierto** | Las CAM abren de noche, cuando el DPV es bajo, y guardan el CO₂ para usarlo de día |
-| 4. Invernadero CO₂ 1000 ppm | **Menos abierto (a medias)** | Con CO₂ interno alto obtiene el CO₂ necesario con un poro más pequeño → menos $E$, mayor WUE |
+| 3. Tuna (CAM) 02:00 | **Abierto** | Las CAM abren de noche, cuando el DPV es bajo, y guardan el CO$_2$ para usarlo de día |
+| 4. Invernadero CO$_2$ 1000 ppm | **Menos abierto (a medias)** | Con CO$_2$ interno alto obtiene el CO$_2$ necesario con un poro más pequeño → menos $E$, mayor WUE |
 
 **Rúbrica:** 2 puntos por escenario (1 estado + 1 justificación). En el escenario 2 se aceptan "a medias" y "cerrado" si la justificación es correcta. El escenario 3 discrimina a quien responde "de noche siempre cerrado" sin considerar el metabolismo CAM.
 
 ## A.8 — El trade-off del estoma y la WUE (8 puntos)
 
-1. El estoma es una puerta de **doble tránsito**: para que entre CO₂ (fotosíntesis) debe abrirse, y por el mismo poro sale vapor de agua (~400 moléculas de H₂O por CO₂ en C3). Razones para no cerrarlo siempre: (i) **sin CO₂ no hay fotosíntesis** ni crecimiento; (ii) **sin transpiración la hoja se sobrecalienta** (pierde el enfriamiento por calor latente) y sufre daño por calor.
-2. En la figura, $A$ **se satura** a $g_s$ altas (curva que se aplana) mientras que $E$ **crece en forma lineal**. Al cerrar parcialmente (p. ej. de $g_s = 0.4$ a $0.2$), $A$ baja poco (≈ 24 → 20) y $E$ baja mucho (≈ 7.9 → 3.9), de modo que $WUE = A/E$ sube (≈ 3.0 → 5.1). Lo aprovecha el **riego deficitario controlado**: ahorra agua con poca pérdida de rendimiento.
-3. Las **C4** concentran CO₂ internamente, por lo que fotosintetizan bien con **estomas más cerrados**: pierden menos agua por CO₂ fijado (~250 vs. ~400 moléculas en C3).
+1. El estoma es una puerta de **doble tránsito**: para que entre CO$_2$ (fotosíntesis) debe abrirse, y por el mismo poro sale vapor de agua (~400 moléculas de H$_2$O por CO$_2$ en C3). Razones para no cerrarlo siempre: (i) **sin CO$_2$ no hay fotosíntesis** ni crecimiento; (ii) **sin transpiración la hoja se sobrecalienta** (pierde el enfriamiento por calor latente) y sufre daño por calor.
+2. En la figura, $A$ **se satura** a $g_s$ altas (curva que se aplana) mientras que $E$ **crece en forma lineal**. Al cerrar parcialmente (p. ej. de $g_s = 0.4$ a $0.2$), $A$ baja poco ($\approx$ 24 → 20) y $E$ baja mucho ($\approx$ 7.9 → 3.9), de modo que $WUE = A/E$ sube ($\approx$ 3.0 → 5.1). Lo aprovecha el **riego deficitario controlado**: ahorra agua con poca pérdida de rendimiento.
+3. Las **C4** concentran CO$_2$ internamente, por lo que fotosintetizan bien con **estomas más cerrados**: pierden menos agua por CO$_2$ fijado (~250 vs. ~400 moléculas en C3).
 
 **Rúbrica:** (1) 3 puntos (trade-off 1, dos razones 2); (2) 3 puntos (lectura de la forma de las curvas 2, riego deficitario 1; no se exige leer valores numéricos); (3) 2 puntos.
 
@@ -195,8 +195,8 @@ La Cátedra 1 evaluó la Unidad 1 y la Unidad 2 hasta la sesión 2.3. Esta cáte
 
 **Parte b.**
 
-4. $WUE_X = 18 / 6.0 = 3.0$; $WUE_Y = 24 / 4.0 = 6.0$ μmol CO₂/mmol H₂O. **Y** es más eficiente y probablemente **C4** (rango 4–8); **X** probablemente **C3** (rango 2–5). La comparación es válida porque se midieron con el mismo DPV.
-5. $WUE_X = 15 / 3.5 = 4.3$ μmol CO₂/mmol H₂O (+43%). $A$ cayó 17% y $E$ cayó 42%: el cierre parcial reduce mucho más la transpiración que la fotosíntesis, porque $A$ está cerca de la saturación. La planta ahorra agua a costa de algo de producción.
+4. $WUE_X = 18 / 6.0 = 3.0$; $WUE_Y = 24 / 4.0 = 6.0$ $\mu$mol CO$_2$/mmol H$_2$O. **Y** es más eficiente y probablemente **C4** (rango 4–8); **X** probablemente **C3** (rango 2–5). La comparación es válida porque se midieron con el mismo DPV.
+5. $WUE_X = 15 / 3.5 = 4.3$ $\mu$mol CO$_2$/mmol H$_2$O (+43%). $A$ cayó 17% y $E$ cayó 42%: el cierre parcial reduce mucho más la transpiración que la fotosíntesis, porque $A$ está cerca de la saturación. La planta ahorra agua a costa de algo de producción.
 
 **Rúbrica:** (a1) 2 puntos; (a2) 2 puntos; (a3) 1 punto; (b4) 3 puntos (2 cálculo, 1 C3/C4); (b5) 2 puntos (1 cálculo, 1 explicación).
 

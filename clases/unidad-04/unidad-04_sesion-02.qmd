@@ -1,0 +1,821 @@
+---
+title: "Unidad 4 — Requerimiento hídrico de los cultivos"
+subtitle: "Sesión 4.2: Evapotranspiración de referencia y de cultivo"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+```{r}
+#| include: false
+source("../_common.R")
+
+# Ecuaciones FAO-56 usadas en las figuras de esta sesión
+e_sat <- function(t) 0.6108 * exp(17.27 * t / (t + 237.3))
+
+ra_fao <- function(lat_grados, J) {
+  lat <- lat_grados * pi / 180
+  dr <- 1 + 0.033 * cos(2 * pi * J / 365)
+  d <- 0.409 * sin(2 * pi * J / 365 - 1.39)
+  ws <- acos(-tan(lat) * tan(d))
+  24 * 60 / pi * 0.082 * dr *
+    (ws * sin(lat) * sin(d) + cos(lat) * cos(d) * sin(ws))
+}
+
+rn_fao <- function(tx, tn, hr, rs, ra, z = 500) {
+  ea <- (e_sat(tx) + e_sat(tn)) / 2 * hr / 100
+  rso <- (0.75 + 2e-5 * z) * ra
+  rnl <- 4.903e-9 * ((tx + 273.16)^4 + (tn + 273.16)^4) / 2 *
+    (0.34 - 0.14 * sqrt(ea)) * (1.35 * pmin(rs / rso, 1) - 0.35)
+  0.77 * rs - rnl
+}
+
+terminos_pm <- function(tx, tn, hr, u2, rn, z = 500) {
+  t <- (tx + tn) / 2
+  es <- (e_sat(tx) + e_sat(tn)) / 2
+  ea <- es * hr / 100
+  delta <- 4098 * e_sat(t) / (t + 237.3)^2
+  gamma <- 0.000665 * 101.3 * ((293 - 0.0065 * z) / 293)^5.26
+  den <- delta + gamma * (1 + 0.34 * u2)
+  tibble(radiativo = 0.408 * delta * rn / den,
+         aerodinamico = gamma * 900 / (t + 273) * u2 * (es - ea) / den)
+}
+
+eto_hs <- function(tx, tn, ra) {
+  0.0023 * 0.408 * ra * ((tx + tn) / 2 + 17.8) * sqrt(tx - tn)
+}
+```
+
+## Dos días de enero con el mismo termómetro: ¿piden la misma agua? {.center}
+
+::: {style="font-size: 0.9em;"}
+Mismo huerto de la zona central, mismo sol, misma temperatura y misma humedad.
+
+- **Día B:** aire calmo
+- **Día C:** sopla el puelche
+
+Tu estación solo tiene termómetro. ¿Puedes saber qué día regar más?
+:::
+
+. . .
+
+::: {style="font-size: 1em; text-align: center; margin-top: 1em;"}
+**El método de solo temperatura entrega el mismo valor para ambos días.**
+:::
+
+. . .
+
+::: {style="font-size: 0.9em; text-align: center;"}
+Hoy aprenderás a calcular la ETo con dos métodos y a elegir cuál conviene según los datos que tengas.
+:::
+
+::: {.notes}
+Son los días B y C del ejercicio de la sesión 4.1, donde ya ordenaron C > B. Preguntar: ¿cuánta diferencia creen que hay entre ambos días, en mm? Anotar apuestas y volver a ellas cuando aparezca la figura con los cuatro días (B ≈ 6.6 mm/día, C ≈ 11 mm/día).
+:::
+
+---
+
+## Recapitulación: Sesión 4.1 {.center}
+
+::: {style="font-size: 0.85em;"}
+**Ideas fuerza de la sesión anterior:**
+
+- La ET se expresa como lámina: 1 mm = 1 L/m² = 10 m³/ha
+- Evaporar 1 mm cuesta 2.45 MJ/m²: la **energía** limita la ET
+- El **viento** y el **DPV** determinan cuánto vapor puede llevarse el aire
+- Balance de energía: $R_n = G + H + \lambda E$
+
+**Ahora:** convertimos esos factores en un número de mm/día, con datos de una estación meteorológica.
+:::
+
+---
+
+## Información de la sesión {.center}
+
+| | |
+|---|---|
+| **Unidad** | 4 — Requerimiento hídrico de los cultivos |
+| **Sesión** | 4.2 |
+| **RAA** | RAA6 |
+| **Duración** | ~90 minutos |
+| **Contenido** | ETo, Penman-Monteith FAO-56, Hargreaves-Samani, $ET_c = K_c \times ET_o$, curva de Kc, variables fisiológicas |
+
+---
+
+## Objetivos de aprendizaje {.center}
+
+Al finalizar esta sesión, serás capaz de:
+
+1. Definir la **ETo** y explicar para qué sirve un cultivo de referencia
+2. Calcular la ETo con **Penman-Monteith FAO-56**, paso a paso
+3. Calcular la ETo con **Hargreaves-Samani** y reconocer sus limitaciones
+4. Elegir el método adecuado según los datos disponibles
+5. Calcular la **ETc** con la curva de **Kc** de un cultivo
+6. Distinguir ETo, ETc y ET real, y relacionarlas con **variables fisiológicas**
+
+---
+
+## Del clima al campo en tres pasos {.center}
+
+```{r}
+#| fig-width: 11
+#| fig-height: 2.7
+#| fig-align: center
+cajas <- tibble(
+  x = c(1, 4, 7, 10),
+  titulo = c("Clima", "ETo", "ETc", "ET real"),
+  detalle = c("T, HR, Rs, viento", "Demanda de la\natmósfera",
+              "Cultivo sano y\nbien regado", "Lo que ocurre\nen el campo")
+)
+flechas <- tibble(x = c(2.0, 5.0, 8.0), xend = c(3.0, 6.0, 9.0),
+                  etiqueta = c("Ecuación", "× Kc", "× Ks"))
+ggplot() +
+  geom_tile(data = cajas, aes(x, 0, width = 1.9, height = 1.5), fill = col_agua[1]) +
+  geom_text(data = cajas, aes(x, 0.32, label = titulo), size = 7.5,
+            fontface = "bold", colour = col_texto) +
+  geom_text(data = cajas, aes(x, -0.26, label = detalle), size = 5, colour = col_texto2) +
+  geom_segment(data = flechas, aes(x = x, xend = xend, y = 0, yend = 0),
+               arrow = arrow(length = unit(0.3, "cm"), type = "closed"),
+               colour = col_texto2, linewidth = 0.8) +
+  geom_text(data = flechas, aes(x = (x + xend) / 2, y = 0.3, label = etiqueta),
+            size = 4.4, colour = col_texto) +
+  coord_cartesian(xlim = c(-0.1, 11.1), ylim = c(-0.85, 0.85)) +
+  theme_void()
+```
+
+::: {style="font-size: 0.85em; text-align: center;"}
+$$ ET_{real} = K_s \times K_c \times ET_o $$
+
+Hoy calculamos la **ETo** y la **ETc**. El coeficiente de estrés $K_s$ lo trabajaremos en la Unidad 5.
+:::
+
+::: {.notes}
+Este diagrama ordena toda la sesión. Cada paso agrega una capa: la ecuación traduce el clima en demanda, Kc agrega el cultivo y Ks agrega la disponibilidad de agua del suelo (la figura de agotamiento vista en la sesión 4.1).
+:::
+
+---
+
+## ETo: la demanda del clima {.center}
+
+::: {style="font-size: 0.8em;"}
+La **evapotranspiración de referencia (ETo)** es la ET de una superficie estándar de pasto, siempre bien regada.
+
+| Propiedad del cultivo de referencia | Valor FAO-56 |
+|-------------------------------------|--------------|
+| Altura | 0.12 m |
+| Albedo ($\alpha$) | 0.23 |
+| Resistencia de superficie | 70 s/m |
+| Estado | Sano, en crecimiento activo, sin falta de agua |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Como la superficie está fija, la ETo cambia solo cuando cambia el clima.
+:::
+
+:::
+
+::: {.notes}
+El programa y varios textos la llaman "evapotranspiración potencial". FAO-56 usa "de referencia" porque define una superficie concreta. El valor 0.23 es el mismo albedo usado en la sesión 4.1 para calcular Rn.
+:::
+
+---
+
+## ¿Cómo se obtiene la ETo? {.center .smaller}
+
+::: {style="font-size: 0.9em;"}
+| Método | Qué necesita | Uso típico |
+|--------|--------------|------------|
+| **Lisímetro con pasto** | Tanque de suelo que se pesa | Investigación; calibra los demás métodos |
+| **Penman-Monteith FAO-56** | $T_{max}$, $T_{min}$, HR, $R_s$, viento | Estándar internacional; estaciones completas |
+| **Hargreaves-Samani** | $T_{max}$, $T_{min}$, latitud y fecha | Lugares con solo termómetro; series antiguas |
+| **Bandeja de evaporación** | Lectura de bandeja × coeficiente | Predios sin estación meteorológica |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Hoy calculamos los dos más usados: Penman-Monteith y Hargreaves-Samani.
+:::
+
+:::
+
+---
+
+## Ecuación de Penman-Monteith FAO-56 {.center .smaller}
+
+$$ ET_o = \frac{0.408\, \Delta\, (R_n - G) + \gamma\, \dfrac{900}{T + 273}\, u_2\, (e_s - e_a)}{\Delta + \gamma\, (1 + 0.34\, u_2)} $$
+
+::: {style="font-size: 0.85em;"}
+| Símbolo | Variable | Unidad |
+|---------|----------|--------|
+| $R_n$, $G$ | Radiación neta y flujo de calor del suelo | MJ/m²/día |
+| $T$ | Temperatura media del aire a 2 m | °C |
+| $u_2$ | Velocidad del viento a 2 m | m/s |
+| $e_s - e_a$ | Déficit de presión de vapor (DPV) | kPa |
+| $\Delta$ | Pendiente de la curva de $e_s$ | kPa/°C |
+| $\gamma$ | Constante psicrométrica | kPa/°C |
+:::
+
+::: {.notes}
+Calmar a la sala: todos los términos ya aparecieron en U3 y en la sesión 4.1, salvo Δ y γ. El factor 0.408 es 1/2.45: convierte MJ/m²/día en mm/día. Es exactamente la conversión de la sesión anterior.
+:::
+
+---
+
+## Dos motores en una ecuación {.center}
+
+::: {style="font-size: 0.75em;"}
+$$ ET_o = \underbrace{\frac{0.408\, \Delta\, (R_n - G)}{\Delta + \gamma(1 + 0.34\, u_2)}}_{\text{Término radiativo}} + \underbrace{\frac{\gamma\, \frac{900}{T+273}\, u_2\, (e_s - e_a)}{\Delta + \gamma(1 + 0.34\, u_2)}}_{\text{Término aerodinámico}} $$
+
+| Término | ¿Qué representa? | Depende de |
+|---------|------------------|------------|
+| **Radiativo** | Energía disponible para evaporar | $R_n$, $G$ |
+| **Aerodinámico** | Capacidad del aire para llevarse el vapor | $u_2$, DPV |
+
+:::
+
+::: {.notes}
+Conectar con la sesión 4.1: el término radiativo es el balance de energía y el aerodinámico reúne los factores "sed del aire" y "viento". Separar los dos términos también facilita el cálculo manual.
+:::
+
+---
+
+## Paso 0: datos de la estación {.center}
+
+::: {style="font-size: 0.9em;"}
+**Ejemplo:** cerca de Santiago, 15 de enero, 500 m de altitud.
+
+| Variable | Valor |
+|----------|-------|
+| $T_{max}$ / $T_{min}$ | 31 °C / 14 °C |
+| Humedad relativa media | 55% |
+| Viento a 2 m ($u_2$) | 2 m/s |
+| $R_s$ | 28 MJ/m²/día |
+
+::: {style="margin-top: 0.6em; text-align: center;"}
+$$ T = \frac{31 + 14}{2} = 22.5\ °\text{C} $$
+:::
+
+:::
+
+::: {.notes}
+Si el anemómetro no está a 2 m, FAO-56 entrega un factor de corrección: u2 = uz × 4.87 / ln(67.8 z − 5.42). Se usa en el Taller 4. Pedir a los estudiantes que calculen junto con el docente, con calculadora.
+:::
+
+---
+
+## Paso 1: déficit de presión de vapor {.center .smaller}
+
+::: {style="font-size: 0.8em;"}
+Usamos la misma ecuación de $e_s$ de la sesión 4.1:
+
+$$ e^\circ(T) = 0.6108\, \exp\!\left(\frac{17.27\, T}{T + 237.3}\right) $$
+
+$$ e^\circ(31) = 4.49 \text{ kPa} \qquad e^\circ(14) = 1.60 \text{ kPa} \qquad e_s = \frac{4.49 + 1.60}{2} = 3.05 \text{ kPa} $$
+
+$$ e_a = e_s \times \frac{HR}{100} = 3.05 \times 0.55 = 1.68 \text{ kPa} $$
+
+$$ DPV = e_s - e_a = 3.05 - 1.68 = 1.37 \text{ kPa} $$
+:::
+
+::: {.notes}
+Se promedia entre Tmax y Tmin porque la curva de es es convexa. Con la temperatura media se obtendría e°(22.5) = 2.73 kPa, un valor menor que 3.05 kPa, y se subestimaría el DPV. Con datos de HRmax y HRmin, FAO-56 recomienda calcular ea a partir de ambas; HR media es la versión simplificada que usamos aquí.
+:::
+
+---
+
+## Paso 2: las constantes $\Delta$ y $\gamma$ {.center .smaller}
+
+::: {style="font-size: 0.9em;"}
+**Pendiente de la curva de saturación:**
+
+$$ \Delta = \frac{4098\, e^\circ(T)}{(T + 237.3)^2} = \frac{4098 \times 2.73}{(22.5 + 237.3)^2} \approx 0.165 \text{ kPa/°C} $$
+
+**Constante psicrométrica** (depende de la altitud $z$ a través de la presión $P$):
+
+$$ P = 101.3 \left(\frac{293 - 0.0065\, z}{293}\right)^{5.26} = 95.5 \text{ kPa} $$
+
+$$ \gamma = 0.000665 \times P = 0.064 \text{ kPa/°C} $$
+:::
+
+::: {.notes}
+Δ crece con la temperatura: con más calor, una fracción mayor de la energía se usa en evaporar. γ casi no cambia con el tiempo; depende de la altitud del lugar y basta calcularla una vez por estación.
+:::
+
+---
+
+## Paso 3: radiación neta {.center}
+
+::: {style="font-size: 0.9em;"}
+Retomamos el cálculo de la sesión 4.1:
+
+$$ R_n = (1 - 0.23) \times 28 - 5 = 16.6 \text{ MJ/m}^2\text{/día} $$
+
+A escala diaria, $G \approx 0$.
+
+::: {style="margin-top: 0.8em; font-size: 0.9em;"}
+En este ejemplo usamos $R_{nl} \approx 5$ MJ/m²/día. En el **Taller 4** lo calcularás con la ecuación FAO-56, a partir de $T_{max}$, $T_{min}$, $e_a$ y la razón $R_s/R_{so}$.
+:::
+
+:::
+
+::: {.notes}
+Con la ecuación completa de FAO-56, los datos de este ejemplo dan Rnl ≈ 4.8 MJ/m²/día y Rn ≈ 16.8 MJ/m²/día. El redondeo a 5 cambia la ETo en menos de 0.1 mm/día.
+:::
+
+---
+
+## Paso 4: armar la ETo {.center .smaller}
+
+::: {style="font-size: 0.78em;"}
+**Denominador** (común a ambos términos):
+
+$$ \Delta + \gamma(1 + 0.34\, u_2) = 0.165 + 0.064 \times (1 + 0.34 \times 2) = 0.2725 $$
+
+**Término radiativo:**
+
+$$ \frac{0.408 \times 0.165 \times 16.6}{0.2725} = 4.10 \text{ mm/día} $$
+
+**Término aerodinámico:**
+
+$$ \frac{0.064 \times \frac{900}{295.5} \times 2 \times 1.37}{0.2725} = 1.96 \text{ mm/día} $$
+
+::: {style="margin-top: 0.4em; font-size: 1.15em; font-weight: bold; text-align: center;"}
+ETo = 4.10 + 1.96 ≈ 6.1 mm/día
+:::
+
+:::
+
+::: {.notes}
+Con esta combinación de clima, cerca de dos tercios de la ETo provienen de la energía y un tercio del aire. Comprobar el orden de magnitud: es coherente con la tabla de radiación de la sesión 4.1, que indica 6-8 mm/día para un verano despejado.
+:::
+
+---
+
+## Ejercicio: llega el puelche {.center}
+
+**Problema:** Mismo día del ejemplo, pero el viento sube a $u_2 = 5$ m/s. Conserva los demás datos ($\Delta$, $\gamma$, $R_n$, DPV, $T$).
+
+1. Calcula el nuevo denominador.
+2. Calcula los términos radiativo y aerodinámico.
+3. ¿Cuánto aumentó la ETo? ¿Cuál término subió y cuál bajó?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 6 minutos.
+:::
+
+::: {.notes}
+1. 0.165 + 0.064 × (1 + 1.7) = 0.3378. 2. Radiativo = 1.118 / 0.3378 = 3.31 mm/día. Aerodinámico = 0.064 × 3.046 × 5 × 1.37 / 0.3378 = 3.95 mm/día. 3. ETo = 7.26 mm/día, un 20% más (+1.2 mm/día). El término radiativo baja porque el denominador crece; el aerodinámico se duplica. Simplificación: un puelche real también baja la HR y sube la temperatura, por lo que el aumento sería mayor.
+:::
+
+---
+
+## Hargreaves-Samani: cuando solo hay termómetro {.center}
+
+::: {style="font-size: 0.78em;"}
+$$ ET_o = 0.0023 \times 0.408\, R_a \times (T + 17.8) \times \sqrt{T_{max} - T_{min}} $$
+
+| Componente | ¿Qué aporta? |
+|------------|--------------|
+| $R_a$ (MJ/m²/día) | Radiación en el tope de la atmósfera; depende de **latitud y fecha** |
+| $T + 17.8$ | Efecto de la temperatura |
+| $\sqrt{T_{max} - T_{min}}$ | Aproxima la **nubosidad**: un día despejado tiene mayor oscilación térmica |
+
+:::
+
+::: {.notes}
+El factor 0.408 convierte Ra de MJ/m²/día a mm/día de lámina equivalente. Olvidarlo es el error más común: entrega un valor 2.45 veces mayor. La oscilación térmica reemplaza a la radiación medida: las noches despejadas son frías y los días despejados son cálidos. La ecuación no incluye HR ni viento.
+:::
+
+---
+
+## Radiación extraterrestre $R_a$ en Chile {.center .smaller}
+
+::: {style="font-size: 0.74em;"}
+| Ciudad (lat. S) | Ene | Feb | Mar | Abr | May | Jun | Jul | Ago | Sep | Oct | Nov | Dic |
+|-----------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| Copiapó (27.4°) | 42.9 | 39.8 | 35.0 | 28.3 | 22.8 | 20.2 | 21.3 | 25.8 | 32.1 | 37.9 | 41.8 | 43.4 |
+| **Santiago (33.5°)** | **43.3** | **39.2** | **33.2** | **25.5** | **19.5** | **16.7** | **17.9** | **22.8** | **29.9** | **36.9** | **41.9** | **44.1** |
+| Chillán (36.6°) | 43.4 | 38.7 | 32.1 | 24.0 | 17.7 | 14.9 | 16.1 | 21.2 | 28.6 | 36.2 | 41.8 | 44.3 |
+| Temuco (38.7°) | 43.4 | 38.4 | 31.4 | 22.9 | 16.5 | 13.7 | 14.9 | 20.0 | 27.7 | 35.7 | 41.7 | 44.4 |
+:::
+
+::: {style="font-size: 0.85em; margin-top: 0.8em;"}
+Valores en MJ/m²/día, calculados con la ecuación FAO-56 para el día representativo de cada mes.
+
+En verano las cuatro ciudades reciben casi lo mismo. En invierno, la diferencia entre Copiapó y Temuco es de 6.5 MJ/m²/día, lo que refleja el efecto de la **latitud**.
+:::
+
+::: {.notes}
+Ra se calcula solo con astronomía: distancia Tierra-Sol, declinación solar y latitud. No depende de las nubes ni de la atmósfera. En el Taller 4 se programa la ecuación completa. Días representativos de FAO-56: 15, 46, 74, 105, 135, 162, 198, 228, 258, 288, 318 y 344.
+:::
+
+---
+
+## Hargreaves paso a paso {.center}
+
+::: {style="font-size: 0.8em;"}
+**Mismo día del ejemplo:** $T_{max} = 31$ °C, $T_{min} = 14$ °C, enero en Santiago ($R_a = 43.3$).
+
+$$ T + 17.8 = 22.5 + 17.8 = 40.3 \qquad \sqrt{T_{max} - T_{min}} = \sqrt{17} = 4.12 $$
+
+$$ ET_o = 0.0023 \times 0.408 \times 43.3 \times 40.3 \times 4.12 \approx 6.8 \text{ mm/día} $$
+
+::: {style="margin-top: 0.6em; font-weight: bold; text-align: center;"}
+Penman-Monteith entregó 6.1 mm/día: Hargreaves dio 0.7 mm/día más, sin usar viento, humedad ni radiación medida.
+:::
+
+:::
+
+::: {.notes}
+Se resuelve en la pizarra en 2 minutos. Preguntar por qué la diferencia importa: 0.7 mm/día son 7 m³/ha/día; a lo largo de un mes en 20 ha son más de 4 000 m³.
+:::
+
+---
+
+## Ejercicio: la ETo de tu estación {.center}
+
+**Problema:** Usa los datos que anotaste de **redmeteo.cl** (estación cercana a tu casa, día de ayer).
+
+1. Busca el $R_a$ de noviembre de la ciudad más cercana a tu estación.
+2. Calcula la ETo con Hargreaves-Samani.
+3. Compara con tu compañero o compañera. ¿Qué explica la diferencia?
+
+::: {style="font-size: 0.85em; margin-top: 0.8em;"}
+Si no tienes datos, usa Santiago: $T_{max} = 26$ °C, $T_{min} = 10$ °C.
+:::
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 4 minutos.
+:::
+
+::: {.notes}
+Solución con los datos de respaldo: Ra = 41.9; T = 18 °C; ETo = 0.0023 × 0.408 × 41.9 × 35.8 × √16 ≈ 5.6 mm/día. Si la clase se dicta en otro mes, cambiar el mes del paso 1 y los datos de respaldo.
+:::
+
+---
+
+## Lo que Hargreaves no puede ver {.center}
+
+```{r}
+#| fig-width: 10
+#| fig-height: 4
+#| fig-align: center
+ra_ene <- ra_fao(-33.5, 15)
+dias <- tibble(
+  dia = c("A: nublado,\ncalmo", "B: despejado,\ncalmo", "C: despejado,\npuelche", "D: despejado,\nbrisa costera"),
+  tx = c(21, 37, 37, 26), tn = c(15, 23, 23, 18), hr = c(80, 30, 30, 75),
+  u2 = c(1, 1, 5, 2.5), rs = c(8, 28, 28, 28)
+) |>
+  mutate(rn = rn_fao(tx, tn, hr, rs, ra_ene),
+         hs = eto_hs(tx, tn, ra_ene))
+pm_dias <- dias |>
+  rowwise() |>
+  mutate(terminos_pm(tx, tn, hr, u2, rn)) |>
+  ungroup() |>
+  mutate(total = radiativo + aerodinamico)
+pm_largo <- pm_dias |>
+  select(dia, radiativo, aerodinamico) |>
+  pivot_longer(-dia) |>
+  mutate(name = factor(name, levels = c("aerodinamico", "radiativo"),
+                       labels = c("PM: término aerodinámico", "PM: término radiativo")))
+pm_dias <- mutate(pm_dias, x_hs = as.numeric(factor(dia)) + 0.42)
+ggplot(pm_largo, aes(dia, value)) +
+  geom_col(aes(fill = name), width = 0.5, colour = "white", linewidth = 0.6) +
+  geom_point(data = pm_dias, aes(x_hs, hs, shape = "Hargreaves-Samani"),
+             size = 5, fill = col_texto, colour = "white", stroke = 1) +
+  geom_text(data = pm_dias, aes(dia, total, label = sprintf("PM %.1f", total)),
+            vjust = -0.5, size = 5.2, colour = col_texto) +
+  geom_text(data = pm_dias, aes(x_hs, hs, label = sprintf("HS %.1f", hs)),
+            vjust = -1, size = 5.2, colour = col_texto) +
+  scale_fill_manual(values = c(col_serie[2], col_serie[1]),
+                    guide = guide_legend(reverse = TRUE)) +
+  scale_shape_manual(values = 23) +
+  scale_y_continuous(limits = c(0, 12.5), breaks = seq(0, 12, 3)) +
+  labs(x = NULL, y = "ETo (mm/día)",
+       caption = "Días ilustrativos de enero en Santiago, calculados con las ecuaciones FAO-56")
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+Los días B y C tienen **igual temperatura**, así que Hargreaves entrega 7.3 mm/día para ambos. Penman-Monteith capta el viento: 6.6 y 11.0 mm/día.
+:::
+
+::: {.notes}
+Volver a las apuestas del inicio. Datos usados, en orden Tmax/Tmin, HR, u2, Rs: A 21/15 °C, 80%, 1 m/s, 8 MJ; B y C 37/23 °C, 30%, 1 y 5 m/s, 28 MJ; D 26/18 °C, 75%, 2.5 m/s, 28 MJ. FAO-56 advierte que Hargreaves tiende a subestimar con viento fuerte (u2 > 3 m/s) y a sobrestimar con alta humedad, que es lo que muestran C y A. El día A también muestra que la oscilación térmica es solo una aproximación de la nubosidad.
+:::
+
+---
+
+## ¿Cuál método usar? {.center .smaller}
+
+::: {style="font-size: 0.9em;"}
+| Criterio | Penman-Monteith FAO-56 | Hargreaves-Samani |
+|----------|------------------------|-------------------|
+| **Datos** | $T$, HR, $R_s$, viento | Solo $T_{max}$ y $T_{min}$ |
+| **Base** | Física: energía y transporte de vapor | Empírica |
+| **Precisión** | Método de referencia | Mejor en promedios de 5 días o más |
+| **Viento fuerte** | Lo incorpora | Tiende a subestimar |
+| **Alta humedad** | La incorpora | Tiende a sobrestimar |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Con estación completa, usa Penman-Monteith. Con solo termómetro, usa Hargreaves y compáralo con una estación completa cercana.
+:::
+
+:::
+
+::: {.notes}
+FAO-56 recomienda verificar Hargreaves en cada región nueva comparándolo con Penman-Monteith y calibrar el coeficiente si es necesario. En Chile importa especialmente en la costa, por la humedad, y en zonas con puelche o terral, por el viento.
+:::
+
+---
+
+## ETc: del pasto a tu cultivo {.center}
+
+::: {style="font-size: 0.78em;"}
+La **evapotranspiración de cultivo (ETc)** es la ET de un cultivo sano, bien regado y con buen manejo:
+
+$$ ET_c = K_c \times ET_o $$
+
+| Situación | Significado |
+|-----------|-------------|
+| $K_c < 1$ | El cultivo evapotranspira menos que el pasto de referencia |
+| $K_c > 1$ | Evapotranspira más, por su altura, rugosidad y área foliar |
+
+::: {style="margin-top: 0.8em; text-align: center;"}
+**Ejemplo:** maíz en etapa media, $K_c = 1.20$ y $ET_o = 6.1$ mm/día → $ET_c \approx 7.3$ mm/día.
+:::
+
+:::
+
+::: {.notes}
+Kc reúne las diferencias entre el cultivo y el pasto: altura, albedo, resistencia estomática y evaporación del suelo. En la sesión 4.1 se adelantó por qué un cultivo alto y rugoso puede superar al pasto: captura más turbulencia.
+:::
+
+---
+
+## Valores de Kc de FAO-56 {.center .smaller}
+
+::: {style="font-size: 0.9em;"}
+| Cultivo | $K_{c,ini}$ | $K_{c,med}$ | $K_{c,fin}$ |
+|---------|-------------|-------------|-------------|
+| Maíz (grano) | 0.30 | 1.20 | 0.35-0.60 |
+| Tomate | 0.60 | 1.15 | 0.70-0.90 |
+| Papa | 0.50 | 1.15 | 0.75 |
+| Vid de mesa | 0.30 | 0.85 | 0.45 |
+| Nogal | 0.50 | 1.10 | 0.65 |
+| Palto (sin cubierta vegetal) | 0.60 | 0.85 | 0.75 |
+
+::: {style="margin-top: 0.8em; font-size: 0.85em;"}
+Valores de referencia para clima subhúmedo ($HR_{min} \approx 45\%$, $u_2 \approx 2$ m/s) y manejo estándar. FAO-56 entrega correcciones para otras condiciones.
+:::
+
+:::
+
+::: {.notes}
+Fuente: FAO-56, tabla 12. En climas áridos y ventosos el Kc medio de cultivos altos aumenta; FAO-56 entrega una ecuación de ajuste por HRmin, u2 y altura. El Kc final del maíz depende de la humedad del grano a la cosecha: bajo si se cosecha seco y más alto si se cosecha húmedo.
+:::
+
+---
+
+## La curva de Kc de un cultivo anual {.center}
+
+```{r}
+#| fig-width: 10
+#| fig-height: 4
+#| fig-align: center
+kc_nodos <- tibble(dia = c(0, 25, 65, 115, 145),
+                   kc = c(0.30, 0.30, 1.20, 1.20, 0.55))
+etapas <- tibble(xmin = c(0, 25, 65, 115), xmax = c(25, 65, 115, 145),
+                 etapa = c("Inicial", "Desarrollo", "Media", "Final"),
+                 relleno = c(col_agua[1], "white", col_agua[1], "white"))
+ggplot(kc_nodos, aes(dia, kc)) +
+  geom_rect(data = etapas, inherit.aes = FALSE,
+            aes(xmin = xmin, xmax = xmax, ymin = 0, ymax = 1.5, fill = relleno),
+            alpha = 0.6) +
+  scale_fill_identity() +
+  geom_text(data = etapas, inherit.aes = FALSE,
+            aes(x = (xmin + xmax) / 2, y = 1.42, label = etapa),
+            size = 5.5, colour = col_texto2) +
+  geom_line(colour = col_serie[1], linewidth = 1.3) +
+  geom_point(colour = col_serie[1], size = 3.5) +
+  annotate("text", x = 12.5, y = 0.42, label = "Kc ini = 0.30", size = 5.2, colour = col_texto) +
+  annotate("text", x = 90, y = 1.29, label = "Kc med = 1.20", size = 5.2, colour = col_texto) +
+  annotate("text", x = 133, y = 0.47, label = "Kc fin = 0.55", size = 5.2, colour = col_texto) +
+  scale_y_continuous(limits = c(0, 1.5), breaks = seq(0, 1.5, 0.3)) +
+  scale_x_continuous(breaks = kc_nodos$dia, expand = expansion(mult = 0.03)) +
+  labs(x = "Días desde la siembra", y = "Kc",
+       caption = "Maíz de ciclo de 145 días; duración de etapas referencial")
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+El Kc se mantiene constante en las etapas inicial y media, y varía en línea recta en las etapas de desarrollo y final.
+:::
+
+::: {.notes}
+Es la misma curva que se programará en el Taller 4 (25, 40, 50 y 30 días). Relacionar con la figura de E y T de la sesión 4.1. Interpolación en desarrollo: Kc = Kc,ini + (día − 25) / 40 × (Kc,med − Kc,ini).
+:::
+
+---
+
+## ¿Qué ocurre en cada etapa? {.center .smaller}
+
+::: {style="font-size: 0.9em;"}
+| Etapa | Cobertura | Domina | Kc |
+|-------|-----------|--------|-----|
+| **Inicial** | Menos de 10% | Evaporación del suelo | Bajo; sube si el suelo se moja con frecuencia |
+| **Desarrollo** | De 10% hasta cobertura efectiva | Pasa de E a T | Sube en línea recta |
+| **Media** | Completa | Transpiración | Máximo |
+| **Final** | Follaje envejece | Transpiración en descenso | Baja según madurez y manejo de la cosecha |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+En un mismo clima, la etapa fenológica puede cuadruplicar la ETc.
+:::
+
+:::
+
+::: {.notes}
+En el maíz, Kc pasa de 0.30 a 1.20: un factor de 4. Pregunta para la sala: ¿por qué regar un potrero recién sembrado con la misma lámina de enero sería un error? Tiene un Kc y una ETo más bajos, y además las raíces son superficiales (U3).
+:::
+
+---
+
+## ETo y ETc durante una temporada {.center}
+
+```{r}
+#| fig-width: 10
+#| fig-height: 4
+#| fig-align: center
+temporada <- tibble(dia = 0:145) |>
+  mutate(fecha = as.Date("2026-10-01") + dia,
+         doy = as.numeric(format(fecha, "%j")),
+         ETo = 3.6 + 2.5 * cos(2 * pi * (doy - 15) / 365),
+         Kc = approx(kc_nodos$dia, kc_nodos$kc, xout = dia)$y,
+         ETc = Kc * ETo)
+total_eto <- round(sum(temporada$ETo))
+total_etc <- round(sum(temporada$ETc))
+fin <- temporada |> filter(dia == 145)
+temporada |>
+  select(fecha, ETo, ETc) |>
+  pivot_longer(-fecha) |>
+  ggplot(aes(fecha, value, colour = name)) +
+  geom_line(linewidth = 1.3) +
+  annotate("text", x = as.Date("2026-11-05"), y = 5.5, label = "ETo", size = 5.5, colour = col_texto) +
+  annotate("text", x = as.Date("2026-12-28"), y = 7.9, label = "ETc = Kc × ETo", size = 5.5, colour = col_texto) +
+  scale_colour_manual(values = c(ETc = col_serie[3], ETo = col_serie[1])) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
+  scale_y_continuous(limits = c(0, 8.5), breaks = seq(0, 8, 2)) +
+  labs(x = NULL, y = "mm/día",
+       caption = "Maíz sembrado el 1 de octubre; ETo ilustrativa de la zona central")
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+Al inicio la ETc es muy inferior a la ETo. En la etapa media la supera. Total de la temporada: **ETo = `r total_eto` mm** y **ETc = `r total_etc` mm**.
+:::
+
+::: {.notes}
+La ETc alcanza su máximo cuando coinciden un Kc alto y una ETo alta: es el momento más crítico para el sistema de riego, que debe dimensionarse para ese máximo. Multiplicando el total de ETc por 10 se obtienen los m³/ha de la temporada.
+:::
+
+---
+
+## Ejercicio: de ETo a m³ {.center}
+
+**Problema:** Un agricultor tiene **20 ha de maíz**, en el **día 45** desde la siembra. Usa la curva de Kc anterior. La estación informa $ET_o = 4.8$ mm/día.
+
+1. ¿En qué etapa está el cultivo?
+2. Calcula el Kc por interpolación.
+3. Calcula la ETc en mm/día.
+4. ¿Cuántos m³ requiere reponer el potrero ese día?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 5 minutos.
+:::
+
+::: {.notes}
+1. Desarrollo (día 25 a 65). 2. Kc = 0.30 + (45 − 25) / 40 × 0.90 = 0.75. 3. ETc = 0.75 × 4.8 = 3.6 mm/día. 4. 3.6 × 10 × 20 = 720 m³/día (72 camiones aljibe de 10 m³).
+:::
+
+---
+
+## Los 7 camiones aljibe, resueltos {.center}
+
+::: {style="font-size: 0.8em;"}
+Volvemos a la pregunta de la sesión 4.1:
+
+| Paso | Cálculo | Resultado |
+|------|---------|-----------|
+| Clima | Penman-Monteith, 15 de enero | $ET_o = 6.1$ mm/día |
+| Cultivo | Maíz en floración, $K_c = 1.20$ | $ET_c = 7.3$ mm/día |
+| Lámina a volumen | $7.3 \times 10$ m³/ha | 73 m³/ha/día |
+| Camiones | $73 / 10$ | **≈ 7 camiones aljibe por hectárea** |
+
+:::
+
+::: {.notes}
+Cerrar el ciclo abierto en la primera diapositiva de la sesión 4.1. Ahora los estudiantes pueden reproducir ese número con una calculadora.
+:::
+
+---
+
+## ET real y variables fisiológicas {.center .smaller}
+
+::: {style="font-size: 0.9em;"}
+La ETc supone un cultivo sin estrés. Las **variables fisiológicas** de la Unidad 3 indican si la planta está alcanzando esa tasa.
+
+| Variable | Instrumento | Qué señala |
+|----------|-------------|------------|
+| Potencial hídrico de tallo ($\Psi$) | Cámara de presión | Tensión del agua en la planta |
+| Conductancia estomática ($g_s$) | Porómetro | Grado de apertura de los estomas |
+| Flujo de savia | Sensor en el tronco | Transpiración de cada planta |
+| Temperatura de la hoja | Termómetro infrarrojo, cámara térmica | Una hoja más caliente que lo normal indica cierre estomático |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+La ETc estima cuánta agua reponer. La planta muestra si el riego está siendo suficiente.
+:::
+
+:::
+
+::: {.notes}
+Conectar con la U3 (cámara de Scholander y porómetro) y con el balance de energía de la sesión 4.1 (estrés → aumenta H → hoja más caliente). Son herramientas complementarias: la ETc sirve para planificar y la medición en la planta sirve para verificar. La termografía y el monitoreo con sensores se retoman en la U6.
+:::
+
+---
+
+## Tú eres el agrónomo {.center}
+
+**Situación:** Asesoras 5 ha de vid de mesa en el valle central, en plena temporada de enero. El predio solo tiene termómetro: $T_{max} = 32$ °C, $T_{min} = 12$ °C, $R_a = 43.3$ MJ/m²/día.
+
+1. Calcula la ETo con Hargreaves-Samani.
+2. Calcula la ETc ($K_c = 0.85$) y el volumen diario en m³.
+3. Ese día sopló puelche. ¿Tu ETo queda sobre o bajo la real? ¿Por qué?
+4. Las hojas están más calientes que las de la semana pasada y $g_s$ bajó. Si $K_s = 0.7$, ¿cuál es la ET real?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 6 minutos.
+:::
+
+::: {.notes}
+1. T = 22 °C. ETo = 0.0023 × 0.408 × 43.3 × 39.8 × √20 ≈ 7.2 mm/día. 2. ETc = 0.85 × 7.2 ≈ 6.1 mm/día; 6.1 × 10 × 5 = 305 m³/día. 3. Probablemente bajo la real: Hargreaves no incluye el viento y tiende a subestimar con viento fuerte. 4. ET real = 0.7 × 6.1 ≈ 4.3 mm/día. Discutir que, si se riega solo con la ETc calculada, el problema de fondo (suelo bajo el umbral) no se detecta sin monitorear la planta o el suelo.
+:::
+
+---
+
+## Vocabulario clave {.center .smaller}
+
+| Término | Definición |
+|---------|-----------|
+| ETo | ET de un pasto de referencia bien regado; refleja la demanda del clima |
+| ETc | ET de un cultivo específico sin restricciones: $K_c \times ET_o$ |
+| ET real | ET que ocurre en el campo: $K_s \times K_c \times ET_o$ |
+| Penman-Monteith FAO-56 | Método estándar de ETo, con datos climáticos completos |
+| Hargreaves-Samani | Método de ETo que usa temperatura y $R_a$ |
+| Radiación extraterrestre ($R_a$) | Radiación en el tope de la atmósfera; depende de latitud y fecha |
+| Coeficiente de cultivo (Kc) | Razón entre la ETc de un cultivo y la ETo |
+| Kc ini, Kc med, Kc fin | Valores de Kc en las etapas inicial, media y final |
+
+---
+
+## Resumen de conceptos clave {.center .smaller}
+
+1. La **ETo** es la ET de un pasto estándar bien regado: mide la demanda del clima
+
+2. **Penman-Monteith** suma un término radiativo y uno aerodinámico; necesita $T$, HR, $R_s$ y viento
+
+3. **Hargreaves-Samani** solo necesita temperatura y $R_a$, pero no incorpora el viento ni la humedad
+
+4. **$ET_c = K_c \times ET_o$:** el Kc agrega el efecto del cultivo
+
+5. La **curva de Kc** tiene cuatro etapas y sigue el paso de la evaporación a la transpiración
+
+6. **$ET_{real} = K_s \times ET_c$:** las variables fisiológicas muestran si el cultivo alcanza la ETc
+
+---
+
+## Para la próxima sesión {.center}
+
+**Sesión 4.3 — Tecnologías y plataformas para estimar ET**
+
+- ¿Qué mide una estación meteorológica automática (EMA)?
+- ¿Cómo obtener datos de ET en tiempo real?
+- ¿Cómo se estima la ET desde satélites?
+
+**Para preparar:** entra a **redmeteo.cl**, elige una estación y anota qué variables entrega. Con ellas, ¿podrías usar Penman-Monteith o solo Hargreaves?
+
+---
+
+## Preguntas de autoevaluación {.center .smaller}
+
+1. ¿Cuál es la diferencia entre ETo, ETc y ET real?
+
+2. ¿Por qué Penman-Monteith requiere más datos que Hargreaves-Samani? ¿Cuándo usaría cada uno?
+
+3. ¿Qué representan los términos radiativo y aerodinámico de Penman-Monteith?
+
+4. En Hargreaves-Samani, ¿qué información aporta la raíz de $T_{max} - T_{min}$?
+
+5. Para un cultivo de maíz en etapa media con $K_c = 1.2$ y $ET_o = 5.6$ mm/día, calcule la ETc y el volumen diario para 8 ha.
+
+6. ¿Cómo cambia Kc a lo largo del ciclo de un cultivo anual? Relacione ese cambio con E y T.
+
+7. Una estación costera con alta humedad usa Hargreaves-Samani. ¿Esperaría una ETo sobrestimada o subestimada? Justifique.

@@ -11,6 +11,8 @@ format:
     toc: false
     lang: es
     number-sections: true
+    fig-format: png
+    fig-dpi: 300
 execute:
   echo: false
   warning: false
@@ -53,7 +55,7 @@ execute:
 | Potencial gravitacional | $\Psi_g = \rho\, g\, h \approx 0.01$ MPa por metro de altura |
 | "Ley de Ohm" vegetal | $J = \Delta\Psi / R$ |
 | Conductancia estomática | $g_s = 1 / r_s$ ; $E \approx g_s \cdot DPV / P_{atm}$, con $P_{atm} \approx 101.3$ kPa |
-| Eficiencia de uso del agua | $WUE = A / E$ (μmol CO₂ / mmol H₂O) ; $WUE_i = A / g_s$ |
+| Eficiencia de uso del agua | $WUE = A / E$ ($\mu$mol CO$_2$ / mmol H$_2$O) ; $WUE_i = A / g_s$ |
 
 **Conversiones:** $1$ mm $= 1$ L/m² · $1$ m $= 1000$ mm · $1$ MPa $= 1000$ kPa.
 
@@ -126,7 +128,7 @@ Para cada escenario indica si los estomas estarán **abiertos**, **a medias** o 
 | 1. Vid a las 10:30, sol pleno, DPV = 1.0 kPa, suelo cerca de CC. | | |
 | 2. Vid a las 15:00 en enero, DPV = 3.8 kPa, $\Psi_{hoja} = -1.5$ MPa. | | |
 | 3. Tuna (planta CAM) a las 02:00 de la madrugada, suelo húmedo. | | |
-| 4. Tomate en invernadero con CO₂ enriquecido (1000 ppm) y buena luz. | | |
+| 4. Tomate en invernadero con CO$_2$ enriquecido (1000 ppm) y buena luz. | | |
 
 ## A.8 — El trade-off del estoma y la WUE (8 puntos)
 
@@ -159,7 +161,7 @@ ggplot(df_ae, aes(x = gs, y = valor)) +
   theme_minimal(base_size = 12)
 ```
 
-1. Explica el **trade-off** del estoma entre CO₂ y H₂O. Da **dos razones** por las que la planta no puede mantener los estomas siempre cerrados para ahorrar agua.
+1. Explica el **trade-off** del estoma entre CO$_2$ y H$_2$O. Da **dos razones** por las que la planta no puede mantener los estomas siempre cerrados para ahorrar agua.
 2. Usando la forma de las curvas, explica por qué un **cierre estomático parcial** (déficit hídrico moderado) **aumenta** la WUE. ¿Qué práctica de riego aprovecha este efecto?
 3. ¿Por qué las plantas **C4** (maíz) tienen mayor WUE que las **C3** (trigo, vid)?
 
@@ -240,7 +242,7 @@ Responda:
 
 **Parte b.** El mismo día y con el mismo DPV se miden dos cultivos:
 
-| Cultivo | $A$ (μmol CO₂ m⁻² s⁻¹) | $E$ (mmol H₂O m⁻² s⁻¹) |
+| Cultivo | $A$ ($\mu$mol CO$_2$ m$^{-2}$ s$^{-1}$) | $E$ (mmol H$_2$O m$^{-2}$ s$^{-1}$) |
 |---------|------------------------|------------------------|
 | X | 18 | 6.0 |
 | Y | 24 | 4.0 |
