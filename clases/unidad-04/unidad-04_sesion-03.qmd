@@ -1,0 +1,918 @@
+---
+title: "Unidad 4 — Requerimiento hídrico de los cultivos"
+subtitle: "Sesión 4.3: Tecnologías y plataformas para estimar ET"
+format:
+  revealjs:
+    slide-number: c/t
+    footer: "TAG2027 — Relación Suelo Agua Planta | UDLA"
+    lang: es
+    theme: [default]
+execute:
+  echo: false
+---
+
+```{r}
+#| include: false
+source("../_common.R")
+
+# Ecuaciones FAO-56 usadas en las figuras de esta sesión
+e_sat <- function(t) 0.6108 * exp(17.27 * t / (t + 237.3))
+
+ra_fao <- function(lat_grados, J) {
+  lat <- lat_grados * pi / 180
+  dr <- 1 + 0.033 * cos(2 * pi * J / 365)
+  d <- 0.409 * sin(2 * pi * J / 365 - 1.39)
+  ws <- acos(-tan(lat) * tan(d))
+  24 * 60 / pi * 0.082 * dr *
+    (ws * sin(lat) * sin(d) + cos(lat) * cos(d) * sin(ws))
+}
+
+rn_fao <- function(tx, tn, hr, rs, ra, z = 500) {
+  ea <- (e_sat(tx) + e_sat(tn)) / 2 * hr / 100
+  rso <- (0.75 + 2e-5 * z) * ra
+  rnl <- 4.903e-9 * ((tx + 273.16)^4 + (tn + 273.16)^4) / 2 *
+    (0.34 - 0.14 * sqrt(ea)) * (1.35 * pmin(rs / rso, 1) - 0.35)
+  0.77 * rs - rnl
+}
+
+eto_pm <- function(tx, tn, hr, u2, rs, ra, z = 500) {
+  rn <- rn_fao(tx, tn, hr, rs, ra, z)
+  t <- (tx + tn) / 2
+  es <- (e_sat(tx) + e_sat(tn)) / 2
+  ea <- es * hr / 100
+  delta <- 4098 * e_sat(t) / (t + 237.3)^2
+  gamma <- 0.000665 * 101.3 * ((293 - 0.0065 * z) / 293)^5.26
+  den <- delta + gamma * (1 + 0.34 * u2)
+  0.408 * delta * rn / den + gamma * 900 / (t + 273) * u2 * (es - ea) / den
+}
+```
+
+## Una estación, un parronal: ¿todo el campo toma la misma agua? {.center}
+
+::: {style="font-size: 0.9em;"}
+Parronal de 20 ha en la zona central. La estación más cercana informa $ET_o = 6$ mm/día.
+
+- **Sector A:** plantas vigorosas, follaje denso
+- **Sector B:** plantas débiles, follaje ralo
+:::
+
+. . .
+
+::: {style="font-size: 1em; text-align: center; margin-top: 1em;"}
+**Sector A ≈ 5.9 mm/día. Sector B ≈ 3.3 mm/día.**
+:::
+
+. . .
+
+::: {style="font-size: 0.9em; text-align: center;"}
+La estación describe el clima. El satélite muestra el cultivo en cada sector.
+:::
+
+::: {.notes}
+Pedir apuestas antes de mostrar los valores. La cifra se reconstruye más adelante, en la diapositiva "Del NDVI al coeficiente de cultivo": NDVI de 0.75 y 0.45, Kcb = 1.44 × NDVI − 0.10. Con riego por goteo y suelo seco en superficie, Kc se aproxima a Kcb.
+:::
+
+---
+
+## Recapitulación: Sesión 4.2 {.center}
+
+::: {style="font-size: 0.85em;"}
+**Ideas fuerza de la sesión anterior:**
+
+- La **ETo** mide la demanda del clima sobre un pasto de referencia
+- **Penman-Monteith** requiere $T$, HR, $R_s$ y viento; **Hargreaves-Samani**, solo temperatura y $R_a$
+- $ET_c = K_c \times ET_o$ y $ET_{real} = K_s \times K_c \times ET_o$
+
+**Tu tarea:** revisaste las variables de una estación en redmeteo.cl. ¿Podrías usar Penman-Monteith con ella?
+
+**Ahora:** vemos quién mide esos datos, dónde encontrarlos y qué agregan los satélites.
+:::
+
+::: {.notes}
+Tomar dos o tres respuestas a la tarea. La respuesta depende de la estación: se resuelve en la diapositiva "Qué método permite cada estación". Es común que falte radiación o que el anemómetro no esté a 2 m.
+:::
+
+---
+
+## Información de la sesión {.center}
+
+::: {style="font-size: 0.85em;"}
+| | |
+|--|--------|
+| **Unidad** | 4 — Requerimiento hídrico de los cultivos |
+| **Sesión** | 4.3 |
+| **RAA** | RAA6; introduce temas de RAA9 y RAA10 (Unidad 6) |
+| **Duración** | ~90 minutos |
+| **Contenido** | EMA, redmeteo.cl, Agromet, NDVI, teledetección de ET, introducción a la programación de riego |
+:::
+
+---
+
+## Objetivos de aprendizaje {.center}
+
+Al finalizar esta sesión, serás capaz de:
+
+1. Identificar qué mide cada sensor de una **estación meteorológica automática (EMA)**
+2. Preparar datos de una estación para calcular la **ETo**
+3. Elegir una **red de estaciones** según el dato que necesitas
+4. Calcular el **NDVI** y estimar con él un coeficiente de cultivo
+5. Distinguir la ET estimada con **NDVI** de la estimada con **balance de energía**
+6. Usar la ETc para decidir **cuándo regar**
+
+---
+
+## Una fuente de datos para cada factor {.center}
+
+```{r}
+#| fig-width: 11
+#| fig-height: 3.2
+#| fig-align: center
+fuentes <- tibble(
+  x = c(1, 4, 7, 10),
+  termino = c("ETo", "× Kc", "× Ks", "= ET real"),
+  fuente = c("Estación\nmeteorológica", "Satélite óptico\no tabla FAO-56",
+             "Sensores de suelo\ny planta", "Satélite térmico\n(estimación directa)")
+)
+ggplot(fuentes) +
+  geom_tile(aes(x, 0.45, width = 2.5, height = 0.8), fill = col_agua[1]) +
+  geom_text(aes(x, 0.45, label = termino), size = 8, fontface = "bold", colour = col_texto) +
+  geom_segment(aes(x = x, xend = x, y = -0.25, yend = -0.02),
+               arrow = arrow(length = unit(0.25, "cm"), type = "closed", ends = "last"),
+               colour = col_texto2, linewidth = 0.7) +
+  geom_text(aes(x, -0.62, label = fuente), size = 5.4, colour = col_texto2, lineheight = 0.95) +
+  coord_cartesian(xlim = c(-0.4, 11.4), ylim = c(-1, 0.95)) +
+  theme_void()
+```
+
+::: {style="font-size: 0.85em; text-align: center;"}
+Decidir un riego requiere combinar varias fuentes de datos.
+:::
+
+::: {.notes}
+Es el mapa de la clase. Primero la estación (ETo), luego el satélite óptico (Kc) y el térmico (ET real). Los sensores de suelo y planta se vieron en U2 y U3, y se retoman en U5 y U6. La tabla de Kc de la sesión 4.2 sigue siendo válida cuando no hay imagen disponible.
+:::
+
+---
+
+## Estación meteorológica automática (EMA) {.center}
+
+```{r}
+#| fig-width: 11
+#| fig-height: 4.5
+#| fig-align: center
+sensores <- tibble(
+  y = c(2.05, 1.65, 1.2, 0.72),
+  xp = c(0.28, 0.28, 0.28, 0.28),
+  nombre = c("Anemómetro y veleta", "Piranómetro", "Termohigrómetro con protector", "Pluviómetro"),
+  mide = c("velocidad y dirección del viento", "radiación solar (Rs)",
+           "temperatura y humedad relativa", "precipitación")
+)
+ggplot() +
+  annotate("rect", xmin = -2.2, xmax = 3.7, ymin = -0.12, ymax = 0, fill = col_agua[1]) +
+  annotate("segment", x = 0, xend = 0, y = 0, yend = 2.2, colour = col_texto2, linewidth = 1.8) +
+  geom_segment(data = sensores, aes(x = 0, xend = xp, y = y, yend = y),
+               colour = col_texto2, linewidth = 0.9) +
+  geom_point(data = sensores, aes(xp, y), size = 6, shape = 21,
+             fill = col_serie[1], colour = "white", stroke = 1) +
+  geom_text(data = sensores, aes(0.5, y + 0.08, label = nombre), hjust = 0, size = 5.5,
+            fontface = "bold", colour = col_texto) +
+  geom_text(data = sensores, aes(0.5, y - 0.1, label = mide), hjust = 0, size = 4.8,
+            colour = col_texto2) +
+  annotate("rect", xmin = -1.15, xmax = -0.15, ymin = 0.72, ymax = 1.22,
+           fill = col_agua[2], colour = NA) +
+  annotate("text", x = -0.65, y = 0.97, label = "Registrador\nde datos", size = 4.8,
+           colour = col_texto, lineheight = 0.95) +
+  annotate("segment", x = -1.3, xend = -1.95, y = 0.97, yend = 1.45, colour = col_texto2,
+           arrow = arrow(length = unit(0.25, "cm"), type = "closed")) +
+  annotate("text", x = -1.5, y = 1.68, label = "Envío a un servidor\n(celular o satelital)", size = 4.8,
+           colour = col_texto2, lineheight = 0.95) +
+  annotate("text", x = -0.65, y = 0.5, label = "Promedia cada pocos\nminutos, las 24 horas", size = 4.6,
+           colour = col_texto2, lineheight = 0.95) +
+  coord_cartesian(xlim = c(-2.3, 3.8), ylim = c(-0.15, 2.3)) +
+  theme_void()
+```
+
+::: {.notes}
+Esquema sin escala. Una EMA registra sin intervención humana, por lo que entrega datos continuos, también de noche. Algunas estaciones agregan temperatura de suelo, humedad de hoja o presión. La transmisión remota se retoma en la Unidad 6 (telemetría). El pluviómetro suele montarse aparte, lejos de obstáculos, y aquí se dibuja en el mástil solo por simplicidad.
+:::
+
+---
+
+## Sensores y términos de Penman-Monteith {.center .smaller}
+
+::: {style="font-size: 0.9em;"}
+| Variable | Sensor | Unidad usual | Altura típica | Se usa en |
+|----------|--------|--------------|---------------|-----------|
+| Temperatura | Termistor con protector | °C | 1.5–2 m | $\Delta$, $e_s$, $R_{nl}$ |
+| Humedad relativa | Higrómetro capacitivo | % | 1.5–2 m | $e_a$, DPV |
+| Radiación solar | Piranómetro | W/m² | ≥ 2 m | $R_n$ |
+| Viento | Anemómetro | m/s | 2 m o 10 m | $u_2$ |
+| Precipitación | Pluviómetro | mm | ~1 m | Balance hídrico (Unidad 5) |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+La lluvia queda fuera de la ETo y entra en el balance hídrico, para calcular cuánto regar.
+:::
+
+:::
+
+::: {.notes}
+Relacionar con los pasos 1 a 4 de la sesión 4.2. Preguntar: ¿por qué el termómetro lleva protector? Sin él, el sol calienta el sensor y registra más que la temperatura del aire. Los pluviómetros de cubeta basculante son los más comunes en una EMA.
+:::
+
+---
+
+## Qué método permite cada estación {.center .smaller}
+
+::: {style="font-size: 0.9em;"}
+| La estación informa... | Método | Calidad esperada |
+|---------|-------------|---------|
+| $T$, HR, $R_s$ y viento | Penman-Monteith FAO-56 | La mejor opción |
+| $T$ y HR, sin viento | Penman-Monteith con $u_2 \approx 2$ m/s | Aceptable donde el viento es moderado |
+| $T$ y viento, sin $R_s$ | Penman-Monteith con $R_s$ estimada desde $T_{max} - T_{min}$ | Aceptable; verificar localmente |
+| Solo $T_{max}$ y $T_{min}$ | Hargreaves-Samani | Mejor en promedios de 5 días o más |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Vuelve a tu tarea: ¿en qué fila queda la estación que elegiste?
+:::
+
+:::
+
+::: {.notes}
+FAO-56 entrega procedimientos para datos faltantes: Rs se estima con Rs = kRs × √(Tmax − Tmin) × Ra (kRs ≈ 0.16 en interior y 0.19 en costa), y el viento puede asumirse en 2 m/s como promedio global para una primera aproximación. Pedir a estudiantes que levanten la mano por fila.
+:::
+
+---
+
+## Dónde se instala importa {.center}
+
+::: {style="font-size: 0.82em;"}
+Penman-Monteith supone que el sensor mide el aire sobre un **pasto bien regado**. FAO-56 da estas condiciones:
+
+| Condición de referencia | Qué ocurre si no se cumple |
+|-------------------------|----------------------------|
+| Superficie verde y regada alrededor de la estación | Sobre suelo seco o pavimento, el aire es más cálido y seco |
+| Lejos de edificios y árboles | Se reducen el viento y la radiación medidos |
+| Sensores a la altura estándar | El viento medido a 10 m supera al de 2 m |
+| Mantención y calibración periódicas | Un piranómetro sucio mide menos radiación |
+
+:::
+
+::: {.notes}
+Una estación en un techo sirve para el pronóstico o el aviso de lluvia, y puede fallar para calcular ETo. En zonas áridas, una estación sobre suelo seco registra condiciones más cálidas y secas que un cultivo regado, por lo que sobrestima la ETo. Ejemplo para discutir: una estación en el patio de una casa de ciudad.
+:::
+
+---
+
+## Errores de medición y ETo {.center}
+
+```{r}
+#| fig-width: 10
+#| fig-height: 3.7
+#| fig-align: center
+ra_ene <- ra_fao(-33.5, 15)
+base <- eto_pm(31, 14, 55, 2, 28, ra_ene)
+errores <- tibble(
+  caso = c("Estación sobre suelo seco (+2 °C, −10 puntos de HR)",
+           "Viento a 10 m usado sin corregir",
+           "Sensor de HR que marca 10 puntos menos",
+           "Termómetro sin protector (Tmax +2 °C)",
+           "Piranómetro sucio (Rs −10%)"),
+  eto = c(eto_pm(33, 16, 45, 2, 28, ra_ene),
+          eto_pm(31, 14, 55, 2 / 0.748, 28, ra_ene),
+          eto_pm(31, 14, 45, 2, 28, ra_ene),
+          eto_pm(33, 14, 55, 2, 28, ra_ene),
+          eto_pm(31, 14, 55, 2, 25.2, ra_ene))
+) |>
+  mutate(cambio = eto - base,
+         caso = factor(caso, levels = caso[order(abs(cambio))]))
+ggplot(errores, aes(cambio, caso)) +
+  geom_col(fill = col_serie[1], width = 0.6) +
+  geom_vline(xintercept = 0, colour = col_ref, linewidth = 0.6) +
+  geom_text(aes(label = sprintf("%+.1f", cambio),
+                hjust = ifelse(cambio > 0, -0.1, 1.1)),
+            size = 5.2, colour = col_texto) +
+  scale_x_continuous(limits = c(-0.6, 0.8), breaks = seq(-0.5, 0.75, 0.25)) +
+  labs(x = "Cambio en la ETo (mm/día)", y = NULL,
+       caption = "Día de ejemplo de la sesión 4.2 (ETo = 6.1 mm/día); errores ilustrativos")
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+Un error de 0.6 mm/día durante un mes equivale a **180 m³/ha** de agua que se riegan de más.
+:::
+
+::: {.notes}
+Cálculo: 0.6 mm/día × 30 días × 10 m³/ha/mm = 180 m³/ha. Datos base: Tmax 31 °C, Tmin 14 °C, HR 55%, u2 2 m/s, Rs 28 MJ/m²/día, 500 m. El peor caso combina varios efectos porque ocurren juntos en una estación mal ubicada. Preguntar: ¿cuál de estos errores se detecta mirando un gráfico? (Rs bajo en días despejados.)
+:::
+
+---
+
+## Del sensor a la ecuación: tres ajustes {.center}
+
+::: {style="font-size: 0.82em;"}
+**1. Radiación.** De promedio diario en W/m² a MJ/m²/día:
+
+$$ R_s\ [\text{MJ/m}^2\text{/día}] = R_s\ [\text{W/m}^2] \times 0.0864 $$
+
+**2. Viento.** De la altura del sensor $z$ a 2 m:
+
+$$ u_2 = u_z \times \frac{4.87}{\ln(67.8\, z - 5.42)} \qquad \text{para } z = 10 \text{ m: } u_2 = 0.748\, u_{10} $$
+
+**3. Hora.** Si los datos vienen en UTC, conviértelos a hora local antes de separar los días. Chile continental usa UTC−3 en horario de verano y UTC−4 en invierno.
+:::
+
+::: {.notes}
+0.0864 sale de 86 400 s/día ÷ 1 000 000 J/MJ. Un W es 1 J/s. El ajuste por hora importa: un "día" en UTC comienza a las 21:00 o 20:00 del día anterior en Chile, y mezcla noches de dos fechas locales. RedMeteo entrega el histórico en UTC, y esto se usa en el Taller 6.
+:::
+
+---
+
+## Redes de estaciones en Chile {.center .smaller}
+
+::: {style="font-size: 0.98em;"}
+| | **RedMeteo** ([redmeteo.cl](https://redmeteo.cl)) | **Agromet** ([agrometeorologia.cl](https://agrometeorologia.cl)) |
+|---|-----------------|----------------|
+| **Operador** | Red de meteorólogos aficionados y profesionales | INIA, con estaciones de CEAZA, DMC y otras instituciones |
+| **Tamaño** | Sin cifra en su portada | 486 estaciones informadas en su portal |
+| **Foco** | Meteorología general, en tiempo real | Información para la agricultura |
+| **ETo publicada** | No aparece en su portal: se calcula | Sí, junto con grados día y horas de frío |
+| **Descarga** | Histórico por formulario, hasta 6 meses | CSV o Excel, con verificación |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Para ETo lista, usa Agromet. Para practicar el cálculo o cubrir un lugar sin estación agrícola, usa RedMeteo y revisa bien dónde está instalada.
+:::
+
+:::
+
+::: {.notes}
+Datos revisados en los portales el 6 de noviembre de 2026; revisarlos otra vez antes de la clase porque cambian. RedMeteo se presenta como "Red Meteorológica Aficionada de Chile" e incluye una columna de control de calidad. Su histórico parte a mediados de 2024; el archivo anterior está en el CR2 de la Universidad de Chile. En la tabla de RedMeteo aparecen temperatura, punto de rocío, humedad, presión, viento, radiación solar/UV y lluvia, pero cada estación informa según sus sensores.
+:::
+
+---
+
+## Lectura de un día de estación {.center}
+
+```{r}
+#| fig-width: 11
+#| fig-height: 3.9
+#| fig-align: center
+dia <- tibble(h = 0:23) |>
+  mutate(
+    T_aire = ifelse(h >= 6 & h <= 15,
+                    20 - 8 * cos(pi * (h - 6) / 9),
+                    20 + 8 * cos(pi * (((h - 15) %% 24)) / 15)),
+    HR = 50 - 30 * (T_aire - 20) / 8,
+    Rs = pmax(0, 778 * sin(pi * (h - 5.5) / 14)) * (h >= 5.5 & h <= 19.5),
+    u10 = 3 + 1.5 * sin(2 * pi * (h - 10) / 24)
+  )
+res_tx <- max(dia$T_aire); res_tn <- min(dia$T_aire)
+res_hr <- mean(dia$HR); res_rs <- mean(dia$Rs); res_u <- mean(dia$u10)
+etq <- c(
+  T_aire = sprintf("Temperatura (°C): máx %.0f, mín %.0f", res_tx, res_tn),
+  HR = sprintf("Humedad relativa (%%): media %.0f", res_hr),
+  Rs = sprintf("Radiación solar (W/m²): media %.0f", res_rs),
+  u10 = sprintf("Viento a 10 m (m/s): media %.1f", res_u)
+)
+dia |>
+  pivot_longer(-h) |>
+  mutate(name = factor(etq[name], levels = etq)) |>
+  ggplot(aes(h, value)) +
+  geom_line(colour = col_serie[1], linewidth = 1.2) +
+  facet_wrap(~name, scales = "free_y", ncol = 2) +
+  scale_x_continuous(breaks = seq(0, 24, 6), limits = c(0, 24)) +
+  scale_y_continuous(limits = function(l) c(0, l[2] * 1.05)) +
+  theme_curso(base_size = 16) +
+  labs(x = "Hora local", y = NULL,
+       caption = "Datos simulados de un día despejado de noviembre, 500 m de altitud")
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+Temperatura: extremos del día. Humedad, radiación y viento: promedio de 24 horas.
+:::
+
+::: {.notes}
+El promedio de radiación incluye la noche: por eso es de ~290 W/m² aunque el máximo llegue a ~780 W/m². Error frecuente: promediar solo las horas de sol. Preguntar por qué la HR es mínima cuando T es máxima: el vapor casi no cambia, pero la capacidad del aire aumenta (sesión 4.1). Esta lectura de gráficos se profundiza en U6.
+:::
+
+---
+
+## Ejercicio: ETo desde datos de estación {.center .smaller}
+
+::: {style="font-size: 1em;"}
+**Problema:** Con los datos del gráfico anterior: $T_{max} = 28$ °C, $T_{min} = 12$ °C, HR = 50%, $R_s = 290$ W/m², $u_{10} = 3$ m/s.
+
+**Datos auxiliares:** $e^\circ(28) = 3.78$; $e^\circ(12) = 1.40$; $e^\circ(20) = 2.34$ kPa; $\gamma = 0.064$ kPa/°C; $R_{nl} \approx 5$ MJ/m²/día.
+
+1. Convierte $R_s$ a MJ/m²/día y $u_{10}$ a $u_2$.
+2. Calcula $R_n$, $e_s$, $e_a$, DPV y $\Delta$.
+3. Calcula los términos radiativo y aerodinámico, y la ETo.
+4. Esa estación está en una azotea rodeada de cemento. ¿Tu ETo queda alta o baja? ¿Por qué?
+
+::: {style="font-size: 0.95em; text-align: center; margin-top: 1em;"}
+Resuelve en 8 minutos. Mismos pasos de la sesión 4.2.
+:::
+
+:::
+
+::: {.notes}
+1. Rs = 290 × 0.0864 = 25.1 MJ/m²/día; u2 = 3 × 0.748 = 2.24 m/s. 2. Rn = 0.77 × 25.1 − 5 = 14.3; es = (3.78 + 1.40)/2 = 2.59; ea = 1.30; DPV = 1.29 kPa; T = 20 °C; Δ = 4098 × 2.34 / 257.3² = 0.145. 3. Denominador = 0.145 + 0.064 × (1 + 0.34 × 2.24) = 0.257. Radiativo = 0.408 × 0.145 × 14.3 / 0.257 = 3.3 mm/día. Aerodinámico = 0.064 × (900/293) × 2.24 × 1.29 / 0.257 = 2.2 mm/día. ETo ≈ 5.5 mm/día. 4. Alta: el aire sobre el cemento es más cálido y seco que sobre un pasto regado. Con Hargreaves y Ra de noviembre en Santiago (41.9) se obtiene 5.9 mm/día: sirve de comparación si queda tiempo.
+:::
+
+---
+
+## Demostración: la ETo en Agromet {.center}
+
+::: {style="font-size: 0.9em;"}
+Abramos juntos [agrometeorologia.cl](https://agrometeorologia.cl):
+
+1. Elige la región y la estación más cercana a tu predio.
+2. Busca la sección de **riego** y revisa la ETo de los últimos días.
+3. Compárala con tu cálculo de Hargreaves de la sesión 4.2.
+
+**Para discutir:** ¿a cuántos km está la estación del predio? ¿Tienen la misma influencia de costa, cordillera y altitud?
+:::
+
+::: {.notes}
+Revisar el portal antes de la clase, porque su navegación puede cambiar. Si no hay conexión, usar una captura guardada. El portal también muestra ETc para algunos cultivos, como avellano en Ñuble. Regla práctica para la discusión: la representatividad de una estación depende más del relieve y de la distancia a la costa que de los kilómetros.
+:::
+
+---
+
+## Lo que aporta un satélite {.center}
+
+::: {style="font-size: 0.85em;"}
+Un satélite mide la radiación que refleja y emite cada píxel. La ET se estima con un modelo a partir de esas mediciones.
+
+| | Estación | Satélite |
+|---|----------|----------|
+| **Observa** | La atmósfera en un punto | La superficie en toda el área |
+| **Entrega** | Clima para calcular ETo | Estado del cultivo y variación dentro del predio |
+| **Frecuencia** | Minutos | Días |
+| **Limitación** | Representa su entorno | Las nubes impiden observar |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Las dos fuentes se complementan: la mayoría de los métodos satelitales usa datos de estaciones.
+:::
+
+:::
+
+::: {.notes}
+La palabra clave es teledetección: medir sin contacto. En la zona central de Chile en verano hay pocas nubes, lo que favorece el uso de imágenes justo en la temporada de riego. Más al sur, o con neblina costera, se pierden más fechas.
+:::
+
+---
+
+## NDVI: índice de vegetación {.center}
+
+```{r}
+#| fig-width: 10
+#| fig-height: 2.75
+#| fig-align: center
+espectro <- tibble(
+  superficie = rep(c("Cultivo vigoroso", "Cultivo ralo o débil", "Suelo desnudo"), each = 2),
+  banda = rep(c("Rojo", "Infrarrojo cercano (NIR)"), 3),
+  refl = c(0.05, 0.50, 0.10, 0.30, 0.20, 0.28)
+) |>
+  mutate(superficie = factor(superficie, levels = unique(superficie)),
+         banda = factor(banda, levels = c("Rojo", "Infrarrojo cercano (NIR)")))
+ndvi_tab <- espectro |>
+  pivot_wider(names_from = banda, values_from = refl) |>
+  mutate(ndvi = (`Infrarrojo cercano (NIR)` - Rojo) / (`Infrarrojo cercano (NIR)` + Rojo))
+ggplot(espectro, aes(superficie, refl, fill = banda)) +
+  geom_col(position = position_dodge(width = 0.66), width = 0.6) +
+  geom_text(aes(label = sprintf("%.2f", refl)), position = position_dodge(width = 0.66),
+            vjust = -0.35, size = 4.8, colour = col_texto) +
+  geom_text(data = ndvi_tab, inherit.aes = FALSE,
+            aes(superficie, 0.8, label = sprintf("NDVI = %.2f", ndvi)),
+            size = 5.8, fontface = "bold", colour = col_texto) +
+  scale_fill_manual(values = c(col_serie[2], col_serie[1])) +
+  scale_y_continuous(limits = c(0, 0.86), breaks = seq(0, 0.6, 0.2)) +
+  labs(x = NULL, y = "Reflectancia",
+       caption = "Valores ilustrativos")
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+$$ NDVI = \frac{NIR - Rojo}{NIR + Rojo} $$
+
+La clorofila absorbe el rojo y la estructura de la hoja refleja el infrarrojo cercano.
+:::
+
+::: {.notes}
+El NDVI va de −1 a 1; en cultivos suele estar entre 0.1 (suelo) y 0.9 (follaje denso). Es una razón, por lo que se compensa en parte el efecto de iluminación entre fechas. El NDVI se satura en follajes muy densos: dos cultivos de NDVI 0.85 pueden tener áreas foliares diferentes.
+:::
+
+---
+
+## Del NDVI al coeficiente de cultivo {.center .smaller}
+
+::: {style="font-size: 1em;"}
+El **coeficiente basal ($K_{cb}$)** es la parte del Kc que corresponde a la transpiración. Crece con la cobertura, y esa cobertura se refleja en el NDVI:
+
+$$ K_{cb} = 1.44 \times NDVI - 0.10 \qquad \text{(vid, Campos et al., 2010)} $$
+
+| Sector del parronal | NDVI | $K_{cb}$ | $ET_c$ con $ET_o = 6$ mm/día |
+|---------------------|------|----------|------------------------------|
+| A: vigoroso | 0.75 | 0.98 | 5.9 mm/día |
+| B: débil | 0.45 | 0.55 | 3.3 mm/día |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+El satélite aporta un Kc propio de cada sector y de cada fecha.
+:::
+
+:::
+
+::: {.notes}
+Esta es la respuesta a la pregunta inicial. Advertir tres cosas: (1) la ecuación se obtuvo en viñedos de La Mancha, España, y cada cultivo necesita su propia relación; (2) Kc = Kcb + Ke, y aquí igualamos Kc a Kcb porque en goteo con suelo seco en superficie la evaporación es baja; (3) si se riega por surco o llueve, Ke aumenta y esta ETc queda baja. Validación del trabajo original: Kc = 0.96 Kc modelado, r² = 0.67, contra torre de flujo.
+:::
+
+---
+
+## Ejercicio: del píxel al volumen {.center}
+
+**Problema:** En un sector de **5 ha** de vid con riego por goteo, una imagen entrega $NIR = 0.42$ y $Rojo = 0.06$. La estación informa $ET_o = 5.5$ mm/día.
+
+1. Calcula el NDVI.
+2. Estima el $K_{cb}$.
+3. Calcula la ETc, usando $K_c \approx K_{cb}$.
+4. ¿Cuántos m³ requiere el sector por día?
+
+::: {style="font-size: 0.8em; text-align: center; margin-top: 1em;"}
+Resuelve en 4 minutos.
+:::
+
+::: {.notes}
+1. NDVI = 0.36 / 0.48 = 0.75. 2. Kcb = 1.44 × 0.75 − 0.10 = 0.98. 3. ETc = 0.98 × 5.5 = 5.4 mm/día. 4. 5.4 × 10 × 5 = 270 m³/día. Comparar con el Kc medio de tabla para vid de mesa (0.85): daría 4.7 mm/día y 234 m³/día.
+:::
+
+---
+
+## Satélites más usados en agricultura {.center .smaller}
+
+::: {style="font-size: 1em;"}
+| Satélite | Píxel | Revisita | Banda térmica | Sirve para |
+|----------|-------|----------|---------------|------------|
+| **Sentinel-2** | 10 m | ~5 días | No | NDVI y Kc por sector de un predio |
+| **Landsat 8 y 9** | 30 m | ~8 días (ambos) | Sí | Balance de energía a escala de potrero |
+| **MODIS** | 250–1000 m | 1–2 días | Sí | Seguimiento regional; poca resolución para predios |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Hay un compromiso: más detalle suele implicar menos imágenes por mes.
+:::
+
+:::
+
+::: {.notes}
+Las bandas térmicas de Landsat se adquieren a 100 m y se entregan remuestreadas a 30 m. La revisita real se reduce por nubes. El producto de ET de MODIS, MOD16, tiene 500 m y es un compuesto de 8 días. Sentinel-2 y Landsat son de acceso gratuito.
+:::
+
+---
+
+## Un potrero de 20 ha visto por tres satélites {.center}
+
+```{r}
+#| fig-width: 11
+#| fig-height: 3.8
+#| fig-align: center
+set.seed(43)
+malla <- expand.grid(x = seq(5, 395, 10), y = seq(5, 495, 10)) |>
+  as_tibble() |>
+  mutate(ndvi = 0.42 + 0.33 * y / 500 +
+           0.12 * exp(-((x - 300)^2 + (y - 120)^2) / 8000) -
+           0.14 * exp(-((x - 90)^2 + (y - 360)^2) / 6000) +
+           rnorm(n(), 0, 0.012))
+agregar <- function(tam, etiqueta) {
+  malla |>
+    mutate(px = floor(x / tam), py = floor(y / tam)) |>
+    group_by(px, py) |>
+    summarise(ndvi = mean(ndvi), .groups = "drop") |>
+    mutate(x = (px + 0.5) * tam, y = (py + 0.5) * tam, tam = tam, panel = etiqueta)
+}
+paneles <- c("10 m: 2 000 píxeles", "30 m: unos 220 píxeles", "500 m: menos de 1 píxel")
+vistas <- bind_rows(
+  agregar(10, paneles[1]),
+  agregar(30, paneles[2]),
+  agregar(1000, paneles[3]) |> mutate(x = 200, y = 250, tam = 500)
+) |>
+  mutate(panel = factor(panel, levels = paneles))
+ggplot(vistas, aes(x, y, fill = ndvi)) +
+  geom_tile(aes(width = ifelse(panel == paneles[3], 400, tam),
+                height = ifelse(panel == paneles[3], 500, tam))) +
+  facet_wrap(~panel) +
+  scale_fill_gradient(low = col_agua[1], high = col_agua[4], name = "NDVI",
+                      limits = c(0.35, 0.85), breaks = c(0.4, 0.6, 0.8)) +
+  coord_fixed(xlim = c(0, 400), ylim = c(0, 500), expand = FALSE) +
+  theme_curso() +
+  theme(axis.text = element_blank(), axis.title = element_blank(),
+        panel.grid.major = element_blank(), legend.position = "right",
+        legend.title = element_text(colour = col_texto2))
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+A 500 m, un solo píxel cubre más que el potrero y mezcla lo que hay alrededor.
+:::
+
+::: {.notes}
+Potrero simulado de 400 × 500 m. Píxeles: 200 000 / 100 = 2 000; 200 000 / 900 ≈ 222; 200 000 / 250 000 = 0.8. Preguntar: ¿cuántos píxeles de Sentinel-2 tiene una parcela de 1 ha? (100). ¿Y de Landsat? (11). En frutales, un píxel de 10 m incluye hilera, entrehilera y suelo: es el promedio de todo eso.
+:::
+
+---
+
+## ET desde el satélite térmico {.center .smaller}
+
+::: {style="font-size: 1em;"}
+Retomamos la sesión 4.1. El satélite térmico mide la temperatura de la superficie, y con ella se estima $H$:
+
+$$ \lambda E = R_n - G - H $$
+
+| | Píxel regado (frío) | Píxel con falta de agua (caliente) |
+|---|-----------------|---------------------------|
+| $R_n - G$ (MJ/m²/día) | 15 | 15 |
+| $H$ (MJ/m²/día) | 4 | 10 |
+| $\lambda E$ (MJ/m²/día) | 11 | 5 |
+| **ET (÷ 2.45)** | **4.5 mm/día** | **2.0 mm/día** |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+Una superficie que evapora se enfría. Si le falta agua, se calienta y la energía va al aire.
+:::
+
+:::
+
+::: {.notes}
+Valores ilustrativos en escala diaria. Los modelos más conocidos son SEBAL y METRIC. Calculan la ET en el instante de la imagen, calibran con un píxel frío y uno caliente del mismo paisaje y luego escalan al día con la fracción ET/ETo. METRIC usa ETo de una estación: de nuevo, las dos fuentes juntas. Conecta con la hoja caliente por cierre estomático de la U3 y de la sesión 4.2.
+:::
+
+---
+
+## NDVI o térmico durante una sequía {.center}
+
+```{r}
+#| fig-width: 10
+#| fig-height: 3.6
+#| fig-align: center
+sequia <- tibble(dia = 0:24) |>
+  mutate(`Kcb desde NDVI × ETo` = 5.4 - 0.012 * pmax(dia - 12, 0)^1.4,
+         `Balance de energía` = ifelse(dia <= 8, 5.4, 5.4 * exp(-0.045 * (dia - 8))))
+sequia |>
+  pivot_longer(-dia) |>
+  ggplot(aes(dia, value, colour = name)) +
+  geom_vline(xintercept = 8, colour = col_ref, linewidth = 0.6, linetype = "dashed") +
+  geom_line(linewidth = 1.4) +
+  annotate("text", x = 8.3, y = 1.1, label = "Se agota el agua\nfácilmente aprovechable", hjust = 0,
+           size = 5, colour = col_texto2, lineheight = 0.95) +
+  annotate("text", x = 24, y = 5.85, label = "El follaje sigue verde", hjust = 1, size = 5.2, colour = col_texto) +
+  annotate("text", x = 24, y = 2.0, label = "La ET ya cayó", hjust = 1, size = 5.2, colour = col_texto) +
+  scale_colour_manual(values = c(`Kcb desde NDVI × ETo` = col_serie[1], `Balance de energía` = col_serie[2])) +
+  scale_y_continuous(limits = c(0, 6.2), breaks = seq(0, 6, 2)) +
+  scale_x_continuous(breaks = seq(0, 24, 4)) +
+  labs(x = "Días desde el último riego", y = "ET (mm/día)",
+       caption = "Trayectorias ilustrativas con ETo constante")
+```
+
+::: {style="font-size: 0.8em; text-align: center;"}
+NDVI: cuánta agua podría usar el follaje. Balance de energía: cuánta está usando.
+:::
+
+::: {.notes}
+Una hoja con estomas cerrados sigue verde durante días, así que el NDVI tarda en reaccionar. Estudios en viñedos reportan que el Kcb desde NDVI sobrestima el coeficiente real bajo estrés hídrico. Por eso el método NDVI estima ETc, sin Ks, y el método térmico se acerca a ET real. Volver al diagrama del comienzo. Agotamiento: 8 días × 5.4 mm = 43 mm de AFA, valor elegido para el ejemplo.
+:::
+
+---
+
+## Comparación de los dos enfoques {.center .smaller}
+
+::: {style="font-size: 1em;"}
+| Criterio | NDVI + Kc | Balance de energía |
+|----------|-----------|--------------------|
+| **Sensor** | Óptico (rojo, NIR) | Óptico y térmico |
+| **Estima** | ETc potencial del cultivo | ET real |
+| **Requiere ETo** | Sí, de una estación | En METRIC, sí, para calibrar y escalar |
+| **Detalle y frecuencia** | Alta con Sentinel-2 (10 m, ~5 días) | Menor con Landsat (30 m, ~8 días) |
+| **Detecta estrés reciente** | Poco | Sí |
+| **Complejidad** | Baja: cálculo simple | Alta: requiere especialistas o plataforma |
+
+::: {style="margin-top: 0.8em; font-weight: bold; text-align: center;"}
+NDVI para planificar cuánta agua reponer. Térmico para revisar cuánta usó el cultivo.
+:::
+
+:::
+
+---
+
+## Plataformas disponibles {.center .smaller}
+
+::: {style="font-size: 0.95em;"}
+| Plataforma | Qué entrega | Resolución | Cobertura y acceso |
+|------------|-------------|------------|--------------------|
+| [Agromet](https://agrometeorologia.cl) (INIA) | ETo y datos de estaciones | Punto (estación) | Chile; libre |
+| [PLAS](http://maps.spiderwebgis.org/login/?custom=plas) (INIA) | NDVI y $K_{cb}$ | MODIS o Sentinel-2 | Coquimbo a Biobío; con usuario |
+| [Copernicus Browser](https://browser.dataspace.copernicus.eu) | Imágenes Sentinel y NDVI | 10 m | Mundial; libre |
+| [WaPOR](https://data.apps.fao.org/wapor/) (FAO) | ET real por teledetección | 300 m, cada 10 días | Mundial; libre |
+| [OpenET](https://etdata.org) | ET real, conjunto de 6 modelos | 30 m | Estados Unidos; referencia |
+
+::: {style="margin-top: 0.7em; text-align: center;"}
+También existen servicios comerciales. Antes de contratar, pregunta qué modelo usan y cómo se validó en tu cultivo.
+:::
+
+:::
+
+::: {.notes}
+Demostración opcional: en Copernicus Browser, buscar un predio conocido de la zona central, elegir una fecha sin nubes y activar la capa NDVI. Después, comparar con una fecha de un mes antes. PLAS requiere usuario: se solicita a INIA. Su fuente de 2020 indica imágenes MODIS y la versión FONTAGRO usa Sentinel-2, por lo que conviene confirmar la cobertura actual. OpenET sirve como ejemplo de buena práctica: publica la comparación de sus modelos con torres de flujo.
+:::
+
+---
+
+## Ejercicio: ¿qué herramienta usarías? {.center .smaller}
+
+::: {style="font-size: 1em;"}
+En parejas, elige la fuente de ETo y de Kc para cada caso, y justifica.
+
+| Caso | Situación |
+|-|-----------|
+| **A** | 1.5 ha de tomate; hay una estación Agromet a 5 km en el mismo valle |
+| **B** | 80 ha de parronal con sectores de distinto vigor |
+| **C** | 30 ha de nogal; el vecino te da datos de la estación de su azotea |
+| **D** | Un huerto bien regado por calendario muestra menor calibre y quieres saber si le faltó agua |
+
+::: {style="font-size: 0.95em; text-align: center; margin-top: 1em;"}
+Resuelve en 5 minutos.
+:::
+
+:::
+
+::: {.notes}
+A: Agromet y Kc de tabla; basta y es simple. Sentinel-2 da 150 píxeles y puede usarse para verificar el desarrollo. B: Agromet o estación propia, más NDVI por sector en Sentinel-2. C: buscar una estación agrícola; si solo existe la azotea, usarla con cautela y compararla con otra red. Agregar NDVI si hay relación calibrada para nogal. D: el NDVI no alcanza. Usar balance de energía a nivel de potrero junto a medición en terreno (Ψ de tallo, humedad de suelo). Hay más de una respuesta válida: evaluar la justificación.
+:::
+
+---
+
+## De la ET al calendario de riego {.center}
+
+```{r}
+#| fig-width: 10
+#| fig-height: 2.85
+#| fig-align: center
+etc_dia <- rep(c(5.0, 5.4, 5.8, 6.2, 5.6, 4.6, 5.2), length.out = 30)
+afa <- 40
+agot <- numeric(30)
+riego <- logical(30)
+acum <- 0
+for (i in 1:30) {
+  if (acum + etc_dia[i] > afa) {
+    riego[i] <- TRUE
+    acum <- 0
+  }
+  acum <- acum + etc_dia[i]
+  agot[i] <- acum
+}
+balance <- tibble(fecha = as.Date("2026-12-01") + 0:29, agot, riego)
+n_riegos <- sum(riego)
+ggplot(balance, aes(fecha, agot)) +
+  geom_hline(yintercept = afa, colour = col_ref, linewidth = 0.7, linetype = "dashed") +
+  geom_line(colour = col_serie[1], linewidth = 1.2) +
+  geom_point(data = filter(balance, riego), colour = col_serie[1], size = 3.5) +
+  annotate("text", x = as.Date("2026-12-01"), y = 43, label = "AFA = 40 mm: límite para regar",
+           hjust = 0, size = 5, colour = col_texto) +
+  scale_y_continuous(limits = c(0, 47), breaks = seq(0, 40, 10)) +
+  scale_x_date(date_breaks = "1 week", date_labels = "%d %b") +
+  labs(x = NULL, y = "Agotamiento (mm)",
+       caption = "Datos ilustrativos; puntos: día en que se aplica el riego; sin lluvia")
+```
+
+::: {style="font-size: 0.85em; text-align: center;"}
+$$ \text{Agotamiento}_{hoy} = \text{Agotamiento}_{ayer} + ET_c - \text{Lluvia efectiva} - \text{Riego} $$
+
+La ETc se acumula hasta llegar a la AFA de la Unidad 2. En este mes: `r n_riegos` riegos en 30 días.
+:::
+
+::: {.notes}
+Puente con la Unidad 5, donde se agregan la lámina bruta, la eficiencia, la frecuencia y el tiempo de riego. Por ahora, la pregunta es solo cuándo. La figura muestra por qué el riego por calendario fijo es arriesgado: con otra ETo, la fecha cambia. Las plataformas entregan la ETo diaria que alimenta este balance.
+:::
+
+---
+
+## Ejercicio: ¿qué día regar? {.center .smaller}
+
+::: {style="font-size: 1em;"}
+**Problema:** Un cultivo con $K_c = 0.9$ y AFA = 25 mm se regó hasta capacidad de campo la noche anterior al día 1. No llueve.
+
+| Día | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|-----|---|---|---|---|---|---|---|
+| **ETo (mm)** | 5.0 | 5.5 | 6.0 | 6.5 | 4.0 | 5.0 | 6.0 |
+
+1. Calcula la ETc de cada día y súmala día a día.
+2. ¿En qué día se supera la AFA? ¿Cuándo deberías regar?
+3. ¿Qué lámina repones, en mm y en m³/ha?
+
+::: {style="font-size: 0.95em; text-align: center; margin-top: 1em;"}
+Resuelve en 5 minutos.
+:::
+
+:::
+
+::: {.notes}
+ETc: 4.50, 4.95, 5.40, 5.85, 3.60, 4.50, 5.40. Acumulado: 4.50, 9.45, 14.85, 20.70, 24.30, 28.80, 34.20. La AFA se supera el día 6, así que corresponde regar al terminar el día 5 o al inicio del día 6. Lámina neta: 24.3 mm = 243 m³/ha. Falta la eficiencia de aplicación, que se agrega en la sesión 5.1.
+:::
+
+---
+
+## Tú eres el agrónomo {.center .smaller}
+
+::: {style="font-size: 1em;"}
+**Situación:** Asesoras 10 ha de vid con goteo, cerca de Rancagua. Agromet informa $ET_o = 6.0$ mm/día. La imagen de hoy entrega $NIR = 0.40$ y $Rojo = 0.08$. La AFA es de 30 mm.
+
+1. Calcula el NDVI, el $K_{cb}$ y la ETc ($K_c \approx K_{cb}$).
+2. ¿Cuántos m³/día consume el sector?
+3. Si la ETo se mantiene, ¿cada cuántos días regarías?
+4. Una imagen térmica muestra una franja más caliente, con igual NDVI que el resto. ¿Qué podría estar pasando y cómo lo verificas en terreno?
+
+::: {style="font-size: 0.95em; text-align: center; margin-top: 1em;"}
+Resuelve en 6 minutos.
+:::
+
+:::
+
+::: {.notes}
+1. NDVI = 0.32 / 0.48 = 0.67; Kcb = 1.44 × 0.67 − 0.10 = 0.86; ETc = 0.86 × 6.0 = 5.2 mm/día. 2. 5.2 × 10 × 10 = 520 m³/día. 3. 30 / 5.2 = 5.8 días: cada 5 días, redondeando hacia abajo para no superar la AFA. 4. Falta de agua reciente en esa franja: emisores tapados, una línea dañada, suelo de menor retención. Verificar el caudal de los goteros, la humedad del suelo y el Ψ de tallo. La imagen señala dónde mirar y la visita a terreno confirma la causa.
+:::
+
+---
+
+## Vocabulario clave {.center .smaller}
+
+::: {style="font-size: 0.85em;"}
+| Término | Definición |
+|--|--------|
+| EMA | Estación que registra y transmite variables del clima sin intervención humana |
+| Piranómetro | Sensor de radiación solar ($R_s$) |
+| Teledetección | Medición de una superficie sin contacto, desde satélites o drones |
+| Píxel | Unidad mínima de una imagen; su tamaño define el detalle observable |
+| Revisita | Tiempo entre dos pasadas de un satélite por el mismo lugar |
+| NDVI | Índice de vegetación calculado con el rojo y el infrarrojo cercano |
+| $K_{cb}$ | Coeficiente basal: parte del Kc debida a la transpiración |
+| Banda térmica | Banda que mide la radiación emitida; permite estimar la temperatura de la superficie |
+| METRIC, SEBAL | Modelos que estiman la ET real con el balance de energía |
+:::
+
+---
+
+## Resumen de conceptos clave {.center .smaller}
+
+1. Una **EMA** mide $T$, HR, $R_s$, viento y lluvia; su ubicación y mantención cambian la ETo
+
+2. Antes de calcular, ajusta **unidades, altura del viento y hora** de los datos
+
+3. **Agromet** publica ETo para la agricultura; con **RedMeteo** se calcula a partir de los datos de cada estación
+
+4. El **NDVI** refleja el follaje y permite estimar un Kc por sector y fecha
+
+5. El **balance de energía** con banda térmica estima la ET real y revela el estrés que el NDVI tarda en mostrar
+
+6. El **tamaño del píxel** define si un satélite sirve para tu predio
+
+7. La **ETc acumulada** frente a la AFA indica cuándo regar
+
+---
+
+## Para la próxima sesión {.center}
+
+**Sesión 5.1: Frecuencia y tiempo de riego**
+
+- ¿Cuántos milímetros reponer en cada riego?
+- ¿Cada cuántos días regar?
+- ¿Cuántas horas debe funcionar el equipo?
+
+**Para preparar:** repasa la Unidad 2 y calcula la ADT y la AFA de un suelo con $\theta_{CC} = 0.30$, $\theta_{PMP} = 0.14$, $Z_r = 0.6$ m y $p = 0.5$.
+
+**Taller 4:** programarás Hargreaves-Samani, Penman-Monteith y la curva de Kc.
+
+::: {.notes}
+Solución: ADT = (0.30 − 0.14) × 600 mm = 96 mm; AFA = 0.5 × 96 = 48 mm.
+:::
+
+---
+
+## Preguntas de autoevaluación {.center .smaller}
+
+1. Nombre los sensores de una EMA y la variable de Penman-Monteith que alimenta cada uno.
+
+2. Un anemómetro a 10 m registra 4 m/s. ¿Cuál es $u_2$?
+
+3. ¿Por qué una estación instalada sobre pavimento tiende a sobrestimar la ETo?
+
+4. Un píxel tiene $NIR = 0.45$ y $Rojo = 0.05$. Calcule el NDVI y el $K_{cb}$ con la ecuación para vid.
+
+5. ¿Cuántos píxeles de Landsat y de Sentinel-2 tiene un predio de 9 ha?
+
+6. ¿Por qué el NDVI puede mantenerse alto mientras la ET real cae?
+
+7. Con AFA = 35 mm y $ET_c = 5$ mm/día, ¿cada cuántos días hay que regar?
+
+---
+
+## Fuentes {.center .smaller}
+
+::: {style="font-size: 0.82em;"}
+- Allen, R. G., Pereira, L. S., Raes, D. y Smith, M. (1998). *Crop evapotranspiration* (FAO Irrigation and Drainage Paper 56). FAO.
+- Campos, I., Neale, C. M. U., Calera, A., Balbontín, C. y González-Piqueras, J. (2010). Assessing satellite-based basal crop coefficients for irrigated grapes (*Vitis vinifera* L.). *Agricultural Water Management*, 98(1), 45-54.
+- Volk, J. M. et al. (2024). Assessing the accuracy of OpenET satellite-based evapotranspiration data to support water resource and land management applications. *Nature Water*, 2, 193-205.
+- Portales consultados el 6 de noviembre de 2026: redmeteo.cl, agrometeorologia.cl, FAO WaPOR, SPIDERwebGIS/PLAS, Copernicus Browser.
+:::

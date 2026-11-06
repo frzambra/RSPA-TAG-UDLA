@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="unidad-04_sesion-03_files/libs/clipboard/clipboard.min.js"></script>
+<script src="unidad-04_sesion-03_files/libs/quarto-html/tabby.min.js"></script>
+<script src="unidad-04_sesion-03_files/libs/quarto-html/popper.min.js"></script>
+<script src="unidad-04_sesion-03_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="unidad-04_sesion-03_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="unidad-04_sesion-03_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="unidad-04_sesion-03_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <title>Unidad 4 — Requerimiento hídrico de los cultivos</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="unidad-04_sesion-03_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="unidad-04_sesion-03_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="unidad-04_sesion-03_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link href="unidad-04_sesion-03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="unidad-04_sesion-03_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="unidad-04_sesion-03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="unidad-04_sesion-03_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Unidad 4 — Requerimiento hídrico de los cultivos</h1>
+  <p class="subtitle">Sesión 4.3: Tecnologías y plataformas para estimar ET</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="una-estación-un-parronal-todo-el-campo-toma-la-misma-agua" class="slide level2 center">
+<h2>Una estación, un parronal: ¿todo el campo toma la misma agua?</h2>
+<div style="font-size: 0.9em;">
+<p>Parronal de 20 ha en la zona central. La estación más cercana informa <span class="math inline">\(ET_o = 6\)</span> mm/día.</p>
+<ul>
+<li><strong>Sector A:</strong> plantas vigorosas, follaje denso</li>
+<li><strong>Sector B:</strong> plantas débiles, follaje ralo</li>
+</ul>
+</div>
+<div class="fragment">
+<div style="font-size: 1em; text-align: center; margin-top: 1em;">
+<p><strong>Sector A ≈ 5.9 mm/día. Sector B ≈ 3.3 mm/día.</strong></p>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.9em; text-align: center;">
+<p>La estación describe el clima. El satélite muestra el cultivo en cada sector.</p>
+</div>
+<aside class="notes">
+<p>Pedir apuestas antes de mostrar los valores. La cifra se reconstruye más adelante, en la diapositiva “Del NDVI al coeficiente de cultivo”: NDVI de 0.75 y 0.45, Kcb = 1.44 × NDVI − 0.10. Con riego por goteo y suelo seco en superficie, Kc se aproxima a Kcb.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="recapitulación-sesión-4.2" class="slide level2 center">
+<h2>Recapitulación: Sesión 4.2</h2>
+<div style="font-size: 0.85em;">
+<p><strong>Ideas fuerza de la sesión anterior:</strong></p>
+<ul>
+<li>La <strong>ETo</strong> mide la demanda del clima sobre un pasto de referencia</li>
+<li><strong>Penman-Monteith</strong> requiere <span class="math inline">\(T\)</span>, HR, <span class="math inline">\(R_s\)</span> y viento; <strong>Hargreaves-Samani</strong>, solo temperatura y <span class="math inline">\(R_a\)</span></li>
+<li><span class="math inline">\(ET_c = K_c \times ET_o\)</span> y <span class="math inline">\(ET_{real} = K_s \times K_c \times ET_o\)</span></li>
+</ul>
+<p><strong>Tu tarea:</strong> revisaste las variables de una estación en redmeteo.cl. ¿Podrías usar Penman-Monteith con ella?</p>
+<p><strong>Ahora:</strong> vemos quién mide esos datos, dónde encontrarlos y qué agregan los satélites.</p>
+</div>
+<aside class="notes">
+<p>Tomar dos o tres respuestas a la tarea. La respuesta depende de la estación: se resuelve en la diapositiva “Qué método permite cada estación”. Es común que falte radiación o que el anemómetro no esté a 2 m.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="información-de-la-sesión" class="slide level2 center">
+<h2>Información de la sesión</h2>
+<div style="font-size: 0.85em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 80%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Unidad</strong></td>
+<td>4 — Requerimiento hídrico de los cultivos</td>
+</tr>
+<tr class="even">
+<td><strong>Sesión</strong></td>
+<td>4.3</td>
+</tr>
+<tr class="odd">
+<td><strong>RAA</strong></td>
+<td>RAA6; introduce temas de RAA9 y RAA10 (Unidad 6)</td>
+</tr>
+<tr class="even">
+<td><strong>Duración</strong></td>
+<td>~90 minutos</td>
+</tr>
+<tr class="odd">
+<td><strong>Contenido</strong></td>
+<td>EMA, redmeteo.cl, Agromet, NDVI, teledetección de ET, introducción a la programación de riego</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="objetivos-de-aprendizaje" class="slide level2 center">
+<h2>Objetivos de aprendizaje</h2>
+<p>Al finalizar esta sesión, serás capaz de:</p>
+<ol type="1">
+<li>Identificar qué mide cada sensor de una <strong>estación meteorológica automática (EMA)</strong></li>
+<li>Preparar datos de una estación para calcular la <strong>ETo</strong></li>
+<li>Elegir una <strong>red de estaciones</strong> según el dato que necesitas</li>
+<li>Calcular el <strong>NDVI</strong> y estimar con él un coeficiente de cultivo</li>
+<li>Distinguir la ET estimada con <strong>NDVI</strong> de la estimada con <strong>balance de energía</strong></li>
+<li>Usar la ETc para decidir <strong>cuándo regar</strong></li>
+</ol>
+</section>
+<section id="una-fuente-de-datos-para-cada-factor" class="slide level2 center">
+<h2>Una fuente de datos para cada factor</h2>
+
+<img data-src="unidad-04_sesion-03_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"><div style="font-size: 0.85em; text-align: center;">
+<p>Decidir un riego requiere combinar varias fuentes de datos.</p>
+</div>
+<aside class="notes">
+<p>Es el mapa de la clase. Primero la estación (ETo), luego el satélite óptico (Kc) y el térmico (ET real). Los sensores de suelo y planta se vieron en U2 y U3, y se retoman en U5 y U6. La tabla de Kc de la sesión 4.2 sigue siendo válida cuando no hay imagen disponible.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="estación-meteorológica-automática-ema" class="slide level2 center">
+<h2>Estación meteorológica automática (EMA)</h2>
+
+<img data-src="unidad-04_sesion-03_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"><aside class="notes">
+<p>Esquema sin escala. Una EMA registra sin intervención humana, por lo que entrega datos continuos, también de noche. Algunas estaciones agregan temperatura de suelo, humedad de hoja o presión. La transmisión remota se retoma en la Unidad 6 (telemetría). El pluviómetro suele montarse aparte, lejos de obstáculos, y aquí se dibuja en el mástil solo por simplicidad.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sensores-y-términos-de-penman-monteith" class="slide level2 center smaller">
+<h2>Sensores y términos de Penman-Monteith</h2>
+<div style="font-size: 0.9em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 24%">
+<col style="width: 25%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Sensor</th>
+<th>Unidad usual</th>
+<th>Altura típica</th>
+<th>Se usa en</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Temperatura</td>
+<td>Termistor con protector</td>
+<td>°C</td>
+<td>1.5–2 m</td>
+<td><span class="math inline">\(\Delta\)</span>, <span class="math inline">\(e_s\)</span>, <span class="math inline">\(R_{nl}\)</span></td>
+</tr>
+<tr class="even">
+<td>Humedad relativa</td>
+<td>Higrómetro capacitivo</td>
+<td>%</td>
+<td>1.5–2 m</td>
+<td><span class="math inline">\(e_a\)</span>, DPV</td>
+</tr>
+<tr class="odd">
+<td>Radiación solar</td>
+<td>Piranómetro</td>
+<td>W/m²</td>
+<td>≥ 2 m</td>
+<td><span class="math inline">\(R_n\)</span></td>
+</tr>
+<tr class="even">
+<td>Viento</td>
+<td>Anemómetro</td>
+<td>m/s</td>
+<td>2 m o 10 m</td>
+<td><span class="math inline">\(u_2\)</span></td>
+</tr>
+<tr class="odd">
+<td>Precipitación</td>
+<td>Pluviómetro</td>
+<td>mm</td>
+<td>~1 m</td>
+<td>Balance hídrico (Unidad 5)</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>La lluvia queda fuera de la ETo y entra en el balance hídrico, para calcular cuánto regar.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Relacionar con los pasos 1 a 4 de la sesión 4.2. Preguntar: ¿por qué el termómetro lleva protector? Sin él, el sol calienta el sensor y registra más que la temperatura del aire. Los pluviómetros de cubeta basculante son los más comunes en una EMA.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="qué-método-permite-cada-estación" class="slide level2 center smaller">
+<h2>Qué método permite cada estación</h2>
+<div style="font-size: 0.9em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>La estación informa…</th>
+<th>Método</th>
+<th>Calidad esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(T\)</span>, HR, <span class="math inline">\(R_s\)</span> y viento</td>
+<td>Penman-Monteith FAO-56</td>
+<td>La mejor opción</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T\)</span> y HR, sin viento</td>
+<td>Penman-Monteith con <span class="math inline">\(u_2 \approx 2\)</span> m/s</td>
+<td>Aceptable donde el viento es moderado</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T\)</span> y viento, sin <span class="math inline">\(R_s\)</span></td>
+<td>Penman-Monteith con <span class="math inline">\(R_s\)</span> estimada desde <span class="math inline">\(T_{max} - T_{min}\)</span></td>
+<td>Aceptable; verificar localmente</td>
+</tr>
+<tr class="even">
+<td>Solo <span class="math inline">\(T_{max}\)</span> y <span class="math inline">\(T_{min}\)</span></td>
+<td>Hargreaves-Samani</td>
+<td>Mejor en promedios de 5 días o más</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>Vuelve a tu tarea: ¿en qué fila queda la estación que elegiste?</p>
+</div>
+</div>
+<aside class="notes">
+<p>FAO-56 entrega procedimientos para datos faltantes: Rs se estima con Rs = kRs × √(Tmax − Tmin) × Ra (kRs ≈ 0.16 en interior y 0.19 en costa), y el viento puede asumirse en 2 m/s como promedio global para una primera aproximación. Pedir a estudiantes que levanten la mano por fila.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dónde-se-instala-importa" class="slide level2 center">
+<h2>Dónde se instala importa</h2>
+<div style="font-size: 0.82em;">
+<p>Penman-Monteith supone que el sensor mide el aire sobre un <strong>pasto bien regado</strong>. FAO-56 da estas condiciones:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 47%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Condición de referencia</th>
+<th>Qué ocurre si no se cumple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Superficie verde y regada alrededor de la estación</td>
+<td>Sobre suelo seco o pavimento, el aire es más cálido y seco</td>
+</tr>
+<tr class="even">
+<td>Lejos de edificios y árboles</td>
+<td>Se reducen el viento y la radiación medidos</td>
+</tr>
+<tr class="odd">
+<td>Sensores a la altura estándar</td>
+<td>El viento medido a 10 m supera al de 2 m</td>
+</tr>
+<tr class="even">
+<td>Mantención y calibración periódicas</td>
+<td>Un piranómetro sucio mide menos radiación</td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="notes">
+<p>Una estación en un techo sirve para el pronóstico o el aviso de lluvia, y puede fallar para calcular ETo. En zonas áridas, una estación sobre suelo seco registra condiciones más cálidas y secas que un cultivo regado, por lo que sobrestima la ETo. Ejemplo para discutir: una estación en el patio de una casa de ciudad.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="errores-de-medición-y-eto" class="slide level2 center">
+<h2>Errores de medición y ETo</h2>
+
+<img data-src="unidad-04_sesion-03_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"><div style="font-size: 0.8em; text-align: center;">
+<p>Un error de 0.6 mm/día durante un mes equivale a <strong>180 m³/ha</strong> de agua que se riegan de más.</p>
+</div>
+<aside class="notes">
+<p>Cálculo: 0.6 mm/día × 30 días × 10 m³/ha/mm = 180 m³/ha. Datos base: Tmax 31 °C, Tmin 14 °C, HR 55%, u2 2 m/s, Rs 28 MJ/m²/día, 500 m. El peor caso combina varios efectos porque ocurren juntos en una estación mal ubicada. Preguntar: ¿cuál de estos errores se detecta mirando un gráfico? (Rs bajo en días despejados.)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="del-sensor-a-la-ecuación-tres-ajustes" class="slide level2 center">
+<h2>Del sensor a la ecuación: tres ajustes</h2>
+<div style="font-size: 0.82em;">
+<p><strong>1. Radiación.</strong> De promedio diario en W/m² a MJ/m²/día:</p>
+<p><span class="math display">\[ R_s\ [\text{MJ/m}^2\text{/día}] = R_s\ [\text{W/m}^2] \times 0.0864 \]</span></p>
+<p><strong>2. Viento.</strong> De la altura del sensor <span class="math inline">\(z\)</span> a 2 m:</p>
+<p><span class="math display">\[ u_2 = u_z \times \frac{4.87}{\ln(67.8\, z - 5.42)} \qquad \text{para } z = 10 \text{ m: } u_2 = 0.748\, u_{10} \]</span></p>
+<p><strong>3. Hora.</strong> Si los datos vienen en UTC, conviértelos a hora local antes de separar los días. Chile continental usa UTC−3 en horario de verano y UTC−4 en invierno.</p>
+</div>
+<aside class="notes">
+<p>0.0864 sale de 86 400 s/día ÷ 1 000 000 J/MJ. Un W es 1 J/s. El ajuste por hora importa: un “día” en UTC comienza a las 21:00 o 20:00 del día anterior en Chile, y mezcla noches de dos fechas locales. RedMeteo entrega el histórico en UTC, y esto se usa en el Taller 6.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="redes-de-estaciones-en-chile" class="slide level2 center smaller">
+<h2>Redes de estaciones en Chile</h2>
+<div style="font-size: 0.98em;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>RedMeteo</strong> (<a href="https://redmeteo.cl">redmeteo.cl</a>)</th>
+<th><strong>Agromet</strong> (<a href="https://agrometeorologia.cl">agrometeorologia.cl</a>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Operador</strong></td>
+<td>Red de meteorólogos aficionados y profesionales</td>
+<td>INIA, con estaciones de CEAZA, DMC y otras instituciones</td>
+</tr>
+<tr class="even">
+<td><strong>Tamaño</strong></td>
+<td>Sin cifra en su portada</td>
+<td>486 estaciones informadas en su portal</td>
+</tr>
+<tr class="odd">
+<td><strong>Foco</strong></td>
+<td>Meteorología general, en tiempo real</td>
+<td>Información para la agricultura</td>
+</tr>
+<tr class="even">
+<td><strong>ETo publicada</strong></td>
+<td>No aparece en su portal: se calcula</td>
+<td>Sí, junto con grados día y horas de frío</td>
+</tr>
+<tr class="odd">
+<td><strong>Descarga</strong></td>
+<td>Histórico por formulario, hasta 6 meses</td>
+<td>CSV o Excel, con verificación</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>Para ETo lista, usa Agromet. Para practicar el cálculo o cubrir un lugar sin estación agrícola, usa RedMeteo y revisa bien dónde está instalada.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Datos revisados en los portales el 6 de noviembre de 2026; revisarlos otra vez antes de la clase porque cambian. RedMeteo se presenta como “Red Meteorológica Aficionada de Chile” e incluye una columna de control de calidad. Su histórico parte a mediados de 2024; el archivo anterior está en el CR2 de la Universidad de Chile. En la tabla de RedMeteo aparecen temperatura, punto de rocío, humedad, presión, viento, radiación solar/UV y lluvia, pero cada estación informa según sus sensores.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lectura-de-un-día-de-estación" class="slide level2 center">
+<h2>Lectura de un día de estación</h2>
+
+<img data-src="unidad-04_sesion-03_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"><div style="font-size: 0.8em; text-align: center;">
+<p>Temperatura: extremos del día. Humedad, radiación y viento: promedio de 24 horas.</p>
+</div>
+<aside class="notes">
+<p>El promedio de radiación incluye la noche: por eso es de ~290 W/m² aunque el máximo llegue a ~780 W/m². Error frecuente: promediar solo las horas de sol. Preguntar por qué la HR es mínima cuando T es máxima: el vapor casi no cambia, pero la capacidad del aire aumenta (sesión 4.1). Esta lectura de gráficos se profundiza en U6.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ejercicio-eto-desde-datos-de-estación" class="slide level2 center smaller">
+<h2>Ejercicio: ETo desde datos de estación</h2>
+<div style="font-size: 1em;">
+<p><strong>Problema:</strong> Con los datos del gráfico anterior: <span class="math inline">\(T_{max} = 28\)</span> °C, <span class="math inline">\(T_{min} = 12\)</span> °C, HR = 50%, <span class="math inline">\(R_s = 290\)</span> W/m², <span class="math inline">\(u_{10} = 3\)</span> m/s.</p>
+<p><strong>Datos auxiliares:</strong> <span class="math inline">\(e^\circ(28) = 3.78\)</span>; <span class="math inline">\(e^\circ(12) = 1.40\)</span>; <span class="math inline">\(e^\circ(20) = 2.34\)</span> kPa; <span class="math inline">\(\gamma = 0.064\)</span> kPa/°C; <span class="math inline">\(R_{nl} \approx 5\)</span> MJ/m²/día.</p>
+<ol type="1">
+<li>Convierte <span class="math inline">\(R_s\)</span> a MJ/m²/día y <span class="math inline">\(u_{10}\)</span> a <span class="math inline">\(u_2\)</span>.</li>
+<li>Calcula <span class="math inline">\(R_n\)</span>, <span class="math inline">\(e_s\)</span>, <span class="math inline">\(e_a\)</span>, DPV y <span class="math inline">\(\Delta\)</span>.</li>
+<li>Calcula los términos radiativo y aerodinámico, y la ETo.</li>
+<li>Esa estación está en una azotea rodeada de cemento. ¿Tu ETo queda alta o baja? ¿Por qué?</li>
+</ol>
+<div style="font-size: 0.95em; text-align: center; margin-top: 1em;">
+<p>Resuelve en 8 minutos. Mismos pasos de la sesión 4.2.</p>
+</div>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>Rs = 290 × 0.0864 = 25.1 MJ/m²/día; u2 = 3 × 0.748 = 2.24 m/s. 2. Rn = 0.77 × 25.1 − 5 = 14.3; es = (3.78 + 1.40)/2 = 2.59; ea = 1.30; DPV = 1.29 kPa; T = 20 °C; Δ = 4098 × 2.34 / 257.3² = 0.145. 3. Denominador = 0.145 + 0.064 × (1 + 0.34 × 2.24) = 0.257. Radiativo = 0.408 × 0.145 × 14.3 / 0.257 = 3.3 mm/día. Aerodinámico = 0.064 × (900/293) × 2.24 × 1.29 / 0.257 = 2.2 mm/día. ETo ≈ 5.5 mm/día. 4. Alta: el aire sobre el cemento es más cálido y seco que sobre un pasto regado. Con Hargreaves y Ra de noviembre en Santiago (41.9) se obtiene 5.9 mm/día: sirve de comparación si queda tiempo.</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="demostración-la-eto-en-agromet" class="slide level2 center">
+<h2>Demostración: la ETo en Agromet</h2>
+<div style="font-size: 0.9em;">
+<p>Abramos juntos <a href="https://agrometeorologia.cl">agrometeorologia.cl</a>:</p>
+<ol type="1">
+<li>Elige la región y la estación más cercana a tu predio.</li>
+<li>Busca la sección de <strong>riego</strong> y revisa la ETo de los últimos días.</li>
+<li>Compárala con tu cálculo de Hargreaves de la sesión 4.2.</li>
+</ol>
+<p><strong>Para discutir:</strong> ¿a cuántos km está la estación del predio? ¿Tienen la misma influencia de costa, cordillera y altitud?</p>
+</div>
+<aside class="notes">
+<p>Revisar el portal antes de la clase, porque su navegación puede cambiar. Si no hay conexión, usar una captura guardada. El portal también muestra ETc para algunos cultivos, como avellano en Ñuble. Regla práctica para la discusión: la representatividad de una estación depende más del relieve y de la distancia a la costa que de los kilómetros.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lo-que-aporta-un-satélite" class="slide level2 center">
+<h2>Lo que aporta un satélite</h2>
+<div style="font-size: 0.85em;">
+<p>Un satélite mide la radiación que refleja y emite cada píxel. La ET se estima con un modelo a partir de esas mediciones.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 43%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Estación</th>
+<th>Satélite</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Observa</strong></td>
+<td>La atmósfera en un punto</td>
+<td>La superficie en toda el área</td>
+</tr>
+<tr class="even">
+<td><strong>Entrega</strong></td>
+<td>Clima para calcular ETo</td>
+<td>Estado del cultivo y variación dentro del predio</td>
+</tr>
+<tr class="odd">
+<td><strong>Frecuencia</strong></td>
+<td>Minutos</td>
+<td>Días</td>
+</tr>
+<tr class="even">
+<td><strong>Limitación</strong></td>
+<td>Representa su entorno</td>
+<td>Las nubes impiden observar</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>Las dos fuentes se complementan: la mayoría de los métodos satelitales usa datos de estaciones.</p>
+</div>
+</div>
+<aside class="notes">
+<p>La palabra clave es teledetección: medir sin contacto. En la zona central de Chile en verano hay pocas nubes, lo que favorece el uso de imágenes justo en la temporada de riego. Más al sur, o con neblina costera, se pierden más fechas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ndvi-índice-de-vegetación" class="slide level2 center">
+<h2>NDVI: índice de vegetación</h2>
+
+<img data-src="unidad-04_sesion-03_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"><div style="font-size: 0.8em; text-align: center;">
+<p><span class="math display">\[ NDVI = \frac{NIR - Rojo}{NIR + Rojo} \]</span></p>
+<p>La clorofila absorbe el rojo y la estructura de la hoja refleja el infrarrojo cercano.</p>
+</div>
+<aside class="notes">
+<p>El NDVI va de −1 a 1; en cultivos suele estar entre 0.1 (suelo) y 0.9 (follaje denso). Es una razón, por lo que se compensa en parte el efecto de iluminación entre fechas. El NDVI se satura en follajes muy densos: dos cultivos de NDVI 0.85 pueden tener áreas foliares diferentes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="del-ndvi-al-coeficiente-de-cultivo" class="slide level2 center smaller">
+<h2>Del NDVI al coeficiente de cultivo</h2>
+<div style="font-size: 1em;">
+<p>El <strong>coeficiente basal (<span class="math inline">\(K_{cb}\)</span>)</strong> es la parte del Kc que corresponde a la transpiración. Crece con la cobertura, y esa cobertura se refleja en el NDVI:</p>
+<p><span class="math display">\[ K_{cb} = 1.44 \times NDVI - 0.10 \qquad \text{(vid, Campos et al., 2010)} \]</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Sector del parronal</th>
+<th>NDVI</th>
+<th><span class="math inline">\(K_{cb}\)</span></th>
+<th><span class="math inline">\(ET_c\)</span> con <span class="math inline">\(ET_o = 6\)</span> mm/día</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A: vigoroso</td>
+<td>0.75</td>
+<td>0.98</td>
+<td>5.9 mm/día</td>
+</tr>
+<tr class="even">
+<td>B: débil</td>
+<td>0.45</td>
+<td>0.55</td>
+<td>3.3 mm/día</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>El satélite aporta un Kc propio de cada sector y de cada fecha.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Esta es la respuesta a la pregunta inicial. Advertir tres cosas: (1) la ecuación se obtuvo en viñedos de La Mancha, España, y cada cultivo necesita su propia relación; (2) Kc = Kcb + Ke, y aquí igualamos Kc a Kcb porque en goteo con suelo seco en superficie la evaporación es baja; (3) si se riega por surco o llueve, Ke aumenta y esta ETc queda baja. Validación del trabajo original: Kc = 0.96 Kc modelado, r² = 0.67, contra torre de flujo.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ejercicio-del-píxel-al-volumen" class="slide level2 center">
+<h2>Ejercicio: del píxel al volumen</h2>
+<p><strong>Problema:</strong> En un sector de <strong>5 ha</strong> de vid con riego por goteo, una imagen entrega <span class="math inline">\(NIR = 0.42\)</span> y <span class="math inline">\(Rojo = 0.06\)</span>. La estación informa <span class="math inline">\(ET_o = 5.5\)</span> mm/día.</p>
+<ol type="1">
+<li>Calcula el NDVI.</li>
+<li>Estima el <span class="math inline">\(K_{cb}\)</span>.</li>
+<li>Calcula la ETc, usando <span class="math inline">\(K_c \approx K_{cb}\)</span>.</li>
+<li>¿Cuántos m³ requiere el sector por día?</li>
+</ol>
+<div style="font-size: 0.8em; text-align: center; margin-top: 1em;">
+<p>Resuelve en 4 minutos.</p>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>NDVI = 0.36 / 0.48 = 0.75. 2. Kcb = 1.44 × 0.75 − 0.10 = 0.98. 3. ETc = 0.98 × 5.5 = 5.4 mm/día. 4. 5.4 × 10 × 5 = 270 m³/día. Comparar con el Kc medio de tabla para vid de mesa (0.85): daría 4.7 mm/día y 234 m³/día.</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="satélites-más-usados-en-agricultura" class="slide level2 center smaller">
+<h2>Satélites más usados en agricultura</h2>
+<div style="font-size: 1em;">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 12%">
+<col style="width: 18%">
+<col style="width: 27%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Satélite</th>
+<th>Píxel</th>
+<th>Revisita</th>
+<th>Banda térmica</th>
+<th>Sirve para</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Sentinel-2</strong></td>
+<td>10 m</td>
+<td>~5 días</td>
+<td>No</td>
+<td>NDVI y Kc por sector de un predio</td>
+</tr>
+<tr class="even">
+<td><strong>Landsat 8 y 9</strong></td>
+<td>30 m</td>
+<td>~8 días (ambos)</td>
+<td>Sí</td>
+<td>Balance de energía a escala de potrero</td>
+</tr>
+<tr class="odd">
+<td><strong>MODIS</strong></td>
+<td>250–1000 m</td>
+<td>1–2 días</td>
+<td>Sí</td>
+<td>Seguimiento regional; poca resolución para predios</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>Hay un compromiso: más detalle suele implicar menos imágenes por mes.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Las bandas térmicas de Landsat se adquieren a 100 m y se entregan remuestreadas a 30 m. La revisita real se reduce por nubes. El producto de ET de MODIS, MOD16, tiene 500 m y es un compuesto de 8 días. Sentinel-2 y Landsat son de acceso gratuito.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="un-potrero-de-20-ha-visto-por-tres-satélites" class="slide level2 center">
+<h2>Un potrero de 20 ha visto por tres satélites</h2>
+
+<img data-src="unidad-04_sesion-03_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"><div style="font-size: 0.8em; text-align: center;">
+<p>A 500 m, un solo píxel cubre más que el potrero y mezcla lo que hay alrededor.</p>
+</div>
+<aside class="notes">
+<p>Potrero simulado de 400 × 500 m. Píxeles: 200 000 / 100 = 2 000; 200 000 / 900 ≈ 222; 200 000 / 250 000 = 0.8. Preguntar: ¿cuántos píxeles de Sentinel-2 tiene una parcela de 1 ha? (100). ¿Y de Landsat? (11). En frutales, un píxel de 10 m incluye hilera, entrehilera y suelo: es el promedio de todo eso.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="et-desde-el-satélite-térmico" class="slide level2 center smaller">
+<h2>ET desde el satélite térmico</h2>
+<div style="font-size: 1em;">
+<p>Retomamos la sesión 4.1. El satélite térmico mide la temperatura de la superficie, y con ella se estima <span class="math inline">\(H\)</span>:</p>
+<p><span class="math display">\[ \lambda E = R_n - G - H \]</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Píxel regado (frío)</th>
+<th>Píxel con falta de agua (caliente)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(R_n - G\)</span> (MJ/m²/día)</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(H\)</span> (MJ/m²/día)</td>
+<td>4</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\lambda E\)</span> (MJ/m²/día)</td>
+<td>11</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td><strong>ET (÷ 2.45)</strong></td>
+<td><strong>4.5 mm/día</strong></td>
+<td><strong>2.0 mm/día</strong></td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>Una superficie que evapora se enfría. Si le falta agua, se calienta y la energía va al aire.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Valores ilustrativos en escala diaria. Los modelos más conocidos son SEBAL y METRIC. Calculan la ET en el instante de la imagen, calibran con un píxel frío y uno caliente del mismo paisaje y luego escalan al día con la fracción ET/ETo. METRIC usa ETo de una estación: de nuevo, las dos fuentes juntas. Conecta con la hoja caliente por cierre estomático de la U3 y de la sesión 4.2.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ndvi-o-térmico-durante-una-sequía" class="slide level2 center">
+<h2>NDVI o térmico durante una sequía</h2>
+
+<img data-src="unidad-04_sesion-03_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"><div style="font-size: 0.8em; text-align: center;">
+<p>NDVI: cuánta agua podría usar el follaje. Balance de energía: cuánta está usando.</p>
+</div>
+<aside class="notes">
+<p>Una hoja con estomas cerrados sigue verde durante días, así que el NDVI tarda en reaccionar. Estudios en viñedos reportan que el Kcb desde NDVI sobrestima el coeficiente real bajo estrés hídrico. Por eso el método NDVI estima ETc, sin Ks, y el método térmico se acerca a ET real. Volver al diagrama del comienzo. Agotamiento: 8 días × 5.4 mm = 43 mm de AFA, valor elegido para el ejemplo.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="comparación-de-los-dos-enfoques" class="slide level2 center smaller">
+<h2>Comparación de los dos enfoques</h2>
+<div style="font-size: 1em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 26%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterio</th>
+<th>NDVI + Kc</th>
+<th>Balance de energía</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Sensor</strong></td>
+<td>Óptico (rojo, NIR)</td>
+<td>Óptico y térmico</td>
+</tr>
+<tr class="even">
+<td><strong>Estima</strong></td>
+<td>ETc potencial del cultivo</td>
+<td>ET real</td>
+</tr>
+<tr class="odd">
+<td><strong>Requiere ETo</strong></td>
+<td>Sí, de una estación</td>
+<td>En METRIC, sí, para calibrar y escalar</td>
+</tr>
+<tr class="even">
+<td><strong>Detalle y frecuencia</strong></td>
+<td>Alta con Sentinel-2 (10 m, ~5 días)</td>
+<td>Menor con Landsat (30 m, ~8 días)</td>
+</tr>
+<tr class="odd">
+<td><strong>Detecta estrés reciente</strong></td>
+<td>Poco</td>
+<td>Sí</td>
+</tr>
+<tr class="even">
+<td><strong>Complejidad</strong></td>
+<td>Baja: cálculo simple</td>
+<td>Alta: requiere especialistas o plataforma</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.8em; font-weight: bold; text-align: center;">
+<p>NDVI para planificar cuánta agua reponer. Térmico para revisar cuánta usó el cultivo.</p>
+</div>
+</div>
+</section>
+<section id="plataformas-disponibles" class="slide level2 center smaller">
+<h2>Plataformas disponibles</h2>
+<div style="font-size: 0.95em;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Plataforma</th>
+<th>Qué entrega</th>
+<th>Resolución</th>
+<th>Cobertura y acceso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://agrometeorologia.cl">Agromet</a> (INIA)</td>
+<td>ETo y datos de estaciones</td>
+<td>Punto (estación)</td>
+<td>Chile; libre</td>
+</tr>
+<tr class="even">
+<td><a href="http://maps.spiderwebgis.org/login/?custom=plas">PLAS</a> (INIA)</td>
+<td>NDVI y <span class="math inline">\(K_{cb}\)</span></td>
+<td>MODIS o Sentinel-2</td>
+<td>Coquimbo a Biobío; con usuario</td>
+</tr>
+<tr class="odd">
+<td><a href="https://browser.dataspace.copernicus.eu">Copernicus Browser</a></td>
+<td>Imágenes Sentinel y NDVI</td>
+<td>10 m</td>
+<td>Mundial; libre</td>
+</tr>
+<tr class="even">
+<td><a href="https://data.apps.fao.org/wapor/">WaPOR</a> (FAO)</td>
+<td>ET real por teledetección</td>
+<td>300 m, cada 10 días</td>
+<td>Mundial; libre</td>
+</tr>
+<tr class="odd">
+<td><a href="https://etdata.org">OpenET</a></td>
+<td>ET real, conjunto de 6 modelos</td>
+<td>30 m</td>
+<td>Estados Unidos; referencia</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0.7em; text-align: center;">
+<p>También existen servicios comerciales. Antes de contratar, pregunta qué modelo usan y cómo se validó en tu cultivo.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Demostración opcional: en Copernicus Browser, buscar un predio conocido de la zona central, elegir una fecha sin nubes y activar la capa NDVI. Después, comparar con una fecha de un mes antes. PLAS requiere usuario: se solicita a INIA. Su fuente de 2020 indica imágenes MODIS y la versión FONTAGRO usa Sentinel-2, por lo que conviene confirmar la cobertura actual. OpenET sirve como ejemplo de buena práctica: publica la comparación de sus modelos con torres de flujo.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ejercicio-qué-herramienta-usarías" class="slide level2 center smaller">
+<h2>Ejercicio: ¿qué herramienta usarías?</h2>
+<div style="font-size: 1em;">
+<p>En parejas, elige la fuente de ETo y de Kc para cada caso, y justifica.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 91%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Caso</th>
+<th>Situación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A</strong></td>
+<td>1.5 ha de tomate; hay una estación Agromet a 5 km en el mismo valle</td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td>80 ha de parronal con sectores de distinto vigor</td>
+</tr>
+<tr class="odd">
+<td><strong>C</strong></td>
+<td>30 ha de nogal; el vecino te da datos de la estación de su azotea</td>
+</tr>
+<tr class="even">
+<td><strong>D</strong></td>
+<td>Un huerto bien regado por calendario muestra menor calibre y quieres saber si le faltó agua</td>
+</tr>
+</tbody>
+</table>
+<div style="font-size: 0.95em; text-align: center; margin-top: 1em;">
+<p>Resuelve en 5 minutos.</p>
+</div>
+</div>
+<aside class="notes">
+<p>A: Agromet y Kc de tabla; basta y es simple. Sentinel-2 da 150 píxeles y puede usarse para verificar el desarrollo. B: Agromet o estación propia, más NDVI por sector en Sentinel-2. C: buscar una estación agrícola; si solo existe la azotea, usarla con cautela y compararla con otra red. Agregar NDVI si hay relación calibrada para nogal. D: el NDVI no alcanza. Usar balance de energía a nivel de potrero junto a medición en terreno (Ψ de tallo, humedad de suelo). Hay más de una respuesta válida: evaluar la justificación.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="de-la-et-al-calendario-de-riego" class="slide level2 center">
+<h2>De la ET al calendario de riego</h2>
+
+<img data-src="unidad-04_sesion-03_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1500"><div style="font-size: 0.85em; text-align: center;">
+<p><span class="math display">\[ \text{Agotamiento}_{hoy} = \text{Agotamiento}_{ayer} + ET_c - \text{Lluvia efectiva} - \text{Riego} \]</span></p>
+<p>La ETc se acumula hasta llegar a la AFA de la Unidad 2. En este mes: 4 riegos en 30 días.</p>
+</div>
+<aside class="notes">
+<p>Puente con la Unidad 5, donde se agregan la lámina bruta, la eficiencia, la frecuencia y el tiempo de riego. Por ahora, la pregunta es solo cuándo. La figura muestra por qué el riego por calendario fijo es arriesgado: con otra ETo, la fecha cambia. Las plataformas entregan la ETo diaria que alimenta este balance.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ejercicio-qué-día-regar" class="slide level2 center smaller">
+<h2>Ejercicio: ¿qué día regar?</h2>
+<div style="font-size: 1em;">
+<p><strong>Problema:</strong> Un cultivo con <span class="math inline">\(K_c = 0.9\)</span> y AFA = 25 mm se regó hasta capacidad de campo la noche anterior al día 1. No llueve.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Día</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ETo (mm)</strong></td>
+<td>5.0</td>
+<td>5.5</td>
+<td>6.0</td>
+<td>6.5</td>
+<td>4.0</td>
+<td>5.0</td>
+<td>6.0</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>Calcula la ETc de cada día y súmala día a día.</li>
+<li>¿En qué día se supera la AFA? ¿Cuándo deberías regar?</li>
+<li>¿Qué lámina repones, en mm y en m³/ha?</li>
+</ol>
+<div style="font-size: 0.95em; text-align: center; margin-top: 1em;">
+<p>Resuelve en 5 minutos.</p>
+</div>
+</div>
+<aside class="notes">
+<p>ETc: 4.50, 4.95, 5.40, 5.85, 3.60, 4.50, 5.40. Acumulado: 4.50, 9.45, 14.85, 20.70, 24.30, 28.80, 34.20. La AFA se supera el día 6, así que corresponde regar al terminar el día 5 o al inicio del día 6. Lámina neta: 24.3 mm = 243 m³/ha. Falta la eficiencia de aplicación, que se agrega en la sesión 5.1.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tú-eres-el-agrónomo" class="slide level2 center smaller">
+<h2>Tú eres el agrónomo</h2>
+<div style="font-size: 1em;">
+<p><strong>Situación:</strong> Asesoras 10 ha de vid con goteo, cerca de Rancagua. Agromet informa <span class="math inline">\(ET_o = 6.0\)</span> mm/día. La imagen de hoy entrega <span class="math inline">\(NIR = 0.40\)</span> y <span class="math inline">\(Rojo = 0.08\)</span>. La AFA es de 30 mm.</p>
+<ol type="1">
+<li>Calcula el NDVI, el <span class="math inline">\(K_{cb}\)</span> y la ETc (<span class="math inline">\(K_c \approx K_{cb}\)</span>).</li>
+<li>¿Cuántos m³/día consume el sector?</li>
+<li>Si la ETo se mantiene, ¿cada cuántos días regarías?</li>
+<li>Una imagen térmica muestra una franja más caliente, con igual NDVI que el resto. ¿Qué podría estar pasando y cómo lo verificas en terreno?</li>
+</ol>
+<div style="font-size: 0.95em; text-align: center; margin-top: 1em;">
+<p>Resuelve en 6 minutos.</p>
+</div>
+</div>
+<aside class="notes">
+<ol type="1">
+<li>NDVI = 0.32 / 0.48 = 0.67; Kcb = 1.44 × 0.67 − 0.10 = 0.86; ETc = 0.86 × 6.0 = 5.2 mm/día. 2. 5.2 × 10 × 10 = 520 m³/día. 3. 30 / 5.2 = 5.8 días: cada 5 días, redondeando hacia abajo para no superar la AFA. 4. Falta de agua reciente en esa franja: emisores tapados, una línea dañada, suelo de menor retención. Verificar el caudal de los goteros, la humedad del suelo y el Ψ de tallo. La imagen señala dónde mirar y la visita a terreno confirma la causa.</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="vocabulario-clave" class="slide level2 center smaller">
+<h2>Vocabulario clave</h2>
+<div style="font-size: 0.85em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EMA</td>
+<td>Estación que registra y transmite variables del clima sin intervención humana</td>
+</tr>
+<tr class="even">
+<td>Piranómetro</td>
+<td>Sensor de radiación solar (<span class="math inline">\(R_s\)</span>)</td>
+</tr>
+<tr class="odd">
+<td>Teledetección</td>
+<td>Medición de una superficie sin contacto, desde satélites o drones</td>
+</tr>
+<tr class="even">
+<td>Píxel</td>
+<td>Unidad mínima de una imagen; su tamaño define el detalle observable</td>
+</tr>
+<tr class="odd">
+<td>Revisita</td>
+<td>Tiempo entre dos pasadas de un satélite por el mismo lugar</td>
+</tr>
+<tr class="even">
+<td>NDVI</td>
+<td>Índice de vegetación calculado con el rojo y el infrarrojo cercano</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(K_{cb}\)</span></td>
+<td>Coeficiente basal: parte del Kc debida a la transpiración</td>
+</tr>
+<tr class="even">
+<td>Banda térmica</td>
+<td>Banda que mide la radiación emitida; permite estimar la temperatura de la superficie</td>
+</tr>
+<tr class="odd">
+<td>METRIC, SEBAL</td>
+<td>Modelos que estiman la ET real con el balance de energía</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="resumen-de-conceptos-clave" class="slide level2 center smaller">
+<h2>Resumen de conceptos clave</h2>
+<ol type="1">
+<li><p>Una <strong>EMA</strong> mide <span class="math inline">\(T\)</span>, HR, <span class="math inline">\(R_s\)</span>, viento y lluvia; su ubicación y mantención cambian la ETo</p></li>
+<li><p>Antes de calcular, ajusta <strong>unidades, altura del viento y hora</strong> de los datos</p></li>
+<li><p><strong>Agromet</strong> publica ETo para la agricultura; con <strong>RedMeteo</strong> se calcula a partir de los datos de cada estación</p></li>
+<li><p>El <strong>NDVI</strong> refleja el follaje y permite estimar un Kc por sector y fecha</p></li>
+<li><p>El <strong>balance de energía</strong> con banda térmica estima la ET real y revela el estrés que el NDVI tarda en mostrar</p></li>
+<li><p>El <strong>tamaño del píxel</strong> define si un satélite sirve para tu predio</p></li>
+<li><p>La <strong>ETc acumulada</strong> frente a la AFA indica cuándo regar</p></li>
+</ol>
+</section>
+<section id="para-la-próxima-sesión" class="slide level2 center">
+<h2>Para la próxima sesión</h2>
+<p><strong>Sesión 5.1: Frecuencia y tiempo de riego</strong></p>
+<ul>
+<li>¿Cuántos milímetros reponer en cada riego?</li>
+<li>¿Cada cuántos días regar?</li>
+<li>¿Cuántas horas debe funcionar el equipo?</li>
+</ul>
+<p><strong>Para preparar:</strong> repasa la Unidad 2 y calcula la ADT y la AFA de un suelo con <span class="math inline">\(\theta_{CC} = 0.30\)</span>, <span class="math inline">\(\theta_{PMP} = 0.14\)</span>, <span class="math inline">\(Z_r = 0.6\)</span> m y <span class="math inline">\(p = 0.5\)</span>.</p>
+<p><strong>Taller 4:</strong> programarás Hargreaves-Samani, Penman-Monteith y la curva de Kc.</p>
+<aside class="notes">
+<p>Solución: ADT = (0.30 − 0.14) × 600 mm = 96 mm; AFA = 0.5 × 96 = 48 mm.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="preguntas-de-autoevaluación" class="slide level2 center smaller">
+<h2>Preguntas de autoevaluación</h2>
+<ol type="1">
+<li><p>Nombre los sensores de una EMA y la variable de Penman-Monteith que alimenta cada uno.</p></li>
+<li><p>Un anemómetro a 10 m registra 4 m/s. ¿Cuál es <span class="math inline">\(u_2\)</span>?</p></li>
+<li><p>¿Por qué una estación instalada sobre pavimento tiende a sobrestimar la ETo?</p></li>
+<li><p>Un píxel tiene <span class="math inline">\(NIR = 0.45\)</span> y <span class="math inline">\(Rojo = 0.05\)</span>. Calcule el NDVI y el <span class="math inline">\(K_{cb}\)</span> con la ecuación para vid.</p></li>
+<li><p>¿Cuántos píxeles de Landsat y de Sentinel-2 tiene un predio de 9 ha?</p></li>
+<li><p>¿Por qué el NDVI puede mantenerse alto mientras la ET real cae?</p></li>
+<li><p>Con AFA = 35 mm y <span class="math inline">\(ET_c = 5\)</span> mm/día, ¿cada cuántos días hay que regar?</p></li>
+</ol>
+</section>
+<section id="fuentes" class="slide level2 center smaller">
+<h2>Fuentes</h2>
+<div style="font-size: 0.82em;">
+<ul>
+<li>Allen, R. G., Pereira, L. S., Raes, D. y Smith, M. (1998). <em>Crop evapotranspiration</em> (FAO Irrigation and Drainage Paper 56). FAO.</li>
+<li>Campos, I., Neale, C. M. U., Calera, A., Balbontín, C. y González-Piqueras, J. (2010). Assessing satellite-based basal crop coefficients for irrigated grapes (<em>Vitis vinifera</em> L.). <em>Agricultural Water Management</em>, 98(1), 45-54.</li>
+<li>Volk, J. M. et al.&nbsp;(2024). Assessing the accuracy of OpenET satellite-based evapotranspiration data to support water resource and land management applications. <em>Nature Water</em>, 2, 193-205.</li>
+<li>Portales consultados el 6 de noviembre de 2026: redmeteo.cl, agrometeorologia.cl, FAO WaPOR, SPIDERwebGIS/PLAS, Copernicus Browser.</li>
+</ul>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>TAG2027 — Relación Suelo Agua Planta | UDLA</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="unidad-04_sesion-03_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="unidad-04_sesion-03_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
